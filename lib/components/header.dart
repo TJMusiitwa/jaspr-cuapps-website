@@ -41,9 +41,9 @@ class Header extends StatelessComponent {
         div(classes: ' hidden lg:flex lg:gap-x-12', [
           for (var route in [
             (label: 'Home', path: '/'),
+            (label: 'Features', path: '/app-features'),
             (label: 'About Us', path: '/about'),
             (label: 'Contact Us', path: '/contact-us'),
-            (label: 'CU Chat', path: '/cu_chat')
           ])
             a([
               text(route.label),
@@ -51,7 +51,15 @@ class Header extends StatelessComponent {
                 div(
                     classes: 'text-sm font-semibold leading-6 text-gray-900',
                     [])
-            ], href: route.path)
+            ], href: route.path),
+          a(
+            [
+              text('CU Chat'),
+              div(classes: 'text-sm font-semibold leading-6 text-gray-900', [])
+            ],
+            href: 'https://cuapps.co.uk/cuchat/',
+            target: Target.blank,
+          )
         ]),
       ], classes: 'flex items-center justify-between p-6 lg:px-8'),
       div(classes: 'hidden lg-hidden', attributes: {
@@ -95,9 +103,9 @@ class Header extends StatelessComponent {
                   div(classes: 'space-y-2 py-6', [
                     for (var route in [
                       (label: 'Home', path: '/'),
+                      (label: 'Features', path: '/app-features'),
                       (label: 'About Us', path: '/about'),
                       (label: 'Contact Us', path: '/contact-us'),
-                      (label: 'CU Chat', path: '/cu_chat')
                     ])
                       a([
                         text(route.label),
@@ -110,7 +118,12 @@ class Header extends StatelessComponent {
                           href: route.path,
                           classes:
                               '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50')
-                  ])
+                  ]),
+                  a([text('CU Chat')],
+                      href: 'https://cuapps.co.uk/cuchat/',
+                      target: Target.blank,
+                      classes:
+                          '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50')
                 ])
               ])
             ])
