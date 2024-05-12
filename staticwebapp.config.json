@@ -1,0 +1,19 @@
+{
+    "trailingSlash": "never",
+    "routes": [
+        {
+            "route": "/"
+        },
+        {
+            "route": "/about"
+        },
+        {
+            "route": "/contact-us"
+        }
+    ],
+    "responseOverrides": {
+        "404": {
+            "rewrite": "/404"
+        }
+    }
+}
