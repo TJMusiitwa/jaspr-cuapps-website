@@ -7,7 +7,7 @@ class ContactUs extends StatelessComponent {
     yield section([
       div(
           classes:
-              'grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 ',
+              'grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 mt-5',
           [
             div(classes: 'py-6 md:py-0 md:px-6 h-full', [
               div(
@@ -209,6 +209,6 @@ class ContactUs extends StatelessComponent {
                 classes:
                     'col-span-2 absolute right-0 isolate inset-y-0 px-4 py-8 w-1/2 h-full')
           ])
-    ], id: 'contact_us', classes: 'py-6');
+    ], id: 'contact_us', classes: 'min-h-screen py-8 px-8 lg:py-12');
   }
 }
