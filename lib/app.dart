@@ -1,3 +1,4 @@
+import 'package:cuapps_website/pages/app_features.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -30,6 +31,10 @@ class App extends StatelessComponent {
                   title: 'Home',
                   builder: (context, state) => const Home()),
               Route(
+                  path: '/app-features',
+                  title: 'Features',
+                  builder: (context, state) => AppFeatures()),
+              Route(
                   path: '/about',
                   title: 'About',
                   builder: (context, state) => const About()),
@@ -37,10 +42,6 @@ class App extends StatelessComponent {
                   path: '/contact-us',
                   title: 'Contact Us',
                   builder: (context, state) => ContactUs()),
-              // Route(
-              //     path: '/cu_chat',
-              //     title: 'CU Chat',
-              //     builder: (context, state) => Error404()),
             ],
           ),
         ],
