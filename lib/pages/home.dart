@@ -1,3 +1,5 @@
+import 'dart:js' as js;
+
 import 'package:jaspr/jaspr.dart';
 
 class Home extends StatelessComponent {
@@ -66,18 +68,41 @@ class _ConsultationButtonState extends State<ConsultationButton> {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'mt-10 flex items-center justify-center gap-x-6', [
       button(
+        id: 'consultation-button',
         type: ButtonType.button,
         classes:
             'rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600',
         [text('Get A Free Consultation')],
         onClick: () {
-          setState(() => dialogOpen = true);
-          print(dialogOpen.toString());
+          js.context.callMethod('open',
+              ['https://cuapps.co.uk/free-credit-union-app-demo/', '_blank']);
         },
-        //onClick: () => window.open('https://cuapps.co.uk/free-credit-union-app-demo/', '_blank')
+        // onClick: () => window.open('https://cuapps.co.uk/free-credit-union-app-demo/', '_blank')
         //href: 'https://cuapps.co.uk/free-credit-union-app-demo/'
+        // onClick: () {
+        //   setState(() => dialogOpen = true);
+        //   document.getElementById('consultation-button')!.addEventListener(
+        //       'click',
+        //       (event) => document
+        //           .getElementById('consultation-dialog')!
+        //           .setAttribute('open', 'true'));
+        //   setState(() {
+        //     consultationDialog(dialogOpen);
+        //   });
+        // },
       ),
     ]);
+  }
+
+  Component consultationDialog(bool dialogOpen) {
+    return dialog(
+        open: dialogOpen,
+        id: 'consultation-dialog',
+        classes: 'fixed inset-0 z-50 overflow-y-auto rounded',
+        [
+          h2([text('Get A Free Consultation')]),
+          text('This is going to hold a dialog for the Calendly invite')
+        ]);
   }
 }
 
