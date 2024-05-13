@@ -1,4 +1,5 @@
 # cuapps_website
+![Deploy Badge Status](https://github.com/TJMusiitwa/jaspr-cuapps-website/actions/workflows/azure-static-web-apps-deploy.yml/badge.svg)
 
 A new jaspr project.
 
