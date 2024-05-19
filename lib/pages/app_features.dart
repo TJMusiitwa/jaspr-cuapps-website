@@ -13,12 +13,15 @@ class AppFeatures extends StatelessComponent {
       div([
         div([
           div([
-            text('Ready For a Free Evaluation and Demo'),
+            text('Ready For a Free Evaluation and Demo '),
             a([
-              span([], classes: 'absolute inset-0'),
+              span([], classes: 'absolute inset-2'),
               text('Contact us'),
               span([raw('&rarr;')])
-            ], classes: 'font-semibold text-blue-600 text-balance', href: '#'),
+            ],
+                classes: 'font-semibold text-blue-600 text-balance',
+                target: Target.blank,
+                href: 'https://cuapps.co.uk/free-credit-union-app-demo/'),
           ],
               classes:
                   'relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20')

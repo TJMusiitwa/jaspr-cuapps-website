@@ -24,13 +24,21 @@ class AboutUsHeader extends StatelessComponent {
                   'App Developers Specialised in Credit Union Banking Apps and Chatbots')
             ])
       ]),
-      p(classes: 'text-center text-base font-medium text-gray-500', [
+      p(classes: 'text-xl leading-8 text-gray-700 text-center', [
         text(
             'As the only UK company focusing exclusively on the digital experience of credit union members, we exist to help you provide the best member service possible, to grow your membership and increase your loan book.'),
       ]),
-      p(classes: 'mt-6 text-xl leading-8 text-gray-700 text-center', [
+      p(classes: 'text-center text-base font-medium text-gray-500 mt-4', [
         text(
-            'At CU Apps, we specialize in creating best-in-class mobile banking experiences for credit unions. We design and build native Android and iOS apps that are secure, user-friendly, and put your members in control of their finances. We also develop bespoke generative AI chatbots to further enhance your members\' experience by providing 24/7 support and personalized interactions.'),
+            'At CU Apps, we specialize in creating best-in-class mobile banking experiences for credit unions. We design and build Android and iOS apps that are secure, user-friendly, and put your members in control of their finances. We also develop bespoke generative AI chatbots to further enhance your members\' experience by providing 24/7 support and personalized interactions.'),
+      ]),
+      p(classes: 'text-center text-base font-medium text-gray-500 mt-2', [
+        text(
+            'We differ from competitors in our focus on outstanding quality for members, customer service for credit unions and commitment to making technology affordable for credit unions. We help you meet and exceed you members’ expectations and turn tedious banking into easy-to-use and modern solutions without breaking the bank.'),
+      ]),
+      p(classes: 'text-center text-base font-medium text-gray-500 mt-2', [
+        text(
+            'CU Apps is a dynamic company and we are passionate about what we do. Our culture of constant improvement ensures that innovation and perfection are always what we strive for. Our attention to detail, customer focus and expertise mean that CU Apps is the perfect choice for any credit union wanting to implement a mobile application or get a bespoke advanced AI chatbot.'),
       ]),
     ], classes: 'mx-auto max-w-7xl px-6 lg:px-8');
   }
@@ -55,7 +63,7 @@ class TeamSection extends StatelessComponent {
                   'block antialiased font-sans text-xl font-normal leading-relaxed text-inherit mx-auto w-full !text-gray-500 max-w-4xl',
               [
                 text(
-                    'This section celebrates the unique stories, skills, and passions of our team members. From the strategic thinkers to the creative innovators, each person contributes to the vibrant culture and remarkable service we\'re known for.')
+                    'From the strategic thinkers to the creative innovators, each person contributes to the vibrant culture and remarkable service we\'re known for.')
               ]),
           div(
               classes:
@@ -72,38 +80,32 @@ class TeamSection extends StatelessComponent {
                         TeamCard(
                             name: 'Declan McGallagly',
                             role: 'CEO & Co-Founder',
-                            image:
-                                'https://cuapps.co.uk/wp-content/uploads/2024/05/imgonline-com-ua-shape-Gsuowv86MUEk.png',
+                            image: 'images/team/declan.jpeg',
                             email: 'declan@cuapps.co.uk'),
                         TeamCard(
                             name: 'Eden King',
                             role: 'Product Manager',
-                            image:
-                                'https://cuapps.co.uk/wp-content/uploads/2024/05/imgonline-com-ua-shape-AumbgtjwvDoKO.png',
+                            image: 'images/team/eden.jpg',
                             email: 'eden@cuapps.co.uk'),
                         TeamCard(
                             name: 'Hugh McGrade',
                             role: 'Software Engineer & Co-Founder',
-                            image:
-                                'https://cuapps.co.uk/wp-content/uploads/2024/05/imgonline-com-ua-shape-yrMUySm3LKqm.png',
+                            image: 'images/team/hugh.jpeg',
                             email: 'hugh@cuapps.co.uk'),
                         TeamCard(
                             name: 'Jack Allison',
                             role: 'Software Engineer & Co-Founder',
-                            image:
-                                'https://cuapps.co.uk/wp-content/uploads/2024/05/imgonline-com-ua-shape-MDsfboGzyWwQX.png',
+                            image: 'images/team/jack.jpeg',
                             email: 'jack@cuapps.co.uk'),
                         TeamCard(
                             name: 'Jonathan Musiitwa',
                             role: 'Software Engineer',
-                            image:
-                                'https://cuapps.co.uk/wp-content/uploads/2024/05/imgonline-com-ua-shape-mKfeUBsEBakp86.png',
+                            image: 'images/team/jonathan.jpeg',
                             email: 'jonathan@cuapps.co.uk'),
                         TeamCard(
                             name: 'Colin McKay',
                             role: 'Consultant',
-                            image:
-                                'https://cuapps.co.uk/wp-content/uploads/2024/05/imgonline-com-ua-shape-a8VUMvusxP.png',
+                            image: 'images/team/colin.jpeg',
                             email: 'colin@cuapps.co.uk'),
                       ])
                 ])
@@ -137,7 +139,7 @@ class TeamCard extends StatelessComponent {
             [
               img(
                 classes:
-                    'h-96 w-full object-scale-down  transition duration-500 motion-safe:group-hover:scale-105 hover:filter-none',
+                    'h-96 w-full object-cover transition duration-500 motion-safe:group-hover:scale-105 hover:filter-none',
                 src: image,
                 loading: MediaLoading.lazy,
                 alt: name.split(' ').first,

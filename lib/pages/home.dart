@@ -53,15 +53,7 @@ class HeaderSection extends StatelessComponent {
   }
 }
 
-class ConsultationButton extends StatefulComponent {
-  const ConsultationButton({super.key});
-
-  @override
-  State<ConsultationButton> createState() => _ConsultationButtonState();
-}
-
-class _ConsultationButtonState extends State<ConsultationButton> {
-  bool dialogOpen = false;
+class ConsultationButton extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield div(classes: 'mt-10 flex items-center justify-center gap-x-6', [
@@ -73,17 +65,6 @@ class _ConsultationButtonState extends State<ConsultationButton> {
           [text('Get A Free Consultation')],
           href: 'https://cuapps.co.uk/free-credit-union-app-demo/'),
     ]);
-  }
-
-  Component consultationDialog(bool dialogOpen) {
-    return dialog(
-        open: dialogOpen,
-        id: 'consultation-dialog',
-        classes: 'fixed inset-0 z-50 overflow-y-auto rounded',
-        [
-          h2([text('Get A Free Consultation')]),
-          text('This is going to hold a dialog for the Calendly invite')
-        ]);
   }
 }
 
@@ -133,7 +114,8 @@ class LogoSection extends StatelessComponent {
           classes:
               'col-span-2 max-h-12 w-full object-contain lg:col-span-1 grey-scale',
           height: 48,
-          width: 158)
+          width: 158,
+          loading: MediaLoading.lazy)
     ], href: '#');
   }
 }
