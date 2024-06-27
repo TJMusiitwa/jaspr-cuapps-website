@@ -13,8 +13,7 @@ void main() {
     title: 'CU Apps',
     lang: 'en',
     head: [
-      link(href: 'https://cdn.tailwindcss.com'),
-      script([], src: 'https://cdn.tailwindcss.com'),
+      link(href: 'styles.css', rel: 'stylesheet'),
       script([],
           defer: true,
           src: 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js')
