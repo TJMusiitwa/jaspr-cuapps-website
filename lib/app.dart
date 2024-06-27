@@ -44,6 +44,7 @@ class App extends StatelessComponent {
                   builder: (context, state) => ContactUs()),
             ],
           ),
+          Route(path: '/*', builder: (context, state) => Error404()),
         ],
         errorBuilder: (context, state) => Error404(),
       ),
