@@ -9,11 +9,17 @@
         },
         {
             "route": "/contact-us"
+        },
+        {
+            "route": "/*"
         }
     ],
     "responseOverrides": {
         "404": {
-            "rewrite": "/404"
+            "rewrite": "/*"
         }
+    },
+    "navigationFallback": {
+        "rewrite": "/"
     }
 }
