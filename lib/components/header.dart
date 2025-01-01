@@ -8,6 +8,7 @@ class Header extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     var activePath = RouteState.of(context).location;
     yield header([
+      Banner(),
       nav([
         div(classes: 'flex lg:flex-1', [
           a([
@@ -129,5 +130,91 @@ class Header extends StatelessComponent {
             ])
       ])
     ], classes: 'absolute inset-x-0 top-0 z-50');
+  }
+}
+
+class Banner extends StatelessComponent {
+  @override
+  Iterable<Component> build(BuildContext context) sync* {
+    yield div([
+      div([
+        div([],
+            styles: Styles.raw({
+              'clip-path':
+                  'polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)'
+            }),
+            classes:
+                'aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#35a0d9] to-[#47346c] opacity-30')
+      ],
+          attributes: {
+            'aria-hidden': 'true'
+          },
+          classes:
+              'absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl'),
+      div([
+        div([],
+            styles: Styles.raw({
+              'clip-path':
+                  'polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)'
+            }),
+            classes:
+                'aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#35a0d9] to-[#47346c] opacity-30')
+      ],
+          attributes: {
+            'aria-hidden': 'true'
+          },
+          classes:
+              'absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl'),
+      div([
+        div([
+          span([
+            svg([
+              path(
+                  strokeWidth: '1.5',
+                  d:
+                      'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z',
+                  [],
+                  styles: Styles.raw(
+                      {'stroke-linecap': "round", 'stroke-linejoin': "round"}))
+            ],
+                viewBox: '0 0 24 24',
+                classes: 'w-5 h-5',
+                styles: Styles.raw({'fill': 'none', 'stroke': 'currentColor'}))
+          ]),
+          a(
+              classes: 'text-sm leading-6 px-3',
+              [text('🇬🇧 0141 266 0189')],
+              href: 'tel:0141 266 0189'),
+          a(
+              classes: 'text-sm leading-6 px-3',
+              [text('🇮🇪 074 970 7869')],
+              href: 'tel:0749707869'),
+          a(
+              classes: 'text-sm leading-6 px-3',
+              [text('🇺🇸 031 330 61560')],
+              href: 'tel:03133061560'),
+          span([
+            svg([
+              path(
+                  strokeWidth: '1.5',
+                  d:
+                      'M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75',
+                  [],
+                  styles: Styles.raw(
+                      {'stroke-linecap': "round", 'stroke-linejoin': "round"}))
+            ],
+                viewBox: '0 0 24 24',
+                classes: 'w-5 h-5 leading-6',
+                styles: Styles.raw({'fill': 'none', 'stroke': 'currentColor'}))
+          ]),
+          a(
+              classes: 'text-sm leading-6',
+              [text('hello@cuapps.co.uk')],
+              href: 'mailto:hello@cuapps.co.uk')
+        ], classes: 'flex flex-1 justify-start')
+      ], classes: 'flex flex-wrap items-center gap-x-4 gap-y-2'),
+    ],
+        classes:
+            'relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1');
   }
 }
