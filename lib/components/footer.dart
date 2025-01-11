@@ -14,13 +14,25 @@ class Footer extends StatelessComponent {
                   alt: 'CU Apps',
                   classes: 'h-8 w-auto')
             ], href: '#', classes: '-m-1.5 p-1.5'),
-            p([
-              text(
-                  'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.')
-            ]),
           ],
           classes: 'grid-flow-col items-center',
         ),
+        nav([
+          h6([text('Product Sheets')], classes: 'footer-title'),
+          a([text('Mobile App')],
+              href: 'https://cuapps.co.uk/cu-apps-product-booklet/',
+              target: Target.blank,
+              classes: 'link link-hover'),
+          a([text('Chatbot')],
+              href: 'https://cuapps.co.uk/cu-chat-product-sheet/',
+              target: Target.blank,
+              classes: 'link link-hover'),
+        ]),
+        nav([
+          h6([text('Interested in a demo?')], classes: 'footer-title'),
+          a([text('Book a demo')],
+              href: '/free-demo', classes: 'link link-hover'),
+        ]),
         nav(
           [
             a(
@@ -76,6 +88,47 @@ class Footer extends StatelessComponent {
                 classes: 'transition fill-black hover:text-blue-500'),
             a(
                 [
+                  svg(
+                      [
+                        rect(
+                          [],
+                          width: '20',
+                          height: '20',
+                          x: '2',
+                          y: '2',
+                          attributes: {
+                            'rx': '5',
+                            'ry': '5',
+                          },
+                        ),
+                        path(
+                          [],
+                          d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z',
+                        ),
+                        line(
+                          [],
+                          x1: '17.5',
+                          x2: '17.51',
+                          y1: '6.5',
+                          y2: '6.5',
+                        ),
+                      ],
+                      viewBox: '0 0 24 24',
+                      classes: 'w-6 h-6',
+                      attributes: {
+                        'fill': 'none',
+                        'stroke': 'currentColor',
+                        'stroke-width': '1.5',
+                        'stroke-linecap': 'round',
+                        'stroke-linejoin': 'round',
+                        'xmlns': 'http://www.w3.org/2000/svg',
+                      })
+                ],
+                href: 'https://www.instagram.com/cu_apps/',
+                attributes: {'aria-label': 'Instagram'},
+                classes: 'transition fill-black hover:text-blue-500'),
+            a(
+                [
                   svg([
                     path(
                         strokeWidth: '1.5',
@@ -100,7 +153,12 @@ class Footer extends StatelessComponent {
               'grid-flow-col gap-4 md:place-self-center md:justify-self-end',
         ),
       ],
-      classes: 'footer bg-base-300 text-base-content items-center p-4',
+      classes: 'footer bg-primary-content text-base-content items-center p-4',
     );
+    yield footer([
+      p([
+        text('Copyright © ${DateTime.now().year} CU Apps. All rights reserved.')
+      ]),
+    ], classes: 'footer footer-center bg-neutral text-neutral-content p-4');
   }
 }
