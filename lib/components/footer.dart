@@ -4,24 +4,25 @@ class Footer extends StatelessComponent {
   const Footer({super.key});
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield footer([
-      div(
-        classes: 'flex items-center justify-between p-6 lg:px-8',
-        [
-          div(classes: 'flex lg:flex-1', [
+    yield footer(
+      [
+        aside(
+          [
             a([
-              span(classes: 'sr-only', [text('CU Apps')]),
               img(
                   src: 'images/cu_logo.png',
-                  alt: 'company logo footer',
+                  alt: 'CU Apps',
                   classes: 'h-8 w-auto')
             ], href: '#', classes: '-m-1.5 p-1.5'),
-            span([
+            p([
               text(
-                  'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.'),
-            ], classes: 'mx-auto mt-2 text-sm font-medium text-gray-500')
-          ]),
-          div(classes: 'flex items-center space-x-4', [
+                  'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.')
+            ]),
+          ],
+          classes: 'grid-flow-col items-center',
+        ),
+        nav(
+          [
             a(
                 [
                   svg([
@@ -42,7 +43,7 @@ class Footer extends StatelessComponent {
                 ],
                 href: 'https://twitter.com/CreditUnionApps',
                 attributes: {'aria-label': 'Twitter'},
-                classes: 'transition fill-black hover:text-blue-500'),
+                classes: 'gap-x-2 transition fill-black hover:text-blue-500'),
             a(
                 [
                   svg([
@@ -94,9 +95,12 @@ class Footer extends StatelessComponent {
                 href: 'https://fb.me/creditunionapps',
                 attributes: {'aria-label': 'Facebook'},
                 classes: 'transition fill-black hover:text-blue-500'),
-          ])
-        ],
-      ),
-    ], classes: 'absolute inset-x-0 bottom-0 z-50');
+          ],
+          classes:
+              'grid-flow-col gap-4 md:place-self-center md:justify-self-end',
+        ),
+      ],
+      classes: 'footer bg-base-300 text-base-content items-center p-4',
+    );
   }
 }
