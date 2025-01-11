@@ -2,29 +2,31 @@ import 'package:cuapps_website/pages/app_features.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
+import 'components/banner.dart';
 import 'components/footer.dart';
 import 'components/header.dart';
 import 'pages/about.dart';
 import 'pages/contact_us.dart';
 import 'pages/error.dart';
+import 'pages/free_demo.dart';
 import 'pages/home.dart';
 
 @client
 class App extends StatelessComponent {
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'main', [
+    yield div(attributes: {
+      'data-theme': 'winter'
+    }, [
       Router(
         routes: [
           ShellRoute(
-            builder: (context, state, child) =>
-                Builder(builder: (context) sync* {
-              yield div([
-                Header(),
-                child,
-                Footer(),
-              ], classes: 'relative');
-            }),
+            builder: (context, state, child) => Fragment(children: [
+              Banner(),
+              Header(),
+              child,
+              Footer(),
+            ]),
             routes: [
               Route(
                   path: '/',
@@ -42,6 +44,10 @@ class App extends StatelessComponent {
                   path: '/contact-us',
                   title: 'Contact Us',
                   builder: (context, state) => ContactUs()),
+              Route(
+                  path: '/free-demo',
+                  title: 'Free Demo',
+                  builder: (context, state) => FreeDemo()),
             ],
           ),
           Route(path: '/*', builder: (context, state) => Error404()),
@@ -50,20 +56,4 @@ class App extends StatelessComponent {
       ),
     ]);
   }
-
-  static get styles => [
-        css('.main', [
-          css('&')
-              .box(height: 100.vh)
-              .flexbox(direction: FlexDirection.column, wrap: FlexWrap.wrap),
-          css('section').flexItem(flex: Flex(grow: 1)).flexbox(
-                direction: FlexDirection.column,
-                justifyContent: JustifyContent.center,
-                alignItems: AlignItems.center,
-              ),
-        ]),
-        //...Header.styles,
-        //...Home.styles,
-        //...About.styles,
-      ];
 }
