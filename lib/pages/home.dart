@@ -82,24 +82,21 @@ class LogoSection extends StatelessComponent {
               'We are proud to have worked with some of the leading credit unions in the UK, helping them to revolutionise their digital presence and provide a better service to their members.')
         ], classes: 'text-center mt-10 text-base font-medium text-gray-500'),
         div([
-          logoBuilder(
-              imgSrc:
-                  'https://cuapps.co.uk/wp-content/uploads/2020/12/Serve-and-Protect-Credit-Union.jpg'),
-          logoBuilder(
-              imgSrc:
-                  'https://cuapps.co.uk/wp-content/uploads/2024/06/logo-6.png'),
-          logoBuilder(
-              imgSrc:
-                  'https://cuapps.co.uk/wp-content/uploads/2019/11/scottish_police_credit_union.png'),
+          logoBuilder(imgSrc: 'images/clients/sapcu.png'),
+          logoBuilder(imgSrc: 'images/clients/pccu.png'),
+          logoBuilder(imgSrc: 'images/clients/spcu.png'),
           logoBuilder(imgSrc: 'images/clients/ecu.png'),
           logoBuilder(imgSrc: 'images/clients/nhscu.png'),
           logoBuilder(imgSrc: 'images/clients/n1cpcu.png'),
           logoBuilder(imgSrc: 'images/clients/cscu.png'),
           logoBuilder(imgSrc: 'images/clients/thistle.png'),
           logoBuilder(imgSrc: 'images/clients/macu.png'),
-          logoBuilder(
-              imgSrc:
-                  'https://cuapps.co.uk/wp-content/uploads/2019/11/scottish_police_credit_union.png'),
+          logoBuilder(imgSrc: 'images/clients/hocu.png'),
+          logoBuilder(imgSrc: 'images/clients/adcu.png'),
+          logoBuilder(imgSrc: 'images/clients/gmbcu.png'),
+          logoBuilder(imgSrc: 'images/clients/lcbcu.png'),
+          logoBuilder(imgSrc: 'images/clients/lopcu.png'),
+          logoBuilder(imgSrc: 'images/clients/lecu.png'),
         ],
             classes:
                 'mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5'),
@@ -113,7 +110,7 @@ class LogoSection extends StatelessComponent {
     return a([
       img(
           src: imgSrc,
-          alt: 'ABCUL',
+          alt: imgSrc,
           classes:
               'col-span-2 max-h-15 w-full object-contain lg:col-span-1 grey-scale',
           height: 100,
