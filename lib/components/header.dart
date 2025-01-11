@@ -83,7 +83,7 @@ class Header extends StatelessComponent {
               (label: 'CU Chat', path: 'https://cuapps.co.uk/cuchat/'),
             ])
               if (route.label == 'CU Chat')
-                ul(classes: 'menu menu-horizontal px-1', [
+                ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
                   li([
                     a([text(route.label)],
                         href: route.path,
@@ -93,7 +93,7 @@ class Header extends StatelessComponent {
                   ]),
                 ])
               else
-                ul(classes: 'menu menu-horizontal px-1', [
+                ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
                   li([
                     a(
                       classes: 'btn btn-ghost',
