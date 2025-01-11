@@ -7,14 +7,14 @@ class Header extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield header([
       nav([
-        div(classes: 'navbar bg-base-300 text-base-content', [
+        div(classes: 'navbar bg-base-100 text-base-content', [
           div(classes: 'navbar-start', [
             a([
               img(
                   src: 'images/cu_logo.png',
                   alt: 'CU Apps',
                   classes: 'h-8 w-auto')
-            ], href: '#', classes: '-m-1.5 p-1.5'),
+            ], href: '/', classes: '-m-1.5 p-1.5'),
           ]),
           div(classes: 'navbar-end', [
             div(classes: 'dropdown dropdown-left', [
@@ -59,7 +59,7 @@ class Header extends StatelessComponent {
                                 href: route.path,
                                 target: Target.blank,
                                 classes:
-                                    'p-2 flex items-center text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100')
+                                    'p-2 flex items-center text-sm font-semibold leading-6 text-secondary hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100')
                           ]),
                         ])
                       else
@@ -89,7 +89,7 @@ class Header extends StatelessComponent {
                         href: route.path,
                         target: Target.blank,
                         classes:
-                            'text-secondary p-2 flex items-center text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100 rounded-lg focus:outline-none focus:bg-gray-100')
+                            'text-secondary p-2 flex items-center text-sm font-semibold leading-6 hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100')
                   ]),
                 ])
               else
