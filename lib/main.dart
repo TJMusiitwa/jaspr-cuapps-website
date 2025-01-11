@@ -2,7 +2,6 @@ import 'package:jaspr/server.dart';
 
 import 'app.dart';
 import 'jaspr_options.dart';
-import 'styles.dart';
 
 void main() {
   Jaspr.initializeApp(options: defaultJasprOptions);
@@ -23,14 +22,14 @@ void main() {
     //   'og:image': 'https://cuapps.co.uk/assets/images/cuapps-logo.png',
     // },
     head: [
-      // link(href: 'https://cdn.tailwindcss.com'),
-      // script([], src: 'https://cdn.tailwindcss.com'),
       link(href: 'styles.css', rel: 'stylesheet'),
-      script([],
-          defer: true,
-          src: 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js')
+      link(
+          href:
+              'https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css',
+          rel: 'stylesheet',
+          type: 'text/css'),
+      script(src: 'https://cdn.tailwindcss.com', []),
     ],
-    styles: styles,
     body: App(),
   ));
 }
