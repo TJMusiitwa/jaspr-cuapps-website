@@ -5,7 +5,7 @@ class FreeDemo extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield div(
         classes:
-            'relative bg-gradient-to-bl from-primary via-transparent dark:from-blue-950 dark:via-transparent',
+            'relative bg-gradient-to-bl from-primary via-secondary-content',
         [
           div(
               classes:
