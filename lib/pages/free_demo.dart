@@ -36,18 +36,18 @@ class FreeDemo extends StatelessComponent {
                           classes: 'mt-4 md:mb-12 max-w-2xl',
                         ),
                       ]),
-                      div(classes: 'lg:max-w-lg lg:mx-auto lg:me-0 ms-auto', [
-                        div(
-                            classes:
-                                'p-4 sm:p-7 flex flex-col bg-white rounded-2xl shadow-lg dark:bg-neutral-900',
-                            [
+                      div(
+                          classes:
+                              'card bg-base-100 lg:max-w-lg lg:mx-auto lg:me-0 ms-auto shadow-xl',
+                          [
+                            div(classes: 'card-body', [
                               iframe([],
                                   width: 410,
                                   height: 600,
                                   src:
                                       'https://calendly.com/cuapps?embed_domain=cuapps.co.uk&embed_type=Inline')
                             ])
-                      ])
+                          ])
                     ])
               ])
         ]);

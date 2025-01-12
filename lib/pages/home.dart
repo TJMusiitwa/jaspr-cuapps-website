@@ -52,20 +52,18 @@ class ConsultationButton extends StatelessComponent {
     yield button([text('Get A Free Consultation')],
         classes: 'mt-10 btn btn-primary btn-wide text-base-100',
         attributes: {'onclick': 'consultation_modal.showModal()'});
-    yield dialog(
-        classes: 'modal modal-bottom sm:modal-middle',
-        id: 'consultation_modal',
-        [
-          div(classes: 'modal-box w-1/2', [
-            iframe([],
-                width: 440,
-                height: 500,
-                src: 'https://calendly.com/cuapps/cu-apps-meeting')
-          ]),
-          form([
-            button([text('X')])
-          ], classes: 'modal-backdrop', method: FormMethod.dialog)
-        ]);
+    yield dialog(classes: 'modal', id: 'consultation_modal', [
+      div(classes: 'modal-box w-1/2', [
+        iframe([],
+            width: 440,
+            height: 500,
+            loading: MediaLoading.eager,
+            src: 'https://calendly.com/cuapps/cu-apps-meeting')
+      ]),
+      form([
+        button([text('X')])
+      ], classes: 'modal-backdrop', method: FormMethod.dialog)
+    ]);
   }
 }
 
