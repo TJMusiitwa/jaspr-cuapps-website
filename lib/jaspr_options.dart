@@ -1,3 +1,6 @@
+// dart format off
+// ignore_for_file: type=lint
+
 // GENERATED FILE, DO NOT MODIFY
 // Generated with jaspr_builder
 
@@ -21,7 +24,5 @@ import 'package:cuapps_website/app.dart' as prefix0;
 /// }
 /// ```
 final defaultJasprOptions = JasprOptions(
-  clients: {
-    prefix0.App: ClientTarget<prefix0.App>('app'),
-  },
+  clients: {prefix0.App: ClientTarget<prefix0.App>('app')},
 );
