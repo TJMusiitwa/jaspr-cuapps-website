@@ -3,18 +3,18 @@ description: A new jaspr project.
 version: 0.0.1
 
 environment:
-  sdk: '>=3.5.4 <4.0.0'
+  sdk: '>=3.7.2 <4.0.0'
 
 dependencies:
-  jaspr: ^0.16.3
-  jaspr_router: ^0.6.0
+  jaspr: ^0.18.2
+  jaspr_router: ^0.6.4
 
 dev_dependencies:
-  build_runner: ^2.4.13
-  jaspr_web_compilers: ^4.0.10
-  jaspr_builder: ^0.16.3
-  lints: ^4.0.0
-  jaspr_tailwind: ^0.3.1
+  build_runner: ^2.4.15
+  jaspr_web_compilers: ^4.1.1
+  jaspr_builder: ^0.18.2
+  lints: ^5.1.1
+  # jaspr_tailwind: ^0.3.3
 
 jaspr:
   mode: static
