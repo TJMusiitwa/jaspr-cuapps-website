@@ -32,3 +32,5 @@ migrate_working_dir/
 # Flutter related
 .flutter-plugins
 .flutter-plugins-dependencies
+
+flutter/
