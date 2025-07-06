@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:jaspr/jaspr.dart';
 
 class About extends StatelessComponent {
@@ -155,8 +157,9 @@ class _StatisticState extends State<Statistic> {
     const int totalSteps = 60; // Aim for 60 FPS
 
     final double stepValue = targetValue / totalSteps;
-    final Duration stepInterval =
-        Duration(milliseconds: animationDuration.inMilliseconds ~/ totalSteps);
+    final Duration stepInterval = Duration(
+      milliseconds: animationDuration.inMilliseconds ~/ totalSteps,
+    );
 
     _timer = Timer.periodic(stepInterval, (timer) {
       setState(() {
