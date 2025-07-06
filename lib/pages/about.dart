@@ -117,25 +117,84 @@ class CompanyStats extends StatelessComponent {
   }
 }
 
-class Statistic extends StatelessComponent {
+class Statistic extends StatefulComponent {
   final String label;
   final String value;
 
   const Statistic({super.key, required this.label, required this.value});
 
   @override
+  State<Statistic> createState() => _StatisticState();
+}
+
+class _StatisticState extends State<Statistic> {
+  late Timer _timer;
+  double _currentValue = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _startAnimation();
+  }
+
+  void _startAnimation() {
+    final RegExp regex = RegExp(r'(\d+)(\D*)');
+    final Match? match = regex.firstMatch(component.value);
+
+    if (match == null) {
+      // If the value doesn't match the expected format, display it directly
+      setState(() {
+        _currentValue = double.tryParse(component.value) ?? 0;
+      });
+      return;
+    }
+
+    final double targetValue = double.parse(match.group(1)!);
+    final String suffix = match.group(2)!;
+    const Duration animationDuration = Duration(seconds: 2);
+    const int totalSteps = 60; // Aim for 60 FPS
+
+    final double stepValue = targetValue / totalSteps;
+    final Duration stepInterval =
+        Duration(milliseconds: animationDuration.inMilliseconds ~/ totalSteps);
+
+    _timer = Timer.periodic(stepInterval, (timer) {
+      setState(() {
+        if (_currentValue < targetValue) {
+          _currentValue += stepValue;
+        } else {
+          _currentValue = targetValue;
+          _timer.cancel();
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+    super.dispose();
+  }
+
+  @override
   Iterable<Component> build(BuildContext context) sync* {
+    final RegExp regex = RegExp(r'(\d+)(\D*)');
+    final Match? match = regex.firstMatch(component.value);
+    final String suffix = match?.group(2) ?? '';
+
     yield div(classes: 'flex flex-col-reverse', [
       DomComponent(
         tag: 'dt',
         classes: 'text-base leading-7 text-gray-600',
-        child: text(label),
+        child: text(component.label),
       ),
       DomComponent(
         tag: 'dd',
         classes:
             'text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl',
-        child: text(value),
+        child: text('${_currentValue.round()}$suffix'),
       ),
     ]);
   }
