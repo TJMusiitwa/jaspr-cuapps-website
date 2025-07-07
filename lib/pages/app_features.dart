@@ -60,351 +60,258 @@ class AppFeaturesGrid extends StatelessComponent {
     yield div([
       // Bento grid container
       div([
-        // First row - featured items (larger)
+        // Row 1: Bespoke Design (Image), Biometric Login (Image), Push Notifications (Image)
         div([
-          // Biometric Login - Large feature with image
-          div(
-            [
-              div([
-                div(
-                  [
-                    img(
-                      src:
-                          'https://cuapps.co.uk/wp-content/uploads/2024/06/Apps-1000-x-1500-px.png',
-                      alt: 'Biometric authentication feature',
-                      classes:
-                          'w-1/3 h-1/3 object-cover object-center rounded-xl transition-all duration-300 group-hover:scale-105',
-                    ),
-                  ],
-                  classes:
-                      ' overflow-hidden rounded-xl mb-4 flex justify-center',
-                ),
-              ], classes: 'relative'),
-
-              h3(
-                [text('Biometric Login')],
-                classes:
-                    'text-xl font-bold text-gray-900 group-hover:text-blue-600',
-              ),
-              p([
-                text(
-                  'Members can access their accounts by using biometric login such as TouchID and FaceID. No more calls for forgotten member numbers!',
-                ),
-              ], classes: 'mt-2 text-sm text-gray-500 group-hover:text-gray-600'),
-            ],
-            classes:
-                'group relative rounded-xl bg-blue-50 p-6 transition-all duration-300 hover:shadow-lg hover:bg-white hover:ring-1 hover:ring-gray-200 md:p-8',
+          _bentoImageItem(
+            feature: 'Bespoke Design',
+            description:
+                'Every app is built bespoke for each credit union, ensuring a smooth user journey from your website to the app.',
+            imageUrl: // Placeholder, replace with actual
+                'https://cuapps.co.uk/wp-content/uploads/2019/11/Copy-of-Chatbot-Devices-1024x701.png',
+            bgColor: 'bg-curious-blue-50',
+            // Ensure colSpan allows for 3 items in a row on lg
+            colSpan: 'md:col-span-2 lg:col-span-1',
           ),
-
-          // Push Notifications - Large feature with image
-          div(
-            [
-              div([
-                div([
-                  img(
-                    src:
-                        'https://cuapps.co.uk/wp-content/uploads/2024/10/Push-notifications.png',
-                    alt: 'Push notifications feature on iOS',
-                    classes:
-                        'w-1/3 h-1/3 object-scale-down object-top rounded-xl transition-all duration-300 group-hover:scale-105',
-                  ),
-                ], classes: 'overflow-hidden rounded-xl mb-4 flex justify-center'),
-              ], classes: 'relative'),
-
-              h3(
-                [text('Push Notifications')],
-                classes:
-                    'text-xl font-bold text-gray-900 group-hover:text-blue-600',
-              ),
-              p([
-                text(
-                  'Send unlimited, free, messages to members devices. Re-engage passive members and keep active members informed.',
-                ),
-              ], classes: 'mt-2 text-sm text-gray-500 group-hover:text-gray-600'),
-            ],
-            classes:
-                'group relative rounded-xl bg-indigo-50 p-6 transition-all duration-300 hover:shadow-lg hover:bg-white hover:ring-1 hover:ring-gray-200 md:p-8',
+          _bentoImageItem(
+            feature: 'Biometric Login',
+            description:
+                'Members can access their accounts using TouchID and FaceID. No more calls for forgotten member numbers!',
+            imageUrl:
+                'https://cuapps.co.uk/wp-content/uploads/2024/06/Apps-1000-x-1500-px.png',
+            bgColor: 'bg-jacarta-50',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-        ], classes: 'grid grid-cols-1 md:grid-cols-2 gap-6'),
+          _bentoImageItem(
+            feature: 'Push Notifications',
+            description:
+                'Send unlimited, free messages to members\' devices. Re-engage passive members and keep active members informed.',
+            imageUrl:
+                'https://cuapps.co.uk/wp-content/uploads/2024/10/Push-notifications.png',
+            bgColor: 'bg-gulf-blue-50', // A distinct color from the theme
+            colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'),
 
-        // Second row - member engagement features
+        // Row 2: Member Surveys (Image), News Feed & Blog Posts (Image)
         div([
-          // Member Surveys - Medium feature with image
-          div(
-            [
-              div([
-                div(
-                  [
-                    img(
-                      src:
-                          'https://cuapps.co.uk/wp-content/uploads/2024/07/Apps-1000-x-1500-px.png',
-                      alt: 'Member surveys feature',
-                      classes:
-                          'w-1/3 h-1/3 object-cover object-center rounded-xl transition-all duration-300 group-hover:scale-105',
-                    ),
-                  ],
-                  classes:
-                      ' overflow-hidden rounded-xl mb-4 flex justify-center',
-                ),
-              ], classes: 'relative'),
-
-              h3(
-                [text('Member Surveys')],
-                classes:
-                    'text-xl font-bold text-gray-900 group-hover:text-blue-600',
-              ),
-              p([
-                text(
-                  'Gather member feedback through our mobile app. Easily run surveys and competitions for increased engagement. Allow members to vote during an AGM.',
-                ),
-              ], classes: 'mt-2 text-sm text-gray-500 group-hover:text-gray-600'),
-            ],
-            classes:
-                'group relative rounded-xl bg-green-50 p-6 transition-all duration-300 hover:shadow-lg hover:bg-white hover:ring-1 hover:ring-gray-200 md:p-8',
+          _bentoImageItem(
+            feature: 'Member Surveys',
+            description:
+                'Gather member feedback through the mobile app. Easily run surveys, competitions, and AGM voting.',
+            imageUrl:
+                'https://cuapps.co.uk/wp-content/uploads/2024/07/Apps-1000-x-1500-px.png',
+            bgColor: 'bg-green-50',
+            colSpan: 'md:col-span-1 lg:col-span-2', // Spans wider on larger screens
           ),
-
-          // News Feed & Blog Posts - Medium feature with image
-          div(
-            [
-              div([
-                div(
-                  [
-                    img(
-                      src:
-                          'https://cuapps.co.uk/wp-content/uploads/2024/06/Apps-1000-x-1500-px-1.png',
-                      alt: 'News feed and blog posts feature',
-                      classes:
-                          'w-1/3 h-1/3 object-cover object-center rounded-xl transition-all duration-300 group-hover:scale-105',
-                    ),
-                  ],
-                  classes:
-                      ' overflow-hidden rounded-xl mb-4 flex justify-center',
-                ),
-              ], classes: 'relative'),
-
-              h3(
-                [text('News Feed & Blog Posts')],
-                classes:
-                    'text-xl font-bold text-gray-900 group-hover:text-blue-600',
-              ),
-              p([
-                text(
-                  'Keep your members up to date with everything that\'s happening with our news feed and blog post features.',
-                ),
-              ], classes: 'mt-2 text-sm text-gray-500 group-hover:text-gray-600'),
-            ],
-            classes:
-                'group relative rounded-xl bg-orange-50 p-6 transition-all duration-300 hover:shadow-lg hover:bg-white hover:ring-1 hover:ring-gray-200 md:p-8',
+          _bentoImageItem(
+            feature: 'News Feed & Blog Posts',
+            description:
+                'Keep members updated with everything happening via news feeds, blog posts, and dedicated areas.',
+            imageUrl:
+                'https://cuapps.co.uk/wp-content/uploads/2024/06/Apps-1000-x-1500-px-1.png',
+            bgColor: 'bg-orange-50',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-        ], classes: 'grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
 
-        // Third row - loan features
+        // Row 3: Loan Features (Icons)
         div([
-          // Loan Applications - Full width feature
-          bentoFeatureItem(
+          _bentoIconItem(
             feature: 'Loan Applications',
             description:
-                'Allow members to directly apply for loans from the app. Members can track their application status and get notified when it\'s approved.',
-            image:
+                'Allow members to directly apply for loans from the app and track their application status.',
+            svgPath:
                 'm16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10',
-            isFullWidth: true,
             bgColor: 'bg-purple-50',
             iconColor: 'text-purple-600',
+            colSpan: 'md:col-span-2 lg:col-span-1',
           ),
-
-          // Loan Calculator and Eligibility
-          bentoFeatureItem(
+          _bentoIconItem(
             feature: 'Loan Calculator',
             description:
-                'Members and non-members can calculate monthly payments to reach savings goals or pay off loans.',
-            image:
+                'Members and non-members can calculate monthly loan payments or savings contributions.',
+            svgPath:
                 'M21 5h-3m-4.25-2v4M13 5H3m4 7H3m7.75-2v4M21 12H11m10 7h-3m-4.25-2v4M13 19H3',
-            isSmall: false,
             bgColor: 'bg-amber-50',
             iconColor: 'text-amber-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-
-          // Loan Eligibility
-          bentoFeatureItem(
+          _bentoIconItem(
             feature: 'Loan Eligibility',
             description:
-                'Let members know how much they\'re eligible for without a credit check.',
-            image: 'M19.5 20.5c-.475-9.333-14.525-9.333-15 0',
-            isSmall: false,
+                'Let members know how much they’re eligible for without a credit check.',
+            svgPath: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z', // Check circle
             bgColor: 'bg-rose-50',
             iconColor: 'text-rose-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-        ], classes: 'grid grid-cols-1 md:grid-cols-3 gap-6 mt-6'),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
 
-        // Fourth row - Account Management features
+        // Row 4: Account Management (Icons)
         div([
-          // Balance & Statements
-          bentoFeatureItem(
+           _bentoIconItem(
             feature: 'Balance & Statements',
             description:
-                'Members can view the balance for all loan and savings accounts, plus view a detailed searchable statement for all accounts.',
-            image:
-                'M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z',
-            isLarge: true,
+                'View balances for all accounts and detailed, searchable statements.',
+            svgPath:
+                'M3.75 3h16.5M3.75 7.5h16.5M3.75 12h16.5m-16.5 4.5h16.5M3.75 19.5h16.5', // List
             bgColor: 'bg-teal-50',
             iconColor: 'text-teal-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-
-          // Pay In & Withdrawals
-          bentoFeatureItem(
+          _bentoIconItem(
             feature: 'Pay In & Withdrawals',
             description:
-                'Pay money directly into your credit union account to grow savings or pay off a loan. Members have easy access to withdraw their money.',
-            image:
+                'Pay money into accounts or withdraw funds easily. Grow savings or pay off loans.',
+            svgPath:
                 'M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5',
-            isLarge: true,
-            bgColor: 'bg-blue-50',
-            iconColor: 'text-blue-600',
+            bgColor: 'bg-curious-blue-100',
+            iconColor: 'text-curious-blue-700',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-        ], classes: 'grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'),
-
-        // Fifth row - Communication and Account features
-        div([
-          // Live Chat & Inbox
-          bentoFeatureItem(
-            feature: 'Live Chat & Inbox',
-            description:
-                'Chat to members live from within the mobile app. View documents, completed loan applications and personal messages from the credit union.',
-            image:
-                'M5 12a5 5 0 0 1 7 7m-7-7a4.993 4.993 0 0 0-2 4 5 5 0 0 0 .224 1.483c.272.88.076 1.86-.099 2.784a.468.468 0 0 0 .592.539c.848-.232 1.691-.43 2.557-.112A4.99 4.99 0 0 0 8 21a4.991 4.991 0 0 0 4-2m-7-7c0-4.685 2.875-9 8-9a8 8 0 0 1 7.532 10.7c-.476 1.326.037 3.102.337 4.568a.451.451 0 0 1-.584.526c-1.312-.41-2.852-.986-4.085-.466-1.334.562-2.736.672-4.2.672',
-            bgColor: 'bg-cyan-50',
-            iconColor: 'text-cyan-600',
-          ),
-
-          // Contact Info & FAQs
-          bentoFeatureItem(
-            feature: 'Contact Info & FAQs',
-            description:
-                'View clickable contact information and frequently asked questions about the credit union.',
-            image: 'M12 21v-.5m0-3c0-5.1 5-3.825 5-8.924 0-6.768-10-6.768-10 0',
-            bgColor: 'bg-lime-50',
-            iconColor: 'text-lime-600',
-          ),
-
-          // Update Member Info
-          bentoFeatureItem(
+           _bentoIconItem(
             feature: 'Update Member Info',
             description:
-                'Update personal information in the app such as address, phone numbers, email and all PINs and passwords.',
-            image:
+                'Update personal details like address, phone, email, and manage PINs/passwords.',
+            svgPath:
                 'M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z',
             bgColor: 'bg-violet-50',
             iconColor: 'text-violet-600',
+            colSpan: 'md:col-span-2 lg:col-span-1',
           ),
-        ], classes: 'grid grid-cols-1 md:grid-cols-3 gap-6 mt-6'),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
 
-        // Last row - specialty features
+        // Row 5: Communication & More (Icons)
         div([
-          // Join
-          bentoFeatureItem(
-            feature: 'Join',
+          _bentoIconItem(
+            feature: 'Live Chat & Inbox',
             description:
-                'Let anyone join the credit union directly from the app.',
-            image: 'M12 4.5v15m7.5-7.5h-15',
-            isSmall: true,
+                'Chat live with support and view documents, loan applications, and messages in the inbox.',
+            svgPath:
+                'M2.25 12.7614C2.25 7.19241 2.25 4.40794 4.01302 2.7391C5.77605 1.07026 8.69019 1.07026 14.5185 1.07026L15.75 1.07026C20.4019 1.07026 21.7279 1.07026 22.4727 1.81506C23.2175 2.55987 23.2175 3.88594 23.2175 6.53808V12.7614C23.2175 17.4132 23.2175 18.7392 22.4727 19.484C21.7279 20.2288 20.4019 20.2288 15.75 20.2288H14.5185C8.69019 20.2288 5.77605 20.2288 4.01302 19.484C2.25 17.8152 2.25 15.0307 2.25 9.46173V8.23839', // Chat bubble
+            bgColor: 'bg-cyan-50',
+            iconColor: 'text-cyan-600',
+             colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+          _bentoIconItem(
+            feature: 'Contact Info & FAQs',
+            description:
+                'Access clickable contact information and browse frequently asked questions.',
+            svgPath: 'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z', // Question Mark Circle
+            bgColor: 'bg-lime-50',
+            iconColor: 'text-lime-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+           _bentoIconItem(
+            feature: 'View Member Number',
+            description:
+                'Members can quickly view their member number without needing to log in.',
+            svgPath: 'M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178zM15 12a3 3 0 11-6 0 3 3 0 016 0z', // Eye icon
             bgColor: 'bg-sky-50',
             iconColor: 'text-sky-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
 
-          // Benefits Calculator
-          bentoFeatureItem(
-            feature: 'Benefits Calculator',
-            description:
-                'Together with our partner, Inbest©, we offer a benefits calculator to help your members calculate benefits they may be eligible for.',
-            image:
-                'M7.75 3.5C5.127 3.5 3 5.76 3 8.547 3 14.125 12 20.5 12 20.5s9-6.375 9-11.953C21 5.094 18.873 3.5 16.25 3.5c-1.86 0-3.47 1.136-4.25 2.79-.78-1.654-2.39-2.79-4.25-2.79',
-            isSmall: true,
-            bgColor: 'bg-pink-50',
-            iconColor: 'text-pink-600',
+        // Row 6: Additional Features (Icons)
+        div([
+           _bentoIconItem(
+            feature: 'Update Passwords',
+            description: 'Easily update all PINs and passwords for enhanced security.',
+            svgPath: 'M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v-2.25l1.09-1.09a1.5 1.5 0 01.43-1.563A6 6 0 0115.75 3m-1.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z', // Key icon
+            bgColor: 'bg-jacarta-100',
+            iconColor: 'text-jacarta-700',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-
-          // Savings Goals
-          bentoFeatureItem(
+          _bentoIconItem(
             feature: 'Savings Goals',
             description:
-                'Members can set savings goals and track their progress towards achieving them.',
-            image:
+                'Set and track savings goals to encourage members to grow their savings.',
+            svgPath:
                 'M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941',
-            isSmall: true,
             bgColor: 'bg-emerald-50',
             iconColor: 'text-emerald-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-        ], classes: 'grid grid-cols-1 md:grid-cols-3 gap-6 mt-6'),
+          _bentoIconItem(
+            feature: 'Join Online',
+            description:
+                'Allow anyone to join the credit union directly from the app, expanding your member base.',
+            svgPath: 'M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z', // User plus
+            bgColor: 'bg-pink-50',
+            iconColor: 'text-pink-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
+
+        // Row 7: More Features (Icons)
+         div([
+          _bentoIconItem(
+            feature: 'Personalisation',
+            description:
+                'The mobile app is personalised for each member, offering a tailored experience.',
+            svgPath: 'M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z', // User circle
+            bgColor: 'bg-gulf-blue-100', // Theme color
+            iconColor: 'text-gulf-blue-700',
+            colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+           _bentoIconItem(
+            feature: 'Savings Calculator',
+            description:
+                'Members can calculate monthly payments needed to reach their savings goals.',
+            svgPath: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', // Calculator icon (simple version)
+            bgColor: 'bg-yellow-50',
+            iconColor: 'text-yellow-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+          _bentoIconItem(
+            feature: 'Refer a Friend',
+            description:
+                'Grow your membership base by allowing existing members to easily refer their friends.',
+            svgPath: 'M18 18.725A7.488 7.488 0 0012.5 15.75a7.488 7.488 0 00-5.5 2.975M15.5 9.75a3 3 0 11-6 0 3 3 0 016 0zM21 12a9 9 0 11-18 0 9 9 0 0118 0zM8.25 15.75a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM16.5 15.75a3.375 3.375 0 110-6.75M16.5 15.75V9', // Users icon
+            bgColor: 'bg-indigo-50',
+            iconColor: 'text-indigo-600',
+            colSpan: 'md:col-span-1 lg:col-span-1',
+          ),
+        ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
+
+
       ], classes: 'mt-12'),
     ], classes: 'container mx-auto px-4 sm:px-6 lg:px-8');
   }
 
-  Component bentoFeatureItem({
+  // Helper for bento items with a prominent image
+  Component _bentoImageItem({
     required String feature,
     required String description,
-    required String image,
-    bool isLarge = false,
-    bool isSmall = false,
-    bool isFullWidth = false,
-    String bgColor = 'bg-blue-50',
-    String iconColor = 'text-blue-600',
+    required String imageUrl,
+    String bgColor = 'bg-curious-blue-50',
+    String colSpan = 'md:col-span-1',
   }) {
-    // Determine the appropriate classes based on the size
-    String containerClasses =
-        'group relative overflow-hidden rounded-xl p-6 transition-all duration-300 hover:shadow-lg';
-    containerClasses +=
-        ' $bgColor hover:bg-white hover:ring-1 hover:ring-gray-200';
-
-    if (isLarge) {
-      containerClasses += ' md:p-8';
-    } else if (isSmall) {
-      containerClasses += ' p-5';
-    } else if (isFullWidth) {
-      containerClasses += ' md:p-8';
-    }
-
     return div([
-      div([
-        // Icon container
-        div([
-          span(
-            [
-              svg(
-                [
-                  path(
-                    strokeWidth: '1.5',
-                    d: image,
-                    [],
-                    styles: Styles(
-                      raw: {
-                        'stroke-linecap': "round",
-                        'stroke-linejoin': "round",
-                      },
-                    ),
-                  ),
-                ],
-                viewBox: '0 0 24 24',
-                classes: 'size-6 $iconColor',
-                styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
-              ),
-            ],
-            classes:
-                'flex items-center justify-center rounded-full size-12 $bgColor/50 $iconColor',
-          ),
-        ], classes: 'mb-5'),
-
-        // Content
+      div([ // Inner div for content & structure
+        div(
+          [
+            img(
+              src: imageUrl,
+              alt: feature,
+              // Adjusted image classes for better fit and containment
+              classes:
+                  'w-full h-40 md:h-48 object-contain object-center rounded-lg mb-4 transition-all duration-300 group-hover:scale-105',
+            ),
+          ],
+          // Added padding and bg to image container, ensure it's a block or flex container
+          classes: 'overflow-hidden rounded-lg mb-4 flex justify-center items-center p-2 $bgColor',
+        ),
         h3(
           [text(feature)],
           classes:
-              'text-lg font-semibold text-gray-900 group-hover:text-blue-600',
+              'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text size
         ),
         p([
           text(description),
-        ], classes: 'mt-2 text-sm text-gray-500 group-hover:text-gray-600'),
-
-        // Hover effect arrow (visible on hover)
-        div(
+        ], classes: 'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow'), // flex-grow to push arrow down
+         div( // Hover arrow
           [
             svg(
               [
@@ -421,14 +328,105 @@ class AppFeaturesGrid extends StatelessComponent {
                 ),
               ],
               viewBox: '0 0 24 24',
-              classes: 'size-5',
+              classes: 'size-5 text-curious-blue-600',
               styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
             ),
           ],
           classes:
-              'absolute bottom-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 $iconColor',
+              'self-end mt-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100', // Aligned to bottom right
         ),
-      ], classes: containerClasses),
-    ]);
+      ], classes: 'h-full flex flex-col justify-start p-6'), // Padding moved to this inner div
+    ],
+    // Base container styling
+    classes:
+        'group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg $bgColor hover:bg-white hover:ring-1 hover:ring-gray-200 $colSpan flex flex-col'
+    );
+  }
+
+
+  // Helper for bento items with an icon
+  Component _bentoIconItem({
+    required String feature,
+    required String description,
+    required String svgPath,
+    String bgColor = 'bg-jacarta-50',
+    String iconColor = 'text-jacarta-600',
+    String colSpan = 'md:col-span-1',
+  }) {
+    String containerClasses =
+        'group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg';
+    containerClasses +=
+        ' $bgColor hover:bg-white hover:ring-1 hover:ring-gray-200 $colSpan flex flex-col';
+
+    // Generate a lighter background for the icon circle from the iconColor
+    // e.g., if iconColor is 'text-purple-600', bgIconCircle will be 'bg-purple-100'
+    String bgIconCircle = iconColor.replaceFirst('text-', 'bg-') + '-100';
+    // Fallback if "-100" is not a defined shade, use a generic light gray or the main bgColor
+    // This part would ideally check against tailwind.config.js or have a predefined mapping.
+    // For simplicity, we'll assume -100 exists or use a fallback.
+    // A more robust solution would involve a map or utility to get appropriate shades.
+    // Example: if iconColor is text-curious-blue-700, bgIconCircle becomes bg-curious-blue-100
+
+    return div([
+      div([ // Inner div for content and padding
+        div([ // Icon container
+          span(
+            [
+              svg(
+                [
+                  path(
+                    strokeWidth: '1.5',
+                    d: svgPath,
+                    [],
+                    styles: Styles(
+                      raw: {
+                        'stroke-linecap': "round",
+                        'stroke-linejoin': "round",
+                      },
+                    ),
+                  ),
+                ],
+                viewBox: '0 0 24 24',
+                classes: 'size-7 md:size-8 $iconColor', // Responsive icon size
+                styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
+              ),
+            ],
+            classes: 'flex items-center justify-center rounded-full size-12 md:size-16 $bgIconCircle $iconColor', // Responsive icon bg size
+          ),
+        ], classes: 'mb-4 md:mb-5 flex justify-start items-center'), // Responsive margin
+
+        h3(
+          [text(feature)],
+          classes: 'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text
+        ),
+        p([
+          text(description),
+        ], classes: 'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow'), // flex-grow
+
+        div( // Hover arrow
+          [
+            svg(
+              [
+                path(
+                  d: 'M7 17L17 7M17 7H7M17 7V17',
+                  strokeWidth: '2',
+                  [],
+                  styles: Styles(
+                    raw: {
+                      'stroke-linecap': "round",
+                      'stroke-linejoin': "round",
+                    },
+                  ),
+                ),
+              ],
+              viewBox: '0 0 24 24',
+              classes: 'size-5 $iconColor',
+              styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
+            ),
+          ],
+          classes: 'self-end mt-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100', // Aligned to bottom right
+        ),
+      ], classes: 'h-full flex flex-col justify-start p-6'), // Padding for content
+    ], classes: containerClasses);
   }
 }
