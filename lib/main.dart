@@ -28,7 +28,12 @@ void main() {
           rel: 'stylesheet',
           type: 'text/css',
         ),
-        script(src: 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4', []),
+        link(
+          href: 'https://cdn.jsdelivr.net/npm/daisyui@5/themes.css',
+          rel: 'stylesheet',
+          type: 'text/css',
+        ),
+        script(src: 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'),
       ],
       body: App(),
     ),
