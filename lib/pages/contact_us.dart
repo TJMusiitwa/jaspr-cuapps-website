@@ -3,174 +3,276 @@ import 'package:jaspr/jaspr.dart';
 class ContactUs extends StatelessComponent {
   const ContactUs({super.key});
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section(classes: 'relative', [
-      div(classes: 'max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto', [
-        div(classes: 'max-w-2xl lg:max-w-5xl mx-auto', [
-          div(classes: 'text-center', [
-            h1(classes: 'text-3xl font-bold text-content sm:text-4xl', [
-              text('Need a Quote? Have a General Question? Get in Touch!'),
-            ]),
-            p(classes: 'mt-1 text-gray-600 dark:text-neutral-400', [
+  Component build(BuildContext context) {
+    return div([
+      div([
+        // Responsive flex container
+        div([
+          // Left: Contact Info
+          div([
+            h1([
+              text('Get in touch'),
+            ], classes: 'text-4xl font-bold mb-4 text-base-content'),
+            p([
               text(
-                'We’re here to help your credit union provide an amazing experience to your members by exclusively focusing on member facing technology – credit union mobile banking apps and chatbots for credit unions.',
+                "We're here to help you find the best solutions for your credit union or building society. Whether you're interested in a demo, consultation, or have general inquiries, please reach out to us.",
               ),
-            ]),
-          ]),
-          div(classes: 'mt-12 grid items-center lg:grid-cols-2 gap-6 lg:gap-16', [
-            div(classes: 'flex flex-col p-4 sm:p-6 lg:p-8', [
-              form(
-                method: FormMethod.post,
-                autoComplete: AutoComplete.on,
-                name: 'contact-form',
-                [
-                  div(classes: 'grid gap-4', [
-                    div(classes: 'grid grid-cols-1 sm:grid-cols-2 gap-4', [
-                      input(
-                        type: InputType.text,
-                        name: 'name',
-                        classes: 'input  w-full',
-                        attributes: {'placeholder': 'Name', 'required': 'true'},
+            ], classes: 'mb-8 text-base-content'),
+            h2([
+              text('Contact Information'),
+            ], classes: 'text-2xl font-bold mb-4 text-base-content'),
+            ul([
+              li([
+                span([
+                  // SVG Clock Icon
+                  svg(
+                    [
+                      path(
                         [],
+                        attributes: {
+                          'd': 'M12 6v6l4 2',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                          'stroke-linecap': 'round',
+                          'stroke-linejoin': 'round',
+                        },
                       ),
+                      circle(
+                        [],
+                        attributes: {
+                          'cx': '12',
+                          'cy': '12',
+                          'r': '10',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                        },
+                      ),
+                    ],
+                    classes: 'w-5 h-5 text-info mr-2',
+                    attributes: {'viewBox': '0 0 24 24'},
+                  ),
+                  b([text('Demo Requests')]),
+                  br(),
+                  span([
+                    text(
+                      'Schedule a live demonstration of our mobile apps and AI chatbots.',
+                    ),
+                  ], classes: 'text-base-content'),
+                ]),
+              ], classes: 'mb-4 flex items-start'),
+              li([
+                span([
+                  // SVG Headset Icon
+                  svg(
+                    [
+                      path(
+                        [],
+                        attributes: {
+                          'd': 'M4 15v-3a8 8 0 0116 0v3',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                          'stroke-linecap': 'round',
+                          'stroke-linejoin': 'round',
+                        },
+                      ),
+                      path(
+                        [],
+                        attributes: {
+                          'd':
+                              'M18 19a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                          'stroke-linecap': 'round',
+                          'stroke-linejoin': 'round',
+                        },
+                      ),
+                    ],
+                    classes: 'w-5 h-5 text-info mr-2',
+                    attributes: {'viewBox': '0 0 24 24'},
+                  ),
+                  b([text('Consultations')]),
+                  br(),
+                  span([
+                    text(
+                      'Book a consultation to discuss your specific needs and how we can help.',
+                    ),
+                  ], classes: 'text-base-content'),
+                ]),
+              ], classes: 'mb-4 flex items-start'),
+              li([
+                span([
+                  // SVG Envelope Icon
+                  svg(
+                    [
+                      rect(
+                        [],
+                        attributes: {
+                          'x': '3',
+                          'y': '5',
+                          'width': '18',
+                          'height': '14',
+                          'rx': '2',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                        },
+                      ),
+                      polyline(
+                        [],
+                        attributes: {
+                          'points': '3 7 12 13 21 7',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                          'stroke-linecap': 'round',
+                          'stroke-linejoin': 'round',
+                        },
+                      ),
+                    ],
+                    classes: 'w-5 h-5 text-info mr-2',
+                    attributes: {'viewBox': '0 0 24 24'},
+                  ),
+                  b([text('Email')]),
+                  br(),
+                  a(href: 'mailto:hello@cuapps.co.uk', [
+                    text('hello@cuapps.co.uk'),
+                  ], classes: 'text-base-content'),
+                ]),
+              ], classes: 'mb-4 flex items-start'),
+              li([
+                span([
+                  // SVG Phone Icon
+                  svg(
+                    [
+                      path(
+                        [],
+                        attributes: {
+                          'd':
+                              'M22 16.92V19a2 2 0 01-2.18 2A19.72 19.72 0 013 5.18 2 2 0 015 3h2.09a2 2 0 012 1.72c.13 1.13.37 2.23.72 3.28a2 2 0 01-.45 2.11l-.27.27a16 16 0 006.29 6.29l.27-.27a2 2 0 012.11-.45c1.05.35 2.15.59 3.28.72A2 2 0 0122 16.92z',
+                          'stroke': 'currentColor',
+                          'stroke-width': '2',
+                          'fill': 'none',
+                          'stroke-linecap': 'round',
+                          'stroke-linejoin': 'round',
+                        },
+                      ),
+                    ],
+                    classes: 'w-5 h-5 text-info mr-2',
+                    attributes: {'viewBox': '0 0 24 24'},
+                  ),
+                  b([text('Phone')]),
+                  br(),
+                  a(href: 'tel:+441413432450', [
+                    text('🇬🇧 +44 141 343 2450'),
+                  ], classes: 'text-base-content'),
+                  br(),
+                  a(href: 'tel:+353749707869', [
+                    text('🇮🇪 +353 749 707 869'),
+                  ], classes: 'text-base-content'),
+                  br(),
+                  a(href: 'tel:+13133061560', [
+                    text('🇺🇸 +1 313 306 1560'),
+                  ], classes: 'text-base-content'),
+                ]),
+              ], classes: 'flex items-start'),
+            ], classes: 'list-none p-0'),
+          ], classes: 'w-full lg:w-1/2 p-6'),
+          // Right: Form
+          div([
+            div([
+              form(autoComplete: AutoComplete.on, [
+                div([
+                  div([
+                    label([
+                      span([text('Full Name')], classes: 'label-text'),
                       input(
+                        classes:
+                            'input input-bordered w-full bg-blue-50 validator',
+                        type: InputType.text,
+                        name: 'fullName',
+                        attributes: {
+                          'required': 'true',
+                          'placeholder': 'Enter your full name',
+                        },
+                      ),
+                    ], classes: 'form-control w-full'),
+                  ], classes: 'w-full md:w-1/2 pr-2'),
+                  div([
+                    label([
+                      span([text('Email')], classes: 'label-text'),
+                      input(
+                        classes:
+                            'input input-bordered w-full bg-blue-50 validator',
                         type: InputType.email,
                         name: 'email',
-                        classes: 'input  w-full',
                         attributes: {
-                          'placeholder': 'Email',
                           'required': 'true',
+                          'placeholder': 'Enter your email address',
                         },
-                        [],
                       ),
-                    ]),
+                    ], classes: 'form-control w-full'),
+                  ], classes: 'w-full md:w-1/2 pl-2'),
+                ], classes: 'flex flex-col md:flex-row gap-4 mb-4'),
+
+                div([
+                  label([
+                    span([
+                      text('Company Name (optional)'),
+                    ], classes: 'label-text'),
                     input(
-                      classes: 'input  w-full',
+                      classes: 'input input-bordered w-full bg-blue-50',
                       type: InputType.text,
-                      attributes: {'placeholder': 'Company'},
-                      [],
+                      name: 'company',
+                      attributes: {'placeholder': 'Enter your company name'},
                     ),
+                  ], classes: 'form-control w-full'),
+                ], classes: 'mb-4'),
+                div([
+                  label([
+                    span([text('Inquiry Type')], classes: 'label-text'),
+                    select(
+                      [
+                        option([text('Select inquiry type')], value: ''),
+                        option([text('Demo Request')], value: 'demo'),
+                        option([text('Consultation')], value: 'consultation'),
+                        option([text('General Inquiry')], value: 'general'),
+                      ],
+                      name: 'inquiryType',
+                      classes: 'select select-bordered w-full bg-blue-50',
+                    ),
+                  ], classes: 'form-control w-full'),
+                ], classes: 'mb-4'),
+                div([
+                  label([
+                    span([text('Message')], classes: 'label-text'),
                     textarea(
-                      classes: 'textarea textarea-bordered textarea-lg',
-                      placeholder: 'Message',
+                      [],
+                      name: 'message',
+                      rows: 4,
+                      spellCheck: SpellCheck.isDefault,
+                      placeholder: 'Enter your message',
+                      wrap: TextWrap.soft,
                       required: true,
-                      [],
+                      classes: 'textarea textarea-bordered w-full bg-blue-50',
                     ),
-                    div(classes: 'mt-4 grid', [
-                      button(
-                        classes: 'btn btn-wide text-white',
-                        styles: Styles(backgroundColor: Color.hex('#463aa2')),
-                        type: ButtonType.submit,
-                        [text('Send Message')],
-                      ),
-                    ]),
-                  ]),
-                ],
-              ),
-            ]),
-            div(classes: 'divide-y divide-neutral-content', [
-              div([
-                svg(
-                  [
-                    path(
-                      strokeWidth: '1.5',
-                      d: 'M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z',
-                      [],
-                      styles: Styles(
-                        raw: {
-                          'stroke-linecap': "round",
-                          'stroke-linejoin': "round",
-                        },
-                      ),
-                    ),
-                  ],
-                  viewBox: '0 0 24 24',
-                  classes: 'w-6 h-6',
-                  styles: Styles(
-                    raw: {'fill': 'none', 'stroke': 'currentColor'},
-                  ),
-                ),
+                  ], classes: 'form-control w-full'),
+                ], classes: 'mb-4'),
                 div([
-                  h3([
-                    text('Our Address'),
-                  ], classes: 'font-semibold text-neutral'),
-                  a(
-                    classes: 'mt-1 text-sm text-base-content',
-                    [
-                      text('70 West Regent Street'),
-                      br(),
-                      text('Glasgow'),
-                      br(),
-                      text('G2 2QZ'),
-                    ],
-                    href: 'https://www.g.page/cu-apps',
+                  button(
+                    [text('Submit')],
+                    classes: 'btn btn-primary w-full',
+                    attributes: {'type': 'submit'},
                   ),
-                ], classes: 'grow'),
-              ], classes: 'flex gap-x-7 py-6'),
-              div([
-                svg(
-                  [
-                    path(
-                      strokeWidth: '1.5',
-                      d: 'M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z',
-                      [],
-                      styles: Styles(
-                        raw: {
-                          'stroke-linecap': "round",
-                          'stroke-linejoin': "round",
-                        },
-                      ),
-                    ),
-                  ],
-                  viewBox: '0 0 24 24',
-                  classes: 'w-6 h-6',
-                  styles: Styles(
-                    raw: {'fill': 'none', 'stroke': 'currentColor'},
-                  ),
-                ),
-                div([
-                  h3([text('Call Us')], classes: 'font-semibold text-neutral'),
-                  a(
-                    classes: 'mt-1 text-sm text-base-content',
-                    [text('0141 266 0189')],
-                    href: 'tel:0141 266 0189',
-                  ),
-                ], classes: 'grow'),
-              ], classes: 'flex gap-x-7 py-6'),
-              div([
-                svg(
-                  [
-                    path(
-                      strokeWidth: '1.5',
-                      d: 'M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75',
-                      [],
-                      styles: Styles(
-                        raw: {
-                          'stroke-linecap': "round",
-                          'stroke-linejoin': "round",
-                        },
-                      ),
-                    ),
-                  ],
-                  viewBox: '0 0 24 24',
-                  classes: 'w-6 h-6',
-                  styles: Styles(
-                    raw: {'fill': 'none', 'stroke': 'currentColor'},
-                  ),
-                ),
-                div([
-                  h3([text('Email Us')], classes: 'font-semibold text-neutral'),
-                  a(
-                    classes: 'mt-1 text-sm text-base-content',
-                    [text('hello@cuapps.co.uk')],
-                    href: 'mailto:hello@cuapps.co.uk',
-                  ),
-                ], classes: 'grow'),
-              ], classes: 'flex gap-x-7 py-6'),
-            ]),
-          ]),
-        ]),
-      ]),
-    ], id: 'contact_us');
+                ]),
+              ], classes: ''),
+            ], classes: 'bg-white rounded-xl shadow-lg p-8'),
+          ], classes: 'w-full lg:w-1/2 flex justify-center items-center p-6'),
+        ], classes: 'flex flex-col lg:flex-row w-full max-w-6xl mx-auto'),
+      ], classes: 'py-12 px-2 md:px-8'),
+    ]);
   }
 }
