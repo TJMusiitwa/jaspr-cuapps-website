@@ -4,8 +4,8 @@ class Header extends StatelessComponent {
   const Header({super.key});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield header([
+  Component build(BuildContext context) {
+    return header([
       nav([
         div(classes: 'navbar bg-base-100 text-base-content', [
           div(classes: 'navbar-start', [
