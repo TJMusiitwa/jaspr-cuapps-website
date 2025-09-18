@@ -2,8 +2,8 @@ import 'package:jaspr/jaspr.dart';
 
 class AppFeatures extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section([
+  Component build(BuildContext context) {
+    return section([
       AppFeaturesHeader(),
       AppFeaturesGrid(),
       blockquote([
@@ -38,8 +38,8 @@ class AppFeatures extends StatelessComponent {
 
 class AppFeaturesHeader extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div([
+  Component build(BuildContext context) {
+    return div([
       h2(
         [text('Credit Union Mobile App Features')],
         classes:
@@ -56,8 +56,8 @@ class AppFeaturesHeader extends StatelessComponent {
 
 class AppFeaturesGrid extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div([
+  Component build(BuildContext context) {
+    return div([
       // Bento grid container
       div([
         // Row 1: Bespoke Design (Image), Biometric Login (Image), Push Notifications (Image)
@@ -101,7 +101,8 @@ class AppFeaturesGrid extends StatelessComponent {
             imageUrl:
                 'https://cuapps.co.uk/wp-content/uploads/2024/07/Apps-1000-x-1500-px.png',
             bgColor: 'bg-green-50',
-            colSpan: 'md:col-span-1 lg:col-span-2', // Spans wider on larger screens
+            colSpan:
+                'md:col-span-1 lg:col-span-2', // Spans wider on larger screens
           ),
           _bentoImageItem(
             feature: 'News Feed & Blog Posts',
@@ -140,7 +141,8 @@ class AppFeaturesGrid extends StatelessComponent {
             feature: 'Loan Eligibility',
             description:
                 'Let members know how much they’re eligible for without a credit check.',
-            svgPath: 'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z', // Check circle
+            svgPath:
+                'M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z', // Check circle
             bgColor: 'bg-rose-50',
             iconColor: 'text-rose-600',
             colSpan: 'md:col-span-1 lg:col-span-1',
@@ -149,7 +151,7 @@ class AppFeaturesGrid extends StatelessComponent {
 
         // Row 4: Account Management (Icons)
         div([
-           _bentoIconItem(
+          _bentoIconItem(
             feature: 'Balance & Statements',
             description:
                 'View balances for all accounts and detailed, searchable statements.',
@@ -169,7 +171,7 @@ class AppFeaturesGrid extends StatelessComponent {
             iconColor: 'text-curious-blue-700',
             colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-           _bentoIconItem(
+          _bentoIconItem(
             feature: 'Update Member Info',
             description:
                 'Update personal details like address, phone, email, and manage PINs/passwords.',
@@ -191,22 +193,24 @@ class AppFeaturesGrid extends StatelessComponent {
                 'M2.25 12.7614C2.25 7.19241 2.25 4.40794 4.01302 2.7391C5.77605 1.07026 8.69019 1.07026 14.5185 1.07026L15.75 1.07026C20.4019 1.07026 21.7279 1.07026 22.4727 1.81506C23.2175 2.55987 23.2175 3.88594 23.2175 6.53808V12.7614C23.2175 17.4132 23.2175 18.7392 22.4727 19.484C21.7279 20.2288 20.4019 20.2288 15.75 20.2288H14.5185C8.69019 20.2288 5.77605 20.2288 4.01302 19.484C2.25 17.8152 2.25 15.0307 2.25 9.46173V8.23839', // Chat bubble
             bgColor: 'bg-cyan-50',
             iconColor: 'text-cyan-600',
-             colSpan: 'md:col-span-1 lg:col-span-1',
+            colSpan: 'md:col-span-1 lg:col-span-1',
           ),
           _bentoIconItem(
             feature: 'Contact Info & FAQs',
             description:
                 'Access clickable contact information and browse frequently asked questions.',
-            svgPath: 'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z', // Question Mark Circle
+            svgPath:
+                'M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z', // Question Mark Circle
             bgColor: 'bg-lime-50',
             iconColor: 'text-lime-600',
             colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-           _bentoIconItem(
+          _bentoIconItem(
             feature: 'View Member Number',
             description:
                 'Members can quickly view their member number without needing to log in.',
-            svgPath: 'M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178zM15 12a3 3 0 11-6 0 3 3 0 016 0z', // Eye icon
+            svgPath:
+                'M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178zM15 12a3 3 0 11-6 0 3 3 0 016 0z', // Eye icon
             bgColor: 'bg-sky-50',
             iconColor: 'text-sky-600',
             colSpan: 'md:col-span-1 lg:col-span-1',
@@ -215,10 +219,12 @@ class AppFeaturesGrid extends StatelessComponent {
 
         // Row 6: Additional Features (Icons)
         div([
-           _bentoIconItem(
+          _bentoIconItem(
             feature: 'Update Passwords',
-            description: 'Easily update all PINs and passwords for enhanced security.',
-            svgPath: 'M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v-2.25l1.09-1.09a1.5 1.5 0 01.43-1.563A6 6 0 0115.75 3m-1.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z', // Key icon
+            description:
+                'Easily update all PINs and passwords for enhanced security.',
+            svgPath:
+                'M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v-2.25l1.09-1.09a1.5 1.5 0 01.43-1.563A6 6 0 0115.75 3m-1.5 6a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z', // Key icon
             bgColor: 'bg-jacarta-100',
             iconColor: 'text-jacarta-700',
             colSpan: 'md:col-span-1 lg:col-span-1',
@@ -237,7 +243,8 @@ class AppFeaturesGrid extends StatelessComponent {
             feature: 'Join Online',
             description:
                 'Allow anyone to join the credit union directly from the app, expanding your member base.',
-            svgPath: 'M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z', // User plus
+            svgPath:
+                'M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z', // User plus
             bgColor: 'bg-pink-50',
             iconColor: 'text-pink-600',
             colSpan: 'md:col-span-1 lg:col-span-1',
@@ -245,21 +252,23 @@ class AppFeaturesGrid extends StatelessComponent {
         ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
 
         // Row 7: More Features (Icons)
-         div([
+        div([
           _bentoIconItem(
             feature: 'Personalisation',
             description:
                 'The mobile app is personalised for each member, offering a tailored experience.',
-            svgPath: 'M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z', // User circle
+            svgPath:
+                'M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z', // User circle
             bgColor: 'bg-gulf-blue-100', // Theme color
             iconColor: 'text-gulf-blue-700',
             colSpan: 'md:col-span-1 lg:col-span-1',
           ),
-           _bentoIconItem(
+          _bentoIconItem(
             feature: 'Savings Calculator',
             description:
                 'Members can calculate monthly payments needed to reach their savings goals.',
-            svgPath: 'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', // Calculator icon (simple version)
+            svgPath:
+                'M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z', // Calculator icon (simple version)
             bgColor: 'bg-yellow-50',
             iconColor: 'text-yellow-600',
             colSpan: 'md:col-span-1 lg:col-span-1',
@@ -268,14 +277,13 @@ class AppFeaturesGrid extends StatelessComponent {
             feature: 'Refer a Friend',
             description:
                 'Grow your membership base by allowing existing members to easily refer their friends.',
-            svgPath: 'M18 18.725A7.488 7.488 0 0012.5 15.75a7.488 7.488 0 00-5.5 2.975M15.5 9.75a3 3 0 11-6 0 3 3 0 016 0zM21 12a9 9 0 11-18 0 9 9 0 0118 0zM8.25 15.75a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM16.5 15.75a3.375 3.375 0 110-6.75M16.5 15.75V9', // Users icon
+            svgPath:
+                'M18 18.725A7.488 7.488 0 0012.5 15.75a7.488 7.488 0 00-5.5 2.975M15.5 9.75a3 3 0 11-6 0 3 3 0 016 0zM21 12a9 9 0 11-18 0 9 9 0 0118 0zM8.25 15.75a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM16.5 15.75a3.375 3.375 0 110-6.75M16.5 15.75V9', // Users icon
             bgColor: 'bg-indigo-50',
             iconColor: 'text-indigo-600',
             colSpan: 'md:col-span-1 lg:col-span-1',
           ),
         ], classes: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6'),
-
-
       ], classes: 'mt-12'),
     ], classes: 'container mx-auto px-4 sm:px-6 lg:px-8');
   }
@@ -288,61 +296,71 @@ class AppFeaturesGrid extends StatelessComponent {
     String bgColor = 'bg-curious-blue-50',
     String colSpan = 'md:col-span-1',
   }) {
-    return div([
-      div([ // Inner div for content & structure
+    return div(
+      [
         div(
           [
-            img(
-              src: imageUrl,
-              alt: feature,
-              // Adjusted image classes for better fit and containment
-              classes:
-                  'w-full h-40 md:h-48 object-contain object-center rounded-lg mb-4 transition-all duration-300 group-hover:scale-105',
-            ),
-          ],
-          // Added padding and bg to image container, ensure it's a block or flex container
-          classes: 'overflow-hidden rounded-lg mb-4 flex justify-center items-center p-2 $bgColor',
-        ),
-        h3(
-          [text(feature)],
-          classes:
-              'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text size
-        ),
-        p([
-          text(description),
-        ], classes: 'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow'), // flex-grow to push arrow down
-         div( // Hover arrow
-          [
-            svg(
+            // Inner div for content & structure
+            div(
               [
-                path(
-                  d: 'M7 17L17 7M17 7H7M17 7V17',
-                  strokeWidth: '2',
-                  [],
+                img(
+                  src: imageUrl,
+                  alt: feature,
+                  // Adjusted image classes for better fit and containment
+                  classes:
+                      'w-full h-40 md:h-48 object-contain object-center rounded-lg mb-4 transition-all duration-300 group-hover:scale-105',
+                ),
+              ],
+              // Added padding and bg to image container, ensure it's a block or flex container
+              classes:
+                  'overflow-hidden rounded-lg mb-4 flex justify-center items-center p-2 $bgColor',
+            ),
+            h3(
+              [text(feature)],
+              classes:
+                  'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text size
+            ),
+            p(
+              [text(description)],
+              classes:
+                  'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow',
+            ), // flex-grow to push arrow down
+            div(
+              // Hover arrow
+              [
+                svg(
+                  [
+                    path(
+                      d: 'M7 17L17 7M17 7H7M17 7V17',
+                      strokeWidth: '2',
+                      [],
+                      styles: Styles(
+                        raw: {
+                          'stroke-linecap': "round",
+                          'stroke-linejoin': "round",
+                        },
+                      ),
+                    ),
+                  ],
+                  viewBox: '0 0 24 24',
+                  classes: 'size-5 text-curious-blue-600',
                   styles: Styles(
-                    raw: {
-                      'stroke-linecap': "round",
-                      'stroke-linejoin': "round",
-                    },
+                    raw: {'fill': 'none', 'stroke': 'currentColor'},
                   ),
                 ),
               ],
-              viewBox: '0 0 24 24',
-              classes: 'size-5 text-curious-blue-600',
-              styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
+              classes:
+                  'self-end mt-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100', // Aligned to bottom right
             ),
           ],
-          classes:
-              'self-end mt-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100', // Aligned to bottom right
-        ),
-      ], classes: 'h-full flex flex-col justify-start p-6'), // Padding moved to this inner div
-    ],
-    // Base container styling
-    classes:
-        'group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg $bgColor hover:bg-white hover:ring-1 hover:ring-gray-200 $colSpan flex flex-col'
+          classes: 'h-full flex flex-col justify-start p-6',
+        ), // Padding moved to this inner div
+      ],
+      // Base container styling
+      classes:
+          'group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg $bgColor hover:bg-white hover:ring-1 hover:ring-gray-200 $colSpan flex flex-col',
     );
   }
-
 
   // Helper for bento items with an icon
   Component _bentoIconItem({
@@ -360,7 +378,7 @@ class AppFeaturesGrid extends StatelessComponent {
 
     // Generate a lighter background for the icon circle from the iconColor
     // e.g., if iconColor is 'text-purple-600', bgIconCircle will be 'bg-purple-100'
-    String bgIconCircle = iconColor.replaceFirst('text-', 'bg-') + '-100';
+    String bgIconCircle = '${iconColor.replaceFirst('text-', 'bg-')}-100';
     // Fallback if "-100" is not a defined shade, use a generic light gray or the main bgColor
     // This part would ideally check against tailwind.config.js or have a predefined mapping.
     // For simplicity, we'll assume -100 exists or use a fallback.
@@ -368,42 +386,55 @@ class AppFeaturesGrid extends StatelessComponent {
     // Example: if iconColor is text-curious-blue-700, bgIconCircle becomes bg-curious-blue-100
 
     return div([
-      div([ // Inner div for content and padding
-        div([ // Icon container
-          span(
-            [
-              svg(
-                [
-                  path(
-                    strokeWidth: '1.5',
-                    d: svgPath,
-                    [],
-                    styles: Styles(
-                      raw: {
-                        'stroke-linecap': "round",
-                        'stroke-linejoin': "round",
-                      },
+      div([
+        // Inner div for content and padding
+        div(
+          [
+            // Icon container
+            span(
+              [
+                svg(
+                  [
+                    path(
+                      strokeWidth: '1.5',
+                      d: svgPath,
+                      [],
+                      styles: Styles(
+                        raw: {
+                          'stroke-linecap': "round",
+                          'stroke-linejoin': "round",
+                        },
+                      ),
                     ),
+                  ],
+                  viewBox: '0 0 24 24',
+                  classes:
+                      'size-7 md:size-8 $iconColor', // Responsive icon size
+                  styles: Styles(
+                    raw: {'fill': 'none', 'stroke': 'currentColor'},
                   ),
-                ],
-                viewBox: '0 0 24 24',
-                classes: 'size-7 md:size-8 $iconColor', // Responsive icon size
-                styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
-              ),
-            ],
-            classes: 'flex items-center justify-center rounded-full size-12 md:size-16 $bgIconCircle $iconColor', // Responsive icon bg size
-          ),
-        ], classes: 'mb-4 md:mb-5 flex justify-start items-center'), // Responsive margin
+                ),
+              ],
+              classes:
+                  'flex items-center justify-center rounded-full size-12 md:size-16 $bgIconCircle $iconColor', // Responsive icon bg size
+            ),
+          ],
+          classes: 'mb-4 md:mb-5 flex justify-start items-center',
+        ), // Responsive margin
 
         h3(
           [text(feature)],
-          classes: 'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text
+          classes:
+              'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text
         ),
-        p([
-          text(description),
-        ], classes: 'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow'), // flex-grow
+        p(
+          [text(description)],
+          classes:
+              'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow',
+        ), // flex-grow
 
-        div( // Hover arrow
+        div(
+          // Hover arrow
           [
             svg(
               [
@@ -424,7 +455,8 @@ class AppFeaturesGrid extends StatelessComponent {
               styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
             ),
           ],
-          classes: 'self-end mt-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100', // Aligned to bottom right
+          classes:
+              'self-end mt-auto opacity-0 transition-opacity duration-300 group-hover:opacity-100', // Aligned to bottom right
         ),
       ], classes: 'h-full flex flex-col justify-start p-6'), // Padding for content
     ], classes: containerClasses);

@@ -4,15 +4,15 @@ class Home extends StatelessComponent {
   const Home({super.key});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section([HeaderSection(), LogoSection(), TestimonialsSection()]);
+  Component build(BuildContext context) {
+    return section([HeaderSection(), LogoSection(), TestimonialsSection()]);
   }
 }
 
 class HeaderSection extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
+  Component build(BuildContext context) {
+    return div(
       [
         div([
           div(classes: 'text-center mt-5 py-10 sm:py-16', [
@@ -30,7 +30,7 @@ class HeaderSection extends StatelessComponent {
         ], classes: 'hero-content text-center'),
       ],
       styles: Styles(
-        backgroundColor: Color.named('white'),
+        backgroundColor: Color('white'),
         backgroundImage: ImageStyle.url(
           'https://preline.co/assets/svg/examples/polygon-bg-element.svg',
         ),
@@ -45,37 +45,39 @@ class HeaderSection extends StatelessComponent {
 
 class ConsultationButton extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield button(
-      [text('Get A Free Consultation')],
-      classes: 'mt-10 btn bg-[#0069ff] btn-wide text-base-100',
-      attributes: {'onclick': 'consultation_modal.showModal()'},
-    );
-    yield dialog(classes: 'modal', id: 'consultation_modal', [
-      div(classes: 'modal-box w-1/2', [
-        iframe(
-          [],
-          width: 440,
-          height: 500,
-          loading: MediaLoading.eager,
-          src: 'https://calendly.com/cuapps/cu-apps-meeting',
+  Component build(BuildContext context) {
+    return fragment([
+      button(
+        [text('Get A Free Consultation')],
+        classes: 'mt-10 btn bg-[#0069ff] btn-wide text-base-100',
+        attributes: {'onclick': 'consultation_modal.showModal()'},
+      ),
+      dialog(classes: 'modal', id: 'consultation_modal', [
+        div(classes: 'modal-box w-1/2', [
+          iframe(
+            [],
+            width: 440,
+            height: 500,
+            loading: MediaLoading.eager,
+            src: 'https://calendly.com/cuapps/cu-apps-meeting',
+          ),
+        ]),
+        form(
+          [
+            button([text('X')]),
+          ],
+          classes: 'modal-backdrop',
+          method: FormMethod.dialog,
         ),
       ]),
-      form(
-        [
-          button([text('X')]),
-        ],
-        classes: 'modal-backdrop',
-        method: FormMethod.dialog,
-      ),
     ]);
   }
 }
 
 class LogoSection extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div([
+  Component build(BuildContext context) {
+    return div([
       div([
         h2(
           [text('Trusted by leading credit unions in the UK')],
@@ -132,8 +134,8 @@ class LogoSection extends StatelessComponent {
 
 class TestimonialsSection extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section([
+  Component build(BuildContext context) {
+    return section([
       div([
         div(classes: 'mx-auto max-w-screen-sm text-center mb-16', [
           h2(

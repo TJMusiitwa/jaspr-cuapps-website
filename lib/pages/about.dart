@@ -6,15 +6,15 @@ class About extends StatelessComponent {
   const About({super.key});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div([AboutHero(), OurMission(), CompanyStats(), TeamSection()]);
+  Component build(BuildContext context) {
+    return div([AboutHero(), OurMission(), CompanyStats(), TeamSection()]);
   }
 }
 
 class AboutHero extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
+  Component build(BuildContext context) {
+    return div(
       classes:
           'bg-gradient-to-r from-[#021431] via-[#0069ff] to-[#cee4ff] py-24',
       [
@@ -39,8 +39,8 @@ class AboutHero extends StatelessComponent {
 
 class OurMission extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'py-24 sm:py-32 bg-white', [
+  Component build(BuildContext context) {
+    return div(classes: 'py-24 sm:py-32 bg-white', [
       div(classes: 'mx-auto max-w-7xl px-6 lg:px-8', [
         div(classes: 'mx-auto max-w-2xl lg:mx-0', [
           h2(
@@ -84,8 +84,8 @@ class OurMission extends StatelessComponent {
 
 class CompanyStats extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'bg-gray-50 py-24 sm:py-32', [
+  Component build(BuildContext context) {
+    return div(classes: 'bg-gray-50 py-24 sm:py-32', [
       div(classes: 'mx-auto max-w-7xl px-6 lg:px-8', [
         div(classes: 'mx-auto max-w-2xl lg:mx-0', [
           h2(
@@ -99,7 +99,7 @@ class CompanyStats extends StatelessComponent {
             ),
           ]),
         ]),
-        DomComponent(
+        Component.element(
           tag: 'dl',
           classes:
               'mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4',
@@ -182,22 +182,22 @@ class _StatisticState extends State<Statistic> {
   }
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
+  Component build(BuildContext context) {
     final RegExp regex = RegExp(r'(\d+)(\D*)');
     final Match? match = regex.firstMatch(component.value);
     final String suffix = match?.group(2) ?? '';
 
-    yield div(classes: 'flex flex-col-reverse', [
-      DomComponent(
+    return div(classes: 'flex flex-col-reverse', [
+      Component.element(
         tag: 'dt',
         classes: 'text-base leading-7 text-gray-600',
-        child: text(component.label),
+        children: [text(component.label)],
       ),
-      DomComponent(
+      Component.element(
         tag: 'dd',
         classes:
             'text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl',
-        child: text('${_currentValue.round()}$suffix'),
+        children: [text('${_currentValue.round()}$suffix')],
       ),
     ]);
   }
@@ -205,8 +205,8 @@ class _StatisticState extends State<Statistic> {
 
 class TeamSection extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'bg-white py-24 sm:py-32', [
+  Component build(BuildContext context) {
+    return div(classes: 'bg-white py-24 sm:py-32', [
       div(classes: 'mx-auto max-w-7xl px-6 lg:px-8', [
         div(classes: 'mx-auto max-w-2xl lg:mx-0', [
           h2(
@@ -291,8 +291,8 @@ class TeamCard extends StatelessComponent {
   });
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield li(classes: 'group', [
+  Component build(BuildContext context) {
+    return li(classes: 'group', [
       div([
         img(
           classes: 'aspect-[3/4] w-full rounded-2xl object-cover',
@@ -308,7 +308,7 @@ class TeamCard extends StatelessComponent {
             svg(
               [
                 path(
-                  stroke: Color.named('currentColor'),
+                  stroke: Color('currentColor'),
                   strokeWidth: '1.5',
                   d: 'M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75',
                   [],
@@ -334,7 +334,7 @@ class TeamCard extends StatelessComponent {
               svg(
                 [
                   path(
-                    stroke: Color.named('currentColor'),
+                    stroke: Color('currentColor'),
                     strokeWidth: '1.5',
                     d: 'M8 16.375V10.75m4 5.625V13.5m0 0v-2.75m0 2.75c0-1.288 1.222-2 2.4-2 1.6 0 1.6 1.375 1.6 2.875v2m-8-8.75v.5',
                     [],
@@ -346,7 +346,7 @@ class TeamCard extends StatelessComponent {
                     ),
                   ),
                   path(
-                    stroke: Color.named('currentColor'),
+                    stroke: Color('currentColor'),
                     strokeWidth: '1.5',
                     d: 'M3 9.4c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748C6.04 3 7.16 3 9.4 3h5.2c2.24 0 3.36 0 4.216.436a4 4 0 0 1 1.748 1.748C21 6.04 21 7.16 21 9.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C17.96 21 16.84 21 14.6 21H9.4c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C3 17.96 3 16.84 3 14.6z',
                     [],
