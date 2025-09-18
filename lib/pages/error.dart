@@ -2,46 +2,80 @@ import 'package:jaspr/jaspr.dart';
 
 class Error404 extends StatelessComponent {
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(
-        id: '404_page',
-        classes:
-            'grid min-h-full grid-cols-1 grid-rows-[1fr,auto,1fr] bg-white lg:grid-cols-[max(50%,36rem),1fr]',
-        [
-          main_(
-              classes:
-                  'w-full px-6 py-24 mx-auto max-w-7xl sm:py-32 lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:px-24',
-              [
-                div(classes: 'max-w-lg', [
-                  p(
-                      classes:
-                          'text-base font-semibold leading-8 text-gray-400',
-                      [text('404 😢')]),
-                  h1(
-                      classes:
-                          'mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl',
-                      [text('Page not found.')]),
-                  p(classes: 'mt-6 text-base leading-7 text-gray-600', [
-                    text('Sorry, we couldn’t find the page you’re looking for.')
-                  ]),
-                  div(classes: 'mt-6', [
-                    a(
-                        classes:
-                            'text-base font-medium text-indigo-600 hover:text-indigo-500',
-                        [text('Go back to the home page')],
-                        href: '/')
-                  ])
-                ])
+  Component build(BuildContext context) {
+    return div(
+      id: '404_page',
+      // Make two columns from md upwards (content + image). Hide image on < md.
+      classes:
+          'grid min-h-screen grid-cols-1 bg-white md:grid-cols-[max(50%,36rem),1fr]',
+      [
+        // Logo
+        div(classes: 'absolute top-4 left-4 z-10', [
+          a([
+            img(src: 'images/cu_logo.png', alt: 'CU Apps', classes: 'h-8'),
+          ], href: '/'),
+        ]),
+        // Main content (left column on md+)
+        main_(
+          classes:
+              'w-full px-6 py-24 mx-auto sm:py-32 md:col-start-1 md:row-start-1 md:flex md:h-full md:items-center md:px-16 lg:px-24',
+          [
+            div(classes: 'max-w-lg', [
+              p(classes: 'text-base font-semibold leading-8 text-primary', [
+                text('404'),
               ]),
-          div(
-              classes:
-                  'hidden lg:relative lg:col-start-2 lg:row-start-1 lg:row-end-4 lg:block',
-              [
-                img(
-                    src:
-                        'https://images.unsplash.com/photo-1470847355775-e0e3c35a9a2c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1825&q=80',
-                    classes: 'absolute inset-0 object-cover w-full h-full')
-              ])
-        ]);
+              h1(
+                classes:
+                    'mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl',
+                [text('Page not found')],
+              ),
+              p(classes: 'mt-6 text-base leading-7 text-gray-600', [
+                text('Sorry, we couldn’t find the page you’re looking for.'),
+              ]),
+              div(classes: 'mt-10', [
+                a(
+                  classes:
+                      'inline-flex items-center text-base font-medium text-accent hover:text-secondary-content',
+                  [
+                    svg(
+                      [
+                        path(
+                          [],
+                          attributes: {
+                            'd': 'M15 19l-7-7 7-7',
+                            'stroke': 'currentColor',
+                            'stroke-width': '2',
+                            'fill': 'none',
+                            'stroke-linecap': 'round',
+                            'stroke-linejoin': 'round',
+                          },
+                        ),
+                      ],
+                      width: Unit.pixels(16),
+                      height: Unit.pixels(16),
+                      viewBox: '0 0 24 24',
+                      classes: 'mr-2',
+                    ),
+                    text('Back to home'),
+                  ],
+                  href: '/',
+                ),
+              ]),
+            ]),
+          ],
+        ),
+        // Image (right column md+, hidden on small)
+        div(
+          classes: 'hidden md:relative md:block md:col-start-2 md:row-start-1',
+          [
+            img(
+              src: 'images/error_image.jpg',
+              alt: 'Error page image',
+              classes: 'absolute inset-0 w-full h-full object-cover',
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
