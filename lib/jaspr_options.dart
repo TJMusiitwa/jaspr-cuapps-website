@@ -23,6 +23,5 @@ import 'package:cuapps_website/app.dart' as prefix0;
 ///   runApp(...);
 /// }
 /// ```
-final defaultJasprOptions = JasprOptions(
-  clients: {prefix0.App: ClientTarget<prefix0.App>('app')},
-);
+JasprOptions get defaultJasprOptions =>
+    JasprOptions(clients: {prefix0.App: ClientTarget<prefix0.App>('app')});
