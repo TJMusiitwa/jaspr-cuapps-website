@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class About extends StatelessComponent {
@@ -23,10 +24,14 @@ class AboutHero extends StatelessComponent {
             h1(
               classes:
                   'text-4xl font-bold tracking-tight text-white sm:text-6xl',
-              [text('App Developers Specialised in Credit Union Banking Apps')],
+              [
+                Component.text(
+                  'App Developers Specialised in Credit Union Banking Apps',
+                ),
+              ],
             ),
             p(classes: 'mt-6 text-lg leading-8 text-white/80 max-w-3xl mx-auto', [
-              text(
+              Component.text(
                 'As the only UK company focusing exclusively on the digital experience of credit union members, we exist to help you provide the best member service possible.',
               ),
             ]),
@@ -46,10 +51,10 @@ class OurMission extends StatelessComponent {
           h2(
             classes:
                 'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
-            [text('Our mission')],
+            [Component.text('Our mission')],
           ),
           p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
-            text(
+            Component.text(
               'At CU Apps, we are dedicated to transforming the way credit unions connect with their members through innovative digital solutions.',
             ),
           ]),
@@ -60,19 +65,19 @@ class OurMission extends StatelessComponent {
                 'grid grid-cols-1 gap-8 text-base leading-7 text-gray-600 lg:grid-cols-2',
             [
               p([
-                text(
+                Component.text(
                   'At CU Apps, we specialize in creating best-in-class mobile banking experiences for credit unions. We design and build Android and iOS apps that are secure, user-friendly, and put your members in control of their finances. We also develop bespoke generative AI chatbots to further enhance your members\' experience by providing 24/7 support and personalized interactions.',
                 ),
               ]),
               p([
-                text(
+                Component.text(
                   'We differ from competitors in our focus on outstanding quality for members, customer service for credit unions and commitment to making technology affordable for credit unions. We help you meet and exceed you members\' expectations and turn tedious banking into easy-to-use and modern solutions without breaking the bank.',
                 ),
               ]),
             ],
           ),
           p(classes: 'mt-8 text-base leading-7 text-gray-600', [
-            text(
+            Component.text(
               'CU Apps is a dynamic company and we are passionate about what we do. Our culture of constant improvement ensures that innovation and perfection are always what we strive for. Our attention to detail, customer focus and expertise mean that CU Apps is the perfect choice for any credit union wanting to implement a mobile application or get a bespoke advanced AI chatbot.',
             ),
           ]),
@@ -91,10 +96,10 @@ class CompanyStats extends StatelessComponent {
           h2(
             classes:
                 'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
-            [text('Our impact')],
+            [Component.text('Our impact')],
           ),
           p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
-            text(
+            Component.text(
               'We are proud to have made a significant impact in the credit union sector, helping our clients enhance their member experience and streamline their operations. We are proud to have our numbers speak for themselves.',
             ),
           ]),
@@ -152,7 +157,7 @@ class _StatisticState extends State<Statistic> {
     }
 
     final double targetValue = double.parse(match.group(1)!);
-    final String suffix = match.group(2)!;
+
     const Duration animationDuration = Duration(seconds: 2);
     const int totalSteps = 60; // Aim for 60 FPS
 
@@ -191,13 +196,13 @@ class _StatisticState extends State<Statistic> {
       Component.element(
         tag: 'dt',
         classes: 'text-base leading-7 text-gray-600',
-        children: [text(component.label)],
+        children: [Component.text(component.label)],
       ),
       Component.element(
         tag: 'dd',
         classes:
             'text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl',
-        children: [text('${_currentValue.round()}$suffix')],
+        children: [Component.text('${_currentValue.round()}$suffix')],
       ),
     ]);
   }
@@ -212,10 +217,10 @@ class TeamSection extends StatelessComponent {
           h2(
             classes:
                 'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
-            [text('Meet the Team')],
+            [Component.text('Meet the Team')],
           ),
           p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
-            text(
+            Component.text(
               'From the strategic thinkers to the creative innovators, each person contributes to the vibrant culture and remarkable service we\'re known for.',
             ),
           ]),
@@ -300,9 +305,9 @@ class TeamCard extends StatelessComponent {
           alt: '$name - $role',
         ),
         h3(classes: 'mt-6 text-lg font-semibold leading-8 text-gray-900', [
-          text(name),
+          Component.text(name),
         ]),
-        p(classes: 'text-base leading-7 text-gray-600', [text(role)]),
+        p(classes: 'text-base leading-7 text-gray-600', [Component.text(role)]),
         div(classes: 'mt-4 flex gap-4', [
           a(classes: 'text-gray-400 hover:text-gray-500', href: 'mailto:$email', [
             svg(
@@ -324,7 +329,7 @@ class TeamCard extends StatelessComponent {
               classes: 'w-6 h-6',
               styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
             ),
-            span(classes: 'sr-only', [text('Email')]),
+            span(classes: 'sr-only', [Component.text('Email')]),
           ]),
           a(
             classes: 'text-gray-400 hover:text-gray-500',
@@ -362,7 +367,7 @@ class TeamCard extends StatelessComponent {
                 classes: 'w-6 h-6',
                 styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
               ),
-              span(classes: 'sr-only', [text('LinkedIn')]),
+              span(classes: 'sr-only', [Component.text('LinkedIn')]),
             ],
           ),
         ]),

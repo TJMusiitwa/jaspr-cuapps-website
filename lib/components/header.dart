@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Header extends StatelessComponent {
@@ -66,7 +67,7 @@ class Header extends StatelessComponent {
                       ul(classes: 'menu menu-horizontal px-1', [
                         li([
                           a(
-                            [text(route.label)],
+                            [Component.text(route.label)],
                             href: route.path,
                             target: Target.blank,
                             classes:
@@ -78,7 +79,7 @@ class Header extends StatelessComponent {
                       ul(classes: 'menu menu-horizontal px-1', [
                         li([
                           a(classes: 'btn btn-ghost', href: route.path, [
-                            text(route.label),
+                            Component.text(route.label),
                           ]),
                         ]),
                       ]),
@@ -97,7 +98,7 @@ class Header extends StatelessComponent {
                 ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
                   li([
                     a(
-                      [text(route.label)],
+                      [Component.text(route.label)],
                       href: route.path,
                       target: Target.blank,
                       classes:
@@ -109,7 +110,7 @@ class Header extends StatelessComponent {
                 ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
                   li([
                     a(classes: 'btn btn-ghost', href: route.path, [
-                      text(route.label),
+                      Component.text(route.label),
                     ]),
                   ]),
                 ]),

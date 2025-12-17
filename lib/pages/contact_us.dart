@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class ContactUs extends StatelessComponent {
@@ -11,15 +12,15 @@ class ContactUs extends StatelessComponent {
           // Left: Contact Info
           div([
             h1([
-              text('Get in touch'),
+              Component.text('Get in touch'),
             ], classes: 'text-4xl font-bold mb-4 text-base-content'),
             p([
-              text(
+              Component.text(
                 "We're here to help you find the best solutions for your credit union or building society. Whether you're interested in a demo, consultation, or have general inquiries, please reach out to us.",
               ),
             ], classes: 'mb-8 text-base-content'),
             h2([
-              text('Contact Information'),
+              Component.text('Contact Information'),
             ], classes: 'text-2xl font-bold mb-4 text-base-content'),
             ul([
               li([
@@ -53,10 +54,10 @@ class ContactUs extends StatelessComponent {
                     classes: 'w-5 h-5 text-info mr-2',
                     attributes: {'viewBox': '0 0 24 24'},
                   ),
-                  b([text('Demo Requests')]),
+                  b([Component.text('Demo Requests')]),
                   br(),
                   span([
-                    text(
+                    Component.text(
                       'Schedule a live demonstration of our mobile apps and AI chatbots.',
                     ),
                   ], classes: 'text-base-content'),
@@ -94,10 +95,10 @@ class ContactUs extends StatelessComponent {
                     classes: 'w-5 h-5 text-info mr-2',
                     attributes: {'viewBox': '0 0 24 24'},
                   ),
-                  b([text('Consultations')]),
+                  b([Component.text('Consultations')]),
                   br(),
                   span([
-                    text(
+                    Component.text(
                       'Book a consultation to discuss your specific needs and how we can help.',
                     ),
                   ], classes: 'text-base-content'),
@@ -136,10 +137,10 @@ class ContactUs extends StatelessComponent {
                     classes: 'w-5 h-5 text-info mr-2',
                     attributes: {'viewBox': '0 0 24 24'},
                   ),
-                  b([text('Email')]),
+                  b([Component.text('Email')]),
                   br(),
                   a(href: 'mailto:hello@cuapps.co.uk', [
-                    text('hello@cuapps.co.uk'),
+                    Component.text('hello@cuapps.co.uk'),
                   ], classes: 'text-base-content'),
                 ]),
               ], classes: 'mb-4 flex items-start'),
@@ -164,18 +165,18 @@ class ContactUs extends StatelessComponent {
                     classes: 'w-5 h-5 text-info mr-2',
                     attributes: {'viewBox': '0 0 24 24'},
                   ),
-                  b([text('Phone')]),
+                  b([Component.text('Phone')]),
                   br(),
                   a(href: 'tel:+441413432450', [
-                    text('🇬🇧 +44 141 343 2450'),
+                    Component.text('🇬🇧 +44 141 343 2450'),
                   ], classes: 'text-base-content'),
                   br(),
                   a(href: 'tel:+353749707869', [
-                    text('🇮🇪 +353 749 707 869'),
+                    Component.text('🇮🇪 +353 749 707 869'),
                   ], classes: 'text-base-content'),
                   br(),
                   a(href: 'tel:+13133061560', [
-                    text('🇺🇸 +1 313 306 1560'),
+                    Component.text('🇺🇸 +1 313 306 1560'),
                   ], classes: 'text-base-content'),
                 ]),
               ], classes: 'flex items-start'),
@@ -188,7 +189,9 @@ class ContactUs extends StatelessComponent {
                 div([
                   div([
                     label([
-                      span([text('Full Name')], classes: 'label-text'),
+                      span([
+                        Component.text('Full Name'),
+                      ], classes: 'label-text'),
                       input(
                         classes:
                             'input input-bordered w-full bg-blue-50 validator',
@@ -203,7 +206,7 @@ class ContactUs extends StatelessComponent {
                   ], classes: 'w-full md:w-1/2 pr-2'),
                   div([
                     label([
-                      span([text('Email')], classes: 'label-text'),
+                      span([Component.text('Email')], classes: 'label-text'),
                       input(
                         classes:
                             'input input-bordered w-full bg-blue-50 validator',
@@ -221,7 +224,7 @@ class ContactUs extends StatelessComponent {
                 div([
                   label([
                     span([
-                      text('Company Name (optional)'),
+                      Component.text('Company Name (optional)'),
                     ], classes: 'label-text'),
                     input(
                       classes: 'input input-bordered w-full bg-blue-50',
@@ -233,13 +236,21 @@ class ContactUs extends StatelessComponent {
                 ], classes: 'mb-4'),
                 div([
                   label([
-                    span([text('Inquiry Type')], classes: 'label-text'),
+                    span([
+                      Component.text('Inquiry Type'),
+                    ], classes: 'label-text'),
                     select(
                       [
-                        option([text('Select inquiry type')], value: ''),
-                        option([text('Demo Request')], value: 'demo'),
-                        option([text('Consultation')], value: 'consultation'),
-                        option([text('General Inquiry')], value: 'general'),
+                        option([
+                          Component.text('Select inquiry type'),
+                        ], value: ''),
+                        option([Component.text('Demo Request')], value: 'demo'),
+                        option([
+                          Component.text('Consultation'),
+                        ], value: 'consultation'),
+                        option([
+                          Component.text('General Inquiry'),
+                        ], value: 'general'),
                       ],
                       name: 'inquiryType',
                       classes: 'select select-bordered w-full bg-blue-50',
@@ -248,7 +259,7 @@ class ContactUs extends StatelessComponent {
                 ], classes: 'mb-4'),
                 div([
                   label([
-                    span([text('Message')], classes: 'label-text'),
+                    span([Component.text('Message')], classes: 'label-text'),
                     textarea(
                       [],
                       name: 'message',
@@ -263,7 +274,7 @@ class ContactUs extends StatelessComponent {
                 ], classes: 'mb-4'),
                 div([
                   button(
-                    [text('Submit')],
+                    [Component.text('Submit')],
                     classes: 'btn btn-primary w-full',
                     attributes: {'type': 'submit'},
                   ),

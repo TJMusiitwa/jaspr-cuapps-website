@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Home extends StatelessComponent {
@@ -20,7 +21,7 @@ class HeaderSection extends StatelessComponent {
               classes:
                   'text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl',
               [
-                text(
+                Component.text(
                   '🚀 Revolutionising mutuals through premium, affordable and bespoke 📱 mobile applications & AI Chat applications 🤖',
                 ),
               ],
@@ -46,9 +47,9 @@ class HeaderSection extends StatelessComponent {
 class ConsultationButton extends StatelessComponent {
   @override
   Component build(BuildContext context) {
-    return fragment([
+    return Component.fragment([
       button(
-        [text('Get A Free Consultation')],
+        [Component.text('Get A Free Consultation')],
         classes: 'mt-10 btn bg-[#0069ff] btn-wide text-base-100',
         attributes: {'onclick': 'consultation_modal.showModal()'},
       ),
@@ -64,7 +65,7 @@ class ConsultationButton extends StatelessComponent {
         ]),
         form(
           [
-            button([text('X')]),
+            button([Component.text('X')]),
           ],
           classes: 'modal-backdrop',
           method: FormMethod.dialog,
@@ -80,12 +81,12 @@ class LogoSection extends StatelessComponent {
     return div([
       div([
         h2(
-          [text('Trusted by leading credit unions in the UK')],
+          [Component.text('Trusted by leading credit unions in the UK')],
           classes:
               'text-center block antialiased tracking-normal font-sans font-semibold text-blue-gray-900 my-4 !text-2xl !leading-snug lg:!text-3xl',
         ),
         p([
-          text(
+          Component.text(
             'We are proud to have worked with some of the leading credit unions in the UK, helping them to revolutionise their digital presence and provide a better service to their members.',
           ),
         ], classes: 'text-center mt-10 text-base font-medium text-gray-500'),
@@ -111,7 +112,7 @@ class LogoSection extends StatelessComponent {
               'mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5',
         ),
         p([
-          text('and many more'),
+          Component.text('and many more'),
         ], classes: 'text-center mt-10 text-base font-medium text-gray-500'),
       ], classes: 'mx-auto max-w-7xl px-6 lg:px-8'),
     ], classes: 'bg-white mt-5 py-10 sm:py-16');
@@ -141,12 +142,12 @@ class TestimonialsSection extends StatelessComponent {
           h2(
             classes:
                 'mb-4 text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl',
-            [text('We have worked with')],
+            [Component.text('We have worked with')],
           ),
           h2(
             classes:
                 'mb-8 text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl',
-            [text('thousands of amazing people')],
+            [Component.text('thousands of amazing people')],
           ),
         ]),
 
@@ -240,14 +241,14 @@ class TestimonialsSection extends StatelessComponent {
         [
           div(classes: 'card-body', [
             p([
-              em([text('"$testimonial"')]),
+              em([Component.text('"$testimonial"')]),
             ], classes: 'text-base text-gray-700 md:text-lg'),
 
             div([
               div([
                 div([
-                  h3([text(name)], classes: 'card-title'),
-                  p([text(role)], classes: 'text-sm text-gray-600'),
+                  h3([Component.text(name)], classes: 'card-title'),
+                  p([Component.text(role)], classes: 'text-sm text-gray-600'),
                 ], classes: 'flex flex-col gap-1'),
               ], classes: 'flex items-center space-x-3'),
 

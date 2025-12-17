@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class FreeDemo extends StatelessComponent {
@@ -10,7 +11,7 @@ class FreeDemo extends StatelessComponent {
             div([
               h1(
                 [
-                  text(
+                  Component.text(
                     'Get a free bespoke Mobile App or AI Chatbot demo for your mutual',
                   ),
                 ],
@@ -18,7 +19,7 @@ class FreeDemo extends StatelessComponent {
                     'mb-4 font-semibold text-base-content text-4xl lg:text-5xl',
               ),
               p([
-                text(
+                Component.text(
                   'We work with you to understand your mutual’s unique needs and goals to create a custom mobile app or AI chatbot that meets your requirements and exceeds your members’ expectations.',
                 ),
               ], classes: 'text-base-content'),

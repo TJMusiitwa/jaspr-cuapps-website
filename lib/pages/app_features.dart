@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class AppFeatures extends StatelessComponent {
@@ -7,7 +8,7 @@ class AppFeatures extends StatelessComponent {
       AppFeaturesHeader(),
       AppFeaturesGrid(),
       blockquote([
-        text(
+        Component.text(
           'Our app is not a one-size-fits-all solution. We work with you to understand your credit union’s unique needs and goals to create a custom mobile app that meets your requirements and exceeds your members’ expectations.',
         ),
       ], classes: 'text-center mt-16 text-lg font-medium text-gray-500'),
@@ -15,12 +16,12 @@ class AppFeatures extends StatelessComponent {
         div([
           div(
             [
-              text('Ready For a Free Evaluation and Demo '),
+              Component.text('Ready For a Free Evaluation and Demo '),
               a(
                 [
                   span([], classes: 'absolute inset-2'),
-                  text('Contact us'),
-                  span([raw('&rarr;')]),
+                  Component.text('Contact us'),
+                  span([RawText('&rarr;')]),
                 ],
                 classes: 'font-semibold text-blue-600 text-balance',
                 target: Target.blank,
@@ -41,12 +42,12 @@ class AppFeaturesHeader extends StatelessComponent {
   Component build(BuildContext context) {
     return div([
       h2(
-        [text('Credit Union Mobile App Features')],
+        [Component.text('Credit Union Mobile App Features')],
         classes:
             'block antialiased font-sans leading-relaxed text-blue-gray-900 mb-4 !text-2xl font-bold lg:!text-4xl',
       ),
       p([
-        text(
+        Component.text(
           'Our premium mobile apps for credit unions come packed with features to allow your credit union to grow and save costs. We help you meet and exceed members expectations by exclusively focusing on mobiles apps that complement your existing systems and processes while always keeping up with the latest innovations in mobile technology.',
         ),
       ], classes: 'text-center mt-10 text-base font-medium text-gray-500'),
@@ -316,12 +317,12 @@ class AppFeaturesGrid extends StatelessComponent {
                   'overflow-hidden rounded-lg mb-4 flex justify-center items-center p-2 $bgColor',
             ),
             h3(
-              [text(feature)],
+              [Component.text(feature)],
               classes:
                   'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text size
             ),
             p(
-              [text(description)],
+              [Component.text(description)],
               classes:
                   'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow',
             ), // flex-grow to push arrow down
@@ -423,12 +424,12 @@ class AppFeaturesGrid extends StatelessComponent {
         ), // Responsive margin
 
         h3(
-          [text(feature)],
+          [Component.text(feature)],
           classes:
               'text-lg md:text-xl font-semibold text-gray-900 group-hover:text-curious-blue-600', // Responsive text
         ),
         p(
-          [text(description)],
+          [Component.text(description)],
           classes:
               'mt-2 text-sm text-gray-600 group-hover:text-gray-700 flex-grow',
         ), // flex-grow

@@ -1,10 +1,11 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Footer extends StatelessComponent {
   const Footer({super.key});
   @override
   Component build(BuildContext context) {
-    return fragment([
+    return Component.fragment([
       footer(
         [
           aside([
@@ -21,24 +22,26 @@ class Footer extends StatelessComponent {
             ),
           ], classes: 'grid-flow-col items-center'),
           nav([
-            h6([text('Product Sheets')], classes: 'footer-title'),
+            h6([Component.text('Product Sheets')], classes: 'footer-title'),
             a(
-              [text('Mobile App')],
+              [Component.text('Mobile App')],
               href: 'https://cuapps.co.uk/cu-apps-product-booklet/',
               target: Target.blank,
               classes: 'link link-hover',
             ),
             a(
-              [text('Chatbot')],
+              [Component.text('Chatbot')],
               href: 'https://cuapps.co.uk/cu-chat-product-sheet/',
               target: Target.blank,
               classes: 'link link-hover',
             ),
           ]),
           nav([
-            h6([text('Interested in a demo?')], classes: 'footer-title'),
+            h6([
+              Component.text('Interested in a demo?'),
+            ], classes: 'footer-title'),
             a(
-              [text('Book a demo')],
+              [Component.text('Book a demo')],
               href: '/free-demo',
               classes: 'link link-hover',
             ),
@@ -183,7 +186,7 @@ class Footer extends StatelessComponent {
       footer(
         [
           p([
-            text(
+            Component.text(
               'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.',
             ),
           ]),

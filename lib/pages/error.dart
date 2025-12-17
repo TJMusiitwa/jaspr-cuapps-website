@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Error404 extends StatelessComponent {
@@ -22,15 +23,17 @@ class Error404 extends StatelessComponent {
           [
             div(classes: 'max-w-lg', [
               p(classes: 'text-base font-semibold leading-8 text-primary', [
-                text('404'),
+                Component.text('404'),
               ]),
               h1(
                 classes:
                     'mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl',
-                [text('Page not found')],
+                [Component.text('Page not found')],
               ),
               p(classes: 'mt-6 text-base leading-7 text-gray-600', [
-                text('Sorry, we couldn’t find the page you’re looking for.'),
+                Component.text(
+                  'Sorry, we couldn’t find the page you’re looking for.',
+                ),
               ]),
               div(classes: 'mt-10', [
                 a(
@@ -56,7 +59,7 @@ class Error404 extends StatelessComponent {
                       viewBox: '0 0 24 24',
                       classes: 'mr-2',
                     ),
-                    text('Back to home'),
+                    Component.text('Back to home'),
                   ],
                   href: '/',
                 ),

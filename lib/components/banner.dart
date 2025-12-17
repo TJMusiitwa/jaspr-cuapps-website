@@ -1,3 +1,4 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Banner extends StatelessComponent {
@@ -30,17 +31,17 @@ class Banner extends StatelessComponent {
               ),
 
               a(
-                [text('🇬🇧 0141 266 0189')],
+                [Component.text('🇬🇧 0141 266 0189')],
                 href: 'tel:0141 266 0189',
                 classes: 'text-sm',
               ),
               a(
-                [text('🇮🇪 074 970 7869')],
+                [Component.text('🇮🇪 074 970 7869')],
                 href: 'tel:0749707869',
                 classes: 'text-sm',
               ),
               a(
-                [text('🇺🇸 031 330 61560')],
+                [Component.text('🇺🇸 031 330 61560')],
                 href: 'tel:03133061560',
                 classes: 'text-sm',
               ),
@@ -75,7 +76,7 @@ class Banner extends StatelessComponent {
                 },
                 classes: 'shrink-0 size-3.5',
               ),
-              text('hello@cuapps.co.uk'),
+              Component.text('hello@cuapps.co.uk'),
             ],
             href: 'mailto:hello@cuapps.co.uk',
             classes:

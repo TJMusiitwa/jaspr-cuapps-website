@@ -1,4 +1,5 @@
 import 'package:cuapps_website/pages/app_features.dart';
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
@@ -22,7 +23,7 @@ class App extends StatelessComponent {
           routes: [
             ShellRoute(
               builder: (context, state, child) =>
-                  fragment([Banner(), Header(), child, Footer()]),
+                  Component.fragment([Banner(), Header(), child, Footer()]),
               routes: [
                 Route(
                   path: '/',
