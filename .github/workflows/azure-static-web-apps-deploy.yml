@@ -18,23 +18,16 @@ jobs:
       - name: Install Tailwind CSS CLI
         run: curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 && chmod +x tailwindcss-linux-x64 && sudo mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
       - name: Verify Tailwind CSS CLI
-        run: tailwindcss -h   
+        run: tailwindcss -h
+      - name: Install globe_cli
+        run: dart pub global activate globe_cli 
+      - name: Authenticate to Globe
+        run: globe login --token ${{ secrets.GLOBE_DEPLOY_TOKEN }}      
       - name: Install jaspr_cli
         run: dart pub global activate jaspr_cli    
       - name: Install dependencies
         run: flutter pub get
       - name: Build Website
         run: jaspr build
-      - name: Copy `staticwebapp.config.json` to `build/jaspr/`
-        run: cp staticwebapp.config.json build/jaspr/  
-      - name: Azure Deploy
-        id: builddeploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.REPO_TOKEN }}
-          action: "upload"
-          app_location: "build/jaspr/"
-          output_location: ""
-          skip_app_build: true
-          skip_api_build: true
+      - name: Globe Deploy
+        run: globe deploy --project="jaspr-cuapps-website"

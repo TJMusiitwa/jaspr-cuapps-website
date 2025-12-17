@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://globe.dev/globe.schema.json
+
+entrypoint: lib/main.dart
+
+build:
+  preset:
+    type: jaspr
+    version: 0.22.0
+  build_runner:
+    automatic_detection: false
+  melos:
+    automatic_detection: false
