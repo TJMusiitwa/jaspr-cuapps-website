@@ -148,6 +148,16 @@ class _StatisticState extends State<Statistic> {
     final RegExp regex = RegExp(r'(\d+)(\D*)');
     final Match? match = regex.firstMatch(component.value);
 
+    // If on server, set final value immediately and return
+    if (!kIsWeb) {
+      if (match == null) {
+        _currentValue = double.tryParse(component.value) ?? 0;
+      } else {
+        _currentValue = double.parse(match.group(1)!);
+      }
+      return;
+    }
+
     if (match == null) {
       // If the value doesn't match the expected format, display it directly
       setState(() {
