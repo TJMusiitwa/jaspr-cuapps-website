@@ -8,39 +8,127 @@ class OurMission extends StatelessComponent {
   Component build(BuildContext context) {
     return div(classes: 'py-24 sm:py-32 bg-white', [
       div(classes: 'mx-auto max-w-7xl px-6 lg:px-8', [
-        div(classes: 'mx-auto max-w-2xl lg:mx-0', [
+        div(classes: 'mx-auto max-w-2xl text-center mb-16 sm:mb-20', [
           h2(
             classes:
                 'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
-            [Component.text('Our mission')],
+            [Component.text('Purpose Driven Innovation')],
           ),
           p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
             Component.text(
-              'At CU Apps, we are dedicated to transforming the way credit unions connect with their members through innovative digital solutions.',
+              'Our mission and values guide every decision we make, ensuring we deliver meaningful impact for credit unions and their members across the UK.',
             ),
           ]),
         ]),
-        div(classes: 'mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none', [
-          div(
-            classes:
-                'grid grid-cols-1 gap-8 text-base leading-7 text-gray-600 lg:grid-cols-2',
-            [
-              p([
+        // Section 1: Our Mission (Image Left, Text Right)
+        div(classes: 'bg-base-200 rounded-2xl overflow-hidden mb-16', [
+          div(classes: 'grid grid-cols-1 lg:grid-cols-2 items-center', [
+            // Image
+            div(classes: 'h-full', [
+              img(
+                classes: 'h-full w-full object-cover',
+                src: 'images/about/mission.webp',
+                alt: 'CU Apps team collaboration',
+              ),
+            ]),
+            // Text
+            div(classes: 'p-8 lg:p-12', [
+              p(
+                classes:
+                    'text-sm font-semibold uppercase tracking-wide text-gray-500',
+                [Component.text('OUR MISSION')],
+              ),
+              h2(
+                classes:
+                    'mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl',
+                [Component.text('Empowering Your Members')],
+              ),
+              p(classes: 'mt-6 text-base leading-7 text-gray-600', [
                 Component.text(
-                  'At CU Apps, we specialize in creating best-in-class mobile banking experiences for credit unions. We design and build Android and iOS apps that are secure, user-friendly, and put your members in control of their finances. We also develop bespoke generative AI chatbots to further enhance your members\' experience by providing 24/7 support and personalized interactions.',
+                  'To drive credit unions to meet and exceed member expectations while competing with large financial institutions. We design and build secure, user-friendly Android and iOS apps that put your members in control of their finances.',
                 ),
               ]),
-              p([
-                Component.text(
-                  'We differ from competitors in our focus on outstanding quality for members, customer service for credit unions and commitment to making technology affordable for credit unions. We help you meet and exceed you members\' expectations and turn tedious banking into easy-to-use and modern solutions without breaking the bank.',
+              div(classes: 'mt-8', [
+                a(
+                  href: '/app-features',
+                  classes:
+                      'text-sm font-semibold leading-6 text-blue-600 hover:text-blue-500',
+                  [
+                    Component.text('READ MORE'),
+                    span(
+                      classes: 'ml-1',
+                      attributes: {'aria-hidden': 'true'},
+                      [Component.text('→')],
+                    ),
+                  ],
                 ),
               ]),
-            ],
-          ),
-          p(classes: 'mt-8 text-base leading-7 text-gray-600', [
-            Component.text(
-              'CU Apps is a dynamic company and we are passionate about what we do. Our culture of constant improvement ensures that innovation and perfection are always what we strive for. Our attention to detail, customer focus and expertise mean that CU Apps is the perfect choice for any credit union wanting to implement a mobile application or get a bespoke advanced AI chatbot.',
-            ),
+            ]),
+          ]),
+        ]),
+
+        // Section 2: Our Values (Text Left, Image Right)
+        div(classes: 'bg-base-200 rounded-2xl overflow-hidden', [
+          div(classes: 'grid grid-cols-1 lg:grid-cols-2 items-center', [
+            // Text
+            div(classes: 'p-8 lg:p-12 order-2 lg:order-1', [
+              p(
+                classes:
+                    'text-sm font-semibold uppercase tracking-wide text-gray-500',
+                [Component.text('OUR VALUES')],
+              ),
+              h2(
+                classes:
+                    'mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl',
+                [Component.text('Guiding Principles')],
+              ),
+              p(classes: 'mt-6 text-base leading-7 text-gray-600', [
+                Component.text(
+                  'Our values serve as the guiding principles that underpin everything we do at CU Apps:',
+                ),
+              ]),
+              ul(classes: 'mt-6 space-y-4 text-base leading-7 text-gray-600', [
+                li([
+                  span(classes: 'font-semibold text-gray-900', [
+                    Component.text('Stay Ahead of the Curve: '),
+                  ]),
+                  Component.text(
+                    'With a history of innovation in the credit union space, CU Apps is a clear choice for any forward-thinking credit union.',
+                  ),
+                ]),
+                li([
+                  span(classes: 'font-semibold text-gray-900', [
+                    Component.text('Your Users are Our Users: '),
+                  ]),
+                  Component.text(
+                    'We treat your members as if they are our customers. We ensure our technology meets and exceeds expectations.',
+                  ),
+                ]),
+              ]),
+              div(classes: 'mt-8', [
+                a(
+                  href: '/about',
+                  classes:
+                      'text-sm font-semibold leading-6 text-blue-600 hover:text-blue-500',
+                  [
+                    Component.text('READ MORE'),
+                    span(
+                      classes: 'ml-1',
+                      attributes: {'aria-hidden': 'true'},
+                      [Component.text('→')],
+                    ),
+                  ],
+                ),
+              ]),
+            ]),
+            // Image
+            div(classes: 'h-full order-1 lg:order-2', [
+              img(
+                classes: 'h-full w-full object-cover',
+                src: 'images/about/values.webp',
+                alt: 'CU Apps team working together',
+              ),
+            ]),
           ]),
         ]),
       ]),
