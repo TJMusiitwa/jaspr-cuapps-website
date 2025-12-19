@@ -21,7 +21,7 @@ void main() {
       //   'og:title': 'CU Apps',
       //   'og:description':
       //       'CU Apps offer Premium and Affordable Bespoke Mobile Apps for Financial Mutuals',
-      //   'og:image': 'https://cuapps.co.uk/assets/images/cuapps-logo.png',
+      //   'og:image': 'https://cuapps.co.uk/assets/images/cuapps-logo.webp',
       // },
       head: [
         link(

@@ -13,7 +13,7 @@ class Error404 extends StatelessComponent {
         // Logo
         div(classes: 'absolute top-4 left-4 z-10', [
           a([
-            img(src: 'images/cu_logo.png', alt: 'CU Apps', classes: 'h-8'),
+            img(src: 'images/cu_logo.webp', alt: 'CU Apps', classes: 'h-8'),
           ], href: '/'),
         ]),
         // Main content (left column on md+)
@@ -72,7 +72,7 @@ class Error404 extends StatelessComponent {
           classes: 'hidden md:relative md:block md:col-start-2 md:row-start-1',
           [
             img(
-              src: 'images/error_image.jpg',
+              src: 'images/error_image.webp',
               alt: 'Error page image',
               classes: 'absolute inset-0 w-full h-full object-cover',
             ),

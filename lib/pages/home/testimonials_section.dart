@@ -122,13 +122,13 @@ class TestimonialsSection extends StatelessComponent {
 
               if (company != null)
                 div([
-                  img(
-                    src: 'images/clients/$company.png',
-                    alt: company,
-                    width: 100,
-                    height: 40,
-                    classes: 'h-10 object-contain',
-                  ),
+                      img(
+                        classes: 'h-12 w-full object-contain',
+                        src: 'images/clients/$company.webp',
+                        alt: company,
+                        width: 200,
+                        height: 100,
+                      )
                 ], classes: 'mt-4'),
             ], classes: 'flex justify-between items-end'),
           ]),

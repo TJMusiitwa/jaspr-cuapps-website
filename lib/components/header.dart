@@ -16,7 +16,7 @@ class Header extends StatelessComponent {
               a(
                 [
                   img(
-                    src: 'images/cu_logo.png',
+                    src: 'images/cu_logo.webp',
                     alt: 'CU Apps',
                     classes: 'h-8 w-auto',
                   ),

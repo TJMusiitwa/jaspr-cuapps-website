@@ -105,7 +105,7 @@ class HeaderSection extends StatelessComponent {
                         [
                           div(classes: 'mockup-phone-display overflow-hidden', [
                             img(
-                              src: 'images/app_hero.png',
+                              src: 'images/app_hero.webp',
                               alt: 'Mobile Banking Application',
                               classes: 'w-full h-full object-cover',
                             ),
@@ -126,7 +126,7 @@ class HeaderSection extends StatelessComponent {
                         [
                           div(classes: 'mockup-phone-display overflow-hidden', [
                             img(
-                              src: 'images/chatbot_hero.png',
+                              src: 'images/chatbot_hero.webp',
                               alt: 'AI Chatbot Application',
                               classes: 'w-full h-full object-cover',
                             ),
