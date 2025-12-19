@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://globe.dev/globe.schema.json
 
-entrypoint: lib/main.server.dart
+entrypoint: lib/main.client.dart
 
 build:
   preset:
