@@ -1,4 +1,4 @@
-name: Azure Jaspr WebSite Deploy
+name: Globe Jaspr WebSite Deploy
 on:
   workflow_dispatch:
   
