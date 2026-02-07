@@ -185,15 +185,21 @@ class Footer extends StatelessComponent {
       ),
       footer(
         [
-          p([
-            Component.text(
-              'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.',
-            ),
+          aside(classes: 'flex flex-col items-center gap-2', [
+            p([
+              Component.text(
+                'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.',
+              ),
+            ]),
+            p([
+              a([
+                Component.text('Developed by Jonathan Musiitwa'),
+              ], href: 'mailto:jonamusiitwa@outlook.com'),
+            ]),
           ]),
         ],
         styles: Styles(backgroundColor: Color('#021431')),
-        classes:
-            'footer footer-vertical footer-center bg-neutral text-neutral-content p-4',
+        classes: 'footer footer-center bg-neutral text-neutral-content p-4',
       ),
     ]);
   }
