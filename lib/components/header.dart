@@ -64,7 +64,8 @@ class Header extends StatelessComponent {
                       (label: 'About Us', path: '/about'),
                       (label: 'Free Demo', path: '/free-demo'),
                       (label: 'Contact Us', path: '/contact-us'),
-                      (label: 'CU Chat', path: 'https://cuapps.co.uk/cuchat/'),
+                      (label: 'Contact Us', path: '/contact-us'),
+                      (label: 'CU Chat', path: '/cu-chat'),
                     ])
                       if (route.label == 'CU Chat')
                         ul(classes: 'menu menu-horizontal px-1', [
@@ -72,9 +73,8 @@ class Header extends StatelessComponent {
                             a(
                               [Component.text(route.label)],
                               href: route.path,
-                              target: Target.blank,
                               classes:
-                                  'p-2 flex items-center text-sm font-semibold leading-6 text-primary hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100',
+                                  'p-2 flex items-center text-sm font-semibold leading-6 text-secondary hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100',
                             ),
                           ]),
                         ])
@@ -95,7 +95,8 @@ class Header extends StatelessComponent {
                 (label: 'About Us', path: '/about'),
                 (label: 'Free Demo', path: '/free-demo'),
                 (label: 'Contact Us', path: '/contact-us'),
-                (label: 'CU Chat', path: 'https://cuapps.co.uk/cuchat/'),
+                (label: 'Contact Us', path: '/contact-us'),
+                (label: 'CU Chat', path: '/cu-chat'),
               ])
                 if (route.label == 'CU Chat')
                   ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
@@ -103,9 +104,8 @@ class Header extends StatelessComponent {
                       a(
                         [Component.text(route.label)],
                         href: route.path,
-                        target: Target.blank,
                         classes:
-                            'text-primary p-2 flex items-center text-sm font-bold leading-6 hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100',
+                            'text-secondary p-2 flex items-center text-sm font-bold leading-6 hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100',
                       ),
                     ]),
                   ])

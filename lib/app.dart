@@ -8,6 +8,7 @@ import 'components/footer.dart';
 import 'components/header.dart';
 import 'pages/about.dart';
 import 'pages/contact_us.dart';
+import 'pages/cu_chat.dart';
 import 'pages/error.dart';
 import 'pages/free_demo.dart';
 import 'pages/home.dart';
@@ -49,6 +50,11 @@ class App extends StatelessComponent {
                   path: '/free-demo',
                   title: 'Free Demo',
                   builder: (context, state) => FreeDemo(),
+                ),
+                Route(
+                  path: '/cu-chat',
+                  title: 'CU Chat',
+                  builder: (context, state) => const CuChat(),
                 ),
               ],
             ),
