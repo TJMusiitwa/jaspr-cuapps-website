@@ -34,7 +34,6 @@ class LogoSection extends StatelessComponent {
             // Right side - Logo grid
             div(
               [
-                logoBuilder(imgSrc: 'images/clients/sapcu.webp'),
                 logoBuilder(imgSrc: 'images/clients/pccu.webp'),
                 logoBuilder(imgSrc: 'images/clients/spcu.webp'),
                 logoBuilder(imgSrc: 'images/clients/ecu.webp'),
