@@ -6,6 +6,8 @@
 
 import 'package:jaspr/client.dart';
 
+import 'package:cuapps_website/pages/cu_chat/cu_chat_features.dart'
+    deferred as _cu_chat_features;
 import 'package:cuapps_website/app.dart' deferred as _app;
 
 /// Default [ClientOptions] for use with your Jaspr project.
@@ -25,5 +27,11 @@ import 'package:cuapps_website/app.dart' deferred as _app;
 /// }
 /// ```
 ClientOptions get defaultClientOptions => ClientOptions(
-  clients: {'app': ClientLoader((p) => _app.App(), loader: _app.loadLibrary)},
+  clients: {
+    'app': ClientLoader((p) => _app.App(), loader: _app.loadLibrary),
+    'cu_chat_features': ClientLoader(
+      (p) => _cu_chat_features.CuChatFeatures(),
+      loader: _cu_chat_features.loadLibrary,
+    ),
+  },
 );
