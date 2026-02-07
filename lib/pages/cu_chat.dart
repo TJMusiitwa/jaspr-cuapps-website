@@ -285,7 +285,7 @@ class CuChatFAQ extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final faqs = [
+    const faqs = [
       (
         q: 'How does CU Chat handle personal data?',
         a: 'As a service handling member personal data, CU Chat is fully compliant with GDPR, ensuring personal data is stored in Frankfurt, Germany and controlled by the credit union. CU Apps provide a Data Processing Agreement giving further details on how data is handled.',
@@ -363,7 +363,7 @@ class CuChatLogos extends StatelessComponent {
 
   @override
   Component build(BuildContext context) {
-    final logos = [
+    const logos = [
       'images/clients/donore.webp',
       'images/clients/n1cpcu.webp',
       'images/clients/hocu.webp',
