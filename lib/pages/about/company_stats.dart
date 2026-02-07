@@ -78,7 +78,7 @@ class CompanyStats extends StatelessComponent {
               ),
               Statistic(
                 label: 'Years of experience',
-                value: (DateTime.now().difference(DateTime(2015)).inDays / 365)
+                value: (DateTime.now().difference(DateTime(2012)).inDays / 365)
                     .toStringAsFixed(0),
                 description:
                     'Dedicated to serving the credit union sector with specialized technology.',
