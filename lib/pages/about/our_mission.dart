@@ -27,7 +27,7 @@ class OurMission extends StatelessComponent {
             div(classes: 'h-full', [
               img(
                 classes: 'h-full w-full object-cover',
-                src: 'images/about/mission.webp',
+                src: 'images/our_mission.webp',
                 alt: 'CU Apps team collaboration',
               ),
             ]),
@@ -125,7 +125,7 @@ class OurMission extends StatelessComponent {
             div(classes: 'h-full order-1 lg:order-2', [
               img(
                 classes: 'h-full w-full object-cover',
-                src: 'images/about/values.webp',
+                src: 'images/guiding_principles.webp',
                 alt: 'CU Apps team working together',
               ),
             ]),
