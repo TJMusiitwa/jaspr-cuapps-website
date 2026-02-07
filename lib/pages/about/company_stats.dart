@@ -60,13 +60,13 @@ class CompanyStats extends StatelessComponent {
             div(classes: 'grid grid-cols-1 gap-6 sm:grid-cols-2', [
               Statistic(
                 label: 'Credit unions served',
-                value: '15+',
+                value: '40+',
                 description:
                     'Trusted by community-focused financial institutions across the UK.',
               ),
               Statistic(
                 label: 'App downloads',
-                value: '20K+',
+                value: '300K+',
                 description:
                     'Empowering members with seamless mobile banking access every day.',
               ),
