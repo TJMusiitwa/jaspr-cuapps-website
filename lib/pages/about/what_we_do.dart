@@ -30,7 +30,7 @@ class WhatWeDo extends StatelessComponent {
               div(classes: 'aspect-[4/3] w-full bg-gray-200', [
                 img(
                   classes: 'h-full w-full object-cover',
-                  src: 'images/offer/mobile.webp',
+                  src: 'images/app_development.webp',
                   alt: 'Mobile App Development',
                 ),
               ]),
@@ -60,7 +60,7 @@ class WhatWeDo extends StatelessComponent {
                   img(
                     classes:
                         'absolute inset-0 h-full w-full object-cover opacity-30',
-                    src: 'images/offer/chatbot.webp',
+                    src: 'images/ai_chatbot_interface.webp',
                     alt: 'AI Chatbot',
                   ),
                   div(
