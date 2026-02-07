@@ -8,7 +8,7 @@ class AboutHero extends StatelessComponent {
   Component build(BuildContext context) {
     return div(
       classes:
-          'hero min-h-[70vh] bg-linear-to-tr from-base-100 via-primary/10 to-base-100 relative overflow-hidden py-24 sm:py-32',
+          'hero min-h-screen bg-linear-to-tr from-base-100 via-primary/10 to-base-100 relative overflow-hidden py-24 sm:py-32',
       [
         // Decorative breathing blobs
         div(
