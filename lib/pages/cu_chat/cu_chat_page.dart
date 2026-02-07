@@ -1,8 +1,10 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
-class CuChat extends StatelessComponent {
-  const CuChat({super.key});
+import 'cu_chat_features.dart';
+
+class CuChatPage extends StatelessComponent {
+  const CuChatPage({super.key});
 
   @override
   Component build(BuildContext context) {
@@ -96,112 +98,6 @@ class CuChatHero extends StatelessComponent {
         ),
       ],
     );
-  }
-}
-
-class CuChatFeatures extends StatelessComponent {
-  const CuChatFeatures({super.key});
-
-  @override
-  Component build(BuildContext context) {
-    final features = [
-      (
-        title: 'Interactive Loan Calculator',
-        description:
-            'Generative AI assistant that handles complex questions and guides members through loan calculations conversationally.',
-        icon: '🧮',
-      ),
-      (
-        title: 'Customised and Branded',
-        description:
-            'Tailored to your mutual’s unique branding, loan products, savings accounts, and branch details.',
-        icon: '🎨',
-      ),
-      (
-        title: 'Staff Take-over',
-        description:
-            'Seamlessly hand over complex queries to human staff when a personal touch is needed.',
-        icon: '👥',
-      ),
-      (
-        title: 'Free Up Phone Lines',
-        description:
-            'Reduces simple inquiries to call centers, allowing staff to focus on high-priority member situations.',
-        icon: '📞',
-      ),
-      (
-        title: 'Bespoke Responses',
-        description:
-            'Trained on specific products to provide empathetic, personalized responses to every member.',
-        icon: '💬',
-      ),
-      (
-        title: '24/7 Access',
-        description:
-            'Resolve financial queries anytime. If the AI can’t solve it, it provides clear next steps.',
-        icon: '🕒',
-      ),
-      (
-        title: 'Multi-language Support',
-        description:
-            'Communicate in multiple languages to break down barriers and ensure accessibility for all.',
-        icon: '🌍',
-      ),
-      (
-        title: 'Automated Lead Capture',
-        description:
-            'Enhance sales by automatically capturing member leads and facilitating callback requests.',
-        icon: '📈',
-      ),
-    ];
-
-    return div(classes: 'bg-base-100 py-24 sm:py-32', [
-      div(classes: 'mx-auto max-w-7xl px-6 lg:px-8', [
-        div(classes: 'mx-auto max-w-2xl lg:text-center', [
-          h2(classes: 'text-base font-semibold leading-7 text-secondary', [
-            Component.text('CU Chat Features'),
-          ]),
-          p(
-            classes:
-                'mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
-            [Component.text('Everything needed to support your members')],
-          ),
-          p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
-            Component.text(
-              'By using advanced AI and Large Language Models tailored for credit unions, CU Chat learns specifically about your mutual.',
-            ),
-          ]),
-        ]),
-        div(classes: 'mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none', [
-          dl(
-            classes:
-                'grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-4',
-            [
-              for (var feature in features)
-                div(classes: 'flex flex-col', [
-                  dt(
-                    classes:
-                        'flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900',
-                    [
-                      span(classes: 'text-2xl', [Component.text(feature.icon)]),
-                      Component.text(feature.title),
-                    ],
-                  ),
-                  dd(
-                    classes:
-                        'mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600',
-                    [
-                      p(classes: 'flex-auto', [
-                        Component.text(feature.description),
-                      ]),
-                    ],
-                  ),
-                ]),
-            ],
-          ),
-        ]),
-      ]),
-    ]);
   }
 }
 
