@@ -44,6 +44,26 @@ class WhatWeDo extends StatelessComponent {
                     'Since developing the UK’s first credit union mobile app in 2013, we have specialised in exceptional mobile app and member-facing technology. We empower credit unions to compete with large financial institutions by transforming everyday banking into modern, easy-to-use experiences.',
                   ),
                 ]),
+                div(classes: 'mt-8 border-t border-gray-100 pt-8', []),
+                h4(
+                  classes: 'text-lg font-semibold leading-8 text-gray-900 mb-4',
+                  [Component.text('Core Platform Features')],
+                ),
+                dl(classes: 'grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2', [
+                  _SupportItem(
+                    label: 'Experience',
+                    value: 'Native iOS & Android',
+                  ),
+                  _SupportItem(label: 'Security', value: 'Biometric Login'),
+                  _SupportItem(
+                    label: 'Innovation',
+                    value: 'Digital-First Journeys',
+                  ),
+                  _SupportItem(
+                    label: 'Experience',
+                    value: 'Premium UI & UX Design',
+                  ),
+                ]),
               ]),
             ],
           ),
@@ -55,35 +75,34 @@ class WhatWeDo extends StatelessComponent {
             [
               div(classes: 'grid grid-cols-1 lg:grid-rows-2 h-full', [
                 // Top Half: AI Content (Text + Image)
-                div(classes: 'relative overflow-hidden bg-gray-900 lg:row-span-1', [
-                  // Background Image
-                  img(
-                    classes:
-                        'absolute inset-0 h-full w-full object-cover opacity-30',
-                    src: 'images/ai_chatbot_interface.webp',
-                    alt: 'AI Chatbot',
-                  ),
-                  div(
-                    classes:
-                        'relative h-full p-8 sm:p-10 flex flex-col justify-center',
-                    [
-                      h3(
-                        classes: 'text-2xl font-bold tracking-tight text-white',
-                        [Component.text('Advanced AI Chatbots')],
-                      ),
-                      p(classes: 'mt-4 text-base leading-7 text-gray-300', [
-                        Component.text(
-                          'Respond to members 24/7, grow your credit union and reallocate staff resources with our industry-leading advanced generative AI chatbot.',
-                        ),
-                      ]),
-                    ],
-                  ),
-                ]),
-                // Bottom Half: Support Grid
+                div(
+                  classes:
+                      'relative overflow-hidden lg:row-span-1 aspect-[16/10] lg:aspect-auto min-h-[320px]',
+                  [
+                    // Background Image
+                    img(
+                      classes: 'absolute inset-0 h-full w-full object-cover',
+                      src: 'images/ai_chatbot_interface.webp',
+                      alt: 'AI Chatbot',
+                    ),
+                  ],
+                ),
+                // Bottom Half: Text Content + Support Grid
                 div(
                   classes:
                       'p-8 sm:p-10 lg:row-span-1 flex flex-col justify-center',
                   [
+                    h3(
+                      classes:
+                          'text-2xl font-bold tracking-tight text-gray-900',
+                      [Component.text('Advanced AI Chatbots')],
+                    ),
+                    p(classes: 'mt-4 text-base leading-7 text-gray-600', [
+                      Component.text(
+                        'Respond to members 24/7, grow your credit union and reallocate staff resources with our industry-leading advanced generative AI chatbot.',
+                      ),
+                    ]),
+                    div(classes: 'mt-8 border-t border-gray-100 pt-8', []),
                     h4(
                       classes:
                           'text-lg font-semibold leading-8 text-gray-900 mb-4',
