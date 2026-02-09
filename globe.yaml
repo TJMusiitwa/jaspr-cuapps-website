@@ -5,7 +5,7 @@ entrypoint: lib/main.server.dart
 build:
   preset:
     type: jaspr_static
-    version: 0.22.0
+    version: 0.22.2
   build_runner:
     automatic_detection: false
   melos:
