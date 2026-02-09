@@ -216,22 +216,19 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
     }
 
     return svg(
+      classes: 'w-10 h-10',
+      viewBox: '0 0 24 24',
       attributes: {
         'xmlns': 'http://www.w3.org/2000/svg',
         'fill': 'none',
-        'viewBox': '0 0 24 24',
         'stroke-width': '1.5',
         'stroke': 'currentColor',
-        'class': 'w-10 h-10',
       },
       [
         if (dValue != null)
           path(
-            attributes: {
-              'stroke-linecap': 'round',
-              'stroke-linejoin': 'round',
-              'd': dValue,
-            },
+            d: dValue,
+            attributes: {'stroke-linecap': 'round', 'stroke-linejoin': 'round'},
             [],
           ),
       ],
