@@ -86,14 +86,40 @@ class CuChatHero extends StatelessComponent {
               ),
             ]),
 
-            // Right Column - Image
-            div(classes: 'lg:w-1/2 relative', [
-              img(
-                src: 'images/ai_chatbot_interface.webp',
-                alt: 'AI Chatbot Interface',
-                classes: 'w-full max-w-lg mx-auto drop-shadow-2xl rounded-xl',
-              ),
-            ]),
+            // Right Column - Mockups
+            div(
+              classes:
+                  'lg:w-1/2 relative flex justify-center items-center mt-12 lg:mt-0',
+              [
+                div(classes: 'relative w-full max-w-4xl pb-16', [
+                  div(
+                    classes:
+                        'mockup-browser border-base-300 bg-base-100 border shadow-2xl w-full relative z-10',
+                    [
+                      div(classes: 'mockup-browser-toolbar', []),
+                      div(classes: 'bg-base-200 overflow-hidden relative', [
+                        img(
+                          src: 'images/chat_website_hero.webp',
+                          classes: 'w-full h-auto block',
+                          alt: 'CU Chat Website Interface',
+                        ),
+                      ]),
+                    ],
+                  ),
+                  div(classes: 'absolute -bottom-5 -left-3 w-[30%] z-20', [
+                    div(classes: '', [
+                      div(classes: '', [
+                        img(
+                          src: 'images/chat_mobile_hero.webp',
+                          classes: 'w-full h-auto',
+                          alt: 'CU Chat Mobile Interface',
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+              ],
+            ),
           ],
         ),
       ],
