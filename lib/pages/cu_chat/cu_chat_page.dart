@@ -86,28 +86,28 @@ class CuChatHero extends StatelessComponent {
               ),
             ]),
 
-            // Right Column - Mockups
+            // Right Column - Mockup
             div(
               classes:
-                  'lg:w-1/2 relative flex justify-center items-center mt-12 lg:mt-0',
+                  'lg:w-6/12 relative mt-12 lg:mt-0 flex items-center justify-center',
               [
-                div(classes: 'relative w-full max-w-4xl pb-16', [
-                  div(
-                    classes:
-                        'mockup-browser border-base-300 bg-base-100 border shadow-2xl w-full relative z-10',
-                    [
-                      div(classes: 'mockup-browser-toolbar', []),
-                      div(classes: 'bg-base-200 overflow-hidden relative', [
-                        img(
-                          src: 'images/chat_website_hero.webp',
-                          classes: 'w-full h-auto block',
-                          alt: 'CU Chat Website Interface',
-                        ),
-                      ]),
-                    ],
-                  ),
-                  div(classes: 'absolute -bottom-5 -left-3 w-[30%] z-20', [
-                    div(classes: '', [
+                // Browser Mockup
+                div(classes: 'mockup-browser  bg-base-300 w-full shadow-2xl', [
+                  div(classes: 'mockup-browser-toolbar', []),
+                  div(classes: 'flex justify-center bg-base-200', [
+                    img(
+                      src: 'images/chat_website_hero.webp',
+                      classes: 'w-full h-auto block',
+                      alt: 'CU Chat Website Interface',
+                    ),
+                  ]),
+                ]),
+                // Phone Mockup (Positioned absolute to overlap)
+                div(
+                  classes:
+                      'absolute -left-4 -bottom-12 lg:-left-12 lg:-bottom-16 w-[120px] sm:w-[140px] lg:w-[170px] z-20',
+                  [
+                    div(classes: 'border-primary shadow-2xl', [
                       div(classes: '', [
                         img(
                           src: 'images/chat_mobile_hero.webp',
@@ -116,8 +116,8 @@ class CuChatHero extends StatelessComponent {
                         ),
                       ]),
                     ]),
-                  ]),
-                ]),
+                  ],
+                ),
               ],
             ),
           ],
