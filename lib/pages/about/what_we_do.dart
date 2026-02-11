@@ -68,70 +68,40 @@ class WhatWeDo extends StatelessComponent {
             ],
           ),
 
-          // Card 2: AI Chatbots & Support (Horizontal Layout on Large Screens)
+          // Card 2: AI Chatbots & Support
           div(
             classes:
                 'flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300',
             [
-              div(classes: 'grid grid-cols-1 lg:grid-rows-2 h-full', [
-                // Top Half: AI Content (Text + Image)
-                div(
-                  classes:
-                      'relative overflow-hidden lg:row-span-1 aspect-[16/10] lg:aspect-auto min-h-[320px]',
-                  [
-                    // Background Image
-                    img(
-                      classes: 'absolute inset-0 h-full w-full object-cover',
-                      src: 'images/ai_chatbot_interface.webp',
-                      alt: 'AI Chatbot',
-                    ),
-                  ],
+              // Image
+              div(classes: 'aspect-[4/3] w-full bg-gray-200', [
+                img(
+                  classes: 'h-full w-full object-cover',
+                  src: 'images/ai_chatbot_interface.webp',
+                  alt: 'AI Chatbot',
                 ),
-                // Bottom Half: Text Content + Support Grid
-                div(
-                  classes:
-                      'p-8 sm:p-10 lg:row-span-1 flex flex-col justify-center',
-                  [
-                    h3(
-                      classes:
-                          'text-2xl font-bold tracking-tight text-gray-900',
-                      [Component.text('Advanced AI Chatbots')],
-                    ),
-                    p(classes: 'mt-4 text-base leading-7 text-gray-600', [
-                      Component.text(
-                        'Respond to members 24/7, grow your credit union and reallocate staff resources with our industry-leading advanced generative AI chatbot.',
-                      ),
-                    ]),
-                    div(classes: 'mt-8 border-t border-gray-100 pt-8', []),
-                    h4(
-                      classes:
-                          'text-lg font-semibold leading-8 text-gray-900 mb-4',
-                      [Component.text('Comprehensive Support')],
-                    ),
-                    dl(
-                      classes:
-                          'grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2',
-                      [
-                        _SupportItem(
-                          label: '24/7 Availability',
-                          value: 'Always On',
-                        ),
-                        _SupportItem(
-                          label: 'Specialised Team',
-                          value: 'Expert Care',
-                        ),
-                        _SupportItem(
-                          label: 'Rapid Response',
-                          value: 'Fast Fixes',
-                        ),
-                        _SupportItem(
-                          label: 'Member Focused',
-                          value: 'Satisfaction',
-                        ),
-                      ],
-                    ),
-                  ],
+              ]),
+              // Content
+              div(classes: 'p-8 sm:p-10 flex-1 flex flex-col', [
+                h3(classes: 'text-2xl font-bold tracking-tight text-gray-900', [
+                  Component.text('Advanced AI Chatbots'),
+                ]),
+                p(classes: 'mt-4 text-base leading-7 text-gray-600 flex-1', [
+                  Component.text(
+                    'Respond to members 24/7, grow your credit union and reallocate staff resources with our industry-leading advanced generative AI chatbot.',
+                  ),
+                ]),
+                div(classes: 'mt-8 border-t border-gray-100 pt-8', []),
+                h4(
+                  classes: 'text-lg font-semibold leading-8 text-gray-900 mb-4',
+                  [Component.text('Comprehensive Support')],
                 ),
+                dl(classes: 'grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2', [
+                  _SupportItem(label: '24/7 Availability', value: 'Always On'),
+                  _SupportItem(label: 'Specialised Team', value: 'Expert Care'),
+                  _SupportItem(label: 'Rapid Response', value: 'Fast Fixes'),
+                  _SupportItem(label: 'Member Focused', value: 'Satisfaction'),
+                ]),
               ]),
             ],
           ),
