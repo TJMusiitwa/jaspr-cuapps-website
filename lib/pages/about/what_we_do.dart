@@ -41,7 +41,7 @@ class WhatWeDo extends StatelessComponent {
                 ]),
                 p(classes: 'mt-4 text-base leading-7 text-gray-600 flex-1', [
                   Component.text(
-                    'Since developing the UK’s first credit union mobile app in 2013, we have specialised in exceptional mobile app and member-facing technology. We empower credit unions to compete with large financial institutions by transforming everyday banking into modern, easy-to-use experiences.',
+                    'Deliver a seamless, digital-first banking experience that your members will love. Our native mobile applications provide the performance, security, and accessibility required for modern credit union operations.',
                   ),
                 ]),
                 div(classes: 'mt-8 border-t border-gray-100 pt-8', []),
@@ -52,7 +52,7 @@ class WhatWeDo extends StatelessComponent {
                 dl(classes: 'grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2', [
                   _SupportItem(
                     label: 'Experience',
-                    value: 'Native iOS & Android',
+                    value: 'Exceptional Android & iOS',
                   ),
                   _SupportItem(label: 'Security', value: 'Biometric Login'),
                   _SupportItem(
@@ -88,7 +88,7 @@ class WhatWeDo extends StatelessComponent {
                 ]),
                 p(classes: 'mt-4 text-base leading-7 text-gray-600 flex-1', [
                   Component.text(
-                    'Respond to members 24/7, grow your credit union and reallocate staff resources with our industry-leading advanced generative AI chatbot.',
+                    'Transform your member support with 24/7 intelligent assistance. Our AI chatbots handle routine inquiries instantly, freeing up your team for complex member needs.',
                   ),
                 ]),
                 div(classes: 'mt-8 border-t border-gray-100 pt-8', []),
