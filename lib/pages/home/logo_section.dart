@@ -23,7 +23,7 @@ class LogoSection extends StatelessComponent {
       'images/clients/lecu.webp',
     ];
 
-    return div(classes: 'bg-white py-24 sm:py-32', [
+    return div(classes: 'bg-base-200 py-24 sm:py-32', [
       div(classes: 'mx-auto max-w-7xl px-6 lg:px-8', [
         div(classes: 'mx-auto max-w-2xl text-center mb-16', [
           h2(

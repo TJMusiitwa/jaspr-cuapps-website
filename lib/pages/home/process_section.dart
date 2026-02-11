@@ -12,33 +12,37 @@ class ProcessSection extends StatelessComponent {
             h2(
               [Component.text('Our Design & Development Process')],
               classes:
-                  'text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-4 text-center lg:text-left',
+                  'text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900 mb-6 text-center',
             ),
-          ], classes: 'lg:w-1/2'),
+          ]),
           div([
-            p([
-              Component.text('We take pride in offering credit unions a '),
-              span([
-                Component.text('premium, bespoke'),
-              ], classes: 'font-bold text-gray-900'),
-              Component.text(' and '),
-              span([
-                Component.text('affordable'),
-              ], classes: 'font-bold text-gray-900'),
-              Component.text(' service to help '),
-              span([
-                Component.text('save costs, grow membership'),
-              ], classes: 'font-bold text-gray-900'),
-              Component.text(' and '),
-              span([
-                Component.text('drive loans'),
-              ], classes: 'font-bold text-gray-900'),
-              Component.text(
-                '. We take the time to understand each credit union we work with and tailor our products so that it\'s right for you and your member base.',
-              ),
-            ], classes: 'text-base md:text-lg text-gray-600 leading-relaxed'),
-          ], classes: 'lg:w-1/2 lg:pl-12 mt-6 lg:mt-0'),
-        ], classes: 'flex flex-col lg:flex-row items-center lg:items-start mb-16'),
+            p(
+              [
+                Component.text('We take pride in offering credit unions a '),
+                span([
+                  Component.text('premium, bespoke'),
+                ], classes: 'font-bold text-gray-900'),
+                Component.text(' and '),
+                span([
+                  Component.text('affordable'),
+                ], classes: 'font-bold text-gray-900'),
+                Component.text(' service to help '),
+                span([
+                  Component.text('save costs, grow membership'),
+                ], classes: 'font-bold text-gray-900'),
+                Component.text(' and '),
+                span([
+                  Component.text('drive loans'),
+                ], classes: 'font-bold text-gray-900'),
+                Component.text(
+                  '. We take the time to understand each credit union we work with and tailor our products so that it\'s right for you and your member base.',
+                ),
+              ],
+              classes:
+                  'text-base md:text-lg text-gray-600 leading-relaxed text-center max-w-4xl mx-auto',
+            ),
+          ], classes: ''),
+        ], classes: 'flex flex-col items-center mb-16'),
 
         // Steps Grid
         div(
