@@ -64,7 +64,6 @@ class Header extends StatelessComponent {
                       (label: 'About Us', path: '/about'),
                       (label: 'Free Demo', path: '/free-demo'),
                       (label: 'Contact Us', path: '/contact-us'),
-                      (label: 'Contact Us', path: '/contact-us'),
                       (label: 'CU Chat', path: '/cu-chat'),
                     ])
                       if (route.label == 'CU Chat')
@@ -94,7 +93,6 @@ class Header extends StatelessComponent {
                 (label: 'Features', path: '/app-features'),
                 (label: 'About Us', path: '/about'),
                 (label: 'Free Demo', path: '/free-demo'),
-                (label: 'Contact Us', path: '/contact-us'),
                 (label: 'Contact Us', path: '/contact-us'),
                 (label: 'CU Chat', path: '/cu-chat'),
               ])
