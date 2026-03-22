@@ -1,0 +1,33 @@
+name: Cloudflare Pages Deployment
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1.7.1
+        with:
+          sdk: 3.10.4
+      - name: Install jaspr_cli
+        run: dart pub global activate jaspr_cli
+      - name: Install dependencies
+        run: dart pub get
+      - name: Build Website
+        run: jaspr build
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy build/jaspr --project-name=jaspr-cuapps-website
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
