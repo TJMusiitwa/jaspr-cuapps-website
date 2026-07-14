@@ -144,9 +144,7 @@ class ContactUs extends StatelessComponent {
                     a(
                       href: '/free-demo',
                       classes: 'link link-hover text-primary',
-                      [
-                        Component.text('Request a demo'),
-                      ],
+                      [Component.text('Request a demo')],
                     ),
                   ]),
                   li([
