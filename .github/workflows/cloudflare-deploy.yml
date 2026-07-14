@@ -13,11 +13,11 @@ jobs:
       deployments: write
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Set up Dart
-        uses: dart-lang/setup-dart@v1.7.1
+        uses: dart-lang/setup-dart@v1
         with:
-          sdk: 3.10.4
+          sdk: stable
       - name: Install jaspr_cli
         run: dart pub global activate jaspr_cli
       - name: Install dependencies
@@ -25,7 +25,7 @@ jobs:
       - name: Build Website
         run: jaspr build
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
