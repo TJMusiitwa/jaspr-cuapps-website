@@ -32,180 +32,186 @@ class ContactUs extends StatelessComponent {
         ),
 
         // Main content container
-        div([
+        div(classes: 'relative z-10 py-12 px-4 md:px-8 max-w-7xl mx-auto', [
           // Header section
-          div([
-            span([
-              Component.text("LET'S TALK"),
-            ], classes: 'text-primary font-semibold tracking-widest text-sm'),
-            h1([
+          div(classes: 'mb-12', [
+            span(
+              classes: 'text-primary font-semibold tracking-widest text-sm',
+              [Component.text("LET'S TALK")],
+            ),
+            h1(classes: 'text-4xl font-bold mt-2 text-base-content', [
               Component.text('How can we help you today?'),
-            ], classes: 'text-4xl font-bold mt-2 text-base-content'),
-            p([
+            ]),
+            p(classes: 'mt-4 text-base-content/70 max-w-2xl', [
               Component.text(
                 "Reach out to our team for questions, project ideas, or support. We're here to collaborate and help you achieve your goals.",
               ),
-            ], classes: 'mt-4 text-base-content/70 max-w-2xl'),
-          ], classes: 'mb-12'),
+            ]),
+          ]),
 
           // Two column layout
-          div([
+          div(classes: 'flex flex-col lg:flex-row gap-8', [
             // Left: Form
-            div([
-              div([
+            div(classes: 'w-full lg:w-1/2 relative z-10', [
+              div(classes: 'bg-base-100 rounded-xl shadow-lg p-8', [
                 form(autoComplete: AutoComplete.on, [
                   // First name / Last name row
-                  div([
-                    div([
-                      label([Component.text('First name')], classes: 'label'),
+                  div(classes: 'flex flex-col sm:flex-row gap-4 mb-4', [
+                    div(classes: 'flex-1', [
+                      label(classes: 'label', [Component.text('First name')]),
                       input(
                         classes: 'input input-bordered w-full',
                         type: InputType.text,
                         name: 'firstName',
                         attributes: {'placeholder': 'Your first name'},
                       ),
-                    ], classes: 'flex-1'),
-                    div([
-                      label([Component.text('Last name')], classes: 'label'),
+                    ]),
+                    div(classes: 'flex-1', [
+                      label(classes: 'label', [Component.text('Last name')]),
                       input(
                         classes: 'input input-bordered w-full',
                         type: InputType.text,
                         name: 'lastName',
                         attributes: {'placeholder': 'Your last name'},
                       ),
-                    ], classes: 'flex-1'),
-                  ], classes: 'flex flex-col sm:flex-row gap-4 mb-4'),
+                    ]),
+                  ]),
 
                   // Organisation name
-                  div([
-                    label([
+                  div(classes: 'mb-4', [
+                    label(classes: 'label', [
                       Component.text('Organisation name'),
-                    ], classes: 'label'),
+                    ]),
                     input(
                       classes: 'input input-bordered w-full',
                       type: InputType.text,
                       name: 'organisation',
                       attributes: {'placeholder': 'Your organisation'},
                     ),
-                  ], classes: 'mb-4'),
+                  ]),
 
                   // Email
-                  div([
-                    label([Component.text('Email')], classes: 'label'),
+                  div(classes: 'mb-4', [
+                    label(classes: 'label', [Component.text('Email')]),
                     input(
                       classes: 'input validator input-bordered w-full ',
                       type: InputType.email,
                       name: 'email',
                       attributes: {'placeholder': 'Your email'},
                     ),
-                  ], classes: 'mb-4'),
+                  ]),
 
                   // Message
-                  div([
-                    label([Component.text('Message')], classes: 'label'),
+                  div(classes: 'mb-6', [
+                    label(classes: 'label', [Component.text('Message')]),
                     textarea(
-                      [],
                       name: 'message',
                       rows: 5,
                       spellCheck: SpellCheck.isDefault,
                       placeholder: 'Your message',
                       wrap: TextWrap.soft,
                       classes: 'textarea textarea-bordered w-full',
+                      [],
                     ),
-                  ], classes: 'mb-6'),
+                  ]),
 
                   // Submit button
                   div([
                     button(
-                      [Component.text('Submit')],
                       classes: 'btn btn-primary w-full',
                       attributes: {'type': 'submit'},
+                      [Component.text('Submit')],
                     ),
                   ]),
                 ]),
-              ], classes: 'bg-base-100 rounded-xl shadow-lg p-8'),
-            ], classes: 'w-full lg:w-1/2 relative z-10'),
+              ]),
+            ]),
 
             // Right: Contact info
-            div([
+            div(classes: 'w-full lg:w-1/2 lg:pl-12 relative z-10', [
               // Get in touch section
-              div([
-                h2([
+              div(classes: 'mb-8', [
+                h2(classes: 'text-xl font-bold mb-3 text-base-content', [
                   Component.text('Get in touch'),
-                ], classes: 'text-xl font-bold mb-3 text-base-content'),
-                p([
+                ]),
+                p(classes: 'text-base-content/70 mb-4', [
                   Component.text(
                     "Reach out to our experts for advice, collaboration, or support. We'll respond promptly and guide you every step of the way.",
                   ),
-                ], classes: 'text-base-content/70 mb-4'),
-                ul([
+                ]),
+                ul(classes: 'space-y-2', [
                   li([
-                    a(href: '/free-demo', [
-                      Component.text('Request a demo'),
-                    ], classes: 'link link-hover text-primary'),
+                    a(
+                      href: '/free-demo',
+                      classes: 'link link-hover text-primary',
+                      [
+                        Component.text('Request a demo'),
+                      ],
+                    ),
                   ]),
                   li([
                     a(
                       href: '/app-features',
-                      [Component.text('Explore our features')],
                       classes: 'link link-hover text-primary',
+                      [Component.text('Explore our features')],
                     ),
                   ]),
                   li([
                     a(
                       href: '/case-studies',
-                      [Component.text('Read case studies')],
                       classes: 'link link-hover text-primary',
+                      [Component.text('Read case studies')],
                     ),
                   ]),
-                ], classes: 'space-y-2'),
-              ], classes: 'mb-8'),
+                ]),
+              ]),
 
               // Call us section
-              div([
-                h2([
+              div(classes: 'mb-8', [
+                h2(classes: 'text-xl font-bold mb-3 text-base-content', [
                   Component.text('Call us'),
-                ], classes: 'text-xl font-bold mb-3 text-base-content'),
-                p([
+                ]),
+                p(classes: 'text-base-content/70 mb-4', [
                   Component.text(
                     "Our team is available during UK business hours. Call anytime and we'll be happy to assist.",
                   ),
-                ], classes: 'text-base-content/70 mb-4'),
+                ]),
                 div([
                   a(
                     href: 'tel:+441413432450',
-                    [Component.text('🇬🇧 +44 141 343 2450')],
                     classes: 'block text-base-content font-medium',
+                    [Component.text('🇬🇧 +44 141 343 2450')],
                   ),
                   a(
                     href: 'tel:+353749707869',
-                    [Component.text('🇮🇪 +353 749 707 869')],
                     classes: 'block text-base-content font-medium mt-1',
+                    [Component.text('🇮🇪 +353 749 707 869')],
                   ),
                   a(
                     href: 'tel:+13133061560',
-                    [Component.text('🇺🇸 +1 313 306 1560')],
                     classes: 'block text-base-content font-medium mt-1',
+                    [Component.text('🇺🇸 +1 313 306 1560')],
                   ),
                 ]),
-              ], classes: 'mb-8'),
+              ]),
 
               // Our office section
               div([
-                h2([
+                h2(classes: 'text-xl font-bold mb-3 text-base-content', [
                   Component.text('Our office'),
-                ], classes: 'text-xl font-bold mb-3 text-base-content'),
+                ]),
                 div([
                   div([
-                    span([
+                    span(classes: 'font-semibold text-base-content', [
                       Component.text('Glasgow'),
-                    ], classes: 'font-semibold text-base-content'),
-                    div([
+                    ]),
+                    div(classes: 'mt-1', [
                       // Location icon
                       svg(
+                        classes: 'w-4 h-4 text-primary inline-block mr-1',
+                        attributes: {'viewBox': '0 0 24 24'},
                         [
                           path(
-                            [],
                             attributes: {
                               'd':
                                   'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z',
@@ -213,9 +219,9 @@ class ContactUs extends StatelessComponent {
                               'stroke-width': '2',
                               'fill': 'none',
                             },
+                            [],
                           ),
                           circle(
-                            [],
                             attributes: {
                               'cx': '12',
                               'cy': '10',
@@ -224,27 +230,26 @@ class ContactUs extends StatelessComponent {
                               'stroke-width': '2',
                               'fill': 'none',
                             },
+                            [],
                           ),
                         ],
-                        classes: 'w-4 h-4 text-primary inline-block mr-1',
-                        attributes: {'viewBox': '0 0 24 24'},
                       ),
-                      span([
+                      span(classes: 'text-base-content/70', [
                         Component.text('220 High Street,'),
-                      ], classes: 'text-base-content/70'),
-                    ], classes: 'mt-1'),
-                    p([
+                      ]),
+                    ]),
+                    p(classes: 'text-base-content/70 ml-5', [
                       Component.text('Glasgow G4 0QW,'),
-                    ], classes: 'text-base-content/70 ml-5'),
-                    p([
+                    ]),
+                    p(classes: 'text-base-content/70 ml-5', [
                       Component.text('United Kingdom'),
-                    ], classes: 'text-base-content/70 ml-5'),
+                    ]),
                   ]),
                 ]),
               ]),
-            ], classes: 'w-full lg:w-1/2 lg:pl-12 relative z-10'),
-          ], classes: 'flex flex-col lg:flex-row gap-8'),
-        ], classes: 'relative z-10 py-12 px-4 md:px-8 max-w-7xl mx-auto'),
+            ]),
+          ]),
+        ]),
       ],
     );
   }

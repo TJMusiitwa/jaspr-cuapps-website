@@ -1,0 +1,83 @@
+/* CU Apps brand theme
+ *
+ * Single source of truth for brand colour application.
+ * Palette:
+ *   Ink / navy        #132139
+ *   CU Apps blue      #259CE2 (soft: #549ed8, wash: #C6E6FF)
+ *   CU Chat purple    #433067 (deep: #281254, soft: #AA91D8)
+ *
+ * Usage rule: blue = CU Apps surfaces, purple = CU Chat surfaces.
+ */
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/outfit-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/outfit-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+html {
+  font-family: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Re-tone the daisyUI "winter" theme to the CU Apps brand. */
+[data-theme='winter'] {
+  --color-primary: #259ce2;
+  --color-primary-content: #ffffff;
+  --color-secondary: #433067;
+  --color-secondary-content: #ffffff;
+  --color-accent: #aa91d8;
+  --color-accent-content: #281254;
+  --color-neutral: #132139;
+  --color-neutral-content: #ffffff;
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f8fd;
+  --color-base-300: #e7f1fa;
+  --color-base-content: #132139;
+  --color-info: #549ed8;
+  --radius-box: 1.5rem;
+  --radius-field: 0.75rem;
+}
+
+/* The daisyUI CDN bundle lacks timeline-compact; collapse the unused
+ * start column so all timeline content sits on one side. */
+.timeline-vertical.timeline-compact > li {
+  grid-template-columns: 0 auto 1fr;
+}
+
+/* Gentle scroll reveal, static under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: cu-reveal 0.8s both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+
+    @keyframes cu-reveal {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+}

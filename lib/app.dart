@@ -23,8 +23,16 @@ class App extends StatelessComponent {
         Router(
           routes: [
             ShellRoute(
-              builder: (context, state, child) =>
-                  Component.fragment([Banner(), Header(), child, Footer()]),
+              builder: (context, state, child) {
+                // CU Chat pages adopt the purple brand shell.
+                final chat = state.location.startsWith('/cu-chat');
+                return Component.fragment([
+                  Banner(chat: chat),
+                  Header(),
+                  child,
+                  Footer(chat: chat),
+                ]);
+              },
               routes: [
                 Route(
                   path: '/',

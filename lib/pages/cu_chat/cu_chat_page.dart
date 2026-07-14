@@ -24,21 +24,14 @@ class CuChatHero extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return div(
-      classes:
-          'hero min-h-screen bg-linear-to-tr from-base-100 via-secondary/10 to-base-100 relative overflow-hidden',
+      classes: 'relative overflow-hidden bg-white',
+      styles: Styles(
+        raw: {
+          'background-image':
+              'radial-gradient(80% 60% at 70% 0%, rgba(170, 145, 216, 0.22), transparent 70%)',
+        },
+      ),
       [
-        // Decorative blobs (Purple theme)
-        div(
-          classes:
-              'absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/30 rounded-full blur-[120px] animate-pulse',
-          [],
-        ),
-        div(
-          classes:
-              'absolute bottom-[-5%] right-[-5%] w-[35%] h-[35%] bg-accent/30 rounded-full blur-[100px]',
-          [],
-        ),
-
         div(
           classes:
               'flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 py-20 px-6 lg:px-8 max-w-7xl mx-auto relative z-10',
@@ -47,19 +40,19 @@ class CuChatHero extends StatelessComponent {
             div(classes: 'lg:w-1/2 text-center lg:text-left', [
               h1(
                 classes:
-                    'text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl leading-tight',
+                    'text-4xl font-bold tracking-tight text-[#132139] sm:text-5xl lg:text-6xl leading-tight',
                 [
                   Component.text('Enhance your '),
-                  span([
+                  span(classes: 'text-secondary', [
                     Component.text('member services'),
-                  ], classes: 'text-secondary'),
+                  ]),
                   Component.text(' with our Advanced '),
-                  span([
+                  span(classes: 'text-accent', [
                     Component.text('AI Assistant'),
-                  ], classes: 'text-accent'),
+                  ]),
                 ],
               ),
-              p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
+              p(classes: 'mt-6 text-lg leading-8 text-[#132139]/70', [
                 Component.text(
                   'Available 24/7 to provide quick, personalised member support. Our advanced generative AI chatbots are designed to enhance your member service, enabling you to focus staff on growing your mutual.',
                 ),
@@ -74,14 +67,8 @@ class CuChatHero extends StatelessComponent {
                     href: '/free-demo',
                     [Component.text('Book A Demo')],
                   ),
-                  div(
-                    classes: 'text-sm font-semibold leading-6 text-gray-900',
-                    [Component.text('✓ Free demo')],
-                  ),
-                  div(
-                    classes: 'text-sm font-semibold leading-6 text-gray-900',
-                    [Component.text('✓ Prototype AI Chatbot')],
-                  ),
+                  _heroCheck('Free demo'),
+                  _heroCheck('Prototype AI Chatbot'),
                 ],
               ),
             ]),
@@ -127,6 +114,31 @@ class CuChatHero extends StatelessComponent {
   }
 }
 
+Component _heroCheck(String label) {
+  return div(
+    classes:
+        'flex items-center gap-x-1.5 text-sm font-semibold leading-6 text-[#132139]',
+    [
+      svg(
+        viewBox: '0 0 24 24',
+        classes: 'w-4 h-4 text-secondary',
+        styles: Styles(raw: {'fill': 'none', 'stroke': 'currentColor'}),
+        [
+          path(
+            d: 'M4.5 12.75l6 6 9-13.5',
+            strokeWidth: '2',
+            styles: Styles(
+              raw: {'stroke-linecap': 'round', 'stroke-linejoin': 'round'},
+            ),
+            [],
+          ),
+        ],
+      ),
+      Component.text(label),
+    ],
+  );
+}
+
 class CuChatSteps extends StatelessComponent {
   const CuChatSteps({super.key});
 
@@ -137,10 +149,10 @@ class CuChatSteps extends StatelessComponent {
         div(classes: 'mx-auto max-w-2xl text-center', [
           h2(
             classes:
-                'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
+                'text-3xl font-bold tracking-tight text-[#132139] sm:text-4xl',
             [Component.text('Get started with CU Chat')],
           ),
-          p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
+          p(classes: 'mt-6 text-lg leading-8 text-[#132139]/70', [
             Component.text(
               'Three simple steps to revolutionise your member service.',
             ),
@@ -149,19 +161,19 @@ class CuChatSteps extends StatelessComponent {
         div(classes: 'mx-auto mt-16 max-w-7xl px-6 lg:px-8', [
           ul(classes: 'grid grid-cols-1 gap-8 lg:grid-cols-3', [
             _buildStep(
-              step: 'Step 1',
+              step: '01',
               title: 'Book a demo',
               description:
                   'Allow us to show you the features that are enhancing the customer service experience for other Mutuals and how it can help yours.',
             ),
             _buildStep(
-              step: 'Step 2',
+              step: '02',
               title: 'Customise your chatbot',
               description:
                   'From loan calculation features to naming your chatbot, we’ll customise your chatbot to your needs.',
             ),
             _buildStep(
-              step: 'Step 3',
+              step: '03',
               title: 'Grow your Mutual',
               description:
                   'Once launched, you’ll be able to redeploy staff, focussed on building your member base and increasing revenue.',
@@ -186,15 +198,16 @@ class CuChatSteps extends StatelessComponent {
     required String description,
   }) {
     return li(
-      classes: 'bg-white rounded-2xl shadow-sm p-8 border border-gray-100',
+      classes: 'card bg-white shadow-sm p-8 border border-[#132139]/10',
       [
-        h3(classes: 'text-sm font-semibold leading-7 text-secondary', [
-          Component.text(step),
-        ]),
-        p(classes: 'mt-2 text-xl font-bold tracking-tight text-gray-900', [
+        h3(
+          classes: 'text-4xl font-bold text-[#AA91D8] leading-none select-none',
+          [Component.text(step)],
+        ),
+        p(classes: 'mt-2 text-xl font-bold tracking-tight text-[#132139]', [
           Component.text(title),
         ]),
-        p(classes: 'mt-4 text-base leading-7 text-gray-600', [
+        p(classes: 'mt-4 text-base leading-7 text-[#132139]/70', [
           Component.text(description),
         ]),
       ],
@@ -251,10 +264,10 @@ class CuChatFAQ extends StatelessComponent {
         div(classes: 'mx-auto max-w-4xl', [
           h2(
             classes:
-                'text-3xl font-bold leading-10 tracking-tight text-gray-900 text-center',
+                'text-3xl font-bold leading-10 tracking-tight text-[#132139] text-center',
             [Component.text('Frequently asked questions')],
           ),
-          p(classes: 'mt-4 text-lg leading-8 text-gray-600 text-center', [
+          p(classes: 'mt-4 text-lg leading-8 text-[#132139]/70 text-center', [
             Component.text(
               'Everything you need to know about setting up and using our AI Assistant. If you have any other questions, feel free to reach out to our team.',
             ),
@@ -265,11 +278,11 @@ class CuChatFAQ extends StatelessComponent {
                 classes: 'collapse collapse-arrow bg-base-100 shadow-sm',
                 [
                   summary(
-                    classes: 'collapse-title text-lg font-bold text-gray-900',
+                    classes: 'collapse-title text-lg font-bold text-[#132139]',
                     [Component.text(faq.q)],
                   ),
                   div(classes: 'collapse-content', [
-                    p(classes: 'text-gray-600', [Component.text(faq.a)]),
+                    p(classes: 'text-[#132139]/70', [Component.text(faq.a)]),
                   ]),
                 ],
               ),
@@ -304,10 +317,10 @@ class CuChatLogos extends StatelessComponent {
         div(classes: 'mx-auto max-w-2xl text-center mb-16', [
           h2(
             classes:
-                'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
+                'text-3xl font-bold tracking-tight text-[#132139] sm:text-4xl',
             [Component.text('Trusted by leading Mutuals')],
           ),
-          p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
+          p(classes: 'mt-6 text-lg leading-8 text-[#132139]/70', [
             Component.text(
               'Join the growing number of credit unions already using our AI Assistant to revolutionise their member service and automate routine enquiries.',
             ),
@@ -321,7 +334,8 @@ class CuChatLogos extends StatelessComponent {
               div(classes: 'flex items-center justify-center w-40 h-20', [
                 img(
                   src: logo,
-                  alt: 'Client Logo',
+                  alt:
+                      '${logo.split('/').last.split('.').first.toUpperCase()} credit union logo',
                   classes:
                       'max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110',
                 ),

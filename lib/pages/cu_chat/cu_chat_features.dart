@@ -18,7 +18,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Generative AI assistant that handles complex questions and guides members through loan calculations conversationally.',
       icon: 'calculator',
-      color: 'text-blue-600',
+      color: 'text-secondary',
       image: '/images/ai_chatbot_interface.webp', // Placeholder
     ),
     (
@@ -26,7 +26,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Tailored to your mutual’s unique branding, loan products, savings accounts, and branch details.',
       icon: 'swatch',
-      color: 'text-purple-600',
+      color: 'text-secondary',
       image: '/images/app_hero.webp', // Placeholder
     ),
     (
@@ -34,7 +34,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Reduces simple inquiries to call centers, allowing staff to focus on high-priority member situations.',
       icon: 'phone',
-      color: 'text-success',
+      color: 'text-secondary',
       image: '/images/chatbot_hero.webp', // Placeholder
     ),
     (
@@ -42,7 +42,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Trained on specific products to provide empathetic, personalized responses to every member.',
       icon: 'chat-bubble-oval-left-ellipsis',
-      color: 'text-indigo-600',
+      color: 'text-secondary',
       image: '/images/notifications.webp', // Placeholder
     ),
     (
@@ -50,7 +50,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Resolve financial queries anytime. If the AI can’t solve it, it provides clear next steps.',
       icon: 'clock',
-      color: 'text-amber-600',
+      color: 'text-secondary',
       image: '/images/guiding_principles.webp', // Placeholder
     ),
     (
@@ -58,7 +58,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Communicate in multiple languages to break down barriers and ensure accessibility for all.',
       icon: 'language',
-      color: 'text-sky-600',
+      color: 'text-secondary',
       image: '/images/our_mission.webp', // Placeholder
     ),
     (
@@ -66,7 +66,7 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       description:
           'Enhance sales by automatically capturing member leads and facilitating callback requests.',
       icon: 'chart-bar',
-      color: 'text-error',
+      color: 'text-secondary',
       image: '/images/app_development.webp', // Placeholder
     ),
   ];
@@ -88,10 +88,10 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
           ]),
           p(
             classes:
-                'mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
+                'mt-2 text-3xl font-bold tracking-tight text-[#132139] sm:text-4xl',
             [Component.text('Everything needed to support your members')],
           ),
-          p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
+          p(classes: 'mt-6 text-lg leading-8 text-[#132139]/70', [
             Component.text(
               'By using advanced AI and Large Language Models tailored for credit unions, CU Chat learns specifically about your mutual.',
             ),
@@ -173,12 +173,13 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       ),
       [
         div(classes: 'mb-2 ${feature.color}', [_getIcon(feature.icon)]),
-        h3(classes: 'text-lg font-semibold text-gray-900 $alignmentClass', [
+        h3(classes: 'text-lg font-semibold text-[#132139] $alignmentClass', [
           Component.text(feature.title),
         ]),
-        p(classes: 'text-sm text-gray-600 leading-relaxed $alignmentClass', [
-          Component.text(feature.description),
-        ]),
+        p(
+          classes: 'text-sm text-[#132139]/70 leading-relaxed $alignmentClass',
+          [Component.text(feature.description)],
+        ),
       ],
     );
   }

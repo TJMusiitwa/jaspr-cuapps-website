@@ -4,8 +4,8 @@ import 'package:jaspr/jaspr.dart';
 class TestimonialsSection extends StatelessComponent {
   @override
   Component build(BuildContext context) {
-    return section([
-      div([
+    return section(classes: 'bg-base-100', [
+      div(classes: 'py-16 px-4 mx-auto max-w-screen-xl lg:px-6', [
         div(classes: 'mx-auto max-w-screen-sm text-center mb-16', [
           h2(
             classes:
@@ -20,9 +20,9 @@ class TestimonialsSection extends StatelessComponent {
         ]),
 
         // Responsive asymmetric grid layout for testimonials
-        div([
+        div(classes: 'grid grid-cols-1 gap-8 lg:flex', [
           // Left column
-          div([
+          div(classes: 'flex flex-col gap-8 lg:w-1/3', [
             // Leslie Alexander testimonial
             testimonialBuilder(
               testimonial:
@@ -52,12 +52,12 @@ class TestimonialsSection extends StatelessComponent {
               company: 'nhscu',
               featured: true,
             ),
-          ], classes: 'flex flex-col gap-8 lg:w-1/3'),
+          ]),
 
           // Center column
-          div([
+          div(classes: 'flex flex-col gap-8 lg:w-1/3', [
             div(classes: 'flex items-center justify-center h-full py-6', [
-              div([
+              div(classes: 'w-full', [
                 // Brenna Goyette testimonial - Larger featured card
                 testimonialBuilder(
                   testimonial:
@@ -67,7 +67,7 @@ class TestimonialsSection extends StatelessComponent {
                   featured: true,
                   company: 'thistle',
                 ),
-              ], classes: 'w-full'),
+              ]),
             ]),
 
             // Tom Cook testimonial
@@ -79,10 +79,10 @@ class TestimonialsSection extends StatelessComponent {
               company: 'n1cpcu',
               featured: true,
             ),
-          ], classes: 'flex flex-col gap-8 lg:w-1/3'),
+          ]),
 
           // Right column
-          div([
+          div(classes: 'flex flex-col gap-8 lg:w-1/3', [
             // Floyd Miles testimonial
             testimonialBuilder(
               testimonial:
@@ -91,10 +91,10 @@ class TestimonialsSection extends StatelessComponent {
               role: 'CEO | London Plus Credit Union',
               company: 'lopcu',
             ),
-          ], classes: 'flex flex-col gap-8 lg:w-1/3'),
-        ], classes: 'grid grid-cols-1 gap-8 lg:flex'),
-      ], classes: 'py-16 px-4 mx-auto max-w-screen-xl lg:px-6'),
-    ], classes: 'bg-base-100');
+          ]),
+        ]),
+      ]),
+    ]);
   }
 
   Component testimonialBuilder({
@@ -104,38 +104,38 @@ class TestimonialsSection extends StatelessComponent {
     bool featured = true,
     String? company,
   }) {
-    return div([
+    return div(classes: featured ? 'h-full' : null, [
       div(
-        [
-          div(classes: 'card-body', [
-            p([
-              em([Component.text('"$testimonial"')]),
-            ], classes: 'text-base text-gray-700 md:text-lg'),
-
-            div([
-              div([
-                div([
-                  h3([Component.text(name)], classes: 'card-title'),
-                  p([Component.text(role)], classes: 'text-sm text-gray-600'),
-                ], classes: 'flex flex-col gap-1'),
-              ], classes: 'flex items-center space-x-3'),
-
-              if (company != null)
-                div([
-                      img(
-                        classes: 'h-12 w-full object-contain',
-                        src: 'images/clients/$company.webp',
-                        alt: company,
-                        width: 200,
-                        height: 100,
-                      )
-                ], classes: 'mt-4'),
-            ], classes: 'flex justify-between items-end'),
-          ]),
-        ],
         classes:
             'card ${featured ? "bg-base-100 shadow-lg" : "bg-base-200 shadow-md"}',
+        [
+          div(classes: 'card-body', [
+            p(classes: 'text-base text-gray-700 md:text-lg', [
+              em([Component.text('"$testimonial"')]),
+            ]),
+
+            div(classes: 'flex justify-between items-end', [
+              div(classes: 'flex items-center space-x-3', [
+                div(classes: 'flex flex-col gap-1', [
+                  h3(classes: 'card-title', [Component.text(name)]),
+                  p(classes: 'text-sm text-gray-600', [Component.text(role)]),
+                ]),
+              ]),
+
+              if (company != null)
+                div(classes: 'mt-4', [
+                  img(
+                    classes: 'h-12 w-full object-contain',
+                    src: 'images/clients/$company.webp',
+                    alt: company,
+                    width: 200,
+                    height: 100,
+                  ),
+                ]),
+            ]),
+          ]),
+        ],
       ),
-    ], classes: featured ? 'h-full' : null);
+    ]);
   }
 }

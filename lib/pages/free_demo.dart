@@ -42,22 +42,22 @@ class FreeDemo extends StatelessComponent {
                 div(classes: 'order-2 md:order-1', [
                   div(classes: 'space-y-6 md:space-y-8', [
                     h1(
+                      classes:
+                          'font-bold text-base-content text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight',
                       [
                         Component.text(
                           'Get a free bespoke Mobile App or AI Chatbot demo for your mutual',
                         ),
                       ],
-                      classes:
-                          'font-bold text-base-content text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight',
                     ),
                     p(
+                      classes:
+                          'text-base-content/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl',
                       [
                         Component.text(
                           'We work with you to understand your mutual\'s unique needs and goals to create a custom mobile app or AI chatbot that meets your requirements and exceeds your members\' expectations.',
                         ),
                       ],
-                      classes:
-                          'text-base-content/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl',
                     ),
                   ]),
                 ]),
@@ -71,12 +71,12 @@ class FreeDemo extends StatelessComponent {
                       div(classes: 'card-body p-4 sm:p-6', [
                         div(classes: 'w-full overflow-hidden rounded-lg', [
                           iframe(
-                            [],
                             width: 410,
                             height: 600,
                             src:
                                 'https://calendly.com/cuapps?embed_domain=cuapps.co.uk&embed_type=Inline',
                             classes: 'w-full min-h-[500px] sm:min-h-[600px]',
+                            [],
                           ),
                         ]),
                       ]),

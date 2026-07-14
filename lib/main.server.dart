@@ -25,6 +25,11 @@ void main() {
       // },
       head: [
         link(
+          href: '/fonts/outfit-latin.woff2',
+          rel: 'preload',
+          attributes: {'as': 'font', 'type': 'font/woff2', 'crossorigin': ''},
+        ),
+        link(
           href: 'https://cdn.jsdelivr.net/npm/daisyui@5',
           rel: 'stylesheet',
           type: 'text/css',
@@ -34,6 +39,7 @@ void main() {
           rel: 'stylesheet',
           type: 'text/css',
         ),
+        link(href: '/theme.css', rel: 'stylesheet', type: 'text/css'),
         script(src: 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4'),
       ],
       body: App(),

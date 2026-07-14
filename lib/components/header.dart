@@ -1,6 +1,15 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+const _routes = [
+  (label: 'Home', path: '/'),
+  (label: 'Features', path: '/app-features'),
+  (label: 'About Us', path: '/about'),
+  (label: 'Free Demo', path: '/free-demo'),
+  (label: 'Contact Us', path: '/contact-us'),
+  (label: 'CU Chat', path: '/cu-chat'),
+];
+
 class Header extends StatelessComponent {
   const Header({super.key});
 
@@ -8,22 +17,18 @@ class Header extends StatelessComponent {
   Component build(BuildContext context) {
     return header(
       classes:
-          'sticky top-0 z-50 w-full bg-transparent backdrop-blur-md transition-all',
+          'sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md transition-all border-b border-[#132139]/5',
       [
         nav([
           div(classes: 'navbar text-base-content px-4 lg:px-8', [
             div(classes: 'navbar-start', [
-              a(
-                [
-                  img(
-                    src: 'images/cu_logo.webp',
-                    alt: 'CU Apps',
-                    classes: 'h-8 w-auto',
-                  ),
-                ],
-                href: '/',
-                classes: '-m-1.5 p-1.5',
-              ),
+              a(href: '/', classes: '-m-1.5 p-1.5', [
+                img(
+                  src: 'images/cu_logo.webp',
+                  alt: 'CU Apps',
+                  classes: 'h-8 w-auto',
+                ),
+              ]),
             ]),
             div(classes: 'navbar-end', [
               div(classes: 'dropdown dropdown-left', [
@@ -58,67 +63,41 @@ class Header extends StatelessComponent {
                       'menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow',
                   attributes: {'tabindex': '0'},
                   [
-                    for (var route in [
-                      (label: 'Home', path: '/'),
-                      (label: 'Features', path: '/app-features'),
-                      (label: 'About Us', path: '/about'),
-                      (label: 'Free Demo', path: '/free-demo'),
-                      (label: 'Contact Us', path: '/contact-us'),
-                      (label: 'CU Chat', path: '/cu-chat'),
-                    ])
-                      if (route.label == 'CU Chat')
-                        ul(classes: 'menu menu-horizontal px-1', [
-                          li([
-                            a(
-                              [Component.text(route.label)],
-                              href: route.path,
-                              classes:
-                                  'p-2 flex items-center text-sm font-semibold leading-6 text-secondary hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100',
-                            ),
-                          ]),
-                        ])
-                      else
-                        ul(classes: 'menu menu-horizontal px-1', [
-                          li([
-                            a(classes: 'btn btn-ghost', href: route.path, [
-                              Component.text(route.label),
-                            ]),
-                          ]),
-                        ]),
+                    for (var route in _routes)
+                      ul(classes: 'menu menu-horizontal px-1', [
+                        li([_navLink(route)]),
+                      ]),
                   ],
                 ),
               ]),
-              for (var route in [
-                (label: 'Home', path: '/'),
-                (label: 'Features', path: '/app-features'),
-                (label: 'About Us', path: '/about'),
-                (label: 'Free Demo', path: '/free-demo'),
-                (label: 'Contact Us', path: '/contact-us'),
-                (label: 'CU Chat', path: '/cu-chat'),
-              ])
-                if (route.label == 'CU Chat')
-                  ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
-                    li([
-                      a(
-                        [Component.text(route.label)],
-                        href: route.path,
-                        classes:
-                            'text-secondary p-2 flex items-center text-sm font-bold leading-6 hover:bg-secondary-100 rounded-lg focus:outline-none focus:bg-gray-100',
-                      ),
-                    ]),
-                  ])
-                else
-                  ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
-                    li([
-                      a(classes: 'btn btn-ghost', href: route.path, [
-                        Component.text(route.label),
-                      ]),
-                    ]),
-                  ]),
+              for (var route in _routes)
+                ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
+                  li([_navLink(route)]),
+                ]),
             ]),
           ]),
         ]),
       ],
     );
+  }
+
+  Component _navLink(({String label, String path}) route) {
+    if (route.label == 'CU Chat') {
+      return a(
+        href: route.path,
+        classes:
+            'p-2 flex items-center hover:bg-secondary/10 rounded-lg focus:outline-none focus:bg-secondary/10',
+        [
+          img(
+            src: 'images/cu_chat_logo.webp',
+            alt: 'CU Chat',
+            classes: 'h-6 w-auto',
+          ),
+        ],
+      );
+    }
+    return a(classes: 'btn btn-ghost', href: route.path, [
+      Component.text(route.label),
+    ]);
   }
 }

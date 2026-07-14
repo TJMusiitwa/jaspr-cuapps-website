@@ -28,10 +28,10 @@ class LogoSection extends StatelessComponent {
         div(classes: 'mx-auto max-w-2xl text-center mb-16', [
           h2(
             classes:
-                'text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl',
+                'text-3xl font-bold tracking-tight text-[#132139] sm:text-4xl',
             [Component.text('Trusted by leading credit unions in the UK')],
           ),
-          p(classes: 'mt-6 text-lg leading-8 text-gray-600', [
+          p(classes: 'mt-6 text-lg leading-8 text-[#132139]/70', [
             Component.text(
               'We are proud to have worked with some of the leading credit unions in the UK, helping them to revolutionise their digital presence and provide a better service to their members.',
             ),
@@ -45,7 +45,9 @@ class LogoSection extends StatelessComponent {
               div(classes: 'flex items-center justify-center w-40 h-20', [
                 img(
                   src: logo,
-                  alt: 'Client Logo',
+                  alt:
+                      '${logo.split('/').last.split('.').first.toUpperCase()} credit union logo',
+                  loading: MediaLoading.lazy,
                   classes:
                       'max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-110',
                 ),
