@@ -4,11 +4,26 @@ import 'package:jaspr/jaspr.dart';
 class Footer extends StatelessComponent {
   final bool chat;
   const Footer({super.key, this.chat = false});
+
+  ({String primary, String secondary, String socialHover}) get _colors => chat
+      ? (
+          primary: '#E6DDF3',
+          secondary: '#281254',
+          socialHover: 'hover:text-[#433067]',
+        )
+      : (
+          primary: '#C6E6FF',
+          secondary: '#132139',
+          socialHover: 'hover:text-[#259CE2]',
+        );
+
   @override
   Component build(BuildContext context) {
+    final colors = _colors;
+
     return Component.fragment([
       footer(
-        styles: Styles(backgroundColor: Color(chat ? '#E6DDF3' : '#C6E6FF')),
+        styles: Styles(backgroundColor: Color(colors.primary)),
         classes:
             'footer sm:footer-vertical md:footer-horizontal lg:footer-horizontal text-base-content items-center p-4',
         [
@@ -51,8 +66,7 @@ class Footer extends StatelessComponent {
               a(
                 href: 'https://twitter.com/CreditUnionApps',
                 attributes: {'aria-label': 'Twitter'},
-                classes:
-                    'gap-x-2 transition fill-black ${chat ? 'hover:text-[#433067]' : 'hover:text-[#259CE2]'}',
+                classes: 'gap-x-2 transition fill-black ${colors.socialHover}',
                 [
                   svg(
                     viewBox: '0 0 24 24',
@@ -79,8 +93,7 @@ class Footer extends StatelessComponent {
               a(
                 href: 'https://www.linkedin.com/company/cuapps/',
                 attributes: {'aria-label': 'LinkedIn'},
-                classes:
-                    'transition fill-black ${chat ? 'hover:text-[#433067]' : 'hover:text-[#259CE2]'}',
+                classes: 'transition fill-black ${colors.socialHover}',
                 [
                   svg(
                     viewBox: '0 0 24 24',
@@ -118,8 +131,7 @@ class Footer extends StatelessComponent {
               a(
                 href: 'https://www.instagram.com/cu_apps/',
                 attributes: {'aria-label': 'Instagram'},
-                classes:
-                    'transition fill-black ${chat ? 'hover:text-[#433067]' : 'hover:text-[#259CE2]'}',
+                classes: 'transition fill-black ${colors.socialHover}',
                 [
                   svg(
                     viewBox: '0 0 24 24',
@@ -153,8 +165,7 @@ class Footer extends StatelessComponent {
               a(
                 href: 'https://fb.me/creditunionapps',
                 attributes: {'aria-label': 'Facebook'},
-                classes:
-                    'transition fill-black ${chat ? 'hover:text-[#433067]' : 'hover:text-[#259CE2]'}',
+                classes: 'transition fill-black ${colors.socialHover}',
                 [
                   svg(
                     viewBox: '0 0 24 24',
@@ -183,7 +194,7 @@ class Footer extends StatelessComponent {
         ],
       ),
       footer(
-        styles: Styles(backgroundColor: Color(chat ? '#281254' : '#132139')),
+        styles: Styles(backgroundColor: Color(colors.secondary)),
         classes: 'footer footer-center bg-neutral text-neutral-content p-4',
         [
           aside(classes: 'flex flex-col items-center gap-2', [

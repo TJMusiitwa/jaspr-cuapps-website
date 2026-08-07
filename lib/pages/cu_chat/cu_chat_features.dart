@@ -1,6 +1,8 @@
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
+enum _FeatureAlignment { right, left, center }
+
 @client
 class CuChatFeatures extends StatefulComponent {
   const CuChatFeatures({super.key});
@@ -105,7 +107,11 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
             // Left Column
             div(classes: 'flex flex-col gap-8 w-full', [
               for (var i = 0; i < 3; i++)
-                _buildFeatureItem(i, leftFeatures[i], alignRight: true),
+                _buildFeatureItem(
+                  i,
+                  leftFeatures[i],
+                  alignment: _FeatureAlignment.right,
+                ),
             ]),
 
             // Center Column (Phone Mockup)
@@ -124,7 +130,11 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
             // Right Column
             div(classes: 'flex flex-col gap-8 w-full', [
               for (var i = 0; i < 3; i++)
-                _buildFeatureItem(i + 3, rightFeatures[i], alignLeft: true),
+                _buildFeatureItem(
+                  i + 3,
+                  rightFeatures[i],
+                  alignment: _FeatureAlignment.left,
+                ),
             ]),
           ],
         ),
@@ -132,7 +142,11 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
         // Bottom Feature
         div(classes: 'flex justify-center mt-12 w-full', [
           div(classes: 'max-w-md w-full', [
-            _buildFeatureItem(6, bottomFeature, alignCenter: true),
+            _buildFeatureItem(
+              6,
+              bottomFeature,
+              alignment: _FeatureAlignment.center,
+            ),
           ]),
         ]),
       ]),
@@ -149,21 +163,14 @@ class _CuChatFeaturesState extends State<CuChatFeatures> {
       String title,
     })
     feature, {
-    bool alignRight = false,
-    bool alignLeft = false,
-    bool alignCenter = false,
+    required _FeatureAlignment alignment,
   }) {
     final isSelected = selectedFeatureIndex == index;
-
-    // Determine text alignment class
-    String alignmentClass = 'text-left'; // default
-    if (alignRight) alignmentClass = 'lg:text-right';
-    if (alignCenter) alignmentClass = 'text-center';
-
-    // Determine flex alignment for icon
-    String flexAlignClass = 'items-start';
-    if (alignRight) flexAlignClass = 'lg:items-end';
-    if (alignCenter) flexAlignClass = 'items-center';
+    final (alignmentClass, flexAlignClass) = switch (alignment) {
+      _FeatureAlignment.right => ('lg:text-right', 'lg:items-end'),
+      _FeatureAlignment.left => ('text-left', 'items-start'),
+      _FeatureAlignment.center => ('text-center', 'items-center'),
+    };
 
     return div(
       classes:

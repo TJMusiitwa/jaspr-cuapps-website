@@ -108,7 +108,7 @@ class Statistic extends StatefulComponent {
 }
 
 class _StatisticState extends State<Statistic> {
-  late Timer _timer;
+  Timer? _timer;
   double _currentValue = 0;
 
   @override
@@ -118,31 +118,19 @@ class _StatisticState extends State<Statistic> {
   }
 
   void _startAnimation() {
-    final RegExp regex = RegExp(r'(\d+)(\D*)');
-    final Match? match = regex.firstMatch(component.value);
+    final statisticValue = _statisticValue(component.value);
 
-    // If on server, set final value immediately and return
     if (!kIsWeb) {
-      if (match == null) {
-        _currentValue = double.tryParse(component.value) ?? 0;
-      } else {
-        _currentValue = double.parse(match.group(1)!);
-      }
+      _currentValue = statisticValue;
       return;
     }
 
-    if (match == null) {
-      // If the value doesn't match the expected format, display it directly
-      setState(() {
-        _currentValue = double.tryParse(component.value) ?? 0;
-      });
-      return;
-    }
+    _startTimer(statisticValue);
+  }
 
-    final double targetValue = double.parse(match.group(1)!);
-
+  void _startTimer(double targetValue) {
     const Duration animationDuration = Duration(seconds: 2);
-    const int totalSteps = 60; // Aim for 60 FPS
+    const int totalSteps = 60;
 
     final double stepValue = targetValue / totalSteps;
     final Duration stepInterval = Duration(
@@ -150,22 +138,32 @@ class _StatisticState extends State<Statistic> {
     );
 
     _timer = Timer.periodic(stepInterval, (timer) {
-      setState(() {
-        if (_currentValue < targetValue) {
-          _currentValue += stepValue;
-        } else {
-          _currentValue = targetValue;
-          _timer.cancel();
-        }
-      });
+      _advanceAnimation(timer, targetValue, stepValue);
     });
+  }
+
+  void _advanceAnimation(Timer timer, double targetValue, double stepValue) {
+    setState(() {
+      if (_currentValue < targetValue) {
+        _currentValue += stepValue;
+        return;
+      }
+
+      _currentValue = targetValue;
+      timer.cancel();
+    });
+  }
+
+  double _statisticValue(String value) {
+    final match = RegExp(r'(\d+)').firstMatch(value);
+    return match == null
+        ? double.tryParse(value) ?? 0
+        : double.parse(match.group(1)!);
   }
 
   @override
   void dispose() {
-    if (_timer.isActive) {
-      _timer.cancel();
-    }
+    _timer?.cancel();
     super.dispose();
   }
 

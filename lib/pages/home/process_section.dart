@@ -64,39 +64,45 @@ class ProcessSection extends StatelessComponent {
                   'timeline timeline-vertical timeline-snap-icon timeline-compact',
               [
                 for (var (i, step) in steps.indexed)
-                  li([
-                    if (i > 0) hr(classes: 'bg-[#C6E6FF]'),
-                    div(classes: 'timeline-middle', [
-                      div(
-                        classes:
-                            'w-4 h-4 rounded-full bg-white border-2 border-[#259CE2]',
-                        [],
-                      ),
-                    ]),
-                    div(classes: 'timeline-end reveal pb-12 pl-4 sm:pl-6', [
-                      div(
-                        classes:
-                            'text-5xl sm:text-6xl font-bold text-[#C6E6FF] leading-none select-none',
-                        [Component.text(step.number)],
-                      ),
-                      h3(
-                        classes:
-                            'mt-3 text-xl sm:text-2xl font-bold tracking-tight text-[#132139]',
-                        [Component.text(step.title)],
-                      ),
-                      p(
-                        classes:
-                            'mt-3 text-base text-[#132139]/70 leading-relaxed max-w-xl',
-                        [Component.text(step.description)],
-                      ),
-                    ]),
-                    if (i < steps.length - 1) hr(classes: 'bg-[#C6E6FF]'),
-                  ]),
+                  _buildTimelineStep(i, step, steps.length),
               ],
             ),
           ]),
         ],
       ),
+    ]);
+  }
+
+  Component _buildTimelineStep(
+    int index,
+    ({String number, String title, String description}) step,
+    int stepCount,
+  ) {
+    return li([
+      if (index > 0) hr(classes: 'bg-[#C6E6FF]'),
+      div(classes: 'timeline-middle', [
+        div(
+          classes: 'w-4 h-4 rounded-full bg-white border-2 border-[#259CE2]',
+          [],
+        ),
+      ]),
+      div(classes: 'timeline-end reveal pb-12 pl-4 sm:pl-6', [
+        div(
+          classes:
+              'text-5xl sm:text-6xl font-bold text-[#C6E6FF] leading-none select-none',
+          [Component.text(step.number)],
+        ),
+        h3(
+          classes:
+              'mt-3 text-xl sm:text-2xl font-bold tracking-tight text-[#132139]',
+          [Component.text(step.title)],
+        ),
+        p(
+          classes: 'mt-3 text-base text-[#132139]/70 leading-relaxed max-w-xl',
+          [Component.text(step.description)],
+        ),
+      ]),
+      if (index < stepCount - 1) hr(classes: 'bg-[#C6E6FF]'),
     ]);
   }
 }
