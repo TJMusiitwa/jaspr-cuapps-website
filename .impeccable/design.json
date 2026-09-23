@@ -1,0 +1,365 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T20:21:37.179957Z",
+  "title": "Design System: CU Apps",
+  "extensions": {
+    "colorMeta": {
+      "harbour-navy": {
+        "role": "primary",
+        "displayName": "Harbour Navy",
+        "tonalRamp": [
+          "oklch(15% 0.05 255)",
+          "oklch(25% 0.08 255)",
+          "oklch(35% 0.1 255)",
+          "oklch(45% 0.12 255)",
+          "oklch(58% 0.12 255)",
+          "oklch(70% 0.1 255)",
+          "oklch(82% 0.07 255)",
+          "oklch(95% 0.03 255)"
+        ]
+      },
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "tonalRamp": [
+          "oklch(15% 0.05 240)",
+          "oklch(25% 0.08 240)",
+          "oklch(35% 0.1 240)",
+          "oklch(45% 0.12 240)",
+          "oklch(58% 0.12 240)",
+          "oklch(70% 0.1 240)",
+          "oklch(82% 0.07 240)",
+          "oklch(95% 0.03 240)"
+        ]
+      },
+      "link-blue": {
+        "role": "primary",
+        "displayName": "Link Blue",
+        "tonalRamp": [
+          "oklch(15% 0.05 245)",
+          "oklch(25% 0.08 245)",
+          "oklch(35% 0.1 245)",
+          "oklch(45% 0.12 245)",
+          "oklch(58% 0.12 245)",
+          "oklch(70% 0.1 245)",
+          "oklch(82% 0.07 245)",
+          "oklch(95% 0.03 245)"
+        ]
+      },
+      "cu-chat-purple": {
+        "role": "secondary",
+        "displayName": "CU Chat Purple",
+        "tonalRamp": [
+          "oklch(15% 0.05 295)",
+          "oklch(25% 0.08 295)",
+          "oklch(35% 0.1 295)",
+          "oklch(45% 0.12 295)",
+          "oklch(58% 0.12 295)",
+          "oklch(70% 0.1 295)",
+          "oklch(82% 0.07 295)",
+          "oklch(95% 0.03 295)"
+        ]
+      },
+      "purple-deep": {
+        "role": "secondary",
+        "displayName": "Purple Deep",
+        "tonalRamp": [
+          "oklch(15% 0.05 295)",
+          "oklch(25% 0.08 295)",
+          "oklch(35% 0.1 295)",
+          "oklch(45% 0.12 295)",
+          "oklch(58% 0.12 295)",
+          "oklch(70% 0.1 295)",
+          "oklch(82% 0.07 295)",
+          "oklch(95% 0.03 295)"
+        ]
+      },
+      "lilac": {
+        "role": "secondary",
+        "displayName": "Lilac",
+        "tonalRamp": [
+          "oklch(15% 0.05 295)",
+          "oklch(25% 0.08 295)",
+          "oklch(35% 0.1 295)",
+          "oklch(45% 0.12 295)",
+          "oklch(58% 0.12 295)",
+          "oklch(70% 0.1 295)",
+          "oklch(82% 0.07 295)",
+          "oklch(95% 0.03 295)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "tonalRamp": [
+          "oklch(15% 0.05 245)",
+          "oklch(25% 0.08 245)",
+          "oklch(35% 0.1 245)",
+          "oklch(45% 0.12 245)",
+          "oklch(58% 0.12 245)",
+          "oklch(70% 0.1 245)",
+          "oklch(82% 0.07 245)",
+          "oklch(95% 0.03 245)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.05 240)",
+          "oklch(25% 0.08 240)",
+          "oklch(35% 0.1 240)",
+          "oklch(45% 0.12 240)",
+          "oklch(58% 0.12 240)",
+          "oklch(70% 0.1 240)",
+          "oklch(82% 0.07 240)",
+          "oklch(95% 0.03 240)"
+        ]
+      },
+      "pale": {
+        "role": "neutral",
+        "displayName": "Pale",
+        "tonalRamp": [
+          "oklch(15% 0.05 240)",
+          "oklch(25% 0.08 240)",
+          "oklch(35% 0.1 240)",
+          "oklch(45% 0.12 240)",
+          "oklch(58% 0.12 240)",
+          "oklch(70% 0.1 240)",
+          "oklch(82% 0.07 240)",
+          "oklch(95% 0.03 240)"
+        ]
+      },
+      "night-navy": {
+        "role": "neutral",
+        "displayName": "Night Navy",
+        "tonalRamp": [
+          "oklch(15% 0.05 255)",
+          "oklch(25% 0.08 255)",
+          "oklch(35% 0.1 255)",
+          "oklch(45% 0.12 255)",
+          "oklch(58% 0.12 255)",
+          "oklch(70% 0.1 255)",
+          "oklch(82% 0.07 255)",
+          "oklch(95% 0.03 255)"
+        ]
+      },
+      "lilac-field": {
+        "role": "secondary",
+        "displayName": "Lilac Field",
+        "tonalRamp": [
+          "oklch(15% 0.05 300)",
+          "oklch(25% 0.08 300)",
+          "oklch(35% 0.1 300)",
+          "oklch(45% 0.12 300)",
+          "oklch(58% 0.12 300)",
+          "oklch(70% 0.1 300)",
+          "oklch(82% 0.07 300)",
+          "oklch(95% 0.03 300)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "tonalRamp": [
+          "oklch(15% 0.05 250)",
+          "oklch(25% 0.08 250)",
+          "oklch(35% 0.1 250)",
+          "oklch(45% 0.12 250)",
+          "oklch(58% 0.12 250)",
+          "oklch(70% 0.1 250)",
+          "oklch(82% 0.07 250)",
+          "oklch(95% 0.03 250)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step and card headings."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero and section intros."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraph copy."
+      },
+      "label": {
+        "displayName": "Eyebrow",
+        "purpose": "Uppercase section eyebrows and labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "device-drop",
+        "value": "18px 20px 0 rgba(19,33,57,.1)",
+        "purpose": "Under device frames."
+      },
+      {
+        "name": "floating-panel",
+        "value": "0 24px 50px rgba(19,33,57,.14)",
+        "purpose": "Products dropdown only."
+      },
+      {
+        "name": "mock-lift",
+        "value": "0 2px 6px rgba(19,33,57,.18)",
+        "purpose": "Small UI mocks."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": ".2s ease",
+        "purpose": "Hover lifts and colour shifts; gated by prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "420px"
+      },
+      {
+        "name": "sm",
+        "value": "480px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "lg",
+        "value": "1000px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA on CU Apps surfaces.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Book a call <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15m-5.5-5.5L19 12l-5.5 5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:24px;min-height:52px;padding:13px 21px;border:0;border-radius:7px;font:650 .95rem/1.15 Outfit,Arial,sans-serif;color:#fff;cursor:pointer;transition:transform .2s ease,background-color .2s ease}.ds-btn:hover{transform:translateY(-2px)}.ds-btn:focus-visible{outline:3px solid #259ce2;outline-offset:4px}.ds-btn-primary{background:#132139}.ds-btn-primary:hover{background:#24476d}.ds-arrow{flex:0 0 auto;width:1.15em;height:1.15em}"
+    },
+    {
+      "name": "Chat Button",
+      "kind": "button",
+      "refersTo": "button-chat",
+      "description": "Main CTA on CU Chat surfaces.",
+      "html": "<button class=\"ds-btn ds-btn-chat\">Book a call <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15m-5.5-5.5L19 12l-5.5 5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:24px;min-height:52px;padding:13px 21px;border:0;border-radius:7px;font:650 .95rem/1.15 Outfit,Arial,sans-serif;color:#fff;cursor:pointer;transition:transform .2s ease,background-color .2s ease}.ds-btn:hover{transform:translateY(-2px)}.ds-btn:focus-visible{outline:3px solid #259ce2;outline-offset:4px}.ds-btn-chat{background:#433067}.ds-btn-chat:hover{background:#281254}.ds-arrow{flex:0 0 auto;width:1.15em;height:1.15em}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "description": "Underlined secondary action.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">See how it works <svg class=\"ds-arrow\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15m-5.5-5.5L19 12l-5.5 5.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></a>",
+      "css": ".ds-text-link{display:inline-flex;align-items:center;gap:17px;padding-block:7px;border-bottom:1px solid currentColor;color:#132139;font:650 .98rem Outfit,Arial,sans-serif;text-decoration:none}.ds-text-link:hover{color:#1b658f}.ds-text-link:focus-visible{outline:3px solid #259ce2;outline-offset:4px}.ds-arrow{flex:0 0 auto;width:1.15em;height:1.15em}"
+    },
+    {
+      "name": "Eyebrow + Headline",
+      "kind": "custom",
+      "description": "Section opener.",
+      "html": "<div class=\"ds-intro\"><p class=\"ds-eyebrow\">Member app</p><h2 class=\"ds-headline\">Your credit union, in every pocket.</h2></div>",
+      "css": ".ds-eyebrow{margin:0;font:700 .76rem Outfit,Arial,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:#355f83}.ds-headline{margin:14px 0 0;font:600 2.8rem/1.08 Outfit,Arial,sans-serif;letter-spacing:-.055em;color:#132139}"
+    },
+    {
+      "name": "Step Card",
+      "kind": "card",
+      "refersTo": "card-chat",
+      "description": "Flat hairline card with number badge.",
+      "html": "<div class=\"ds-step\"><span class=\"ds-step-n\">01</span><h3>Train on your content</h3><p>We load your policies and FAQs.</p></div>",
+      "css": ".ds-step{padding:32px;background:#fff;border:1px solid #ddd3eb;border-radius:8px;font-family:Outfit,Arial,sans-serif;max-width:320px}.ds-step-n{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#433067;color:#fff;font-size:.78rem;font-weight:700}.ds-step h3{margin:32px 0 0;font-size:1.6rem;line-height:1.18;letter-spacing:-.04em;color:#132139}.ds-step p{margin:14px 0 0;color:#4b5262;line-height:1.58}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Sticky hairline header.",
+      "html": "<nav class=\"ds-nav\"><strong>CU Apps</strong><a href=\"#\">Products</a><a href=\"#\">Client stories</a><a href=\"#\">About</a><a class=\"ds-nav-cta\" href=\"#\">Book a call</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:32px;min-height:80px;padding:0 24px;background:rgba(255,255,255,.96);border-bottom:1px solid #d7e0e9;font:550 .94rem Outfit,Arial,sans-serif;color:#132139}.ds-nav a{color:inherit;text-decoration:none}.ds-nav a:hover{color:#176b9e}.ds-nav-cta{margin-left:auto;padding:12px 18px;border-radius:7px;background:#132139;color:#fff!important}"
+    },
+    {
+      "name": "Capability Index",
+      "kind": "custom",
+      "description": "Ruled capability rows beside a sticky intro; replaces icon card grids on product and feature pages.",
+      "html": "<div class=\"ds-cap-layout\"><div class=\"ds-cap-intro\"><h2>Everything a member needs</h2></div><ul class=\"ds-cap-list\"><li class=\"ds-cap\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 12l4 4L19 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg><div><h3>Instant decisions</h3><p>Loan applications scored and answered in minutes.</p></div></li><li class=\"ds-cap\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 7h16M4 12h16M4 17h10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><div><h3>Clear statements</h3><p>Every transaction, searchable and plainly labelled.</p></div></li></ul></div>",
+      "css": ".ds-cap-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px;align-items:start;font-family:Outfit,Arial,sans-serif;color:#132139}.ds-cap-intro{position:sticky;top:24px}.ds-cap-intro h2{margin:0;font-size:2.2rem;font-weight:600;line-height:1.08;letter-spacing:-.04em}.ds-cap-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--navy,#132139)}.ds-cap{display:grid;grid-template-columns:26px minmax(0,1fr);gap:20px;padding-block:26px;border-bottom:1px solid var(--line,#d7e0e9)}.ds-cap svg{width:24px;height:24px;padding-top:2px;color:#126797}.ds-cap h3{margin:0;font-size:1.3rem;font-weight:600;line-height:1.25;letter-spacing:-.02em}.ds-cap p{max-width:58ch;margin:8px 0 0;color:var(--ink-body,#4b5a6a);line-height:1.6}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Member's Front Door",
+    "overview": "The site is the front door a credit union opens to its members. It should feel like a trusted local institution that has taken on modern craft. The pages read as a calm editorial product story: one strong headline per section, generous white and pale-sky fields, and real devices showing real screens. Imagery does the persuading and decoration stays out of the way. Navy carries the authority, signal blue carries the energy, and CU Chat moves into its own purple world without breaking the grammar.\n\nDensity is low and deliberate. Sections breathe on a large vertical rhythm. Type is a single family (Outfit), set tight and heavy at display sizes and open at reading sizes. Depth comes from tonal fields and hairlines, not shadows. The only things lifted off the page are product artifacts (phones, the products dropdown), because they are the product.",
+    "keyCharacteristics": [
+      "One typeface, Outfit, with very tight negative tracking at display sizes.",
+      "Navy and signal-blue for CU Apps; purple and lilac for CU Chat. The two never mix within a surface.",
+      "Flat tonal fields ruled by hairlines; hard offset shadows only under device frames.",
+      "Tracked uppercase eyebrows introduce every section.",
+      "Solid, restrained buttons with small radius and a 2px hover lift."
+    ],
+    "rules": [
+      {
+        "name": "The Two Brands Rule",
+        "body": "Blue belongs to CU Apps surfaces and purple to CU Chat surfaces. A page picks one register; the only shared elements are navy text and hairlines.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signal Scarcity Rule",
+        "body": "Signal blue is an accent and a focus colour, not a fill. Buttons are navy; links use link blue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Anything at display or headline scale gets negative tracking (\u22120.04em to \u22120.065em). Default tracking at those sizes looks unfinished.",
+        "section": "typography"
+      },
+      {
+        "name": "The Eyebrow Rule",
+        "body": "Every major section opens with a tracked uppercase eyebrow above its headline, in eyebrow ink (or purple on CU Chat).",
+        "section": "typography"
+      },
+      {
+        "name": "The Product Lift Rule",
+        "body": "Only the product floats. Cards, panels, and sections stay flat and hairline-ruled. If something isn't a device, a mock screen, or the nav dropdown, it has no shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Arrow Means Where Rule",
+        "body": "An arrow tells the reader where the link goes. Forward stays, down jumps, diagonal leaves; a mismatched arrow is a bug.",
+        "section": "components"
+      },
+      {
+        "name": "The Ruled Index Rule",
+        "body": "Lists of parallel things (capabilities, rosters, client rolls) are ruled rows: a strong rule in the register's darkest colour above the list, hairlines between rows, no card chrome. Cards are for steps and self-contained panels, not for enumerations.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do use Outfit alone, with negative tracking at display and headline sizes.",
+      "Do open sections with a tracked uppercase eyebrow.",
+      "Do switch the whole surface to the purple register on CU Chat pages, including the header CTA.",
+      "Do show real product screens in device frames rather than abstract illustration.",
+      "Do keep a 3px signal-blue focus ring with 4px offset on every interactive element.",
+      "Do set lists of capabilities, bots, or clients as ruled rows under a strong top rule, with the intro held sticky beside them on wide screens.",
+      "Do pick the link arrow from the destination: forward stays on site, down jumps within the page, diagonal leaves the site."
+    ],
+    "donts": [
+      "Don't mix blue and purple accents on one surface.",
+      "Don't put shadows on cards, panels, or sections; only on devices, mocks, and the dropdown.",
+      "Don't use signal blue for body text or button fills.",
+      "Don't use gradient text, glassmorphism, or neon gradients (PRODUCT.md anti-references).",
+      "Don't introduce a second typeface or a radius above 12px outside device frames.",
+      "Don't type arrow glyphs (\u2192 \u2193 \u2197) into labels; use the drawn link arrow.",
+      "Don't build feature lists as grids of icon cards; use the capability index."
+    ]
+  }
+}
