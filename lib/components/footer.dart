@@ -1,3 +1,4 @@
+import 'package:cuapps_website/components/ui.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
@@ -5,212 +6,121 @@ class Footer extends StatelessComponent {
   final bool chat;
   const Footer({super.key, this.chat = false});
 
-  ({String primary, String secondary, String socialHover}) get _colors => chat
-      ? (
-          primary: '#E6DDF3',
-          secondary: '#281254',
-          socialHover: 'hover:text-[#433067]',
-        )
-      : (
-          primary: '#C6E6FF',
-          secondary: '#132139',
-          socialHover: 'hover:text-[#259CE2]',
-        );
+  static const _socials = [
+    (
+      'LinkedIn',
+      'https://www.linkedin.com/company/cuapps/',
+      'M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z',
+    ),
+    (
+      'X (Twitter)',
+      'https://twitter.com/CreditUnionApps',
+      'M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.4l-5.8-7.58-6.63 7.58H.49l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.48 3.24H4.3l13.31 17.41Z',
+    ),
+    (
+      'Instagram',
+      'https://www.instagram.com/cu_apps/',
+      'M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13a5.88 5.88 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.88 5.88 0 0 0 2.13-1.38 5.88 5.88 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63C19.1.33 18.22.13 16.95.07 15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z',
+    ),
+    (
+      'Facebook',
+      'https://fb.me/creditunionapps',
+      'M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07Z',
+    ),
+  ];
 
   @override
   Component build(BuildContext context) {
-    final colors = _colors;
-
-    return Component.fragment([
-      footer(
-        styles: Styles(backgroundColor: Color(colors.primary)),
-        classes:
-            'footer sm:footer-vertical md:footer-horizontal lg:footer-horizontal text-base-content items-center p-4',
-        [
-          aside(classes: 'grid-flow-col items-center', [
-            a(href: '#', classes: '-m-1.5 p-1.5', [
-              img(
-                src: 'images/cu_logo.webp',
-                alt: 'CU Apps',
-                classes: 'h-8 w-auto',
+    return footer(classes: 'site-footer', [
+      div(classes: 'site-container footer-grid footer-grid-wide', [
+        div(classes: 'footer-brand', [
+          a(href: '/', [
+            img(
+              src: '/images/cu_logo.webp',
+              alt: 'CU Apps home',
+              width: 180,
+              height: 42,
+            ),
+          ]),
+          p([
+            Component.text(
+              'Digital member experiences, made for credit unions.',
+            ),
+          ]),
+          div(classes: 'footer-social', [
+            for (final (label, href, icon) in _socials)
+              a(
+                href: href,
+                target: Target.blank,
+                attributes: {
+                  'aria-label': 'CU Apps on $label',
+                  'rel': 'noopener',
+                },
+                [
+                  svg(
+                    viewBox: '0 0 24 24',
+                    attributes: {'aria-hidden': 'true'},
+                    [path(d: icon, [])],
+                  ),
+                ],
               ),
-            ]),
           ]),
-          nav([
-            h6(classes: 'footer-title', [Component.text('Product Sheets')]),
-            a(
-              href: 'https://cuapps.co.uk/cu-apps-product-booklet/',
-              target: Target.blank,
-              classes: 'link link-hover',
-              [Component.text('Mobile App')],
-            ),
-            a(
-              href: 'https://cuapps.co.uk/cu-chat-product-sheet/',
-              target: Target.blank,
-              classes: 'link link-hover',
-              [Component.text('Chatbot')],
-            ),
+        ]),
+        div(classes: 'footer-links', [
+          p(classes: 'footer-label', [Component.text('Products')]),
+          for (final (label, href, _) in [
+            ...memberProducts,
+            ...chatProducts,
+            ...operationsProducts,
+          ])
+            a(href: href, [Component.text(label)]),
+        ]),
+        div(classes: 'footer-links', [
+          p(classes: 'footer-label', [Component.text('Company')]),
+          a(href: '/case-studies', [Component.text('Client stories')]),
+          a(href: '/about', [Component.text('About CU Apps')]),
+          a(href: '/contact-us', [Component.text('Contact the team')]),
+          a(href: '/free-demo', [Component.text('Book a call')]),
+          a(href: 'mailto:hello@cuapps.co.uk', [
+            Component.text('hello@cuapps.co.uk'),
           ]),
-          nav([
-            h6(classes: 'footer-title', [
-              Component.text('Interested in a demo?'),
-            ]),
-            a(href: '/free-demo', classes: 'link link-hover', [
-              Component.text('Book a demo'),
-            ]),
-          ]),
-          nav(
-            classes:
-                'grid-flow-col gap-4 md:place-self-center md:justify-self-end',
+        ]),
+        div(classes: 'footer-links', [
+          p(classes: 'footer-label', [Component.text('Product sheets')]),
+          a(
+            href: 'https://cu.chat/downloads/CU-Chat-Product-Info.pdf',
+            target: Target.blank,
+            attributes: {'rel': 'noopener'},
+            [Component.text('CU Chat (PDF)'), linkArrow(ArrowKind.out)],
+          ),
+          a(
+            href:
+                'https://cu.chat/downloads/Internal-Knowledge-Agent-Product-Info.pdf',
+            target: Target.blank,
+            attributes: {'rel': 'noopener'},
             [
-              a(
-                href: 'https://twitter.com/CreditUnionApps',
-                attributes: {'aria-label': 'Twitter'},
-                classes: 'gap-x-2 transition fill-black ${colors.socialHover}',
-                [
-                  svg(
-                    viewBox: '0 0 24 24',
-                    classes: 'w-6 h-6',
-                    styles: Styles(
-                      raw: {'fill': 'none', 'stroke': 'currentColor'},
-                    ),
-                    [
-                      path(
-                        strokeWidth: '1.5',
-                        d: 'm19 4-5.93 6.93M5 20l5.93-6.93m0 0 5.795 6.587c.19.216.483.343.794.343h1.474c.836 0 1.307-.85.793-1.435L13.07 10.93m-2.14 2.14L4.214 5.435C3.7 4.85 4.17 4 5.007 4h1.474c.31 0 .604.127.794.343l5.795 6.587',
-                        styles: Styles(
-                          raw: {
-                            'stroke-linecap': "round",
-                            'stroke-linejoin': "round",
-                          },
-                        ),
-                        [],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              a(
-                href: 'https://www.linkedin.com/company/cuapps/',
-                attributes: {'aria-label': 'LinkedIn'},
-                classes: 'transition fill-black ${colors.socialHover}',
-                [
-                  svg(
-                    viewBox: '0 0 24 24',
-                    classes: 'w-6 h-6',
-                    styles: Styles(
-                      raw: {'fill': 'none', 'stroke': 'currentColor'},
-                    ),
-                    [
-                      path(
-                        strokeWidth: '1.5',
-                        d: 'M8 16.375V10.75m4 5.625V13.5m0 0v-2.75m0 2.75c0-1.288 1.222-2 2.4-2 1.6 0 1.6 1.375 1.6 2.875v2m-8-8.75v.5',
-                        styles: Styles(
-                          raw: {
-                            'stroke-linecap': "round",
-                            'stroke-linejoin': "round",
-                          },
-                        ),
-                        [],
-                      ),
-                      path(
-                        strokeWidth: '1.5',
-                        d: 'M3 9.4c0-2.24 0-3.36.436-4.216a4 4 0 0 1 1.748-1.748C6.04 3 7.16 3 9.4 3h5.2c2.24 0 3.36 0 4.216.436a4 4 0 0 1 1.748 1.748C21 6.04 21 7.16 21 9.4v5.2c0 2.24 0 3.36-.436 4.216a4 4 0 0 1-1.748 1.748C17.96 21 16.84 21 14.6 21H9.4c-2.24 0-3.36 0-4.216-.436a4 4 0 0 1-1.748-1.748C3 17.96 3 16.84 3 14.6z',
-                        styles: Styles(
-                          raw: {
-                            'stroke-linecap': "round",
-                            'stroke-linejoin': "round",
-                          },
-                        ),
-                        [],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              a(
-                href: 'https://www.instagram.com/cu_apps/',
-                attributes: {'aria-label': 'Instagram'},
-                classes: 'transition fill-black ${colors.socialHover}',
-                [
-                  svg(
-                    viewBox: '0 0 24 24',
-                    classes: 'w-6 h-6',
-                    attributes: {
-                      'fill': 'none',
-                      'stroke': 'currentColor',
-                      'stroke-width': '1.5',
-                      'stroke-linecap': 'round',
-                      'stroke-linejoin': 'round',
-                      'xmlns': 'http://www.w3.org/2000/svg',
-                    },
-                    [
-                      rect(
-                        width: '20',
-                        height: '20',
-                        x: '2',
-                        y: '2',
-                        attributes: {'rx': '5', 'ry': '5'},
-                        [],
-                      ),
-                      path(
-                        d: 'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z',
-                        [],
-                      ),
-                      line(x1: '17.5', x2: '17.51', y1: '6.5', y2: '6.5', []),
-                    ],
-                  ),
-                ],
-              ),
-              a(
-                href: 'https://fb.me/creditunionapps',
-                attributes: {'aria-label': 'Facebook'},
-                classes: 'transition fill-black ${colors.socialHover}',
-                [
-                  svg(
-                    viewBox: '0 0 24 24',
-                    classes: 'w-6 h-6',
-                    styles: Styles(
-                      raw: {'fill': 'none', 'stroke': 'currentColor'},
-                    ),
-                    [
-                      path(
-                        strokeWidth: '1.5',
-                        d: 'M6.5 10v4h3v7h4v-7h3l1-4h-4V8c0-.545.455-1 1-1h3V3h-3c-2.723 0-5 2.277-5 5v2z',
-                        styles: Styles(
-                          raw: {
-                            'stroke-linecap': "round",
-                            'stroke-linejoin': "round",
-                          },
-                        ),
-                        [],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              Component.text('Internal Knowledge Agent (PDF)'),
+              linkArrow(ArrowKind.out),
             ],
           ),
-        ],
-      ),
-      footer(
-        styles: Styles(backgroundColor: Color(colors.secondary)),
-        classes: 'footer footer-center bg-neutral text-neutral-content p-4',
-        [
-          aside(classes: 'flex flex-col items-center gap-2', [
-            p([
-              Component.text(
-                'Copyright © ${DateTime.now().year} CU Apps. All rights reserved.',
-              ),
-            ]),
-            p([
-              a(href: 'mailto:jonamusiitwa@outlook.com', [
-                Component.text('Developed by Jonathan Musiitwa'),
-              ]),
-            ]),
+        ]),
+        div(classes: 'footer-links footer-trust', [
+          p(classes: 'footer-label', [Component.text('Trust & security')]),
+          a(href: trustCenterUrl, target: Target.blank, [
+            Component.text('Trust Center'),
+            linkArrow(ArrowKind.out),
           ]),
-        ],
-      ),
+          a(href: statusPageUrl, target: Target.blank, [
+            Component.text('Status page'),
+            linkArrow(ArrowKind.out),
+          ]),
+          a(href: trustCenterUrl, target: Target.blank, [isoBadge(size: 96)]),
+        ]),
+      ]),
+      div(classes: 'site-container footer-bottom', [
+        p([Component.text('© ${DateTime.now().year} CU Apps')]),
+        p([Component.text('Built for the mutual sector.')]),
+      ]),
     ]);
   }
 }

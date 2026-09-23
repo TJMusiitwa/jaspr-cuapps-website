@@ -1,103 +1,128 @@
+import 'package:cuapps_website/components/ui.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
-
-const _routes = [
-  (label: 'Home', path: '/'),
-  (label: 'Features', path: '/app-features'),
-  (label: 'About Us', path: '/about'),
-  (label: 'Free Demo', path: '/free-demo'),
-  (label: 'Contact Us', path: '/contact-us'),
-  (label: 'CU Chat', path: '/cu-chat'),
-];
 
 class Header extends StatelessComponent {
   const Header({super.key});
 
   @override
   Component build(BuildContext context) {
-    return header(
-      classes:
-          'sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md transition-all border-b border-[#132139]/5',
-      [
-        nav([
-          div(classes: 'navbar text-base-content px-4 lg:px-8', [
-            div(classes: 'navbar-start', [
-              a(href: '/', classes: '-m-1.5 p-1.5', [
-                img(
-                  src: 'images/cu_logo.webp',
-                  alt: 'CU Apps',
-                  classes: 'h-8 w-auto',
-                ),
-              ]),
-            ]),
-            div(classes: 'navbar-end', [
-              div(classes: 'dropdown dropdown-left', [
-                div(
-                  classes: 'btn btn-ghost lg:hidden',
-                  attributes: {'tabindex': '0', 'role': 'button'},
-                  [
-                    svg(
-                      classes: 'h-5 w-5',
-                      viewBox: '0 0 24 24',
-                      attributes: {
-                        'fill': 'none',
-                        'stroke': 'currentColor',
-                        'xmlns': 'http://www.w3.org/2000/svg',
-                      },
-                      [
-                        path(
-                          strokeWidth: '2',
-                          d: 'M4 6h16M4 12h8m-8 6h16',
-                          attributes: {
-                            'stroke-linecap': 'round',
-                            'stroke-linejoin': 'round',
-                          },
-                          [],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                ul(
-                  classes:
-                      'menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow',
-                  attributes: {'tabindex': '0'},
-                  [
-                    for (var route in _routes)
-                      ul(classes: 'menu menu-horizontal px-1', [
-                        li([_navLink(route)]),
-                      ]),
-                  ],
-                ),
-              ]),
-              for (var route in _routes)
-                ul(classes: 'menu menu-horizontal px-1 hidden lg:flex', [
-                  li([_navLink(route)]),
-                ]),
-            ]),
-          ]),
+    return header(classes: 'site-header', [
+      a(href: '#content', classes: 'skip-link', [
+        Component.text('Skip to content'),
+      ]),
+      div(classes: 'site-container site-header-inner', [
+        a(href: '/', classes: 'brand-link', [
+          img(
+            src: '/images/cu_logo.webp',
+            alt: 'CU Apps home',
+            width: 180,
+            height: 42,
+          ),
         ]),
+        nav(
+          classes: 'desktop-nav',
+          attributes: {'aria-label': 'Main navigation'},
+          [
+            _productsMenu(),
+            a(href: '/case-studies', [Component.text('Client stories')]),
+            a(href: '/about', [Component.text('About')]),
+            a(href: '/contact-us', [Component.text('Contact')]),
+          ],
+        ),
+        div(classes: 'desktop-action', [primaryLink(bookingLabel)]),
+        // web/nav.js closes this on Escape, outside taps and link taps, and
+        // swaps the label between Menu and Close.
+        details(classes: 'mobile-menu', [
+          summary([
+            span(classes: 'mobile-menu-label', [Component.text('Menu')]),
+            span(
+              classes: 'mobile-menu-icon',
+              attributes: {'aria-hidden': 'true'},
+              [],
+            ),
+          ]),
+          nav(
+            attributes: {'aria-label': 'Mobile navigation'},
+            [
+              p(classes: 'mobile-nav-label', [Component.text('Member apps')]),
+              for (final product in memberProducts) _mobileLink(product),
+              p(classes: 'mobile-nav-label', [Component.text('CU Chat AI')]),
+              a(href: '/cu-chat', [Component.text('CU Chat overview')]),
+              a(href: '/cu-chat/stories', [
+                Component.text('CU Chat client stories'),
+              ]),
+              for (final product in chatProducts) _mobileLink(product),
+              p(classes: 'mobile-nav-label', [
+                Component.text('Lending & operations'),
+              ]),
+              for (final product in operationsProducts) _mobileLink(product),
+              div(classes: 'mobile-nav-divider', []),
+              a(href: '/case-studies', [Component.text('Client stories')]),
+              a(href: '/about', [Component.text('About')]),
+              a(href: '/contact-us', [Component.text('Contact')]),
+            ],
+          ),
+        ]),
+      ]),
+    ]);
+  }
+
+  // Opens on hover and on keyboard focus, so it works without JavaScript on
+  // the static build and closes as soon as focus leaves. web/nav.js adds
+  // aria-expanded and Escape to dismiss.
+  Component _productsMenu() {
+    return div(classes: 'nav-products', [
+      button(
+        type: ButtonType.button,
+        attributes: {'aria-haspopup': 'true', 'aria-expanded': 'false'},
+        [Component.text('Products')],
+      ),
+      div(classes: 'nav-products-panel', [
+        div(classes: 'nav-products-col', [
+          _group('Member apps', memberProducts),
+          _group(
+            'CU Chat AI',
+            chatProducts,
+            chat: true,
+            footer: div(classes: 'nav-products-footer', [
+              a(href: '/cu-chat', classes: 'nav-products-overview', [
+                Component.text('CU Chat overview'),
+                linkArrow(ArrowKind.forward),
+              ]),
+              a(href: '/cu-chat/stories', classes: 'nav-products-overview', [
+                Component.text('Client stories'),
+                linkArrow(ArrowKind.forward),
+              ]),
+            ]),
+          ),
+        ]),
+        _group('Lending & operations', operationsProducts),
+      ]),
+    ]);
+  }
+
+  Component _group(
+    String label,
+    List<ProductLink> products, {
+    bool chat = false,
+    Component? footer,
+  }) {
+    return div(
+      classes: 'nav-products-group${chat ? ' nav-products-group-chat' : ''}',
+      [
+        p(classes: 'nav-products-label', [Component.text(label)]),
+        for (final (title, href, summary) in products)
+          a(href: href, classes: 'nav-product-link', [
+            strong([Component.text(title)]),
+            span([Component.text(summary)]),
+          ]),
+        ?footer,
       ],
     );
   }
 
-  Component _navLink(({String label, String path}) route) {
-    if (route.label == 'CU Chat') {
-      return a(
-        href: route.path,
-        classes:
-            'p-2 flex items-center hover:bg-secondary/10 rounded-lg focus:outline-none focus:bg-secondary/10',
-        [
-          img(
-            src: 'images/cu_chat_logo.webp',
-            alt: 'CU Chat',
-            classes: 'h-6 w-auto',
-          ),
-        ],
-      );
-    }
-    return a(classes: 'btn btn-ghost', href: route.path, [
-      Component.text(route.label),
-    ]);
+  Component _mobileLink(ProductLink product) {
+    return a(href: product.$2, [Component.text(product.$1)]);
   }
 }

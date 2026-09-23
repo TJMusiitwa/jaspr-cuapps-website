@@ -1,93 +1,81 @@
+import 'package:cuapps_website/components/ui.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class FreeDemo extends StatelessComponent {
+  const FreeDemo({super.key});
+
   @override
   Component build(BuildContext context) {
-    return div(
-      classes:
-          'min-h-screen bg-linear-to-tr from-base-200 via-primary/5 to-base-100 relative overflow-hidden',
-      [
-        // Decorative elements for a premium "mesh" look
-        div(
-          classes:
-              'absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] animate-pulse',
-          [],
-        ),
-        div(
-          classes:
-              'absolute bottom-[-5%] right-[-5%] w-[35%] h-[35%] bg-accent/10 rounded-full blur-[100px]',
-          [],
-        ),
-        div(
-          classes:
-              'absolute top-[20%] right-[10%] w-[25%] h-[25%] bg-primary/5 rounded-full blur-[80px]',
-          [],
-        ),
-        div(
-          classes:
-              'absolute middle-0 left-[20%] w-[30%] h-[30%] bg-blue-400/5 rounded-full blur-[100px]',
-          [],
-        ),
-
-        div(
-          classes:
-              'relative max-w-[85rem] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20 xl:py-24 mx-auto',
-          [
-            div(
-              classes:
-                  'grid items-center md:grid-cols-2 gap-8 lg:gap-12 xl:gap-16',
-              [
-                // Text content section with enhanced contrast
-                div(classes: 'order-2 md:order-1', [
-                  div(classes: 'space-y-6 md:space-y-8', [
-                    h1(
-                      classes:
-                          'font-bold text-base-content text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight',
-                      [
-                        Component.text(
-                          'Get a free bespoke Mobile App or AI Chatbot demo for your mutual',
-                        ),
-                      ],
-                    ),
-                    p(
-                      classes:
-                          'text-base-content/70 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl',
-                      [
-                        Component.text(
-                          'We work with you to understand your mutual\'s unique needs and goals to create a custom mobile app or AI chatbot that meets your requirements and exceeds your members\' expectations.',
-                        ),
-                      ],
-                    ),
-                  ]),
-                ]),
-
-                // Card section with improved responsiveness
-                div(classes: 'order-1 md:order-2 w-full', [
-                  div(
-                    classes:
-                        'card bg-base-100 w-full max-w-md mx-auto lg:max-w-lg lg:ms-auto lg:me-0 shadow-2xl',
-                    [
-                      div(classes: 'card-body p-4 sm:p-6', [
-                        div(classes: 'w-full overflow-hidden rounded-lg', [
-                          iframe(
-                            width: 410,
-                            height: 600,
-                            src:
-                                'https://calendly.com/cuapps?embed_domain=cuapps.co.uk&embed_type=Inline',
-                            classes: 'w-full min-h-[500px] sm:min-h-[600px]',
-                            [],
-                          ),
-                        ]),
-                      ]),
-                    ],
-                  ),
-                ]),
-              ],
+    return main_(classes: 'booking-page', [
+      section(classes: 'site-container booking-grid', [
+        div(classes: 'booking-intro', [
+          p(classes: 'eyebrow', [Component.text('A good place to start')]),
+          h1(classes: 'page-title', [
+            Component.text('Let’s talk about your members.'),
+          ]),
+          p(classes: 'hero-lede', [
+            Component.text(
+              'Book a call with CU Apps. Tell us where your digital experience stands today and what you want to make easier for members next.',
             ),
-          ],
-        ),
-      ],
-    );
+          ]),
+          // The calendar sits beside the intro on desktop; this jump is only
+          // shown once the layout stacks.
+          div(classes: 'booking-jump', [
+            primaryLink('Find a time', href: '#booking-calendar'),
+          ]),
+          div(classes: 'booking-expectation', [
+            h2([Component.text('What to expect')]),
+            ol([
+              li([
+                Component.text(
+                  'We hear about your credit union and the member needs you want to address.',
+                ),
+              ]),
+              li([
+                Component.text(
+                  'We show the products that fit, from member apps and CU Chat AI to AGM Hub and CU Flow.',
+                ),
+              ]),
+              li([Component.text('We agree on useful next steps together.')]),
+            ]),
+          ]),
+          blockquote(classes: 'booking-quote', [
+            p([
+              Component.text(
+                '“They have been open, honest, professional and helpful every step of the way.”',
+              ),
+            ]),
+            footer([Component.text('Logan Taylor · NHS Credit Union')]),
+          ]),
+          trustNote(),
+        ]),
+        div(classes: 'booking-calendar', id: 'booking-calendar', [
+          div(classes: 'booking-calendar-header', [
+            p(classes: 'eyebrow', [Component.text('Choose a time')]),
+            p([Component.text('Select a slot for a 45-minute conversation.')]),
+            p(classes: 'booking-fallback', [
+              Component.text('Calendar not showing? '),
+              a(
+                href: 'https://calendly.com/cuapps/cu-apps-meeting',
+                target: Target.blank,
+                attributes: {'rel': 'noopener noreferrer'},
+                [
+                  Component.text('Open the booking page'),
+                  linkArrow(ArrowKind.out),
+                ],
+              ),
+            ]),
+          ]),
+          iframe(
+            src: 'https://calendly.com/cuapps/cu-apps-meeting',
+            width: 640,
+            height: 700,
+            attributes: {'title': 'Book a call with CU Apps'},
+            [],
+          ),
+        ]),
+      ]),
+    ]);
   }
 }

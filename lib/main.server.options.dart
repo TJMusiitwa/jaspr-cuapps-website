@@ -5,8 +5,6 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/server.dart';
-import 'package:cuapps_website/pages/cu_chat/cu_chat_features.dart'
-    as _cu_chat_features;
 import 'package:cuapps_website/app.dart' as _app;
 
 /// Default [ServerOptions] for use with your Jaspr project.
@@ -27,9 +25,5 @@ import 'package:cuapps_website/app.dart' as _app;
 /// ```
 ServerOptions get defaultServerOptions => ServerOptions(
   clientId: 'main.client.dart.js',
-  clients: {
-    _app.App: ClientTarget<_app.App>('app'),
-    _cu_chat_features.CuChatFeatures:
-        ClientTarget<_cu_chat_features.CuChatFeatures>('cu_chat_features'),
-  },
+  clients: {_app.App: ClientTarget<_app.App>('app')},
 );
