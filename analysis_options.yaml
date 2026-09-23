@@ -2,7 +2,7 @@ include: package:lints/recommended.yaml
 
 plugins:
   jaspr_lints:
-    version: ^0.7.1
+    version: ^0.7.2
     diagnostics:
       prefer_html_components: true
       sort_children_last: true
