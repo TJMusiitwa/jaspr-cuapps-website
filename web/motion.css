@@ -1,0 +1,98 @@
+/* Motion: a few purposeful moments, never decoration on content people read.
+   Curves come from --ease-out / --ease-in-out in theme.css. Entrances use CSS
+   animations so they stay smooth while the page is still loading; every rule
+   has a gentler reduced-motion variant at the end of this file. */
+
+@keyframes motion-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes motion-lift { from { opacity: 0; transform: translateY(32px); } }
+@keyframes motion-settle { from { opacity: 0; transform: scale(.97); } }
+@keyframes motion-fade { from { opacity: 0; } }
+@keyframes motion-fill { from { transform: scaleX(0); } }
+@keyframes motion-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes motion-live { 50% { opacity: .35; } }
+
+/* Hero copy: eyebrow, headline, lede, actions arrive as one short cascade on
+   page open (and on client-side navigation, where it doubles as the page
+   transition). 60ms steps keep the whole sequence under half a second. */
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > * {
+  animation: motion-rise .6s var(--ease-out) both;
+}
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(2) { animation-delay: 60ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(3) { animation-delay: 120ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(4) { animation-delay: 180ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(n + 5) { animation-delay: 240ms; }
+
+/* Home hero: the phone is the product, so it rises onto its shelf. */
+.hero-art-stage { animation: motion-fade .5s ease both; }
+.hero-phone { animation: motion-lift .8s var(--ease-out) .15s both; }
+.hero-art-caption { animation: motion-rise .6s var(--ease-out) .35s both; }
+
+/* Product heroes: the mockup plays out what the product does. The window
+   settles, the conversation arrives turn by turn, and vote and slider bars
+   fill to their values. Explanation, seen once per visit. */
+.product-mockup-stage .mock-window { animation: motion-settle .5s var(--ease-out) .1s both; }
+.product-mockup-stage .mock-thread > * { animation: motion-rise .45s var(--ease-out) both; }
+.product-mockup-stage .mock-thread > :nth-child(1) { animation-delay: .45s; }
+.product-mockup-stage .mock-thread > :nth-child(2) { animation-delay: .85s; }
+.product-mockup-stage .mock-thread > :nth-child(3) { animation-delay: 1.25s; }
+.product-mockup-stage .mock-thread > :nth-child(4) { animation-delay: 1.6s; }
+.product-mockup-stage .mock-thread > :nth-child(n + 5) { animation-delay: 1.9s; }
+.product-mockup-stage .mock-bar > span { transform-origin: left; animation: motion-fill 1s var(--ease-out) .7s both; }
+.product-mockup-stage .mock-thread .mock-bar > span { animation-delay: 1.6s; }
+
+/* A live indicator reads as live. */
+.mock-pill-live::before { animation: motion-live 2s var(--ease-in-out) infinite; }
+
+/* FAQ answers open and close instead of snapping (browsers without
+   ::details-content keep the instant toggle). */
+@supports (interpolate-size: allow-keywords) {
+  .faq-list details { interpolate-size: allow-keywords; }
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition: block-size .26s var(--ease-out), opacity .2s ease, content-visibility .26s allow-discrete;
+  }
+  .faq-list details[open]::details-content { block-size: auto; opacity: 1; }
+}
+
+/* Mobile menu grows from the button that opened it. */
+.mobile-menu nav {
+  transform-origin: top right;
+  transition: opacity .2s var(--ease-out), transform .2s var(--ease-out);
+  @starting-style { opacity: 0; transform: scale(.96) translateY(-4px); }
+}
+
+/* How it works: each step's rule draws in, left to right, as the list
+   scrolls into view, so the sequence reads as a sequence. Tied to scroll
+   position, no scroll-jacking; unsupported browsers keep the static rule. */
+@supports (animation-timeline: view()) {
+  .process-list li { position: relative; border-top-color: transparent; }
+  .process-list li::before {
+    content: '';
+    position: absolute;
+    inset: -1px 0 auto;
+    height: 1px;
+    background: var(--navy);
+    transform-origin: left;
+    animation: motion-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 40% cover 35%;
+  }
+  .product-page-chat .process-list li::before { background: var(--purple-deep); }
+  .process-list li:nth-child(2)::before { animation-range: entry 55% cover 38%; }
+  .process-list li:nth-child(3)::before { animation-range: entry 70% cover 41%; }
+  .process-list li:nth-child(4)::before { animation-range: entry 85% cover 44%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Keep the fades that help things read as arriving; drop the movement. */
+  :is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > *,
+  .hero-phone, .hero-art-caption,
+  .product-mockup-stage .mock-window,
+  .product-mockup-stage .mock-thread > * { animation-name: motion-fade; animation-duration: .3s; }
+  .product-mockup-stage .mock-bar > span, .mock-pill-live::before, .process-list li::before { animation: none; }
+  .process-list li::before { transform: none; }
+  .faq-list details::details-content { transition: opacity .2s ease, content-visibility .2s allow-discrete; }
+  .mobile-menu nav { transition: opacity .2s ease; @starting-style { transform: none; } }
+}
