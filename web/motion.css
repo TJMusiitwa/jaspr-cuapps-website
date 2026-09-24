@@ -96,3 +96,15 @@
   .faq-list details::details-content { transition: opacity .2s ease, content-visibility .2s allow-discrete; }
   .mobile-menu nav { transition: opacity .2s ease; @starting-style { transform: none; } }
 }
+
+/* CU Voice: the waveforms speak, softly and out of step, like a live call. */
+@keyframes voice-speak { 50% { transform: scaleY(1); } }
+@keyframes voice-ring { from { transform: scale(.9); opacity: .9; } to { transform: scale(1.35); opacity: 0; } }
+.voice-wave > span { animation: voice-speak 1.1s var(--ease-in-out) infinite; }
+.voice-wave > span:nth-child(2n) { animation-duration: .9s; animation-delay: -.3s; }
+.voice-wave > span:nth-child(3n) { animation-duration: 1.3s; animation-delay: -.6s; }
+.voice-wave > span:nth-child(5n) { animation-delay: -.15s; }
+.mock-voice-ring { animation: voice-ring 2.4s var(--ease-out) infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .voice-wave > span, .mock-voice-ring { animation: none; }
+}

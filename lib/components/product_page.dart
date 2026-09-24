@@ -47,6 +47,7 @@ class ProductPage extends StatelessComponent {
     required this.closingBody,
     this.afterFeatures = const [],
     this.chat = false,
+    this.heroActions,
   });
 
   /// Used as a class hook (`product-page-<slug>`) for page-specific styling.
@@ -97,6 +98,9 @@ class ProductPage extends StatelessComponent {
   final List<Component> afterFeatures;
   final bool chat;
 
+  /// Replaces the default hero buttons (book a call, explore the product).
+  final List<Component>? heroActions;
+
   @override
   Component build(BuildContext context) {
     return main_(
@@ -115,10 +119,14 @@ class ProductPage extends StatelessComponent {
                 ],
               ]),
               p(classes: 'hero-lede', [Component.text(lede)]),
-              div(classes: 'hero-actions', [
-                primaryLink(ctaLabel, chat: chat),
-                quietLink('Explore the product', '#features'),
-              ]),
+              div(
+                classes: 'hero-actions',
+                heroActions ??
+                    [
+                      primaryLink(ctaLabel, chat: chat),
+                      quietLink('Explore the product', '#features'),
+                    ],
+              ),
               ul(classes: 'product-highlights', [
                 for (final item in highlights) li([Component.text(item)]),
               ]),

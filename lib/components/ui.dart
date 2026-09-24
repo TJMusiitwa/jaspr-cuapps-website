@@ -294,6 +294,11 @@ const chatProducts = <ProductLink>[
     '/cu-chat/knowledge-agent',
     'Instant answers for staff from your own policies.',
   ),
+  (
+    'CU Voice',
+    '/cu-chat/voice',
+    'A phone line members can talk to, day or night.',
+  ),
 ];
 
 const operationsProducts = <ProductLink>[

@@ -12,6 +12,7 @@ import 'pages/cu_chat/ai_chatbot.dart';
 import 'pages/cu_chat/cu_chat_page.dart';
 import 'pages/cu_chat/knowledge_agent.dart';
 import 'pages/cu_chat/stories.dart';
+import 'pages/cu_chat/voice.dart';
 import 'pages/error.dart';
 import 'pages/free_demo.dart';
 import 'pages/home.dart';
@@ -82,6 +83,11 @@ class App extends StatelessComponent {
                 path: '/cu-chat/knowledge-agent',
                 title: 'Internal Knowledge Agent',
                 builder: (context, state) => const KnowledgeAgentPage(),
+              ),
+              Route(
+                path: '/cu-chat/voice',
+                title: 'CU Voice',
+                builder: (context, state) => const CuVoicePage(),
               ),
               Route(
                 path: '/cu-chat/stories',
