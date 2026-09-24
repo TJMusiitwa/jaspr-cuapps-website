@@ -22,7 +22,7 @@ class FreeDemo extends StatelessComponent {
           // The calendar sits beside the intro on desktop; this jump is only
           // shown once the layout stacks.
           div(classes: 'booking-jump', [
-            primaryLink('Find a time', href: '#booking-calendar'),
+            primaryLink('Find a time', href: '/free-demo#booking-calendar'),
           ]),
           div(classes: 'booking-expectation', [
             h2([Component.text('What to expect')]),

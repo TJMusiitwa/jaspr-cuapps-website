@@ -270,7 +270,7 @@ class CuChatStoriesPage extends StatelessComponent {
           ]),
           div(classes: 'hero-actions', [
             primaryLink(bookingLabel, chat: true),
-            quietLink('Read the three case studies', '#heritage'),
+            quietLink('Read the three case studies', '/cu-chat/stories#heritage'),
           ]),
         ]),
         nav(
@@ -283,7 +283,7 @@ class CuChatStoriesPage extends StatelessComponent {
             ol([
               for (final story in [..._features, ..._roll])
                 li([
-                  a(href: '#${story.id}', [
+                  a(href: '/cu-chat/stories#${story.id}', [
                     span(classes: 'roster-bot', [Component.text(story.label)]),
                     span(classes: 'roster-client', [
                       Component.text(story.client),

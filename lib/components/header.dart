@@ -8,7 +8,10 @@ class Header extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return header(classes: 'site-header', [
-      a(href: '#content', classes: 'skip-link', [
+      // Qualified with the current path: a bare "#content" resolves
+      // against the site's <base href="/">, sending every non-home page
+      // to the homepage instead of skipping in place.
+      a(href: '${context.url}#content', classes: 'skip-link', [
         Component.text('Skip to content'),
       ]),
       div(classes: 'site-container site-header-inner', [
