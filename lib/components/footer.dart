@@ -121,6 +121,11 @@ class Footer extends StatelessComponent {
         p([Component.text('© ${DateTime.now().year} CU Apps')]),
         p([Component.text('Built for the mutual sector.')]),
       ]),
+      div(classes: 'site-container footer-bottom footer-bottom-center', [
+        a(href: 'mailto:jonamusiitwa@outlook.com', [
+          Component.text('Developed by Jonathan'),
+        ]),
+      ]),
     ]);
   }
 }
