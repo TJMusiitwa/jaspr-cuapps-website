@@ -110,9 +110,15 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .hero-art-caption p { margin-top: 12px; font-size: 1rem; line-height: 1.25; font-weight: 550; }
 .client-strip { padding-block: 33px 42px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .client-strip .eyebrow { text-align: center; }
-.logo-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: center; gap: 10px 18px; margin-top: 30px; }
-.logo-cell { display: flex; align-items: center; justify-content: center; min-height: 94px; padding: 15px; }
+/* Client logos: an endless horizontal scroll. The track holds two identical
+   sets and slides left by exactly one set, so the loop is seamless. */
+.logo-marquee { margin-top: 30px; overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.logo-track { display: flex; width: max-content; animation: logo-scroll 60s linear infinite; }
+.logo-marquee:hover .logo-track, .logo-marquee:focus-within .logo-track { animation-play-state: paused; }
+.logo-row { display: flex; flex: 0 0 auto; align-items: center; }
+.logo-cell { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; width: 200px; min-height: 94px; padding: 15px; }
 .logo-row img { width: 100%; max-width: 170px; max-height: 66px; object-fit: contain; margin-inline: auto; }
+@keyframes logo-scroll { to { transform: translateX(-50%); } }
 .statement-grid { display: grid; grid-template-columns: 1fr 2.1fr; gap: 48px; align-items: start; }
 .statement-grid .eyebrow { padding-top: 13px; }
 .statement-title { max-width: 890px; font-size: clamp(2.8rem, 4.6vw, 5.1rem); letter-spacing: -.058em; line-height: 1.1; }
@@ -326,7 +332,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .mobile-menu nav { top: 52px; }
   .hero-grid { min-height: 0; grid-template-columns: 1fr 1fr; }
   .display-title { font-size: clamp(3.2rem, 6vw, 5rem); }
-  .logo-row { grid-template-columns: repeat(4, 1fr); }
   .product-panel { min-height: 420px; }
   .product-panel-copy { padding: 40px; }
   .trust-grid, .faq-grid { gap: 45px; }
@@ -346,8 +351,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .hero-phone { width: 205px; height: 450px; }
   .hero-art-caption { top: 22px; left: 20px; max-width: 125px; }
   .hero-actions { gap: 13px 24px; }
-  .logo-row { grid-template-columns: repeat(3, 1fr); }
-  .logo-cell:last-child { grid-column: 2; }
   .statement-grid, .proof-grid, .app-promise-grid, .chat-context-grid, .trust-grid, .faq-grid, .featured-story, .story-row, .contact-details-grid { grid-template-columns: 1fr; gap: 30px; }
   .statement-grid .eyebrow { padding-top: 0; }
   .product-panel { grid-template-columns: 1fr; }
@@ -383,9 +386,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .button { min-height: 50px; }
   .hero-art-stage { min-height: 425px; }
   .hero-phone { width: 180px; height: 397px; }
-  .logo-row { grid-template-columns: repeat(2, 1fr); gap: 5px 8px; }
-  .logo-cell:last-child { grid-column: 1 / -1; }
-  .logo-cell { min-height: 84px; padding: 12px; }
+  .logo-cell { width: 150px; min-height: 84px; padding: 12px; }
   .logo-row img { max-height: 62px; }
   .statement-title { font-size: 2.7rem; }
   .product-panel-copy { padding: 29px; min-height: 385px; }
@@ -405,4 +406,12 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .button { transition: none; }
   .button:hover, .button:active { transform: none; }
   .mobile-menu-icon { transition: none; }
+}
+
+/* Reduced motion: no scrolling; show one set of logos, wrapped. */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee { mask-image: none; -webkit-mask-image: none; }
+  .logo-track { width: auto; animation: none; }
+  .logo-row { flex-wrap: wrap; justify-content: center; }
+  .logo-row[aria-hidden] { display: none; }
 }
