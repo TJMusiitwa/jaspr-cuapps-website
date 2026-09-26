@@ -138,15 +138,25 @@ Component clientLogoRow() {
     ('Synergy Credit Union', 'sycu'),
   ];
 
-  return div(classes: 'logo-row', [
-    for (final logo in logos)
-      div(classes: 'logo-cell', [
-        img(
-          src: '/images/clients/${logo.$2}.webp',
-          alt: logo.$1,
-          loading: MediaLoading.lazy,
-        ),
-      ]),
+  // Two identical sets side by side; the track slides left by one set and
+  // loops seamlessly. The second set is hidden from assistive technology.
+  Component set({required bool copy}) => div(
+    classes: 'logo-row',
+    attributes: copy ? {'aria-hidden': 'true'} : null,
+    [
+      for (final logo in logos)
+        div(classes: 'logo-cell', [
+          img(
+            src: '/images/clients/${logo.$2}.webp',
+            alt: copy ? '' : logo.$1,
+            loading: MediaLoading.lazy,
+          ),
+        ]),
+    ],
+  );
+
+  return div(classes: 'logo-marquee', [
+    div(classes: 'logo-track', [set(copy: false), set(copy: true)]),
   ]);
 }
 
