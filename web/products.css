@@ -434,7 +434,6 @@
 /* CU Chat client stories: every chatbot introduced by name */
 .chat-stories-page .page-title, .chat-stories-page .section-title { letter-spacing: -.04em; }
 .chat-stories-hero { padding-block: clamp(48px, 5.5vw, 84px); background: var(--lilac-field); }
-.chat-stories-hero + .story-feature { padding-top: clamp(48px, 5vw, 72px); }
 .chat-stories-hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(40px, 6vw, 96px); align-items: center; }
 /* The header's booking button takes the purple CU Chat colour on chat pages. */
 .site-header:has(~ #content .cu-chat-page) .desktop-action .button { background: var(--purple); }
@@ -452,49 +451,43 @@
 .chat-stories-roster a:hover .roster-bot, .chat-stories-roster a:focus-visible .roster-bot { color: var(--purple); }
 .chat-stories-roster a:hover .roster-client { color: var(--purple); }
 
-.story-feature { scroll-margin-top: 80px; padding-block: clamp(80px, 9vw, 128px); background: white; }
-.story-feature-lilac { background: var(--lilac-field); }
-.story-feature-dark { background: var(--purple-deep); color: white; }
-.story-feature-grid, .roll-row { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(36px, 7vw, 110px); align-items: start; }
-.story-feature-id { position: sticky; top: 112px; display: grid; justify-items: start; gap: 16px; }
-.story-feature-dark .story-logo { box-sizing: content-box; padding: 10px 14px; background: white; border-radius: 8px; }
-.story-bot-name, .roll-bot { width: fit-content; background: linear-gradient(var(--lilac), var(--lilac)) no-repeat 0 94% / 0% .1em; transition: background-size .9s cubic-bezier(.16, 1, .3, 1); }
-.story-bot-name { margin-top: 14px; color: var(--purple); font-size: clamp(4rem, 8vw, 6rem); line-height: .95; letter-spacing: -.04em; }
-.story-feature-dark .story-bot-name { color: var(--lilac-wash); }
-.story-feature:target .story-bot-name, .roll-row:target .roll-bot { background-size: 100% .1em; }
-.story-client { color: var(--ink-muted); font-size: .98rem; line-height: 1.5; }
-.story-feature-dark .story-client { color: #d4c8e9; }
-.story-feature-art { width: min(240px, 70%); margin-top: 6px; border-radius: 16px; }
+.chat-stories-index { scroll-margin-top: 80px; padding-block: clamp(80px, 9vw, 128px); background: white; }
+.story-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.story-grid li { display: flex; }
+.story-card { display: grid; grid-template-rows: 56px auto auto 1fr auto; gap: 6px; width: 100%; padding: 22px; border: 1px solid #e3dcee; border-radius: 14px; background: white; transition: border-color .2s ease, background-color .2s ease, transform .2s ease; }
+.story-card:hover, .story-card:focus-visible { border-color: var(--purple); background: #faf8fd; }
+.story-card:active { transform: scale(.98); }
+.story-card[aria-current="true"] { border-color: var(--purple); background: var(--lilac-field); }
+.story-card-logo { display: flex; align-items: center; }
+.story-card-logo .story-logo { max-width: 150px; height: auto; max-height: 40px; object-fit: contain; }
+.story-card-bot { margin-top: 8px; color: var(--purple); font-size: 1.6rem; font-weight: 600; line-height: 1.1; letter-spacing: -.03em; }
+.story-card-client { color: var(--ink-muted); font-size: .9rem; }
+.story-card-excerpt { margin-top: 10px; color: var(--ink-body); font-size: .95rem; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.story-card-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; color: var(--purple-deep); font-size: .92rem; font-weight: 600; }
+.story-panels { margin-top: 48px; }
+.story-panels-empty { padding: 28px; border: 1px dashed #cfc3e2; border-radius: 14px; color: var(--ink-muted); text-align: center; }
+.story-panels:has(.story-panel:target) .story-panels-empty { display: none; }
+.story-panel { display: none; scroll-margin-top: 90px; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(36px, 7vw, 110px); align-items: start; padding: clamp(28px, 4vw, 56px); border-radius: 18px; background: var(--lilac-field); outline: none; }
+.story-panel:target { display: grid; animation: story-panel-in .35s cubic-bezier(.16, 1, .3, 1); }
+@keyframes story-panel-in { from { opacity: 0; transform: translateY(8px); } }
+.story-panel-id { display: grid; justify-items: start; align-content: start; gap: 10px; }
+.story-panel-bot { color: var(--purple); font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -.04em; }
+.story-panel-back { margin-top: 8px; color: var(--purple-deep); font-size: .92rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .story-pdf { display: grid; gap: 3px; margin-top: 10px; padding: 15px 20px; border: 1px solid #cfc3e2; border-radius: 10px; transition: background-color .2s ease, border-color .2s ease; }
 .story-pdf:hover { background: #f1ecf8; border-color: var(--purple); }
 .story-pdf-label { color: var(--purple-deep); font-weight: 600; }
 .story-pdf-label { display: inline-flex; align-items: center; gap: 8px; }
 .story-pdf-meta { color: var(--ink-muted); font-size: .86rem; }
-.story-feature-dark .story-pdf { border-color: rgba(255, 255, 255, .35); }
-.story-feature-dark .story-pdf:hover { background: rgba(255, 255, 255, .08); border-color: white; }
-.story-feature-dark .story-pdf-label { color: white; }
-.story-feature-dark .story-pdf-meta { color: #d4c8e9; }
 
 .story-quote { max-width: 64ch; margin: 0; }
 .story-quote p { color: var(--ink-body); font-size: 1.1rem; line-height: 1.75; }
 .story-quote p + p { margin-top: 1.1em; }
-.story-quote .story-quote-lead { margin-bottom: 1.1em; color: var(--purple-deep); font-size: clamp(1.45rem, 2.2vw, 2rem); font-weight: 500; line-height: 1.38; letter-spacing: -.02em; text-indent: -.42em; }
 .story-quote footer { margin-top: 30px; padding-top: 18px; border-top: 1px solid #e3dcee; color: var(--navy); font-size: .98rem; font-weight: 600; }
-.story-feature-dark .story-quote p { color: #e3d8f2; }
-.story-feature-dark .story-quote .story-quote-lead { color: white; }
-.story-feature-dark .story-quote footer { border-top-color: rgba(255, 255, 255, .2); color: white; }
 
-.chat-stories-roll { padding-block: clamp(80px, 9vw, 128px); background: white; }
 .chat-stories-roll-intro { display: grid; gap: 20px; max-width: 780px; margin-bottom: 52px; }
-.roll-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--purple-deep); }
-.roll-row { scroll-margin-top: 90px; padding-block: 44px; border-bottom: 1px solid #e3dcee; }
-.roll-id { display: grid; justify-items: start; align-content: start; gap: 8px; }
 .roll-art { width: 200px; height: 200px; margin-bottom: 14px; object-fit: contain; }
 .roll-art-device { width: 120px; height: 240px; }
 .roll-art-wide { width: 280px; height: 176px; }
-.roll-bot { color: var(--purple); font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.05; letter-spacing: -.035em; }
-.roll-id .story-logo { max-width: 180px; margin-top: 12px; }
-.roll-row .story-quote p:first-child { color: var(--purple-deep); font-size: 1.28rem; line-height: 1.55; }
 
 .chat-stories-close { padding-block: clamp(80px, 9vw, 120px); background: var(--purple-deep); color: white; }
 .chat-stories-close-inner { display: flex; align-items: end; justify-content: space-between; gap: 48px; }
@@ -509,9 +502,7 @@
 }
 
 @media (max-width: 760px) {
-  .story-feature-grid, .roll-row { grid-template-columns: 1fr; gap: 28px; }
-  .story-feature-id { position: static; }
-  .roll-row { padding-block: 36px; }
+  .story-panel:target { grid-template-columns: 1fr; gap: 28px; }
   .chat-stories-close-inner { flex-direction: column; align-items: start; }
 }
 
@@ -520,7 +511,8 @@
 .footer-links .link-arrow, .trust-note .link-arrow, .nav-products-overview .link-arrow, .booking-fallback .link-arrow { width: 1em; height: 1em; }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav-products-panel, .nav-products > button::after, .suite-card, .footer-social a, .story-bot-name, .roll-bot, .story-pdf, .roster-bot { transition: none; }
+  .nav-products-panel, .nav-products > button::after, .suite-card, .footer-social a, .story-card, .story-pdf, .roster-bot { transition: none; }
+  .story-panel:target { animation: none; }
   .suite-card:hover { transform: none; }
 }
 

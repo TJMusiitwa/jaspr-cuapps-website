@@ -78,3 +78,32 @@
   productsEvent('mouseout', false);
   productsEvent('focusout', false);
 })();
+
+// CU Chat stories: the open story is chosen by the URL hash (:target).
+// Mark its card as current and move focus into the panel so keyboard and
+// screen-reader users land on the story they picked.
+(() => {
+  const sync = (focus) => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    document.querySelectorAll('.story-card').forEach((card) => {
+      card.setAttribute('aria-current', String(card.dataset.story === id));
+    });
+    const panel = id && document.getElementById(id);
+    if (focus && panel?.classList.contains('story-panel')) {
+      panel.focus({ preventScroll: true });
+    }
+  };
+  window.addEventListener('hashchange', () => sync(true));
+  document.addEventListener('DOMContentLoaded', () => sync(false));
+  // On a direct link, the browser's own jump to the hash happens before
+  // the page has finished laying out, so repeat it once everything has loaded.
+  window.addEventListener('load', () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const panel = id && document.getElementById(id);
+    if (!panel?.classList.contains('story-panel')) return;
+    requestAnimationFrame(() => {
+      panel.scrollIntoView({ block: 'start' });
+      panel.focus({ preventScroll: true });
+    });
+  });
+})();

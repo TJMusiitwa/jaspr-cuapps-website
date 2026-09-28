@@ -5,11 +5,9 @@ import 'package:jaspr/jaspr.dart';
 /// A demo line: accent, display number and the dialable `tel:` value.
 typedef VoiceLine = (String accent, String agent, String display, String tel);
 
-// TODO: replace with the live demo numbers. These are placeholders: the UK
-// one is from Ofcom's range reserved for drama, so it never reaches anyone.
 const _voiceLines = <VoiceLine>[
-  ('UK English', 'Our UK agent', '0808 157 0192', '+448081570192'),
-  ('Irish English', 'Our Irish agent', '+353 1 555 0147', '+35315550147'),
+  ('UK English', 'Our UK agent', 'ABC 1234 EFG', ''),
+  ('Irish English', 'Our Irish agent', 'EFG 5678 HIJ', ''),
 ];
 
 /// CU Voice landing page at `/cu-chat/voice`: the CU Chat assistant, answering

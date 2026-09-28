@@ -227,9 +227,15 @@ const _roll = <_Story>[
   ),
 ];
 
+/// Every story, in alphabetical order by chatbot so no client is ranked
+/// above another.
+final _stories = [..._features, ..._roll]
+  ..sort((x, y) => x.label.toLowerCase().compareTo(y.label.toLowerCase()));
+
 /// CU Chat client stories at `/cu-chat/stories`: every chatbot introduced
-/// by name, three in depth with their case studies, then the rest of the
-/// roll in the clients' own words.
+/// by name, then a grid of equal cards. Picking one (from the grid or the
+/// hero roster) opens that story in the panel below via `:target`, so it
+/// works without JavaScript and each story keeps a shareable link.
 class CuChatStoriesPage extends StatelessComponent {
   const CuChatStoriesPage({super.key});
 
@@ -237,8 +243,7 @@ class CuChatStoriesPage extends StatelessComponent {
   Component build(BuildContext context) {
     return main_(classes: 'cu-chat-page chat-stories-page', [
       _hero(),
-      for (final (index, story) in _features.indexed) _feature(story, index),
-      _rollSection(),
+      _storiesSection(),
       section(classes: 'chat-stories-close', [
         div(classes: 'site-container chat-stories-close-inner', [
           div([
@@ -260,8 +265,8 @@ class CuChatStoriesPage extends StatelessComponent {
       div(classes: 'site-container chat-stories-hero-grid', [
         div(classes: 'chat-stories-hero-copy', [
           h1(classes: 'page-title', [
-            Component.text('Meet Harry, Penny, Honey'),
-            em([Component.text(' and the rest of the team.')]),
+            Component.text('Meet the chatbots'),
+            em([Component.text(' and the teams behind them.')]),
           ]),
           p(classes: 'hero-lede', [
             Component.text(
@@ -270,7 +275,7 @@ class CuChatStoriesPage extends StatelessComponent {
           ]),
           div(classes: 'hero-actions', [
             primaryLink(bookingLabel, chat: true),
-            quietLink('Read the three case studies', '/cu-chat/stories#heritage'),
+            quietLink('Browse the stories', '/cu-chat/stories#stories'),
           ]),
         ]),
         nav(
@@ -281,7 +286,7 @@ class CuChatStoriesPage extends StatelessComponent {
               Component.text('On the team'),
             ]),
             ol([
-              for (final story in [..._features, ..._roll])
+              for (final story in _stories)
                 li([
                   a(href: '/cu-chat/stories#${story.id}', [
                     span(classes: 'roster-bot', [Component.text(story.label)]),
@@ -311,46 +316,89 @@ class CuChatStoriesPage extends StatelessComponent {
     );
   }
 
-  Component _quote(_Story story, {bool lead = false}) {
-    // The opening sentence carries the lead; the rest of that paragraph
-    // continues at body size, so the words stay verbatim.
-    final paragraphs = [...story.quote];
-    String? opening;
-    if (lead) {
-      final first = paragraphs.first;
-      final stop = first.indexOf('. ');
-      if (stop == -1) {
-        opening = paragraphs.removeAt(0);
-      } else {
-        opening = first.substring(0, stop + 1);
-        paragraphs[0] = first.substring(stop + 2);
-      }
-    }
-    final last = paragraphs.isEmpty ? -1 : paragraphs.length - 1;
+  Component _quote(_Story story) {
+    final last = story.quote.length - 1;
     return blockquote(classes: 'story-quote', [
-      if (opening != null)
-        p(classes: 'story-quote-lead', [
-          Component.text('“$opening${last == -1 ? '”' : ''}'),
-        ]),
-      for (final (index, paragraph) in paragraphs.indexed)
+      for (final (index, paragraph) in story.quote.indexed)
         p([
           Component.text(
-            '${opening == null && index == 0 ? '“' : ''}$paragraph${index == last ? '”' : ''}',
+            '${index == 0 ? '“' : ''}$paragraph${index == last ? '”' : ''}',
           ),
         ]),
       footer([Component.text(story.person)]),
     ]);
   }
 
-  Component _feature(_Story story, int index) {
-    final tone = ['light', 'dark', 'lilac'][index];
-    return article(id: story.id, classes: 'story-feature story-feature-$tone', [
-      div(classes: 'site-container story-feature-grid', [
-        header(classes: 'story-feature-id', [
-          _logo(story.logo, story.client, height: 48),
-          h2(classes: 'story-bot-name', [Component.text(story.bot!)]),
+  /// The opening sentence of a story, for its card.
+  String _excerpt(_Story story) {
+    final first = story.quote.first;
+    final stop = first.indexOf('. ');
+    return stop == -1 ? first : first.substring(0, stop + 1);
+  }
+
+  Component _storiesSection() {
+    return section(id: 'stories', classes: 'chat-stories-index', [
+      div(classes: 'site-container', [
+        div(classes: 'chat-stories-roll-intro', [
+          h2(classes: 'section-title', [Component.text('In their own words.')]),
+          p(classes: 'section-copy', [
+            Component.text(
+              'Different credit unions, the same pattern: the chatbot takes the routine questions, and the team learns from what members ask. Pick a chatbot to read its story.',
+            ),
+          ]),
+        ]),
+        ul(classes: 'story-grid', [
+          for (final story in _stories)
+            li([
+              a(
+                href: '/cu-chat/stories#${story.id}',
+                classes: 'story-card',
+                attributes: {'data-story': story.id},
+                [
+                  span(classes: 'story-card-logo', [
+                    _logo(story.logo, story.client, height: 40),
+                  ]),
+                  span(classes: 'story-card-bot', [
+                    Component.text(story.label),
+                  ]),
+                  span(classes: 'story-card-client', [
+                    Component.text(story.client),
+                  ]),
+                  span(classes: 'story-card-excerpt', [
+                    Component.text('“${_excerpt(story)}”'),
+                  ]),
+                  span(classes: 'story-card-more', [
+                    Component.text('Read the story'),
+                    linkArrow(ArrowKind.down),
+                  ]),
+                ],
+              ),
+            ]),
+        ]),
+        div(classes: 'story-panels', [
+          p(classes: 'story-panels-empty', [
+            Component.text('Pick a chatbot above to read its story.'),
+          ]),
+          for (final story in _stories) _panel(story),
+        ]),
+      ]),
+    ]);
+  }
+
+  Component _panel(_Story story) {
+    return article(
+      id: story.id,
+      classes: 'story-panel',
+      attributes: {'tabindex': '-1', 'aria-labelledby': '${story.id}-name'},
+      [
+        header(classes: 'story-panel-id', [
+          _logo(story.logo, story.client, height: 40),
+          h3(id: '${story.id}-name', classes: 'story-panel-bot', [
+            Component.text(story.label),
+          ]),
           p(classes: 'story-client', [
-            Component.text('${story.client} · Chatbot for mobile and desktop'),
+            Component.text(story.client),
+            if (story.note case final note?) ...[br(), Component.text(note)],
           ]),
           if (story.art case final art?)
             img(
@@ -359,7 +407,8 @@ class CuChatStoriesPage extends StatelessComponent {
               width: art.$2,
               height: art.$3,
               loading: MediaLoading.lazy,
-              classes: 'story-feature-art',
+              classes:
+                  'roll-art${art.$5 ? ' roll-art-device' : ''}${art.$2 > art.$3 ? ' roll-art-wide' : ''}',
             ),
           if (story.caseStudy case (final href, final size))
             a(
@@ -376,53 +425,12 @@ class CuChatStoriesPage extends StatelessComponent {
                 ]),
               ],
             ),
-        ]),
-        _quote(story, lead: true),
-      ]),
-    ]);
-  }
-
-  Component _rollSection() {
-    return section(classes: 'chat-stories-roll', [
-      div(classes: 'site-container', [
-        div(classes: 'chat-stories-roll-intro', [
-          h2(classes: 'section-title', [
-            Component.text('Seven more, in their own words.'),
-          ]),
-          p(classes: 'section-copy', [
-            Component.text(
-              'Different credit unions, the same pattern: the chatbot takes the routine questions, and the team learns from what members ask.',
-            ),
+          a(href: '/cu-chat/stories#stories', classes: 'story-panel-back', [
+            Component.text('Back to all chatbots'),
           ]),
         ]),
-        ol(classes: 'roll-list', [
-          for (final story in _roll)
-            li(id: story.id, classes: 'roll-row', [
-              div(classes: 'roll-id', [
-                if (story.art case final art?)
-                  img(
-                    src: art.$1,
-                    alt: art.$4,
-                    width: art.$2,
-                    height: art.$3,
-                    loading: MediaLoading.lazy,
-                    classes:
-                        'roll-art${art.$5 ? ' roll-art-device' : ''}${art.$2 > art.$3 ? ' roll-art-wide' : ''}',
-                  ),
-                h3(classes: 'roll-bot', [Component.text(story.label)]),
-                p(classes: 'story-client', [
-                  Component.text(story.client),
-                  if (story.note case final note?) ...[
-                    br(),
-                    Component.text(note),
-                  ],
-                ]),
-                _logo(story.logo, story.client, height: 34),
-              ]),
-              _quote(story),
-            ]),
-        ]),
-      ]),
-    ]);
+        _quote(story),
+      ],
+    );
   }
 }
