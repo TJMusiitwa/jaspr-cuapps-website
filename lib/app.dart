@@ -3,6 +3,7 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_router/jaspr_router.dart';
 
+import 'components/demo_banner.dart';
 import 'components/footer.dart';
 import 'components/header.dart';
 import 'pages/about.dart';
@@ -33,6 +34,7 @@ class App extends StatelessComponent {
               // CU Chat pages adopt the purple brand shell.
               final chat = state.location.startsWith('/cu-chat');
               return Component.fragment([
+                const DemoBanner(),
                 const Header(),
                 div(id: 'content', attributes: {'tabindex': '-1'}, [child]),
                 Footer(chat: chat),
@@ -123,6 +125,7 @@ class App extends StatelessComponent {
           ),
         ],
         errorBuilder: (context, state) => Component.fragment([
+          const DemoBanner(),
           const Header(),
           div(
             id: 'content',
