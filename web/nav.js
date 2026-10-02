@@ -88,7 +88,7 @@
     document.querySelectorAll('.story-card').forEach((card) => {
       card.setAttribute('aria-current', String(card.dataset.story === id));
     });
-    const panel = id && document.getElementById(id);
+    const panel = id ? document.getElementById(id) : null;
     if (focus && panel?.classList.contains('story-panel')) {
       panel.focus({ preventScroll: true });
     }
@@ -99,7 +99,7 @@
   // the page has finished laying out, so repeat it once everything has loaded.
   window.addEventListener('load', () => {
     const id = decodeURIComponent(location.hash.slice(1));
-    const panel = id && document.getElementById(id);
+    const panel = id ? document.getElementById(id) : null;
     if (!panel?.classList.contains('story-panel')) return;
     requestAnimationFrame(() => {
       panel.scrollIntoView({ block: 'start' });

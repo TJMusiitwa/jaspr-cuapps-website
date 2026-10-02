@@ -36,6 +36,12 @@ void main() {
         link(href: '/motion.css', rel: 'stylesheet', type: 'text/css'),
         script(src: '/motion.js', defer: true),
         script(src: '/nav.js', defer: true),
+        link(
+          href: '/impact-calculator.css',
+          rel: 'stylesheet',
+          type: 'text/css',
+        ),
+        script(src: '/impact-calculator.js', defer: true),
       ],
       body: App(),
     ),

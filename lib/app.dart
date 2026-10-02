@@ -7,10 +7,11 @@ import 'components/demo_banner.dart';
 import 'components/footer.dart';
 import 'components/header.dart';
 import 'pages/about.dart';
-import 'pages/contact_us.dart';
 import 'pages/case_studies.dart';
+import 'pages/contact_us.dart';
 import 'pages/cu_chat/ai_chatbot.dart';
 import 'pages/cu_chat/cu_chat_page.dart';
+import 'pages/cu_chat/impact_calculator.dart';
 import 'pages/cu_chat/knowledge_agent.dart';
 import 'pages/cu_chat/stories.dart';
 import 'pages/cu_chat/voice.dart';
@@ -35,7 +36,7 @@ class App extends StatelessComponent {
               final chat = state.location.startsWith('/cu-chat');
               return Component.fragment([
                 const DemoBanner(),
-                const Header(),
+                Header(chat: chat),
                 div(id: 'content', attributes: {'tabindex': '-1'}, [child]),
                 Footer(chat: chat),
               ]);
@@ -80,6 +81,11 @@ class App extends StatelessComponent {
                 path: '/cu-chat/ai-chatbot',
                 title: 'AI Chatbot',
                 builder: (context, state) => const AiChatbotPage(),
+              ),
+              Route(
+                path: '/cu-chat/impact-calculator',
+                title: 'CU Chat impact calculator',
+                builder: (context, state) => const ImpactCalculatorPage(),
               ),
               Route(
                 path: '/cu-chat/knowledge-agent',

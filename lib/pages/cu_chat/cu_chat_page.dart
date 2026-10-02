@@ -1,5 +1,6 @@
 import 'package:cuapps_website/components/ui.dart';
 import 'package:cuapps_website/pages/cu_chat/ai_chatbot.dart';
+import 'package:cuapps_website/pages/cu_chat/impact_calculator.dart';
 import 'package:cuapps_website/pages/cu_chat/knowledge_agent.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
@@ -83,6 +84,9 @@ class CuChatPage extends StatelessComponent {
             ),
           ]),
         ]),
+      ]),
+      section(classes: 'chat-impact-section', [
+        div(classes: 'site-container', [impactCalculatorAction()]),
       ]),
       section(classes: 'chat-protect', [
         div(classes: 'site-container chat-protect-grid', [

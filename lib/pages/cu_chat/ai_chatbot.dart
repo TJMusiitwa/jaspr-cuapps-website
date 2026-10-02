@@ -1,5 +1,6 @@
 import 'package:cuapps_website/components/product_page.dart';
 import 'package:cuapps_website/components/ui.dart';
+import 'package:cuapps_website/pages/cu_chat/impact_calculator.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
@@ -159,6 +160,7 @@ class AiChatbotPage extends StatelessComponent {
             'A clear path to your team',
           ),
         ]),
+        impactCalculatorAction(),
       ]),
     ]);
   }

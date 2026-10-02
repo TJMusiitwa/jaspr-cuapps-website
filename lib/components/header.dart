@@ -3,7 +3,9 @@ import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 class Header extends StatelessComponent {
-  const Header({super.key});
+  const Header({super.key, this.chat = false});
+
+  final bool chat;
 
   @override
   Component build(BuildContext context) {
@@ -17,8 +19,8 @@ class Header extends StatelessComponent {
       div(classes: 'site-container site-header-inner', [
         a(href: '/', classes: 'brand-link', [
           img(
-            src: '/images/cu_logo.webp',
-            alt: 'CU Apps home',
+            src: chat ? '/images/cu_chat_logo.webp' : '/images/cu_logo.webp',
+            alt: chat ? 'CU Chat home' : 'CU Apps home',
             width: 180,
             height: 42,
           ),
