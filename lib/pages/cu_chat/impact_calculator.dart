@@ -34,12 +34,12 @@ class ImpactCalculatorPage extends StatelessComponent {
           children: [
             p(classes: 'impact-no-script', [
               Component.text(
-                'Enable JavaScript to adjust this calculator and download a summary. The figures below show the illustrative example.',
+                'Enable JavaScript to adjust this calculator and prepare a PDF summary. The figures below show the illustrative example.',
               ),
             ]),
           ],
         ),
-        div(classes: 'calculator', [
+        div(id: 'calculator-worksheet', classes: 'calculator', [
           section(
             classes: 'inputs',
             attributes: {'aria-labelledby': 'input-title'},
@@ -86,6 +86,12 @@ class ImpactCalculatorPage extends StatelessComponent {
                         'Calls, emails and messages your team handles.',
                       ),
                     ]),
+                    p(
+                      id: 'enquiries-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
+                    ),
                     input(
                       id: 'enquiries-range',
                       classes: 'slider',
@@ -131,6 +137,12 @@ class ImpactCalculatorPage extends StatelessComponent {
                         'Include the conversation and any follow-up admin.',
                       ),
                     ]),
+                    p(
+                      id: 'minutes-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
+                    ),
                     input(
                       id: 'minutes-range',
                       classes: 'slider',
@@ -175,6 +187,12 @@ class ImpactCalculatorPage extends StatelessComponent {
                         'Your assumption for enquiries needing no staff support.',
                       ),
                     ]),
+                    p(
+                      id: 'resolution-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
+                    ),
                     input(
                       id: 'resolution-range',
                       classes: 'slider',
@@ -227,6 +245,12 @@ class ImpactCalculatorPage extends StatelessComponent {
                         'Use your website analytics or try an estimate.',
                       ),
                     ]),
+                    p(
+                      id: 'visits-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
+                    ),
                     input(
                       id: 'visits-range',
                       classes: 'slider',
@@ -247,8 +271,61 @@ class ImpactCalculatorPage extends StatelessComponent {
                   ]),
                 ]),
               ]),
+              div(classes: 'fields lead-fields', [
+                p(classes: 'hint', [
+                  Component.text(
+                    'Your website assumptions · adjust these example rates',
+                  ),
+                ]),
+                div(classes: 'assumption-grid', [
+                  div([
+                    label(
+                      attributes: {'for': 'engage'},
+                      [Component.text('Visitors starting a chat (%)')],
+                    ),
+                    input(
+                      id: 'engage',
+                      attributes: {
+                        'type': 'number',
+                        'min': '0',
+                        'max': '100',
+                        'value': '4',
+                        'step': '0.1',
+                      },
+                    ),
+                    p(
+                      id: 'engage-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
+                    ),
+                  ]),
+                  div([
+                    label(
+                      attributes: {'for': 'qualify'},
+                      [Component.text('Chats becoming leads (%)')],
+                    ),
+                    input(
+                      id: 'qualify',
+                      attributes: {
+                        'type': 'number',
+                        'min': '0',
+                        'max': '100',
+                        'value': '20',
+                        'step': '1',
+                      },
+                    ),
+                    p(
+                      id: 'qualify-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
+                    ),
+                  ]),
+                ]),
+              ]),
               details([
-                summary([Component.text('Fine-tune your assumptions')]),
+                summary([Component.text('Staff cost and currency')]),
                 div(classes: 'assumption-grid', [
                   div([
                     label(
@@ -264,6 +341,12 @@ class ImpactCalculatorPage extends StatelessComponent {
                         'value': '25',
                         'step': '1',
                       },
+                    ),
+                    p(
+                      id: 'wage-error',
+                      classes: 'field-error',
+                      attributes: {'hidden': ''},
+                      [],
                     ),
                   ]),
                   div([
@@ -286,38 +369,6 @@ class ImpactCalculatorPage extends StatelessComponent {
                       ),
                     ]),
                   ]),
-                  div([
-                    label(
-                      attributes: {'for': 'engage'},
-                      [Component.text('Visitors starting a chat (%)')],
-                    ),
-                    input(
-                      id: 'engage',
-                      attributes: {
-                        'type': 'number',
-                        'min': '0',
-                        'max': '100',
-                        'value': '4',
-                        'step': '0.1',
-                      },
-                    ),
-                  ]),
-                  div([
-                    label(
-                      attributes: {'for': 'qualify'},
-                      [Component.text('Chats becoming leads (%)')],
-                    ),
-                    input(
-                      id: 'qualify',
-                      attributes: {
-                        'type': 'number',
-                        'min': '0',
-                        'max': '100',
-                        'value': '20',
-                        'step': '1',
-                      },
-                    ),
-                  ]),
                 ]),
                 p([
                   Component.text(
@@ -329,12 +380,13 @@ class ImpactCalculatorPage extends StatelessComponent {
             ],
           ),
           section(
+            id: 'calculator-results',
             classes: 'results',
             attributes: {'aria-label': 'Your estimated impact'},
             [
               div(classes: 'result-top', [
                 div(classes: 'eyebrow', [
-                  Component.text('Your potential impact'),
+                  Component.text('Illustrative estimate'),
                 ]),
                 div(
                   classes: 'period',
@@ -359,6 +411,12 @@ class ImpactCalculatorPage extends StatelessComponent {
                   ],
                 ),
               ]),
+              p(
+                id: 'result-state',
+                classes: 'result-state',
+                attributes: {'hidden': ''},
+                [],
+              ),
               div(id: 'impact-results', [
                 div(classes: 'hero-number', [
                   span(id: 'hours', [Component.text('120')]),
@@ -367,6 +425,11 @@ class ImpactCalculatorPage extends StatelessComponent {
                 p(classes: 'result-caption', [
                   Component.text('back to your team, '),
                   span(id: 'period-caption', [Component.text('every month')]),
+                ]),
+                p(id: 'resolution-basis', classes: 'assumption-basis', [
+                  Component.text(
+                    'Based on 60% of enquiries fully resolved by CU Chat.',
+                  ),
                 ]),
                 div(classes: 'time-note', [
                   Component.text('That’s '),
@@ -422,13 +485,24 @@ class ImpactCalculatorPage extends StatelessComponent {
                   ]),
                 ]),
               ]),
+              div(
+                id: 'website-funnel',
+                classes: 'website-funnel',
+                attributes: {'aria-label': 'Website lead calculation'},
+                [],
+              ),
               button(
-                id: 'download',
+                id: 'print-summary',
                 classes: 'download',
                 attributes: {'type': 'button'},
-                [Component.text('Download summary (.txt)')],
+                [Component.text('Print / save PDF summary')],
               ),
-              p(id: 'feedback', attributes: {'role': 'status'}, []),
+              p(
+                id: 'pdf-feedback',
+                classes: 'pdf-feedback',
+                attributes: {'role': 'status'},
+                [],
+              ),
               p(
                 id: 'impact-announcement',
                 classes: 'impact-sr-only',
@@ -443,6 +517,64 @@ class ImpactCalculatorPage extends StatelessComponent {
             ],
           ),
         ]),
+        aside(
+          id: 'mobile-impact',
+          classes: 'mobile-impact',
+          attributes: {'aria-label': 'Live estimate'},
+          [
+            div([
+              strong(id: 'mobile-hours', [Component.text('120 hours / month')]),
+              p(id: 'mobile-state', [Component.text('Illustrative estimate')]),
+            ]),
+            a(href: '/cu-chat/impact-calculator#calculator-results', [
+              Component.text('View results'),
+            ]),
+          ],
+        ),
+        section(
+          classes: 'scenario-section',
+          attributes: {'aria-labelledby': 'scenario-title'},
+          [
+            h2(id: 'scenario-title', [
+              Component.text('Compare your scenarios'),
+            ]),
+            p(classes: 'hint', [
+              Component.text(
+                'Capture up to three sets of your own assumptions. Scenarios stay on this page and are cleared when you leave or reload.',
+              ),
+            ]),
+            div(classes: 'scenario-controls', [
+              div([
+                label(
+                  attributes: {'for': 'scenario-name'},
+                  [Component.text('Scenario name')],
+                ),
+                input(
+                  id: 'scenario-name',
+                  attributes: {
+                    'type': 'text',
+                    'maxlength': '40',
+                    'placeholder': 'For example, cautious estimate',
+                  },
+                ),
+              ]),
+              button(
+                id: 'save-scenario',
+                classes: 'scenario-button',
+                attributes: {'type': 'button'},
+                [Component.text('Add current estimate')],
+              ),
+            ]),
+            p(id: 'scenario-feedback', attributes: {'role': 'status'}, []),
+            div(id: 'scenario-comparison', []),
+          ],
+        ),
+        section(
+          id: 'print-report',
+          classes: 'print-report',
+          attributes: {'aria-label': 'Printable impact summary'},
+          [],
+        ),
         details(id: 'how-it-works', classes: 'method', [
           summary([
             Component.text('Transparent numbers. Here’s the calculation.'),
