@@ -22,6 +22,12 @@
 :is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(4) { animation-delay: 180ms; }
 :is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(n + 5) { animation-delay: 240ms; }
 
+/* Client stories hero: same cascade as the other page heroes. */
+.stories-hero .site-container > * { animation: motion-rise .6s var(--ease-out) both; }
+.stories-hero .site-container > :nth-child(2) { animation-delay: 60ms; }
+.stories-hero .site-container > :nth-child(3) { animation-delay: 120ms; }
+.stories-hero .site-container > :nth-child(n + 4) { animation-delay: 180ms; }
+
 /* Home hero: the phone is the product, so it rises onto its shelf. */
 .hero-art-stage { animation: motion-fade .5s ease both; }
 .hero-phone { animation: motion-lift .8s var(--ease-out) .15s both; }
@@ -85,14 +91,31 @@
   .process-list li:nth-child(4)::before { animation-range: entry 85% cover 44%; }
 }
 
+/* Client stories: each testimonial's closing rule draws in, left to right,
+   as the row scrolls into view. Static rule where unsupported. */
+@supports (animation-timeline: view()) {
+  .story-row::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -1px;
+    height: 1px;
+    background: var(--navy);
+    transform-origin: left;
+    animation: motion-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 70% cover 40%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   /* Keep the fades that help things read as arriving; drop the movement. */
   :is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > *,
+  .stories-hero .site-container > *,
   .hero-phone, .hero-art-caption,
   .product-mockup-stage .mock-window,
   .product-mockup-stage .mock-thread > * { animation-name: motion-fade; animation-duration: .3s; }
-  .product-mockup-stage .mock-bar > span, .mock-pill-live::before, .process-list li::before { animation: none; }
-  .process-list li::before { transform: none; }
+  .product-mockup-stage .mock-bar > span, .mock-pill-live::before, .process-list li::before, .story-row::after { animation: none; }
+  .process-list li::before, .story-row::after { transform: none; }
   .faq-list details::details-content { transition: opacity .2s ease, content-visibility .2s allow-discrete; }
   .mobile-menu nav { transition: opacity .2s ease; @starting-style { transform: none; } }
 }
