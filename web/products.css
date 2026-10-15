@@ -631,12 +631,18 @@
 .mock-app-loan .mock-app-bar-term > span { right: 60%; }
 .mock-app-actions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 12px; }
 .mock-app-actions > span { display: grid; justify-items: center; gap: 5px; color: #5b6574; font-size: .64rem; font-weight: 600; }
-.mock-app-actions > span > span { width: 34px; height: 34px; border-radius: 10px; background: var(--pale); border: 1px solid #e3eaf1; }
+.mock-app-actions > span > span { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: var(--pale); border: 1px solid #e3eaf1; color: var(--blue); }
+.mock-app-actions svg { width: 17px; height: 17px; }
 .mock-app-tabs { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0 -16px; padding: 9px 6px 12px; border-top: 1px solid #edf1f5; background: white; }
 .mock-app-tabs > span { display: grid; justify-items: center; gap: 4px; color: var(--ink-faint); font-size: .6rem; font-weight: 600; }
-.mock-app-tabs > span > span { width: 16px; height: 16px; border-radius: 5px; background: #e3eaf1; }
-.mock-app-tabs .is-current { color: var(--blue); }
-.mock-app-tabs .is-current > span { background: var(--blue); }
+.mock-app-tabs svg { width: 17px; height: 17px; }
+/* Without motion, Home is the current tab (the overview is the screen shown). */
+.mock-app-tabs > span:first-child { color: var(--blue); }
+/* Home hero: the same phone, at the hero's size. */
+.hero-phone-stage { position: relative; z-index: 1; display: flex; margin-right: clamp(12px, 5vw, 64px); }
+.mock-phone.hero-phone { width: 245px; height: 500px; padding-top: 30px; border-width: 9px; border-bottom: 0; box-shadow: 18px 20px 0 rgba(19,33,57,.1); }
+@media (max-width: 760px) { .mock-phone.hero-phone { zoom: .84; } }
+@media (max-width: 480px) { .mock-phone.hero-phone { zoom: .74; } }
 /* Without motion, the account overview is the one screen shown. */
 .mock-app-login, .mock-app-loan { visibility: hidden; }
 

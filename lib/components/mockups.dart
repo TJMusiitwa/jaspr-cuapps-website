@@ -1,11 +1,14 @@
+import 'package:cuapps_website/components/ui.dart';
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 
 /// Static HTML mockup of the member app: a phone that signs in, then moves
 /// from the account overview to a loan application. The screens cycle in
 /// CSS (web/motion.css); with reduced motion the overview stays put.
-Component mobileAppMockup() {
-  return div(classes: 'mock-phone', [
+///
+/// [hero] sizes it for the home hero, where it rises onto the shelf.
+Component mobileAppMockup({bool hero = false}) {
+  return div(classes: 'mock-phone${hero ? ' hero-phone' : ''}', [
     div(classes: 'mock-phone-notch', []),
     div(classes: 'mock-phone-screens', [
       // 1. Sign in
@@ -43,8 +46,16 @@ Component mobileAppMockup() {
           div(classes: 'mock-bar', [span([])]),
         ]),
         div(classes: 'mock-app-actions', [
-          for (final label in const ['Pay in', 'Transfer', 'Apply', 'Help'])
-            span([span([]), Component.text(label)]),
+          for (final (icon, label) in const [
+            ('wallet', 'Pay in'),
+            ('transfer', 'Transfer'),
+            ('loan', 'Apply'),
+            ('help', 'Help'),
+          ])
+            span([
+              span([lineIcon(icon)]),
+              Component.text(label),
+            ]),
         ]),
       ]),
       // 3. Apply for a loan
@@ -71,16 +82,13 @@ Component mobileAppMockup() {
       ]),
     ]),
     div(classes: 'mock-app-tabs', [
-      for (final (index, label) in const [
-        'Home',
-        'Accounts',
-        'Loans',
-        'More',
-      ].indexed)
-        span(classes: index == 0 ? 'is-current' : null, [
-          span([]),
-          Component.text(label),
-        ]),
+      for (final (icon, label) in const [
+        ('home', 'Home'),
+        ('wallet', 'Accounts'),
+        ('loan', 'Loans'),
+        ('more', 'More'),
+      ])
+        span([lineIcon(icon), Component.text(label)]),
     ]),
   ]);
 }

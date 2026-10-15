@@ -40,12 +40,14 @@ class Home extends StatelessComponent {
                 span([Component.text('01 / MEMBER APP')]),
                 p([Component.text('Your brand. In every member’s hand.')]),
               ]),
-              img(
-                src: '/images/app_hero.webp',
-                alt: 'CU Apps mobile banking sign-in screen',
-                width: 1206,
-                height: 2622,
-                classes: 'hero-phone',
+              div(
+                classes: 'hero-phone-stage',
+                attributes: {
+                  'role': 'img',
+                  'aria-label':
+                      'A credit union mobile app signing a member in, then showing their accounts and a loan application',
+                },
+                [mobileAppMockup(hero: true)],
               ),
             ]),
           ]),

@@ -222,6 +222,8 @@ Component lineIcon(String name) {
     'headset' =>
       'M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v6H4zM17 14h3v6h-3zM20 20a3 3 0 0 1-3 2h-3',
     'chart' => 'M4 20V4M4 20h16M8 16v-4m4 4V8m4 8v-6',
+    'home' => 'M3 11 12 4l9 7M5 9.5V20h14V9.5M10 20v-5h4v5',
+    'more' => 'M5 12h.01M12 12h.01M19 12h.01',
     _ => 'M4 4h16v16H4z',
   };
 

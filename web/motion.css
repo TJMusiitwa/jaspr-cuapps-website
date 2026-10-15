@@ -139,12 +139,16 @@
 @keyframes app-loan { 0%, 61% { opacity: 0; visibility: hidden; transform: translateX(16px); } 65%, 94% { opacity: 1; visibility: visible; transform: none; } 98%, 100% { opacity: 0; visibility: hidden; } }
 @keyframes app-tabs-in { 0%, 27% { opacity: 0; } 31%, 94% { opacity: 1; } 98%, 100% { opacity: 0; } }
 @keyframes app-spin { to { transform: rotate(360deg); } }
+@keyframes app-tab-home { 0%, 61% { color: var(--blue); } 65%, 100% { color: var(--ink-faint); } }
+@keyframes app-tab-loans { 0%, 61% { color: var(--ink-faint); } 65%, 94% { color: var(--blue); } 98%, 100% { color: var(--ink-faint); } }
 @media (prefers-reduced-motion: no-preference) {
   .mock-app-login { animation: app-login 12s var(--ease-in-out) infinite; }
   .mock-app-home { animation: app-home 12s var(--ease-in-out) infinite; }
   .mock-app-loan { animation: app-loan 12s var(--ease-in-out) infinite; }
   .mock-phone .mock-app-tabs { animation: app-tabs-in 12s var(--ease-in-out) infinite; }
   .mock-app-spinner { animation: app-spin .8s linear infinite; }
+  .mock-app-tabs > span:first-child { animation: app-tab-home 12s var(--ease-in-out) infinite; }
+  .mock-app-tabs > span:nth-child(3) { animation: app-tab-loans 12s var(--ease-in-out) infinite; }
   .mock-phone-screen .mock-bar > span { transform-origin: left; animation: motion-fill 1s var(--ease-out) both; }
 }
 
