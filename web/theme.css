@@ -471,5 +471,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .logo-row[aria-hidden] { display: none; }
 }
 .logo-row img[src$="/core.webp"] { border-radius: 8px; }
+.app-panel-visual { height: auto; }
 .chat-panel-visual { height: auto; align-items: center; padding: 42px clamp(20px, 4vw, 48px); }
 .chat-panel-visual > div { width: min(100%, 420px); }

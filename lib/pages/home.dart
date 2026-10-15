@@ -1,3 +1,4 @@
+import 'package:cuapps_website/components/mockups.dart';
 import 'package:cuapps_website/components/ui.dart';
 import 'package:cuapps_website/pages/cu_chat/ai_chatbot.dart';
 import 'package:cuapps_website/pages/products/agm_hub.dart';
@@ -101,15 +102,17 @@ class Home extends StatelessComponent {
                 ]),
                 quietLink('Explore member apps', '/app-features'),
               ]),
-              div(classes: 'product-panel-visual app-panel-visual', [
-                img(
-                  src: '/images/app_hero.webp',
-                  alt: 'CU Apps mobile banking sign-in screen',
-                  width: 1206,
-                  height: 2622,
-                  loading: MediaLoading.lazy,
-                ),
-              ]),
+              div(
+                classes: 'product-panel-visual app-panel-visual',
+                attributes: {
+                  'role': 'img',
+                  'aria-label':
+                      'A credit union mobile app signing a member in, then showing their accounts and a loan application',
+                },
+                [
+                  div(attributes: {'aria-hidden': 'true'}, [mobileAppMockup()]),
+                ],
+              ),
             ]),
             article(classes: 'product-panel chat-panel', [
               div(classes: 'product-panel-copy', [

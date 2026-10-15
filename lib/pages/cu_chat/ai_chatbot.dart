@@ -1,3 +1,4 @@
+import 'package:cuapps_website/components/mockups.dart';
 import 'package:cuapps_website/components/product_page.dart';
 import 'package:cuapps_website/components/ui.dart';
 import 'package:cuapps_website/pages/cu_chat/impact_calculator.dart';
@@ -203,12 +204,16 @@ class AiChatbotPage extends StatelessComponent {
           ),
         ]),
         figure([
-          img(
-            src: '/images/chat_website_hero.webp',
-            alt: 'CU Chat displayed on a credit union website',
-            width: 1366,
-            height: 768,
-            loading: MediaLoading.lazy,
+          div(
+            classes: 'mock-site-stage',
+            attributes: {
+              'role': 'img',
+              'aria-label':
+                  'CU Chat open on a credit union’s loans page, greeting the member about loans',
+            },
+            [
+              div(attributes: {'aria-hidden': 'true'}, [websiteChatMockup()]),
+            ],
           ),
           figcaption([
             Component.text(

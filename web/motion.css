@@ -131,3 +131,30 @@
 @media (prefers-reduced-motion: reduce) {
   .voice-wave > span, .mock-voice-ring { animation: none; }
 }
+
+/* Member app phone: sign in, accounts, loan, repeat. Each screen holds long
+   enough to read; the swap is a short slide like a real page push. */
+@keyframes app-login { 0%, 27% { opacity: 1; visibility: visible; transform: none; } 31%, 97% { opacity: 0; visibility: hidden; transform: translateX(-12px); } 100% { opacity: 1; visibility: visible; transform: none; } }
+@keyframes app-home { 0%, 27% { opacity: 0; visibility: hidden; transform: translateX(16px); } 31%, 61% { opacity: 1; visibility: visible; transform: none; } 65%, 100% { opacity: 0; visibility: hidden; transform: translateX(-12px); } }
+@keyframes app-loan { 0%, 61% { opacity: 0; visibility: hidden; transform: translateX(16px); } 65%, 94% { opacity: 1; visibility: visible; transform: none; } 98%, 100% { opacity: 0; visibility: hidden; } }
+@keyframes app-tabs-in { 0%, 27% { opacity: 0; } 31%, 94% { opacity: 1; } 98%, 100% { opacity: 0; } }
+@keyframes app-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: no-preference) {
+  .mock-app-login { animation: app-login 12s var(--ease-in-out) infinite; }
+  .mock-app-home { animation: app-home 12s var(--ease-in-out) infinite; }
+  .mock-app-loan { animation: app-loan 12s var(--ease-in-out) infinite; }
+  .mock-phone .mock-app-tabs { animation: app-tabs-in 12s var(--ease-in-out) infinite; }
+  .mock-app-spinner { animation: app-spin .8s linear infinite; }
+  .mock-phone-screen .mock-bar > span { transform-origin: left; animation: motion-fill 1s var(--ease-out) both; }
+}
+
+/* CU Chat on a website: as the window scrolls into view, the launcher is
+   there first, then the widget opens and the conversation arrives. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .mock-site-widget { transform-origin: bottom right; animation: motion-settle linear both; animation-timeline: view(); animation-range: entry 60% cover 40%; }
+    .mock-site-widget .mock-thread > * { animation: motion-rise linear both; animation-timeline: view(); }
+    .mock-site-widget .mock-thread > :nth-child(1) { animation-range: entry 70% cover 44%; }
+    .mock-site-widget .mock-thread > :nth-child(2) { animation-range: entry 90% cover 50%; }
+  }
+}
