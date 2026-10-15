@@ -40,14 +40,6 @@ class FreeDemo extends StatelessComponent {
               li([Component.text('We agree on useful next steps together.')]),
             ]),
           ]),
-          blockquote(classes: 'booking-quote', [
-            p([
-              Component.text(
-                '“They have been open, honest, professional and helpful every step of the way.”',
-              ),
-            ]),
-            footer([Component.text('Logan Taylor · NHS Credit Union')]),
-          ]),
           trustNote(),
         ]),
         div(classes: 'booking-calendar', id: 'booking-calendar', [

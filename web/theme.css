@@ -308,9 +308,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .booking-expectation h2 { font-size: 1.3rem; }
 .booking-expectation ol { padding-left: 21px; color: var(--ink-soft); line-height: 1.7; }
 .booking-expectation li { padding-left: 7px; margin-top: 12px; }
-.booking-quote { border-left: 3px solid var(--blue); padding-left: 22px; margin-top: 48px; }
-.booking-quote p { font-size: 1.35rem; line-height: 1.4; }
-.booking-quote footer { margin-top: 15px; color: var(--ink-muted); font-size: .9rem; }
 .booking-calendar { scroll-margin-top: 90px; background: white; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
 .booking-calendar-header { padding: 24px 27px 14px; }
 .booking-calendar-header p:last-child { margin-top: 9px; color: var(--ink-muted); }
