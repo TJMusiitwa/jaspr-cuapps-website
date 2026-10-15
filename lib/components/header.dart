@@ -57,9 +57,6 @@ class Header extends StatelessComponent {
               for (final product in memberProducts) _mobileLink(product),
               p(classes: 'mobile-nav-label', [Component.text('CU Chat AI')]),
               a(href: '/cu-chat', [Component.text('CU Chat overview')]),
-              a(href: '/cu-chat/stories', [
-                Component.text('CU Chat client stories'),
-              ]),
               for (final product in chatProducts) _mobileLink(product),
               p(classes: 'mobile-nav-label', [
                 Component.text('Lending & operations'),
