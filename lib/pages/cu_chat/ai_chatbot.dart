@@ -21,7 +21,7 @@ class AiChatbotPage extends StatelessComponent {
       highlights: const [
         'Available 24/7',
         'Unlimited members',
-        'Staff take-over when needed',
+        'Directs members to your team when needed',
       ],
       mockup: chatbotMockup(),
       mockupLabel:
@@ -29,17 +29,12 @@ class AiChatbotPage extends StatelessComponent {
       featuresEyebrow: 'Chatbot features',
       featuresTitle: 'A front-line chatbot built around your credit union.',
       featuresBody:
-          'Interactive loan calculator, bespoke branding, lead capture, weekly insights, unlimited members and staff take-over when needed. Available on its own or alongside the Internal Knowledge Agent.',
+          'Interactive loan calculator, bespoke branding, lead generation, weekly insights and unlimited members. Available on its own or alongside the Internal Knowledge Agent.',
       features: const [
         (
           'headset',
           'Free up phone lines',
           'The chatbot handles the simple, frequently asked questions members often phone about, so staff can focus on more complex queries.',
-        ),
-        (
-          'palette',
-          'Bespoke colours and branding',
-          'Colours, chatbot name, icons, loan and savings products and branch details are all bespoke to your credit union.',
         ),
         (
           'chat',
@@ -49,7 +44,7 @@ class AiChatbotPage extends StatelessComponent {
         (
           'globe',
           'Multiple languages',
-          'Members can talk to the chatbot in their preferred language, so everyone can get help with confidence.',
+          'Foster inclusivity and make information and services accessible to everyone in your common bond, with 50+ supported languages.',
         ),
         (
           'calculator',
@@ -57,9 +52,29 @@ class AiChatbotPage extends StatelessComponent {
           'A built-in loan calculator lets members estimate repayments by adjusting the amount and term, without leaving the conversation.',
         ),
         (
+          'inbox',
+          'Lead generation',
+          'Ensure that no enquiry goes unanswered with AI-triggered lead generation.',
+        ),
+        (
+          'calendar',
+          'Weekly emails from your chatbot',
+          'Receive weekly insight emails to find out what members are asking about and get suggestions for what to improve.',
+        ),
+        (
+          'chart',
+          'Gain actionable insights',
+          'Make data-driven decisions based on hundreds of member communications and AI insights.',
+        ),
+        (
           'sparkle',
-          'Bespoke design and greetings',
-          'Personalise the logo, animations and greetings on each page of your website, and update them for new or seasonal products.',
+          'Personalised greetings to match your brand’s voice',
+          'Personalise the chatbot’s greetings on each page of your website, and update them for new or seasonal products.',
+        ),
+        (
+          'palette',
+          'Bespoke colours and branding',
+          'Colours, chatbot name, icons, loan and savings products and branch details are all bespoke to your credit union.',
         ),
       ],
       afterFeatures: [_howItHelps(), _onYourWebsite()],
@@ -101,8 +116,8 @@ class AiChatbotPage extends StatelessComponent {
           'Yes. It is tailored to your credit union’s products, services, branches and member questions. If you have queries unique to your credit union, we can add these too.',
         ),
         (
-          'What happens when a member needs a person?',
-          'Staff can take over a conversation when needed, and a callback request can be offered when a member needs further help from your team.',
+          'What happens when a member needs a staff member?',
+          'If the chatbot is unable to help or doesn’t know the answer, it will direct the member to contact the credit union directly. An optional setting enables the chatbot to offer callback requests in specific scenarios.',
         ),
         (
           'Can we review conversations and performance?',
@@ -110,7 +125,7 @@ class AiChatbotPage extends StatelessComponent {
         ),
         (
           'How is member data handled?',
-          'Members are asked for consent before a chat that processes personal data. A Data Processing Agreement sets out how data is handled, and the current service stores data in Frankfurt, Germany.',
+          'Members are asked for consent before a chat that processes personal data. A Data Processing Agreement sets out how data is handled, and the current service stores data in Dublin, Ireland.',
         ),
         (
           'Is our data used to train AI models?',
@@ -156,7 +171,7 @@ class AiChatbotPage extends StatelessComponent {
           _chatStep(
             '03',
             'Your team stays in the loop',
-            'Callback requests and staff take-over give members a route to a person. The Admin Portal helps your team review conversations and usage.',
+            'When the chatbot can’t help, it directs members to contact your credit union, with optional callback requests. The Admin Portal helps your team review conversations and usage.',
             'A clear path to your team',
           ),
         ]),
