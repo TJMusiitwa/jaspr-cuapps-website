@@ -287,7 +287,7 @@ typedef ProductLink = (String label, String href, String summary);
 
 const memberProducts = <ProductLink>[
   (
-    'Member app',
+    'Mobile App',
     '/app-features',
     'A bespoke mobile app in your credit union’s brand.',
   ),
@@ -295,14 +295,14 @@ const memberProducts = <ProductLink>[
 
 const chatProducts = <ProductLink>[
   (
-    'AI Chatbot',
+    'Member-facing AI Chatbot',
     '/cu-chat/ai-chatbot',
     '24/7 answers for members on your website.',
   ),
   (
     'Internal Knowledge Agent',
     '/cu-chat/knowledge-agent',
-    'Instant answers for staff from your own policies.',
+    'Chatbot for staff to get instant, policy aligned answers.',
   ),
   (
     'CU Voice',

@@ -122,7 +122,7 @@ class Home extends StatelessComponent {
                   ),
                 ]),
                 div(classes: 'product-panel-links', [
-                  quietLink('AI Chatbot', '/cu-chat/ai-chatbot'),
+                  quietLink('Member-facing AI Chatbot', '/cu-chat/ai-chatbot'),
                   quietLink(
                     'Internal Knowledge Agent',
                     '/cu-chat/knowledge-agent',

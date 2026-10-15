@@ -79,7 +79,7 @@ class App extends StatelessComponent {
               ),
               Route(
                 path: '/cu-chat/ai-chatbot',
-                title: 'AI Chatbot',
+                title: 'Member-facing AI Chatbot',
                 builder: (context, state) => const AiChatbotPage(),
               ),
               Route(
