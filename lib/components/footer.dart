@@ -29,6 +29,9 @@ class Footer extends StatelessComponent {
     ),
   ];
 
+  /// CU Chat pages send Client stories to the chatbot stories instead.
+  String get storiesHref => chat ? '/cu-chat/stories' : '/case-studies';
+
   @override
   Component build(BuildContext context) {
     return footer(classes: 'site-footer', [
@@ -77,7 +80,7 @@ class Footer extends StatelessComponent {
         ]),
         div(classes: 'footer-links', [
           p(classes: 'footer-label', [Component.text('Company')]),
-          a(href: '/case-studies', [Component.text('Client stories')]),
+          a(href: storiesHref, [Component.text('Client stories')]),
           a(href: '/about', [Component.text('About CU Apps')]),
           a(href: '/contact-us', [Component.text('Contact the team')]),
           a(href: '/free-demo', [Component.text('Book a call')]),

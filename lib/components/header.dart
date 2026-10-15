@@ -7,6 +7,9 @@ class Header extends StatelessComponent {
 
   final bool chat;
 
+  /// CU Chat pages send Client stories to the chatbot stories instead.
+  String get storiesHref => chat ? '/cu-chat/stories' : '/case-studies';
+
   @override
   Component build(BuildContext context) {
     return header(classes: 'site-header', [
@@ -30,7 +33,7 @@ class Header extends StatelessComponent {
           attributes: {'aria-label': 'Main navigation'},
           [
             _productsMenu(),
-            a(href: '/case-studies', [Component.text('Client stories')]),
+            a(href: storiesHref, [Component.text('Client stories')]),
             a(href: '/about', [Component.text('About')]),
             a(href: '/contact-us', [Component.text('Contact')]),
           ],
@@ -63,7 +66,7 @@ class Header extends StatelessComponent {
               ]),
               for (final product in operationsProducts) _mobileLink(product),
               div(classes: 'mobile-nav-divider', []),
-              a(href: '/case-studies', [Component.text('Client stories')]),
+              a(href: storiesHref, [Component.text('Client stories')]),
               a(href: '/about', [Component.text('About')]),
               a(href: '/contact-us', [Component.text('Contact')]),
             ],

@@ -270,7 +270,11 @@ class CuChatStoriesPage extends StatelessComponent {
           ]),
           div(classes: 'hero-actions', [
             primaryLink(bookingLabel, chat: true),
-            quietLink('Read the three case studies', '/cu-chat/stories#heritage'),
+            quietLink(
+              'Read the three case studies',
+              '/cu-chat/stories#heritage',
+            ),
+            quietLink('Read the Mobile App client stories', '/case-studies'),
           ]),
         ]),
         nav(
