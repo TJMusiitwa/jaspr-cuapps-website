@@ -11,6 +11,7 @@ import 'pages/case_studies.dart';
 import 'pages/contact_us.dart';
 import 'pages/cu_chat/ai_chatbot.dart';
 import 'pages/cu_chat/cu_chat_page.dart';
+import 'pages/cu_chat/for_members.dart';
 import 'pages/cu_chat/impact_calculator.dart';
 import 'pages/cu_chat/knowledge_agent.dart';
 import 'pages/cu_chat/stories.dart';
@@ -33,7 +34,9 @@ class App extends StatelessComponent {
           ShellRoute(
             builder: (context, state, child) {
               // CU Chat pages adopt the purple brand shell.
-              final chat = state.location.startsWith('/cu-chat');
+              final chat =
+                  state.location.startsWith('/cu-chat') ||
+                  state.location.startsWith('/ai-assistant-for-members');
               return Component.fragment([
                 const DemoBanner(),
                 Header(chat: chat),
@@ -96,6 +99,13 @@ class App extends StatelessComponent {
                 path: '/cu-chat/voice',
                 title: 'CU Voice',
                 builder: (context, state) => const CuVoicePage(),
+              ),
+              // Linked from inside the chat widget on the old cu.chat site,
+              // so it keeps its original top-level path.
+              Route(
+                path: '/ai-assistant-for-members',
+                title: 'AI assistant for members',
+                builder: (context, state) => const ForMembersPage(),
               ),
               Route(
                 path: '/cu-chat/stories',

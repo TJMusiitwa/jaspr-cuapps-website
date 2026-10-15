@@ -193,6 +193,14 @@ class AiChatbotPage extends StatelessComponent {
               'Bespoke branding keeps the experience consistent as members move from your social media or website to the chatbot.',
             ),
           ]),
+          a(
+            href: '/ai-assistant-for-members',
+            classes: 'text-link text-link-light',
+            [
+              Component.text('See the guide your members read'),
+              linkArrow(ArrowKind.forward),
+            ],
+          ),
         ]),
         figure([
           img(

@@ -600,3 +600,8 @@
   .voice-lines { grid-template-columns: 1fr; }
   .product-page-voice .hero-actions .voice-call { width: 100%; justify-content: flex-start; }
 }
+
+/* CU Chat for members: explainer linked from the chat widget */
+.members-note { max-width: 46ch; margin-top: 24px; padding-left: 16px; border-left: 3px solid var(--lilac); color: var(--ink-muted); font-size: .98rem; line-height: 1.6; }
+.members-note a { color: var(--purple-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.chat-context .text-link-light { display: inline-flex; margin-top: 28px; color: white; border-bottom-color: rgba(255, 255, 255, .5); }

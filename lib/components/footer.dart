@@ -81,6 +81,9 @@ class Footer extends StatelessComponent {
         div(classes: 'footer-links', [
           p(classes: 'footer-label', [Component.text('Company')]),
           a(href: storiesHref, [Component.text('Client stories')]),
+          a(href: '/ai-assistant-for-members', [
+            Component.text('CU Chat for members'),
+          ]),
           a(href: '/about', [Component.text('About CU Apps')]),
           a(href: '/contact-us', [Component.text('Contact the team')]),
           a(href: '/free-demo', [Component.text('Book a call')]),
