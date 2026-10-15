@@ -136,9 +136,6 @@ class CuVoicePage extends StatelessComponent {
       classes: primary
           ? 'button button-primary button-chat voice-call'
           : 'button voice-call voice-call-secondary',
-      attributes: {
-        'aria-label': 'Call the ${line.$1} demo agent on ${line.$3}',
-      },
       [
         _phoneGlyph(),
         span(classes: 'voice-call-text', [
@@ -168,25 +165,18 @@ class CuVoicePage extends StatelessComponent {
         ]),
         div(classes: 'voice-lines', [
           for (final line in _voiceLines)
-            a(
-              href: 'tel:${line.$4}',
-              classes: 'voice-line',
-              attributes: {
-                'aria-label': 'Call the ${line.$1} demo agent on ${line.$3}',
-              },
-              [
-                div(classes: 'voice-line-head', [
-                  span(classes: 'voice-line-accent', [Component.text(line.$1)]),
-                  _wave(7),
-                ]),
-                span(classes: 'voice-line-agent', [Component.text(line.$2)]),
-                span(classes: 'voice-line-number', [Component.text(line.$3)]),
-                span(classes: 'voice-line-action', [
-                  _phoneGlyph(),
-                  Component.text('Call now'),
-                ]),
-              ],
-            ),
+            a(href: 'tel:${line.$4}', classes: 'voice-line', [
+              div(classes: 'voice-line-head', [
+                span(classes: 'voice-line-accent', [Component.text(line.$1)]),
+                _wave(7),
+              ]),
+              span(classes: 'voice-line-agent', [Component.text(line.$2)]),
+              span(classes: 'voice-line-number', [Component.text(line.$3)]),
+              span(classes: 'voice-line-action', [
+                _phoneGlyph(),
+                Component.text('Call now'),
+              ]),
+            ]),
           p(classes: 'voice-lines-note', [
             Component.text(
               'Demo lines only. Please don’t share personal or account details on the call.',

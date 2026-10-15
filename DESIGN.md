@@ -109,7 +109,7 @@ Density is low and deliberate. Sections breathe on a large vertical rhythm. Type
 - One typeface, Outfit, with very tight negative tracking at display sizes.
 - Navy and signal-blue for CU Apps; purple and lilac for CU Chat. The two never mix within a surface.
 - Flat tonal fields ruled by hairlines; hard offset shadows only under device frames.
-- Tracked uppercase eyebrows introduce every section.
+- Tracked uppercase eyebrows name what a headline doesn't (a product, an audience, a kind of proof).
 - Solid, restrained buttons with small radius and a 2px hover lift.
 
 ## Colors
@@ -157,7 +157,7 @@ A cool, trustworthy navy-and-sky palette with a separate purple register reserve
 ### Named Rules
 **The Tight Display Rule.** Anything at display or headline scale gets negative tracking (−0.04em to −0.065em). Default tracking at those sizes looks unfinished.
 
-**The Eyebrow Rule.** Every major section opens with a tracked uppercase eyebrow above its headline, in eyebrow ink (or purple on CU Chat).
+**The Eyebrow Rule.** An eyebrow earns its place when it names something the headline doesn't: the product, who it's for, or what kind of proof follows. Leave it out when it would only restate the headline ("Questions" above "What credit unions ask us."). Never number eyebrows (01 / 02) unless the content is a real sequence. Eyebrow ink, or purple on CU Chat.
 
 ## Layout
 
@@ -188,7 +188,7 @@ Confident and restrained.
 - **Shape:** gently squared (7px), min-height 52px, weight 650, 0.95rem.
 - **Primary:** solid Harbour Navy on white text; hover deepens to #24476d and lifts 2px.
 - **Chat:** solid CU Chat Purple; hover goes to Purple Deep. It replaces the primary button on every CU Chat surface, including the header CTA.
-- **Text link:** 650 weight with a 1px underline rule in currentColor and a generous gap (17px) before its drawn arrow; hover shifts to a deeper blue (purple on CU Chat).
+- **Text link:** 650 weight with a 1px underline rule in currentColor and a generous gap (17px) before its drawn arrow; hover shifts to a deeper blue (purple on CU Chat) and the arrow steps 2-4px in its own direction (forward right, down down, out up-right). Buttons share the arrow step.
 - **Focus:** 3px signal-blue outline, 4px offset, on every interactive element.
 - **Label:** the conversion CTA always reads "Book a call".
 
@@ -201,6 +201,8 @@ Confident and restrained.
 
 ### Navigation
 A sticky 80px header on 96% white with a hairline bottom rule and backdrop blur. Links are 0.94rem at weight 550. The Products item opens a two-column dropdown panel (10px radius, floating shadow) grouping Member, CU Chat (on a lilac-paper tile), and Operations products. Each entry has a bold name and a one-line summary.
+- **Hover and current:** desktop nav links draw a 1.5px underline in from the left on hover. The current page keeps it, and the Products trigger keeps it on every product page. Current links carry `aria-current="page"`; in the dropdown the current product gets a pale tile, and in the mobile menu a 2px rule on its left edge.
+
 
 ### Footer
 Night Navy field with light blue-grey links (#e0e9f2) that underline on hover. Columns: brand + social circles, Products, Company, Product sheets, and Trust & security with the ISO 27001 badge. Uppercase tracked column labels.
@@ -222,6 +224,28 @@ The editorial replacement for icon card grids on product and feature pages.
 ### Device Stage (signature)
 The hero art: a tinted stage (radial signal-blue glow on CU Apps, lilac on CU Chat) with a thin decorative ring, a caption in the top-left corner, and a phone screenshot in a thick navy bezel rising from the bottom edge with a device-drop shadow.
 
+### Suite Showcase (signature)
+The home page's one signature moment. The suite is a run of chapters, one per product, set as ruled rows on the left. Beside them a single sticky stage holds still and turns to whichever product's chapter is crossing the middle of the screen (`web/showcase.js` sets `data-active`). The incoming mockup rises 16px into place as the outgoing one fades, then plays out what the product does. When CU Chat is reading, the stage crosses into the lilac register.
+- **Index:** six short product names across the top of the stage. The current one is in ink with its 2px rule filled, so the visitor always knows where they are in the suite.
+- **Phones:** the stage pins under the header at about 44vh and the chapters pass beneath it. The reading line moves to 72% of the screen height.
+- **Without JavaScript or under reduced motion:** the stage shows the member app (no script), or swaps products with a 200ms fade (reduced motion). The chapters carry all the content, so nothing is lost either way. The stage is `aria-hidden` and `inert`.
+- **Idle:** the member app mockup loops its sign-in, accounts and loan screens, so the stage keeps moving at rest.
+
+### Page Transitions
+Every link is a full page load, carried by cross-document view transitions (`@view-transition { navigation: auto; }` in `web/motion.css`). The demo banner and header hold still, the page underneath crosses over (180ms out, 300ms in), and the product stage travels from the home showcase (only while it is on screen) or from one product hero into the next product's hero. Under reduced motion it is only the crossfade. Browsers without support keep the plain navigation and the hero cascade.
+
+### Optical Alignment
+Display and headline type is pulled left (-0.055em display, -0.045em headline) so capitals sit on the column edge with the body copy. Pull quotes hang their opening quote mark in the margin (`hanging-punctuation`, with a `text-indent` fallback).
+
+### Hero Index
+Inner-page heroes that would otherwise leave their right half empty carry an index of what the page holds: the clients on Client stories (linking to each story), the phone lines and inbox on Contact, the chatbots on CU Chat client stories. A strong rule in the register's darkest colour on top, hairline rows, the name left and a quiet detail right. The name draws a 1.5px underline in from the left on hover or focus.
+
+### FAQ
+Ruled rows with the question in 600 weight and a drawn plus on the right that turns 45 degrees into a close mark as the answer opens. The question shifts to the hover blue (purple on CU Chat) under a pointer. No browser disclosure triangle.
+
+### Team Photos
+The portraits were taken in different rooms and light, so with a pointer they rest in greyscale (a `backdrop-filter` layer that fades out, so only opacity animates) and each person comes into colour, scaling to 1.03, as you reach them or their links. Touch screens keep the photos in colour.
+
 ### Trust Note (signature)
 A hairline-topped row pairing the ISO 27001:2022 badge (64px) with a bold certification line and a "Visit our Trust Center" link carrying the drawn leave-site arrow. Place it wherever visitors share details.
 
@@ -229,7 +253,7 @@ A hairline-topped row pairing the ISO 27001:2022 badge (64px) with a bold certif
 
 ### Do:
 - **Do** use Outfit alone, with negative tracking at display and headline sizes.
-- **Do** open sections with a tracked uppercase eyebrow.
+- **Do** use an eyebrow when it names something the headline doesn't; skip it when it would only repeat the headline.
 - **Do** switch the whole surface to the purple register on CU Chat pages, including the header CTA.
 - **Do** show real product screens in device frames rather than abstract illustration.
 - **Do** keep a 3px signal-blue focus ring with 4px offset on every interactive element.

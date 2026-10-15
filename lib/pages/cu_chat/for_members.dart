@@ -203,7 +203,7 @@ class ForMembersPage extends StatelessComponent {
         section(classes: 'site-section faq-section product-faq', [
           div(classes: 'site-container faq-grid', [
             div([
-              sectionIntro(eyebrow: 'Questions', title: 'What members ask us.'),
+              sectionIntro(title: 'What members ask us.'),
               p(classes: 'members-note', [
                 Component.text('Run a credit union? '),
                 a(href: '/cu-chat/ai-chatbot', [

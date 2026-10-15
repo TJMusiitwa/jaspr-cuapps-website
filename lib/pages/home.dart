@@ -37,7 +37,7 @@ class Home extends StatelessComponent {
           figure(classes: 'hero-art', [
             div(classes: 'hero-art-stage', [
               div(classes: 'hero-art-caption', [
-                span([Component.text('01 / MEMBER APP')]),
+                span([Component.text('Member app')]),
                 p([Component.text('Your brand. In every member’s hand.')]),
               ]),
               div(
@@ -65,7 +65,6 @@ class Home extends StatelessComponent {
       ]),
       section(classes: 'site-section', [
         div(classes: 'site-container statement-grid', [
-          p(classes: 'eyebrow', [Component.text('The opportunity')]),
           div([
             h2(classes: 'statement-title', [
               Component.text(
@@ -88,94 +87,52 @@ class Home extends StatelessComponent {
             body:
                 'Start with the product your members need most. Each one works on its own and fits together with the rest.',
           ),
-          div(classes: 'product-grid', [
-            article(classes: 'product-panel app-panel', [
-              div(classes: 'product-panel-copy', [
-                p(classes: 'eyebrow', [Component.text('01 / Mobile apps')]),
-                h3([
-                  Component.text(
-                    'Give members a reason to open your app every day.',
-                  ),
-                ]),
-                p([
-                  Component.text(
-                    'From secure account access to loans, news and notifications, your app is shaped around your members and your brand.',
-                  ),
-                ]),
-                quietLink('Explore member apps', '/app-features'),
-              ]),
-              div(
-                classes: 'product-panel-visual app-panel-visual',
-                attributes: {
-                  'role': 'img',
-                  'aria-label':
-                      'A credit union mobile app signing a member in, then showing their accounts and a loan application',
-                },
-                [
-                  div(attributes: {'aria-hidden': 'true'}, [mobileAppMockup()]),
-                ],
-              ),
+          // The suite's signature: one stage holds every product, and as each
+          // chapter scrolls through the middle of the screen the stage turns
+          // to that product (web/showcase.js). The chapters carry all the
+          // content; the stage is illustration and stays out of the
+          // accessibility tree.
+          div(classes: 'showcase', [
+            div(classes: 'showcase-chapters', [
+              for (final (i, chapter) in _chapters.indexed)
+                article(
+                  id: 'suite-${chapter.slug}',
+                  classes: 'showcase-chapter',
+                  attributes: {
+                    'data-chapter': '$i',
+                    if (chapter.chat) 'data-register': 'chat',
+                  },
+                  [
+                    p(classes: 'eyebrow', [Component.text(chapter.name)]),
+                    h3([Component.text(chapter.title)]),
+                    p([Component.text(chapter.body)]),
+                    div(classes: 'showcase-links', [
+                      for (final (label, href) in chapter.links)
+                        quietLink(label, href),
+                    ]),
+                  ],
+                ),
             ]),
-            article(classes: 'product-panel chat-panel', [
-              div(classes: 'product-panel-copy', [
-                p(classes: 'eyebrow', [Component.text('02 / CU Chat AI')]),
-                h3([
-                  Component.text('AI that helps your members and your team.'),
+            div(
+              classes: 'showcase-stage',
+              attributes: {
+                'aria-hidden': 'true',
+                'inert': '',
+                'data-active': '0',
+              },
+              [
+                ol(classes: 'showcase-index', [
+                  for (final chapter in _chapters)
+                    li([Component.text(chapter.short)]),
                 ]),
-                p([
-                  Component.text(
-                    'A 24/7 AI Chatbot answers member questions on your website. An Internal Knowledge Agent gives staff instant answers from your own policies and procedures.',
-                  ),
+                div(classes: 'showcase-layers', [
+                  for (final chapter in _chapters)
+                    div(
+                      classes: 'showcase-layer showcase-layer-${chapter.slug}',
+                      [chapter.mockup()],
+                    ),
                 ]),
-                div(classes: 'product-panel-links', [
-                  quietLink('Member-facing AI Chatbot', '/cu-chat/ai-chatbot'),
-                  quietLink(
-                    'Internal Knowledge Agent',
-                    '/cu-chat/knowledge-agent',
-                  ),
-                ]),
-              ]),
-              div(
-                classes: 'product-panel-visual chat-panel-visual',
-                attributes: {
-                  'role': 'img',
-                  'aria-label':
-                      'A branded credit union chatbot answering a loan question with an in-chat loan calculator',
-                },
-                [
-                  div(attributes: {'aria-hidden': 'true'}, [chatbotMockup()]),
-                ],
-              ),
-            ]),
-          ]),
-          div(classes: 'product-suite', [
-            _suiteCard(
-              '03 / AGM Hub',
-              'A better AGM for every member.',
-              'Live stream, secure voting and questions in one place.',
-              '/agm-hub',
-              agmHubMockup(compact: true),
-            ),
-            _suiteCard(
-              '04 / Loan Calculators',
-              'Turn loan interest into applications.',
-              'Branded calculators that lead into your application journey.',
-              '/loan-calculators',
-              loanCalculatorMockup(compact: true),
-            ),
-            _suiteCard(
-              '05 / Origination',
-              'Applications members want to complete.',
-              'Prefilled, validated journeys connected to your systems.',
-              '/member-origination',
-              originationMockup(compact: true),
-            ),
-            _suiteCard(
-              '06 / CU Flow',
-              'Describe the form. CU Flow builds it.',
-              'AI-built forms that live inside your app.',
-              '/cu-flow',
-              cuFlowMockup(compact: true),
+              ],
             ),
           ]),
         ]),
@@ -206,7 +163,6 @@ class Home extends StatelessComponent {
       section(classes: 'site-section process-section', [
         div(classes: 'site-container', [
           sectionIntro(
-            eyebrow: 'Working together',
             title: 'From first conversation to what comes next.',
             body:
                 'We learn how your mutual works, build around your members, and stay close after launch.',
@@ -236,31 +192,10 @@ class Home extends StatelessComponent {
         ]),
       ]),
       closingCta(
-        eyebrow: 'Start with a conversation',
         title: 'Tell us what your members need next.',
         body:
             'We will help you explore the right digital experience for your credit union.',
       ),
-    ]);
-  }
-
-  Component _suiteCard(
-    String eyebrow,
-    String title,
-    String body,
-    String href,
-    Component mockup,
-  ) {
-    return article(classes: 'suite-card', [
-      div(
-        classes: 'suite-card-visual',
-        attributes: {'aria-hidden': 'true'},
-        [mockup],
-      ),
-      p(classes: 'eyebrow', [Component.text(eyebrow)]),
-      h3([Component.text(title)]),
-      p([Component.text(body)]),
-      quietLink('Explore ${eyebrow.split(' / ').last}', href),
     ]);
   }
 
@@ -272,3 +207,87 @@ class Home extends StatelessComponent {
     ]);
   }
 }
+
+/// One product in the home suite showcase.
+typedef _Chapter = ({
+  String slug,
+  String name,
+  String short,
+  String title,
+  String body,
+  List<(String, String)> links,
+  bool chat,
+  Component Function() mockup,
+});
+
+final List<_Chapter> _chapters = [
+  (
+    slug: 'app',
+    name: 'Mobile apps',
+    short: 'App',
+    title: 'Give members a reason to open your app every day.',
+    body:
+        'From secure account access to loans, news and notifications, your app is shaped around your members and your brand.',
+    links: [('Explore member apps', '/app-features')],
+    chat: false,
+    mockup: mobileAppMockup,
+  ),
+  (
+    slug: 'chat',
+    name: 'CU Chat AI',
+    short: 'CU Chat',
+    title: 'AI that helps your members and your team.',
+    body:
+        'A 24/7 AI Chatbot answers member questions on your website. An Internal Knowledge Agent gives staff instant answers from your own policies and procedures.',
+    links: [
+      ('Member-facing AI Chatbot', '/cu-chat/ai-chatbot'),
+      ('Internal Knowledge Agent', '/cu-chat/knowledge-agent'),
+    ],
+    chat: true,
+    mockup: chatbotMockup,
+  ),
+  (
+    slug: 'agm',
+    name: 'AGM Hub',
+    short: 'AGM',
+    title: 'A better AGM for every member.',
+    body:
+        'Live stream, secure voting and questions in one place. Members join through your app or a branded web page.',
+    links: [('Explore AGM Hub', '/agm-hub')],
+    chat: false,
+    mockup: agmHubMockup,
+  ),
+  (
+    slug: 'loans',
+    name: 'Loan Calculators',
+    short: 'Loans',
+    title: 'Turn loan interest into applications.',
+    body:
+        'Branded calculators for every loan product, leading straight into your application journey.',
+    links: [('Explore Loan Calculators', '/loan-calculators')],
+    chat: false,
+    mockup: loanCalculatorMockup,
+  ),
+  (
+    slug: 'origination',
+    name: 'Origination',
+    short: 'Apply',
+    title: 'Applications members want to complete.',
+    body:
+        'Prefilled, validated journeys connected to your core and third-party systems, with no repeat questions.',
+    links: [('Explore Origination', '/member-origination')],
+    chat: false,
+    mockup: originationMockup,
+  ),
+  (
+    slug: 'flow',
+    name: 'CU Flow',
+    short: 'Flow',
+    title: 'Describe the form. CU Flow builds it.',
+    body:
+        'Describe the form you need and place it inside your app. Known member details are filled in for them.',
+    links: [('Explore CU Flow', '/cu-flow')],
+    chat: false,
+    mockup: cuFlowMockup,
+  ),
+];

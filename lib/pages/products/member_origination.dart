@@ -120,27 +120,27 @@ Component _validationView() {
     ]);
   }
 
-  return figure(classes: 'check-view', [
-    ul(
-      classes: 'check-list',
-      attributes: {
-        'role': 'img',
-        'aria-label':
-            'Illustrative validation checks: a bank account confirmed, a postcode lookup offering addresses, a phone number confirmed and an email address flagged with a suggested correction.',
-      },
-      [
+  return figure(
+    classes: 'check-view',
+    attributes: {
+      'role': 'img',
+      'aria-label':
+          'Illustrative validation checks: a bank account confirmed, a postcode lookup offering addresses, a phone number confirmed and an email address flagged with a suggested correction.',
+    },
+    [
+      ul(classes: 'check-list', [
         check('Bank account', '12-34-56 · 12345678', 'Account confirmed', 'ok'),
         check('Postcode lookup', 'G4 0QW', '3 addresses found', 'ok'),
         check('Phone', '07700 900123', 'Valid UK mobile', 'ok'),
         check('Email', 'jo@gmial.com', 'Did you mean gmail.com?', 'warn'),
-      ],
-    ),
-    figcaption([
-      Component.text(
-        'Illustrative checks, shown while the member is still filling in the form.',
-      ),
-    ]),
-  ]);
+      ]),
+      figcaption([
+        Component.text(
+          'Illustrative checks, shown while the member is still filling in the form.',
+        ),
+      ]),
+    ],
+  );
 }
 
 Component originationMockup({bool compact = false}) {

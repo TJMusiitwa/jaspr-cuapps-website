@@ -14,19 +14,16 @@
 /* Hero copy: eyebrow, headline, lede, actions arrive as one short cascade on
    page open (and on client-side navigation, where it doubles as the page
    transition). 60ms steps keep the whole sequence under half a second. */
-:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > * {
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > * {
   animation: motion-rise .6s var(--ease-out) both;
 }
-:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(2) { animation-delay: 60ms; }
-:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(3) { animation-delay: 120ms; }
-:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(4) { animation-delay: 180ms; }
-:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(n + 5) { animation-delay: 240ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(2) { animation-delay: 60ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(3) { animation-delay: 120ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(4) { animation-delay: 180ms; }
+:is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > :nth-child(n + 5) { animation-delay: 240ms; }
 
-/* Client stories hero: same cascade as the other page heroes. */
-.stories-hero .site-container > * { animation: motion-rise .6s var(--ease-out) both; }
-.stories-hero .site-container > :nth-child(2) { animation-delay: 60ms; }
-.stories-hero .site-container > :nth-child(3) { animation-delay: 120ms; }
-.stories-hero .site-container > :nth-child(n + 4) { animation-delay: 180ms; }
+/* Client stories hero: the index of clients settles in after the copy. */
+.stories-roster { animation: motion-fade .6s ease .3s both; }
 
 /* Home hero: the phone is the product, so it rises onto its shelf. */
 .hero-art-stage { animation: motion-fade .5s ease both; }
@@ -109,14 +106,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   /* Keep the fades that help things read as arriving; drop the movement. */
-  :is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > *,
-  .stories-hero .site-container > *,
+  :is(.hero-copy, .product-hero-copy, .chat-stories-hero-copy, .stories-hero-copy, .page-hero-grid > :first-child, .about-hero-grid > :first-child) > *,
   .hero-phone, .hero-art-caption,
   .product-mockup-stage .mock-window,
   .product-mockup-stage .mock-thread > * { animation-name: motion-fade; animation-duration: .3s; }
   .product-mockup-stage .mock-bar > span, .mock-pill-live::before, .process-list li::before, .story-row::after { animation: none; }
   .process-list li::before, .story-row::after { transform: none; }
   .faq-list details::details-content { transition: opacity .2s ease, content-visibility .2s allow-discrete; }
+  .faq-list summary::after { transition: none; }
   .mobile-menu nav { transition: opacity .2s ease; @starting-style { transform: none; } }
 }
 
@@ -161,4 +158,78 @@
     .mock-site-widget .mock-thread > :nth-child(1) { animation-range: entry 70% cover 44%; }
     .mock-site-widget .mock-thread > :nth-child(2) { animation-range: entry 90% cover 50%; }
   }
+}
+
+/* Pointer feedback. Primary targets answer by moving toward where they go:
+   a link's drawn arrow steps in its own direction (forward, down or out),
+   and nav links draw their underline in from the left. The current page
+   keeps its underline. Utility links (footer, legal) stay colour-only. */
+.link-arrow { transition: translate .32s var(--ease-out); }
+.desktop-nav > a, .nav-products > button { position: relative; }
+.desktop-nav > a::after, .nav-products > button::before {
+  content: '';
+  position: absolute;
+  inset: auto 0 -7px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .32s var(--ease-out);
+}
+.nav-products > button::before { right: 14px; }
+.desktop-nav > a[aria-current="page"]::after, .nav-products.is-current > button::before { transform: none; }
+@media (hover: hover) and (pointer: fine) {
+  :is(.text-link, .button, .nav-products-overview):hover .link-arrow-forward { translate: 4px 0; }
+  :is(.text-link, .button):hover .link-arrow-down { translate: 0 3px; }
+  :is(.text-link, .button, .demo-banner-link):hover .link-arrow-out { translate: 2px -2px; }
+  .desktop-nav > a:hover::after, .nav-products:is(:hover, .is-open) > button::before { transform: none; transform-origin: left; }
+}
+:is(.text-link, .button):active .link-arrow { transition-duration: .12s; }
+@media (prefers-reduced-motion: reduce) {
+  .link-arrow { transition: none; }
+  :is(.text-link, .button, .nav-products-overview, .demo-banner-link):hover .link-arrow { translate: none; }
+  .desktop-nav > a::after, .nav-products > button::before { transition: none; }
+}
+
+/* Home suite showcase: the outgoing product fades while the incoming one
+   rises into place, then its mockup plays out what the product does, the
+   same cascade as the product heroes. Each arrival replays it. */
+@media (prefers-reduced-motion: no-preference) {
+  .showcase-layer { translate: 0 16px; transition: opacity .25s ease, translate .25s ease, visibility 0s .25s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) { translate: none; transition: opacity .4s ease .1s, translate .7s var(--ease-out) .1s, visibility 0s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-window { animation: motion-settle .5s var(--ease-out) .15s both; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-thread > * { animation: motion-rise .45s var(--ease-out) both; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-thread > :nth-child(1) { animation-delay: .45s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-thread > :nth-child(2) { animation-delay: .8s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-thread > :nth-child(3) { animation-delay: 1.15s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-thread > :nth-child(n + 4) { animation-delay: 1.45s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) .mock-bar > span { transform-origin: left; animation: motion-fill 1s var(--ease-out) .6s both; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .showcase-layer { transition: opacity .2s ease, visibility 0s .2s; }
+  :is(.showcase-stage[data-active="0"] .showcase-layer:nth-child(1), .showcase-stage[data-active="1"] .showcase-layer:nth-child(2), .showcase-stage[data-active="2"] .showcase-layer:nth-child(3), .showcase-stage[data-active="3"] .showcase-layer:nth-child(4), .showcase-stage[data-active="4"] .showcase-layer:nth-child(5), .showcase-stage[data-active="5"] .showcase-layer:nth-child(6)) { transition: opacity .2s ease, visibility 0s; }
+}
+
+/* Page transitions. Every link is a full page load, so the browser's
+   cross-document view transitions carry one page into the next: the banner
+   and header hold still, the page underneath crosses over, and the product
+   stage travels from the home showcase (while it is on screen) into the
+   product page's hero, or from one product hero to the next. Browsers
+   without support keep the plain navigation and the hero cascade. */
+@view-transition { navigation: auto; }
+.demo-banner { view-transition-name: demo-banner; }
+.site-header { view-transition-name: site-header; }
+.showcase-stage[data-in-view], .product-mockup-stage { view-transition-name: product-stage; }
+@keyframes page-out { to { opacity: 0; } }
+@keyframes page-in { from { opacity: 0; } }
+::view-transition-old(root) { animation: page-out .18s ease both; }
+::view-transition-new(root) { animation: page-in .3s var(--ease-out) .06s both; }
+::view-transition-group(product-stage) { animation-duration: .6s; animation-timing-function: var(--ease-out); }
+::view-transition-old(product-stage), ::view-transition-new(product-stage) { height: 100%; object-fit: cover; }
+::view-transition-old(product-stage) { animation: page-out .25s ease both; }
+::view-transition-new(product-stage) { animation: page-in .35s ease .15s both; }
+@media (prefers-reduced-motion: reduce) {
+  /* A short crossfade only; nothing travels. */
+  .showcase-stage[data-in-view], .product-mockup-stage { view-transition-name: none; }
+  ::view-transition-new(root) { animation-delay: 0s; }
 }

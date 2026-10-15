@@ -23,6 +23,9 @@ class _Voice {
   final List<String> quote;
   final String person;
   final String role;
+
+  /// Anchor for the story on this page, linked from the hero index.
+  String get id => client.toLowerCase().replaceAll(RegExp('[^a-z0-9]+'), '-');
 }
 
 const _manchester = _Voice(
@@ -132,6 +135,18 @@ const _hoot = _Voice(
   ],
 );
 
+/// Every story, in the order the page shows them.
+const _pageOrder = [
+  _manchester,
+  _northern,
+  _enterprise,
+  _copperPot,
+  _thistle,
+  _londonPlus,
+  _scottishPolice,
+  _hoot,
+];
+
 class CaseStudies extends StatelessComponent {
   const CaseStudies({super.key});
 
@@ -139,19 +154,45 @@ class CaseStudies extends StatelessComponent {
   Component build(BuildContext context) {
     return main_([
       section(classes: 'page-hero stories-hero', [
-        div(classes: 'site-container', [
-          p(classes: 'eyebrow', [Component.text('Client stories')]),
-          h1(classes: 'page-title', [
-            Component.text('The work is measured in member experience.'),
+        div(classes: 'site-container stories-hero-grid', [
+          div(classes: 'stories-hero-copy', [
+            p(classes: 'eyebrow', [Component.text('Client stories')]),
+            h1(classes: 'page-title', [
+              Component.text('The work is measured in member experience.'),
+            ]),
+            p(classes: 'hero-lede', [
+              Component.text(
+                'Credit unions come to us with different challenges. Here is what they say changed after working together.',
+              ),
+            ]),
+            div(classes: 'hero-actions', [
+              quietLink('Read the CU Chat client stories', '/cu-chat/stories'),
+            ]),
           ]),
-          p(classes: 'hero-lede', [
-            Component.text(
-              'Credit unions come to us with different challenges. Here is what they say changed after working together.',
-            ),
-          ]),
-          div(classes: 'hero-actions', [
-            quietLink('Read the CU Chat client stories', '/cu-chat/stories'),
-          ]),
+          // Who is on this page, in page order: a way in for visitors
+          // looking for a credit union like theirs.
+          nav(
+            classes: 'stories-roster',
+            attributes: {'aria-label': 'Client stories on this page'},
+            [
+              p(classes: 'stories-roster-title', [
+                Component.text('In their words'),
+              ]),
+              ol([
+                for (final voice in _pageOrder)
+                  li([
+                    a(href: '/case-studies#${voice.id}', [
+                      span(classes: 'roster-name', [
+                        Component.text(voice.client),
+                      ]),
+                      span(classes: 'roster-person', [
+                        Component.text(voice.person),
+                      ]),
+                    ]),
+                  ]),
+              ]),
+            ],
+          ),
         ]),
       ]),
       _feature(
@@ -168,7 +209,7 @@ class CaseStudies extends StatelessComponent {
           div(classes: 'story-list', [_row(_northern), _row(_enterprise)]),
         ]),
       ]),
-      section(classes: 'story-pull-section', [
+      section(id: _copperPot.id, classes: 'story-pull-section', [
         div(classes: 'site-container story-pull', [
           _logo(_copperPot, height: 60),
           _quote(_copperPot),
@@ -240,6 +281,7 @@ class CaseStudies extends StatelessComponent {
     bool tinted = false,
   }) {
     return section(
+      id: voice.id,
       classes: 'site-section${tinted ? ' story-feature-alt' : ''}',
       [
         div(classes: 'site-container featured-story', [
@@ -264,7 +306,7 @@ class CaseStudies extends StatelessComponent {
   }
 
   Component _row(_Voice voice) {
-    return article(classes: 'story-row', [
+    return article(id: voice.id, classes: 'story-row', [
       div(classes: 'story-row-client', [
         _logo(voice, height: 60),
         h3([Component.text(voice.client)]),
@@ -274,7 +316,7 @@ class CaseStudies extends StatelessComponent {
   }
 
   Component _brief(_Voice voice) {
-    return article(classes: 'story-brief', [
+    return article(id: voice.id, classes: 'story-brief', [
       _logo(voice, height: 44),
       _quote(voice),
     ]);

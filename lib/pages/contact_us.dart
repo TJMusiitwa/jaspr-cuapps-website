@@ -9,16 +9,38 @@ class ContactUs extends StatelessComponent {
   Component build(BuildContext context) {
     return main_([
       section(classes: 'page-hero contact-hero', [
-        div(classes: 'site-container', [
-          p(classes: 'eyebrow', [Component.text('Contact CU Apps')]),
-          h1(classes: 'page-title', [
-            Component.text('The right conversation starts here.'),
+        div(classes: 'site-container page-hero-grid', [
+          div([
+            p(classes: 'eyebrow', [Component.text('Contact CU Apps')]),
+            h1(classes: 'page-title', [
+              Component.text('The right conversation starts here.'),
+            ]),
+            p(classes: 'hero-lede', [
+              Component.text(
+                'Thinking about an app or CU Chat? Have a question for the team? Choose the route that fits.',
+              ),
+            ]),
           ]),
-          p(classes: 'hero-lede', [
-            Component.text(
-              'Thinking about an app or CU Chat? Have a question for the team? Choose the route that fits.',
-            ),
-          ]),
+          // The quickest routes, in the first frame: a phone line for each
+          // country we work in, and the team inbox.
+          nav(
+            classes: 'contact-lines',
+            attributes: {'aria-label': 'Phone and email'},
+            [
+              p(classes: 'contact-lines-title', [
+                Component.text('Call or write'),
+              ]),
+              ul([
+                for (final (place, number, href) in _lines)
+                  li([
+                    a(href: href, [
+                      span([Component.text(place)]),
+                      strong([Component.text(number)]),
+                    ]),
+                  ]),
+              ]),
+            ],
+          ),
         ]),
       ]),
       section(classes: 'site-section', [
@@ -61,24 +83,6 @@ class ContactUs extends StatelessComponent {
             p([
               Component.text('220 High Street, Glasgow G4 0QW, United Kingdom'),
             ]),
-            a(href: 'mailto:hello@cuapps.co.uk', [
-              Component.text('hello@cuapps.co.uk'),
-            ]),
-            div(classes: 'contact-phones', [
-              p(classes: 'eyebrow', [Component.text('Call us')]),
-              a(href: 'tel:+441413432450', [
-                span([Component.text('United Kingdom')]),
-                strong([Component.text('+44 141 343 2450')]),
-              ]),
-              a(href: 'tel:+353749707869', [
-                span([Component.text('Ireland')]),
-                strong([Component.text('+353 749 707 869')]),
-              ]),
-              a(href: 'tel:+13133061560', [
-                span([Component.text('United States')]),
-                strong([Component.text('+1 313 306 1560')]),
-              ]),
-            ]),
           ]),
         ]),
       ]),
@@ -86,3 +90,11 @@ class ContactUs extends StatelessComponent {
     ]);
   }
 }
+
+/// Place, number as written, and link for each way to reach the team.
+const _lines = [
+  ('United Kingdom', '+44 141 343 2450', 'tel:+441413432450'),
+  ('Ireland', '+353 749 707 869', 'tel:+353749707869'),
+  ('United States', '+1 313 306 1560', 'tel:+13133061560'),
+  ('Email', 'hello@cuapps.co.uk', 'mailto:hello@cuapps.co.uk'),
+];

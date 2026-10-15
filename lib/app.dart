@@ -6,6 +6,7 @@ import 'package:jaspr_router/jaspr_router.dart';
 import 'components/demo_banner.dart';
 import 'components/footer.dart';
 import 'components/header.dart';
+import 'components/ui.dart';
 import 'pages/about.dart';
 import 'pages/case_studies.dart';
 import 'pages/contact_us.dart';
@@ -38,8 +39,9 @@ class App extends StatelessComponent {
                   state.location.startsWith('/cu-chat') ||
                   state.location.startsWith('/ai-assistant-for-members');
               return Component.fragment([
+                skipLink(state.location),
                 const DemoBanner(),
-                Header(chat: chat),
+                Header(chat: chat, path: state.location),
                 div(id: 'content', attributes: {'tabindex': '-1'}, [child]),
                 Footer(chat: chat),
               ]);
@@ -47,100 +49,101 @@ class App extends StatelessComponent {
             routes: [
               Route(
                 path: '/',
-                title: 'Home',
+                title: 'CU Apps | Digital products for mutuals',
                 builder: (context, state) => const Home(),
               ),
               Route(
                 path: '/app-features',
-                title: 'Features',
+                title: 'Member app features | CU Apps',
                 builder: (context, state) => AppFeatures(),
               ),
               Route(
                 path: '/about',
-                title: 'About',
+                title: 'About | CU Apps',
                 builder: (context, state) => const About(),
               ),
               Route(
                 path: '/contact-us',
-                title: 'Contact Us',
+                title: 'Contact Us | CU Apps',
                 builder: (context, state) => ContactUs(),
               ),
               Route(
                 path: '/case-studies',
-                title: 'Client stories',
+                title: 'Client stories | CU Apps',
                 builder: (context, state) => const CaseStudies(),
               ),
               Route(
                 path: '/free-demo',
-                title: 'Book a call',
+                title: 'Book a call | CU Apps',
                 builder: (context, state) => FreeDemo(),
               ),
               Route(
                 path: '/cu-chat',
-                title: 'CU Chat',
+                title: 'CU Chat | AI for credit unions',
                 builder: (context, state) => const CuChatPage(),
               ),
               Route(
                 path: '/cu-chat/ai-chatbot',
-                title: 'Member-facing AI Chatbot',
+                title: 'Member-facing AI Chatbot | CU Chat',
                 builder: (context, state) => const AiChatbotPage(),
               ),
               Route(
                 path: '/cu-chat/impact-calculator',
-                title: 'CU Chat impact calculator',
+                title: 'Impact calculator | CU Chat',
                 builder: (context, state) => const ImpactCalculatorPage(),
               ),
               Route(
                 path: '/cu-chat/knowledge-agent',
-                title: 'Internal Knowledge Agent',
+                title: 'Internal Knowledge Agent | CU Chat',
                 builder: (context, state) => const KnowledgeAgentPage(),
               ),
               Route(
                 path: '/cu-chat/voice',
-                title: 'CU Voice',
+                title: 'CU Voice | CU Chat',
                 builder: (context, state) => const CuVoicePage(),
               ),
               // Linked from inside the chat widget on the old cu.chat site,
               // so it keeps its original top-level path.
               Route(
                 path: '/ai-assistant-for-members',
-                title: 'AI assistant for members',
+                title: 'AI assistant for members | CU Chat',
                 builder: (context, state) => const ForMembersPage(),
               ),
               Route(
                 path: '/cu-chat/stories',
-                title: 'CU Chat client stories',
+                title: 'Client stories | CU Chat',
                 builder: (context, state) => const CuChatStoriesPage(),
               ),
               Route(
                 path: '/agm-hub',
-                title: 'AGM Hub',
+                title: 'AGM Hub | CU Apps',
                 builder: (context, state) => const AgmHubPage(),
               ),
               Route(
                 path: '/loan-calculators',
-                title: 'Loan Calculators',
+                title: 'Loan Calculators | CU Apps',
                 builder: (context, state) => const LoanCalculatorsPage(),
               ),
               Route(
                 path: '/member-origination',
-                title: 'Origination & Applications',
+                title: 'Origination & Applications | CU Apps',
                 builder: (context, state) => const MemberOriginationPage(),
               ),
               Route(
                 path: '/cu-flow',
-                title: 'CU Flow',
+                title: 'CU Flow | CU Apps',
                 builder: (context, state) => const CuFlowPage(),
               ),
               Route(
                 path: '/*',
-                title: 'Page not found',
+                title: 'Page not found | CU Apps',
                 builder: (context, state) => const Error404(),
               ),
             ],
           ),
         ],
         errorBuilder: (context, state) => Component.fragment([
+          skipLink(state.location),
           const DemoBanner(),
           const Header(),
           div(

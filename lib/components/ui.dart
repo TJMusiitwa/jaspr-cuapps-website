@@ -20,7 +20,7 @@ Component linkArrow(ArrowKind kind) {
   };
   return svg(
     viewBox: '0 0 24 24',
-    classes: 'link-arrow',
+    classes: 'link-arrow link-arrow-${kind.name}',
     attributes: {'aria-hidden': 'true', 'focusable': 'false'},
     [
       path(
@@ -35,6 +35,16 @@ Component linkArrow(ArrowKind kind) {
       ),
     ],
   );
+}
+
+/// The first tab stop on every page, ahead of the demo banner. Qualified
+/// with the current [path]: a bare "#content" resolves against the site's
+/// `<base href="/">`, sending every non-home page to the homepage instead of
+/// skipping in place.
+Component skipLink(String path) {
+  return a(href: '$path#content', classes: 'skip-link', [
+    Component.text('Skip to content'),
+  ]);
 }
 
 Component primaryLink(
@@ -56,13 +66,10 @@ Component quietLink(String label, String href) {
   ]);
 }
 
-Component sectionIntro({
-  required String eyebrow,
-  required String title,
-  String? body,
-}) {
+/// Leave [eyebrow] out when it would only restate [title].
+Component sectionIntro({String? eyebrow, required String title, String? body}) {
   return div(classes: 'section-intro', [
-    p(classes: 'eyebrow', [Component.text(eyebrow)]),
+    if (eyebrow != null) p(classes: 'eyebrow', [Component.text(eyebrow)]),
     h2(classes: 'section-title', [Component.text(title)]),
     if (body != null) p(classes: 'section-copy', [Component.text(body)]),
   ]);
@@ -97,7 +104,7 @@ Component capabilityList({
 }
 
 Component closingCta({
-  required String eyebrow,
+  String? eyebrow,
   required String title,
   required String body,
   String label = bookingLabel,
@@ -106,7 +113,8 @@ Component closingCta({
   return section(classes: 'closing-cta${chat ? ' closing-cta-chat' : ''}', [
     div(classes: 'site-container closing-cta-inner', [
       div([
-        p(classes: 'eyebrow eyebrow-light', [Component.text(eyebrow)]),
+        if (eyebrow != null)
+          p(classes: 'eyebrow eyebrow-light', [Component.text(eyebrow)]),
         h2([Component.text(title)]),
         p([Component.text(body)]),
       ]),

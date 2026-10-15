@@ -82,18 +82,6 @@
 .mobile-nav-label:first-child { padding-top: 4px; }
 .mobile-menu nav > .mobile-nav-divider { height: 1px; margin: 8px 0; background: var(--line); }
 
-/* Home product suite */
-.product-suite { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
-.suite-card { display: flex; flex-direction: column; min-height: 400px; padding: 14px 14px 26px; background: white; border: 1px solid var(--line); border-radius: 8px; transition: transform .2s var(--ease-out), box-shadow .2s ease; }
-@media (hover: hover) and (pointer: fine) { .suite-card:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(19,33,57,.09); } }
-.suite-card-visual { display: grid; place-items: center; height: 250px; padding: 18px; border-radius: 6px; background: linear-gradient(135deg, #e3f1fd, #f2f8fe); overflow: hidden; }
-.suite-card-visual > div { width: 100%; }
-.suite-card .eyebrow { margin: 24px 12px 0; }
-.suite-card h3 { margin: 12px 12px 0; font-size: 1.4rem; line-height: 1.18; letter-spacing: -.035em; }
-.suite-card > p:not(.eyebrow) { margin: 10px 12px 0; color: var(--ink-body); line-height: 1.5; font-size: .96rem; }
-.suite-card .text-link { margin: auto 12px 0; padding-top: 22px; font-size: .9rem; }
-.chat-panel .product-panel-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: auto; padding-top: 28px; }
-.chat-panel .product-panel-links .text-link { margin-top: 0; padding-top: 7px; }
 
 /* CU Chat overview */
 .chat-products { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -191,6 +179,7 @@
 .mock-loan-compact .mock-loan-slider { height: 14px; margin-top: 6px; }
 .mock-loan-compact .mock-loan-thumb { width: 14px; height: 14px; margin: -7px 0 0 -7px; border-width: 2px; }
 .mock-loan-compact .mock-loan-result { margin-top: 10px; padding: 10px 12px; }
+.mock-loan-result .mock-muted { color: var(--ink-soft); }
 .mock-loan-compact .mock-loan-repayment { font-size: 1.4rem; }
 
 /* Mockup: Origination & Applications */
@@ -327,7 +316,6 @@
 }
 
 @media (max-width: 1000px) {
-  .product-suite { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .trust-band-inner { grid-template-columns: auto 1fr; }
   .trust-band-links { grid-column: 2; grid-auto-flow: column; justify-content: start; gap: 28px; }
   .footer-grid-wide { grid-template-columns: 1fr 1fr; }
@@ -347,8 +335,6 @@
 }
 
 @media (max-width: 480px) {
-  .product-suite { grid-template-columns: 1fr; }
-  .suite-card { min-height: 0; }
   .product-highlights { flex-direction: column; }
   .mock-window { padding: 16px; font-size: .84rem; }
   .footer-grid-wide { grid-template-columns: 1fr; }
@@ -520,8 +506,7 @@
 .footer-links .link-arrow, .trust-note .link-arrow, .nav-products-overview .link-arrow, .booking-fallback .link-arrow { width: 1em; height: 1em; }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav-products-panel, .nav-products > button::after, .suite-card, .footer-social a, .story-bot-name, .roll-bot, .story-pdf, .roster-bot { transition: none; }
-  .suite-card:hover { transform: none; }
+  .nav-products-panel, .nav-products > button::after, .footer-social a, .story-bot-name, .roll-bot, .story-pdf, .roster-bot { transition: none; }
 }
 
 /* CU Voice (/cu-chat/voice) */
@@ -557,7 +542,7 @@
 .mock-voice-member span { color: #b9abd3; }
 .mock-voice-controls { display: flex; justify-content: center; gap: 18px; margin-top: 18px; }
 .mock-voice-controls span { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,.1); font-size: .66rem; font-weight: 600; color: #e6ddf3; }
-.mock-voice-controls .mock-voice-end { background: #d9434f; color: white; }
+.mock-voice-controls .mock-voice-end { background: #c8323f; color: white; }
 
 .voice-try { padding-block: clamp(80px, 9vw, 128px); background: white; }
 .voice-try-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
@@ -569,7 +554,7 @@
 .voice-line { display: grid; gap: 6px; padding: 26px; border-radius: 14px; background: var(--lilac-paper); box-shadow: inset 0 0 0 1px #e2d8ef; color: var(--navy); transition: transform .25s var(--ease-out), box-shadow .25s ease, background-color .25s ease; }
 .voice-line:first-child { background: var(--purple); color: white; box-shadow: 0 22px 44px rgba(67,48,103,.24); }
 .voice-line-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; color: var(--purple); }
-.voice-line:first-child .voice-line-head { color: var(--lilac); }
+.voice-line:first-child .voice-line-head { color: #b9a3e0; }
 .voice-line-head .voice-wave { height: 26px; }
 .voice-line-accent { font-size: .76rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
 .voice-line-agent { font-size: 1.05rem; font-weight: 550; opacity: .85; }
@@ -619,7 +604,7 @@
 .mock-app-logo { margin: 10px 0 2px; color: var(--blue); font-size: 1.7rem; font-weight: 400; letter-spacing: -.03em; text-align: center; }
 .mock-app-login > .mock-muted { text-align: center; }
 .mock-app-spinner { width: 12px; height: 12px; border: 2px solid rgba(255,255,255,.35); border-top-color: white; border-radius: 50%; }
-.mock-app-biometric { margin-top: 10px; color: var(--blue); font-size: .74rem; font-weight: 650; text-align: center; }
+.mock-app-biometric { margin-top: 10px; color: #175d89; font-size: .74rem; font-weight: 650; text-align: center; }
 .mock-app-card { display: grid; gap: 6px; margin-top: 8px; padding: 12px; border: 1px solid #e3eaf1; border-radius: 12px; background: #fbfdff; }
 .mock-app-card strong { font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; }
 .mock-app-card-primary { border-color: transparent; background: var(--blue-wash); }
@@ -685,4 +670,67 @@
   .mock-site-tiles { display: none; }
   .mock-site-page { min-height: 360px; }
   .mock-site-widget { width: auto; left: 18px; }
+}
+
+/* Home suite showcase (signature). Chapters run as ruled rows on the left;
+   the stage on the right holds still and turns to whichever product's
+   chapter is crossing the middle of the screen (web/showcase.js sets
+   data-active). Under CU Chat the stage moves into the lilac register. On
+   phones the stage pins under the header and the chapters pass beneath. */
+.showcase { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(40px, 6vw, 96px); align-items: start; }
+.showcase-chapters { border-top: 1px solid var(--navy); }
+.showcase-chapter { display: flex; flex-direction: column; justify-content: center; min-height: min(72vh, 640px); padding-block: 56px; border-bottom: 1px solid var(--line); }
+.showcase-chapter[data-register="chat"] .eyebrow { color: var(--purple); }
+.showcase-chapter h3 { margin-top: 18px; max-width: 560px; font-size: clamp(2rem, 3.1vw, 3.4rem); line-height: 1.08; letter-spacing: -.05em; }
+.showcase-chapter > p:not(.eyebrow) { max-width: 480px; margin-top: 20px; color: var(--ink-body); font-size: 1.06rem; line-height: 1.6; }
+.showcase-links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 28px; }
+
+.showcase-stage { position: sticky; top: 104px; height: min(640px, calc(100vh - 136px)); min-height: 520px; border-radius: 8px; overflow: hidden; isolation: isolate;
+  background: radial-gradient(circle at 80% 85%, rgba(37,156,226,.28), transparent 55%), linear-gradient(135deg, #d7ebff 0%, #eef6ff 60%, #e9f2fb 100%); }
+.showcase-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .5s ease;
+  background: radial-gradient(circle at 80% 85%, rgba(67,48,103,.28), transparent 55%), linear-gradient(135deg, var(--lilac-wash) 0%, #f4effa 60%, #ece4f6 100%); }
+.showcase-stage[data-register="chat"]::before { opacity: 1; }
+.showcase-stage::after { content: ''; position: absolute; width: 420px; height: 420px; top: 54%; left: 50%; border: 1px solid rgba(19,33,57,.12); border-radius: 50%; translate: -50% -50%; pointer-events: none; }
+
+/* Where you are in the suite: six short names, the current one in ink with
+   its rule filled. */
+.showcase-index { position: absolute; z-index: 1; inset: 22px 24px auto; display: flex; gap: 14px; margin: 0; padding: 0; list-style: none; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); }
+.showcase-index li { flex: 1; padding-top: 10px; border-top: 2px solid rgba(19,33,57,.12); white-space: nowrap; transition: color .3s ease, border-color .3s ease; }
+.showcase-stage[data-active="0"] .showcase-index li:nth-child(1),
+.showcase-stage[data-active="1"] .showcase-index li:nth-child(2),
+.showcase-stage[data-active="2"] .showcase-index li:nth-child(3),
+.showcase-stage[data-active="3"] .showcase-index li:nth-child(4),
+.showcase-stage[data-active="4"] .showcase-index li:nth-child(5),
+.showcase-stage[data-active="5"] .showcase-index li:nth-child(6) { color: var(--navy); border-top-color: var(--navy); }
+.showcase-stage[data-register="chat"] .showcase-index li { border-top-color: rgba(67,48,103,.16); }
+.showcase-stage[data-register="chat"] .showcase-index li:nth-child(2) { color: var(--purple); border-top-color: var(--purple); }
+
+.showcase-layers { position: absolute; inset: 64px 0 0; display: grid; }
+.showcase-layer { grid-area: 1 / 1; display: grid; place-items: center; padding: 24px clamp(20px, 4vw, 48px) 40px; opacity: 0; visibility: hidden; }
+.showcase-layer > * { width: min(100%, 440px); }
+.showcase-layer-app { place-items: end center; padding-bottom: 0; }
+.showcase-layer-app > * { width: 250px; }
+.showcase-stage[data-active="0"] .showcase-layer:nth-child(1),
+.showcase-stage[data-active="1"] .showcase-layer:nth-child(2),
+.showcase-stage[data-active="2"] .showcase-layer:nth-child(3),
+.showcase-stage[data-active="3"] .showcase-layer:nth-child(4),
+.showcase-stage[data-active="4"] .showcase-layer:nth-child(5),
+.showcase-stage[data-active="5"] .showcase-layer:nth-child(6) { opacity: 1; visibility: visible; }
+
+@media (max-width: 1000px) {
+  .showcase { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; }
+  .showcase-index { gap: 8px; font-size: .62rem; letter-spacing: .08em; }
+  .showcase-layer > * { zoom: .86; }
+}
+@media (max-width: 760px) {
+  .showcase { grid-template-columns: 1fr; gap: 0; }
+  .showcase-stage { order: -1; z-index: 2; top: 68px; height: 44vh; min-height: 300px; max-height: 400px; border-radius: 0; margin-inline: -24px; }
+  .showcase-stage::after { width: 260px; height: 260px; }
+  .showcase-index { inset: 16px 16px auto; gap: 6px; font-size: .58rem; letter-spacing: .06em; }
+  .showcase-layers { inset: 48px 0 0; }
+  .showcase-layer { padding: 12px 20px 20px; }
+  .showcase-layer-app { padding-bottom: 0; }
+  .showcase-layer > * { zoom: .62; }
+  .showcase-chapters { border-top: 0; }
+  .showcase-chapter { min-height: 58vh; padding-block: 40px; }
 }

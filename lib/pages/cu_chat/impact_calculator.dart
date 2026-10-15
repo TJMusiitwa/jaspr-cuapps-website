@@ -488,7 +488,10 @@ class ImpactCalculatorPage extends StatelessComponent {
               div(
                 id: 'website-funnel',
                 classes: 'website-funnel',
-                attributes: {'aria-label': 'Website lead calculation'},
+                attributes: {
+                  'role': 'group',
+                  'aria-label': 'Website lead calculation',
+                },
                 [],
               ),
               button(

@@ -203,10 +203,7 @@ class ProductPage extends StatelessComponent {
         section(classes: 'site-section faq-section product-faq', [
           div(classes: 'site-container faq-grid', [
             div([
-              sectionIntro(
-                eyebrow: 'Questions',
-                title: 'What credit unions ask us.',
-              ),
+              sectionIntro(title: 'What credit unions ask us.'),
               trustNote(),
             ]),
             div(classes: 'faq-list', [
@@ -219,7 +216,6 @@ class ProductPage extends StatelessComponent {
           ]),
         ]),
         closingCta(
-          eyebrow: 'See it working',
           title: closingTitle,
           body: closingBody,
           label: ctaLabel,

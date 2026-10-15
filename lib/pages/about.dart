@@ -146,13 +146,15 @@ class About extends StatelessComponent {
 
   Component _person(String name, String role, String slug, String linkedIn) {
     return figure(classes: 'team-person', [
-      img(
-        src: '/images/team/$slug.webp',
-        alt: name,
-        width: 800,
-        height: 800,
-        loading: MediaLoading.lazy,
-      ),
+      div(classes: 'team-photo', [
+        img(
+          src: '/images/team/$slug.webp',
+          alt: name,
+          width: 800,
+          height: 800,
+          loading: MediaLoading.lazy,
+        ),
+      ]),
       figcaption([
         div([
           strong([Component.text(name)]),

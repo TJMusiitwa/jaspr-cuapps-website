@@ -102,6 +102,13 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(20px, 2.5vw, 38px); margin-left: auto; }
 .desktop-nav a { font-size: .94rem; font-weight: 550; white-space: nowrap; }
 .desktop-nav a:hover { color: #176b9e; }
+/* Current page: the nav link (or the Products trigger on any product page)
+   keeps the underline that hover draws in. See web/motion.css. */
+.desktop-nav > a[aria-current="page"], .nav-products.is-current > button { color: var(--navy); }
+.desktop-nav .nav-product-link[aria-current="page"] { background: var(--pale); }
+.desktop-nav .nav-products-group-chat .nav-product-link[aria-current="page"] { background: white; }
+.mobile-menu nav > a[aria-current="page"] { box-shadow: inset 2px 0 0 var(--navy); font-weight: 650; }
+.site-header:has(~ #content .cu-chat-page) .mobile-menu nav > a[aria-current="page"] { box-shadow: inset 2px 0 0 var(--purple); }
 .desktop-action { margin-left: 12px; }
 .desktop-action .button { min-height: 44px; padding: 10px 16px; gap: 14px; font-size: .89rem; }
 .mobile-menu { display: none; margin-left: auto; position: relative; }
@@ -139,24 +146,10 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .logo-row img { width: 100%; max-width: 170px; max-height: 66px; object-fit: contain; margin-inline: auto; }
 @keyframes logo-scroll { to { transform: translateX(-50%); } }
 .statement-grid { display: grid; grid-template-columns: 1fr 2.1fr; gap: 48px; align-items: start; }
-.statement-grid .eyebrow { padding-top: 13px; }
+.statement-grid > :only-child { grid-column: 2; }
 .statement-title { max-width: 890px; font-size: clamp(2.8rem, 4.6vw, 5.1rem); letter-spacing: -.058em; line-height: 1.1; }
 .statement-grid .section-copy { margin-top: 30px; }
 .product-showcase { background: var(--pale); padding-block: clamp(80px, 9vw, 128px); }
-.product-grid { display: grid; gap: 18px; }
-.product-panel { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 460px; border-radius: 8px; overflow: hidden; }
-.product-panel-copy { padding: clamp(36px, 5vw, 76px); display: flex; flex-direction: column; align-items: flex-start; }
-.product-panel h3 { margin-top: 32px; max-width: 620px; font-size: clamp(2.5rem, 3.8vw, 4.4rem); line-height: 1.1; letter-spacing: -.055em; }
-.product-panel-copy > p:not(.eyebrow) { max-width: 520px; margin-top: 22px; font-size: 1.08rem; line-height: 1.6; }
-.product-panel-copy .text-link { margin-top: auto; padding-top: 28px; }
-.app-panel { background: var(--blue-wash); }
-.chat-panel { background: var(--lilac-wash); }
-.chat-panel .eyebrow { color: var(--purple); }
-.product-panel-visual { display: flex; justify-content: center; align-items: flex-end; overflow: hidden; padding-top: 42px; }
-.app-panel-visual { background: #9fd1f2; }
-.chat-panel-visual { background: var(--lilac); }
-.product-panel-visual img { width: 220px; max-width: 80%; height: 410px; object-fit: cover; object-position: top; border: 8px solid var(--navy); border-bottom: 0; border-radius: 30px 30px 0 0; box-shadow: 14px 17px 0 rgba(19,33,57,.13); }
-.chat-panel-visual img { border-color: var(--purple-deep); }
 .proof-section { color: white; background: var(--navy); padding-block: clamp(80px, 9vw, 128px); }
 .proof-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(40px, 8vw, 120px); align-items: end; }
 .proof-number .eyebrow { color: var(--blue-wash); }
@@ -224,7 +217,15 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .faq-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; }
 .faq-list details { border-top: 1px solid #d8cfe6; padding: 19px 0; }
 .faq-list details:last-child { border-bottom: 1px solid #d8cfe6; }
-.faq-list summary { cursor: pointer; font-size: 1.18rem; font-weight: 600; padding-right: 25px; }
+.faq-list summary { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; cursor: pointer; list-style: none; font-size: 1.18rem; font-weight: 600; transition: color .2s ease; }
+.faq-list summary::-webkit-details-marker { display: none; }
+/* A drawn plus that turns into a close mark as the answer opens. */
+.faq-list summary::after { content: ''; flex: none; width: 14px; height: 14px; translate: 0 1px; background: linear-gradient(currentColor, currentColor) center / 100% 1.6px no-repeat, linear-gradient(currentColor, currentColor) center / 1.6px 100% no-repeat; transition: transform .32s var(--ease-out); }
+.faq-list details[open] > summary::after { transform: rotate(45deg); }
+@media (hover: hover) and (pointer: fine) {
+  .faq-list summary:hover { color: #176b9e; }
+  .cu-chat-page .faq-list summary:hover { color: var(--purple); }
+}
 .faq-list details p { margin-top: 16px; line-height: 1.65; color: var(--ink-body); }
 
 /* About and client work */
@@ -240,7 +241,20 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .method-grid h3 { margin-top: 35px; font-size: 1.8rem; letter-spacing: -.035em; }
 .method-grid p { margin-top: 15px; max-width: 340px; color: #d4e1ed; line-height: 1.65; }
 .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 24px; }
-.team-person img { width: 100%; aspect-ratio: 1.15; object-fit: cover; object-position: center; background: var(--pale); }
+.team-photo { position: relative; overflow: hidden; border-radius: 5px; }
+.team-person img { width: 100%; aspect-ratio: 1.15; object-fit: cover; object-position: center; background: var(--pale); transition: transform .6s var(--ease-out); }
+/* The photos were taken in different rooms and light. With a pointer, they
+   rest in greyscale so the team reads as one set, and each person comes
+   into colour as you reach them (or their links). Touch keeps colour. */
+@media (hover: hover) and (pointer: fine) {
+  .team-photo::after { content: ''; position: absolute; inset: 0; backdrop-filter: grayscale(1) contrast(1.04); transition: opacity .45s ease; pointer-events: none; }
+  .team-person:is(:hover, :focus-within) .team-photo::after { opacity: 0; }
+  .team-person:is(:hover, :focus-within) img { transform: scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-person img { transition: none; }
+  .team-person:is(:hover, :focus-within) img { transform: none; }
+}
 .team-person figcaption { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-top: 16px; }
 .team-person figcaption > div:first-child { display: grid; gap: 5px; }
 .team-links { display: flex; gap: 8px; flex: 0 0 auto; }
@@ -250,6 +264,17 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .team-person strong { font-size: 1.14rem; }
 .team-person span { color: var(--ink-muted); }
 .stories-hero { background: var(--sky-paper); }
+/* Client index beside the hero copy, the CU Apps twin of the CU Chat
+   stories roster: ruled rows, client name drawing an underline on hover. */
+.stories-hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(40px, 6vw, 96px); align-items: end; }
+.stories-roster-title { color: var(--eyebrow-ink); font-size: .92rem; font-weight: 600; }
+.stories-roster ol { margin: 12px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--navy); }
+.stories-roster a { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-block: 10px; border-bottom: 1px solid var(--line); }
+.roster-name { color: var(--navy); font-size: 1.14rem; font-weight: 600; letter-spacing: -.02em; background: linear-gradient(currentColor, currentColor) no-repeat 0 96% / 0% 1.5px; transition: color .2s ease, background-size .32s var(--ease-out); }
+.roster-person { flex: none; color: var(--ink-muted); font-size: .86rem; text-align: right; }
+.stories-roster a:is(:hover, :focus-visible) .roster-name { color: #176b9e; background-size: 100% 1.5px; }
+.story-row, .featured-story, .story-pull, .story-brief { scroll-margin-top: 112px; }
+[id].site-section, .story-pull-section[id] { scroll-margin-top: 80px; }
 .featured-story { display: grid; grid-template-columns: .6fr 1.4fr; gap: 90px; }
 .story-feature-alt, .story-brief-section, .story-list-section { background: var(--pale); }
 .story-mark { align-self: start; }
@@ -315,6 +340,14 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .booking-fallback { padding-top: 12px; color: var(--ink-muted); font-size: .88rem; }
 .booking-fallback a { color: var(--link); text-decoration: underline; }
 .contact-hero { background: var(--sky-paper); }
+/* Phone lines and inbox beside the hero copy: ruled rows, the number
+   drawing its underline on hover like the client index. */
+.contact-lines-title { color: var(--eyebrow-ink); font-size: .92rem; font-weight: 600; }
+.contact-lines ul { margin: 12px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--navy); }
+.contact-lines a { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding-block: 13px; border-bottom: 1px solid var(--line); }
+.contact-lines span { color: var(--ink-soft); font-size: .92rem; }
+.contact-lines strong { color: var(--navy); font-size: 1.14rem; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums; background: linear-gradient(currentColor, currentColor) no-repeat 0 96% / 0% 1.5px; transition: color .2s ease, background-size .32s var(--ease-out); }
+.contact-lines a:is(:hover, :focus-visible) strong { color: #176b9e; background-size: 100% 1.5px; }
 .contact-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .contact-path { min-height: 385px; border: 1px solid var(--line); padding: clamp(33px, 4vw, 62px); display: flex; flex-direction: column; align-items: flex-start; }
 .contact-path-primary { color: white; background: var(--navy); border-color: var(--navy); }
@@ -329,12 +362,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .contact-details h2 { margin-top: 20px; max-width: 700px; font-size: clamp(2rem, 3vw, 3.5rem); line-height: 1.15; letter-spacing: -.045em; }
 .contact-details-grid > div:last-child { display: grid; align-content: end; gap: 12px; color: var(--ink-soft); }
 .contact-details a { color: var(--link); width: fit-content; text-decoration: underline; }
-.contact-phones { display: grid; gap: 13px; margin-top: 20px; }
-.contact-phones .eyebrow { color: var(--eyebrow-ink); }
-.contact-phones a { display: flex; flex-wrap: wrap; gap: 5px 18px; align-items: baseline; text-decoration: none; }
-.contact-phones a:hover strong { text-decoration: underline; }
-.contact-phones a span { min-width: 116px; color: var(--ink-soft); }
-.contact-phones a strong { font-weight: 600; }
 .error-page { min-height: 62vh; display: flex; align-items: center; background: var(--sky-paper); }
 .error-inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 7vw, 100px); align-items: start; padding-block: clamp(64px, 8vw, 110px); }
 .error-routes { display: grid; gap: 10px; padding: 14px; background: white; border: 1px solid var(--line); border-radius: 12px; }
@@ -356,6 +383,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .closing-cta-chat { background: var(--purple-deep); }
 .closing-cta-inner { display: flex; justify-content: space-between; align-items: end; gap: 50px; }
 .closing-cta h2 { max-width: 850px; margin-top: 20px; font-size: clamp(2.9rem, 5.3vw, 5.8rem); line-height: 1.05; letter-spacing: -.058em; }
+.closing-cta h2:first-child { margin-top: 0; }
 .closing-cta p:not(.eyebrow) { max-width: 600px; margin-top: 22px; color: #d4e1ed; line-height: 1.6; font-size: 1.1rem; }
 .closing-cta-chat p:not(.eyebrow) { color: #e3d8f2; }
 .closing-cta .button { background: white; color: var(--navy); flex: 0 0 auto; }
@@ -374,6 +402,8 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
 .footer-bottom-center { justify-content: center; text-align: center; }
 
 @media (max-width: 1000px) {
+  .stories-hero-grid { grid-template-columns: 1fr; align-items: start; }
+  .stories-roster { max-width: 560px; }
   .desktop-nav { display: none; }
   .mobile-menu { display: block; }
   .desktop-action { display: block; margin-left: auto; }
@@ -381,8 +411,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .mobile-menu nav { top: 52px; }
   .hero-grid { min-height: 0; grid-template-columns: 1fr 1fr; }
   .display-title { font-size: clamp(3.2rem, 6vw, 5rem); }
-  .product-panel { min-height: 420px; }
-  .product-panel-copy { padding: 40px; }
   .trust-grid, .faq-grid { gap: 45px; }
 }
 
@@ -401,11 +429,7 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .hero-art-caption { top: 22px; left: 20px; max-width: 125px; }
   .hero-actions { gap: 13px 24px; }
   .statement-grid, .proof-grid, .app-promise-grid, .chat-context-grid, .trust-grid, .faq-grid, .featured-story, .story-pull, .story-row, .contact-details-grid { grid-template-columns: 1fr; gap: 30px; }
-  .statement-grid .eyebrow { padding-top: 0; }
-  .product-panel { grid-template-columns: 1fr; }
-  .product-panel-copy { min-height: 360px; }
-  .product-panel-visual { height: 310px; }
-  .product-panel-visual img { height: 330px; }
+  .statement-grid > :only-child { grid-column: auto; }
   .process-list, .method-grid, .team-grid { grid-template-columns: 1fr 1fr; }
   .page-device-stage { min-height: 460px; padding-right: 16px; }
   .page-device-stage figcaption { max-width: 105px; }
@@ -443,8 +467,6 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .logo-cell { width: 150px; min-height: 84px; padding: 12px; }
   .logo-row img { max-height: 62px; }
   .statement-title { font-size: 2.7rem; }
-  .product-panel-copy { padding: 29px; min-height: 385px; }
-  .product-panel h3 { font-size: 2.45rem; }
   .process-list, .method-grid, .team-grid, .trust-list { grid-template-columns: 1fr; }
   .page-device-stage { min-height: 430px; }
   .page-device-stage img { width: 205px; height: 402px; }
@@ -471,6 +493,14 @@ h1, h2, h3 { margin: 0; font-weight: 600; }
   .logo-row[aria-hidden] { display: none; }
 }
 .logo-row img[src$="/core.webp"] { border-radius: 8px; }
-.app-panel-visual { height: auto; }
-.chat-panel-visual { height: auto; align-items: center; padding: 42px clamp(20px, 4vw, 48px); }
-.chat-panel-visual > div { width: min(100%, 420px); }
+
+/* Optical alignment. At display sizes Outfit's capitals sit a hair inside
+   their box, so big headlines look indented against the body copy beneath
+   them; pull them back onto the column edge. Pull quotes hang their opening
+   mark in the margin so the first letter of the quote holds the edge. */
+.display-title, .page-title { margin-left: -.055em; }
+.section-title, .statement-title, .closing-cta h2, .showcase-chapter h3 { margin-left: -.045em; }
+:is(.proof-grid, .quote-feature) blockquote p { hanging-punctuation: first; }
+@supports not (hanging-punctuation: first) {
+  :is(.proof-grid, .quote-feature) blockquote p { text-indent: -.4em; }
+}
