@@ -29,7 +29,7 @@ class CuChatPage extends StatelessComponent {
             ]),
             div(classes: 'hero-actions', [
               primaryLink('Book a call', chat: true),
-              quietLink('Compare the products', '#products'),
+              quietLink('Compare the products', '${context.url}#products'),
               quietLink('Meet the chatbots', '/cu-chat/stories'),
             ]),
             ul(classes: 'product-highlights', [
