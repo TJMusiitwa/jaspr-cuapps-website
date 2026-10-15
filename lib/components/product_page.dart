@@ -124,7 +124,10 @@ class ProductPage extends StatelessComponent {
                 heroActions ??
                     [
                       primaryLink(ctaLabel, chat: chat),
-                      quietLink('Explore the product', '${context.url}#features'),
+                      quietLink(
+                        'Explore the product',
+                        '${context.url}#features',
+                      ),
                     ],
               ),
               ul(classes: 'product-highlights', [

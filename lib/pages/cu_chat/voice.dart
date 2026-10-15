@@ -289,7 +289,9 @@ Component voiceMockup() {
         Component.text('CU'),
       ]),
       span(classes: 'mock-voice-name', [Component.text('Your CU assistant')]),
-      span(classes: 'mock-voice-sub', [Component.text('British English voice')]),
+      span(classes: 'mock-voice-sub', [
+        Component.text('British English voice'),
+      ]),
     ]),
     _wave(24),
     div(classes: 'mock-thread mock-voice-transcript', [
