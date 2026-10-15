@@ -6,7 +6,7 @@ import 'package:jaspr/jaspr.dart';
 typedef VoiceLine = (String accent, String agent, String display, String tel);
 
 const _voiceLines = <VoiceLine>[
-  ('UK English', 'Our UK agent', 'ABC 1234 EFG', ''),
+  ('British English', 'Our British agent', 'ABC 1234 EFG', ''),
   ('Irish English', 'Our Irish agent', 'EFG 5678 HIJ', ''),
 ];
 
@@ -24,14 +24,14 @@ class CuVoicePage extends StatelessComponent {
       title: 'Your members call.',
       titleAccent: 'Your AI assistant answers.',
       lede:
-          'CU Voice puts the knowledge behind your CU Chat assistant on the end of a phone line. Members ask in their own words and hear a clear, natural answer, at any hour, without waiting in a queue.',
+          'CU Voice puts the knowledge of a member-facing chatbot on the end of a phone line. Members ask in their own words and hear a clear, natural answer, at any hour, without waiting in a queue.',
       heroActions: [
         for (final (index, line) in _voiceLines.indexed)
           _callButton(line, primary: index == 0),
       ],
       highlights: const [
         'Answers every call, 24/7',
-        'UK and Irish English voices',
+        'British and Irish English voices',
         'A route to your team when needed',
       ],
       mockup: voiceMockup(),
@@ -44,18 +44,23 @@ class CuVoicePage extends StatelessComponent {
       features: const [
         (
           'headset',
-          'No more hold music',
-          'Every call is answered straight away, so routine questions stop queuing behind the conversations that need your team.',
-        ),
-        (
-          'chat',
-          'The same knowledge as your chatbot',
-          'CU Voice answers from your credit union’s own products, rates, branches and policies, so members hear what they would read in the chat.',
+          '24/7 assistance',
+          'Members may have questions and need help around the clock. With CU Voice, no calls are missed because they phoned out of hours.',
         ),
         (
           'globe',
           'A voice that sounds local',
-          'Choose a natural UK English or Irish English voice, so your assistant sounds like it belongs to your community.',
+          'Choose a natural British English or Irish English voice, so your assistant sounds like it belongs to your community.',
+        ),
+        (
+          'phone',
+          'Easy to use',
+          'Members simply call a number. No app, no login and no website visit needed, which suits members who prefer to talk.',
+        ),
+        (
+          'chat',
+          'Bespoke knowledge, built on your credit union',
+          'CU Voice uses information from your credit union’s own products, branches and policies, so members get correct, up-to-date answers to their questions.',
         ),
         (
           'calculator',
@@ -66,11 +71,6 @@ class CuVoicePage extends StatelessComponent {
           'users',
           'A clear route to your team',
           'When a question needs a person, the assistant says so and offers the next step, so no member is left going round in circles.',
-        ),
-        (
-          'phone',
-          'Nothing new to learn',
-          'Members simply call a number. No app, no login and no website visit needed, which suits members who prefer to talk.',
         ),
       ],
       afterFeatures: [_tryIt()],
@@ -109,7 +109,7 @@ class CuVoicePage extends StatelessComponent {
         ),
         (
           'Which voices are available?',
-          'You can try a UK English and an Irish English voice on our demo lines now. Ask us on a call about the voice that suits your credit union.',
+          'You can try a British English and an Irish English voice on our demo lines now. Ask us on a call about the voice that suits your credit union.',
         ),
         (
           'What happens when a member needs a person?',
@@ -289,7 +289,7 @@ Component voiceMockup() {
         Component.text('CU'),
       ]),
       span(classes: 'mock-voice-name', [Component.text('Your CU assistant')]),
-      span(classes: 'mock-voice-sub', [Component.text('UK English voice')]),
+      span(classes: 'mock-voice-sub', [Component.text('British English voice')]),
     ]),
     _wave(24),
     div(classes: 'mock-thread mock-voice-transcript', [

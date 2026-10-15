@@ -19,7 +19,7 @@ class KnowledgeAgentPage extends StatelessComponent {
           'Policies, procedures, product information and internal guidance contain everything your team needs to know. The Internal Knowledge Agent gives staff one place to ask questions and find answers from your own documents.',
       highlights: const [
         'Answers from your approved documents',
-        'Works alongside SharePoint',
+        'Works with SharePoint and other document storage systems',
         'Review date reminders',
       ],
       mockup: knowledgeAgentMockup(),
