@@ -136,6 +136,9 @@ Component clientLogoRow() {
     ('Savvi Credit Union', 'savvi'),
     ('St. Paul’s Garda Credit Union', 'stpcu'),
     ('Synergy Credit Union', 'sycu'),
+    ('Fair Finance', 'fair-finance'),
+    ('Heritage Credit Union', 'heritage'),
+    ('Core Credit Union', 'core'),
   ];
 
   // Two identical sets side by side; the track slides left by one set and
