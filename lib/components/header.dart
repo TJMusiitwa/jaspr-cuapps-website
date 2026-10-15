@@ -95,10 +95,6 @@ class Header extends StatelessComponent {
                 Component.text('CU Chat overview'),
                 linkArrow(ArrowKind.forward),
               ]),
-              a(href: '/cu-chat/stories', classes: 'nav-products-overview', [
-                Component.text('Client stories'),
-                linkArrow(ArrowKind.forward),
-              ]),
             ]),
           ),
         ]),
