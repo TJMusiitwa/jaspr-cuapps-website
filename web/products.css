@@ -648,7 +648,7 @@
 
 /* CU Chat on a credit union website: browser window, widget open. */
 .mock-site-stage > div { display: flex; justify-content: center; width: 100%; }
-.mock-site { container-type: inline-size; width: 100%; max-width: 620px; padding: 0; overflow: hidden; font-size: .8rem; }
+.mock-site { container-type: inline-size; width: 100%; max-width: none; padding: 0; overflow: hidden; font-size: .8rem; }
 .mock-site-bar { display: flex; align-items: center; gap: 14px; padding: 10px 14px; border-bottom: 1px solid #edf1f5; background: var(--pale); }
 .mock-site-dots { display: flex; gap: 5px; }
 .mock-site-dots span { width: 9px; height: 9px; border-radius: 50%; background: #d5dde6; }
@@ -677,6 +677,8 @@
 .mock-site-launcher { position: absolute; right: 18px; bottom: 18px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--purple); color: white; font-size: .7rem; font-weight: 700; box-shadow: 0 10px 20px rgba(40,18,84,.25); }
 .chat-context .mock-site { color: var(--navy); }
 .chat-context .mock-site p { margin: 0; }
+/* The spotlight shares the section's purple, so don't double the gap. */
+.chat-context + .product-spotlight { padding-top: 0; }
 
 @container (max-width: 480px) {
   .mock-site-hero, .mock-site-tiles { max-width: 100%; }
