@@ -1,4 +1,5 @@
 import 'package:cuapps_website/components/ui.dart';
+import 'package:cuapps_website/pages/cu_chat/ai_chatbot.dart';
 import 'package:cuapps_website/pages/products/agm_hub.dart';
 import 'package:cuapps_website/pages/products/cu_flow.dart';
 import 'package:cuapps_website/pages/products/loan_calculators.dart';
@@ -129,15 +130,17 @@ class Home extends StatelessComponent {
                   ),
                 ]),
               ]),
-              div(classes: 'product-panel-visual chat-panel-visual', [
-                img(
-                  src: '/images/chat_mobile_hero.webp',
-                  alt: 'CU Chat answering a member question on mobile',
-                  width: 560,
-                  height: 1212,
-                  loading: MediaLoading.lazy,
-                ),
-              ]),
+              div(
+                classes: 'product-panel-visual chat-panel-visual',
+                attributes: {
+                  'role': 'img',
+                  'aria-label':
+                      'A branded credit union chatbot answering a loan question with an in-chat loan calculator',
+                },
+                [
+                  div(attributes: {'aria-hidden': 'true'}, [chatbotMockup()]),
+                ],
+              ),
             ]),
           ]),
           div(classes: 'product-suite', [
